@@ -1,75 +1,75 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="vi">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GIF sang PDF | Chuyá»ƒn GIF sang PDF trá»±c tuyáº¿n</title>
-  <meta name="description" content="KÃ©o tháº£ áº£nh GIF Ä‘á»ƒ gá»™p sang PDF hoáº·c xuáº¥t JPG cháº¥t lÆ°á»£ng cao mÃ  khÃ´ng cáº§n cÃ i Ä‘áº·t.">
+  <title>GIF sang PDF | Chuyển GIF sang PDF trực tuyến</title>
+  <meta name="description" content="Kéo thả ảnh GIF để ghép thành PDF hoặc tải về JPG chất lượng cao mà không cần cài đặt.">
   <link rel="canonical" href="https://pdf-converter.tools/gif-sang-pdf">
   <link rel="stylesheet" href="./css/converter.css">
 </head>
 <body>
   <div class="app">
-    <section class="board" id="board" aria-label="Danh sÃ¡ch tá»‡p nguá»“n">
-      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Chá»n hoáº·c kÃ©o tháº£ áº£nh GIF">
+    <section class="board" id="board" aria-label="Danh sách tệp nguồn">
+      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Chọn hoặc kéo thả ảnh GIF">
         <div class="conversion-flow" aria-hidden="true">
-          <span class="icon" title="GIF">ðŸ–¼ï¸</span>
-          <span class="arrow" aria-hidden="true">âž¡ï¸</span>
-          <span class="icon" title="PDF">ðŸ“„</span>
+          <span class="icon" title="GIF">🖼️</span>
+          <span class="arrow" aria-hidden="true">→</span>
+          <span class="icon" title="PDF">📄</span>
         </div>
-        <strong>KÃ©o tháº£ áº£nh GIF vÃ o Ä‘Ã¢y</strong>
-        <span>hoáº·c</span>
-        <button type="button" id="chooseBtn">Chá»n tá»‡p</button>
-        <div class="muted">Há»— trá»£ GIF. Xuáº¥t nhanh sang PDF cháº¥t lÆ°á»£ng cao.</div>
+        <strong>Kéo ảnh GIF vào đây</strong>
+        <span>hoặc</span>
+        <button type="button" id="chooseBtn">Chọn tệp</button>
+        <div class="muted">Hỗ trợ GIF tĩnh. Xuất thành PDF gọn nhẹ, dễ dàng chia sẻ.</div>
         <input type="file" id="fileInput" accept=".gif,image/gif" multiple hidden>
       </div>
 
       <div class="selection-bar" id="selectionBar" style="display:none;">
-        <div><strong id="selectionCount">0 tá»‡p</strong> <span id="pageCount">0 áº£nh</span></div>
-        <button class="clear-btn" id="clearAll" type="button">XÃ³a táº¥t cáº£</button>
+        <div><strong id="selectionCount">0 tệp</strong> <span id="pageCount">0 ảnh</span></div>
+        <button class="clear-btn" id="clearAll" type="button">Xóa tất cả</button>
       </div>
 
       <div class="grid" id="fileGrid"></div>
-      <div class="empty" id="emptyState">ChÆ°a cÃ³ tá»‡p nÃ o. KÃ©o tháº£ áº£nh GIF vÃ o khung trÃªn Ä‘á»ƒ báº¯t Ä‘áº§u.</div>
+      <div class="empty" id="emptyState">Chưa có tệp nào. Kéo ảnh GIF vào khung trên để bắt đầu.</div>
     </section>
 
     <aside class="rightpanel" id="panel">
       <h1>GIF sang PDF</h1>
-      <p>Táº£i áº£nh GIF, chá»n cháº¥t lÆ°á»£ng vÃ  xuáº¥t JPG hoáº·c gá»™p áº£nh thÃ nh PDF nhanh chÃ³ng.</p>
+      <p>Chọn chất lượng xuất và ghép ảnh GIF thành PDF chỉ với một cú nhấp chuột.</p>
 
       <div>
-        <p style="font-weight:600;margin-bottom:10px;color:#1f2937;">Cháº¥t lÆ°á»£ng áº£nh</p>
+        <p style="font-weight:600;margin-bottom:10px;color:#1f2937;">Chất lượng ảnh</p>
         <div class="quality" role="radiogroup">
           <div class="qitem active" tabindex="0" role="radio" data-quality="normal" aria-checked="true">
-            <span class="badge">KhuyÃªn dÃ¹ng</span>
-            <strong>BÃ¬nh thÆ°á»ng</strong>
+            <span class="badge">Khuyên dùng</span>
+            <strong>Bình thường</strong>
             <small>150 DPI</small>
           </div>
           <div class="qitem" tabindex="0" role="radio" data-quality="high" aria-checked="false">
-            <span class="badge">Chi tiáº¿t</span>
+            <span class="badge">Chi tiết</span>
             <strong>Cao</strong>
             <small>220 DPI</small>
           </div>
           <div class="qitem" tabindex="0" role="radio" data-quality="ultra" aria-checked="false">
             <span class="badge">MAX DPI</span>
-            <strong>SiÃªu nÃ©t</strong>
+            <strong>Siêu nét</strong>
             <small>600 DPI</small>
           </div>
         </div>
       </div>
 
-      <div class="output-format" role="group" aria-label="Äá»‹nh dáº¡ng Ä‘áº§u ra">
-        <strong id="formatHeading">Xuáº¥t thÃ nh PDF</strong>
+      <div class="output-format" role="group" aria-label="Định dạng đầu ra">
+        <strong id="formatHeading">Xuất thành PDF</strong>
         <div class="options" id="formatOptions">
-          <button type="button" class="format-btn active" data-format="pdf" aria-pressed="true">Xuáº¥t thÃ nh PDF</button>
+          <button type="button" class="format-btn active" data-format="pdf" aria-pressed="true">Xuất thành PDF</button>
         </div>
       </div>
 
-      <div class="pdf-options" id="pdfOptions" role="group" aria-label="Cháº¿ Ä‘á»™ xuáº¥t PDF" aria-hidden="false">
-        <strong>Cháº¿ Ä‘á»™ xuáº¥t PDF</strong>
+      <div class="pdf-options" id="pdfOptions" role="group" aria-label="Chế độ xuất PDF">
+        <strong>Chế độ xuất PDF</strong>
         <div class="options">
-          <button type="button" class="pdf-mode-btn" data-mode="separate" aria-pressed="false">Má»—i tá»‡p 1 PDF</button>
-          <button type="button" class="pdf-mode-btn active" data-mode="merged" aria-pressed="true">Gá»™p thÃ nh 1 PDF</button>
+          <button type="button" class="pdf-mode-btn" data-mode="separate" aria-pressed="false">Mỗi tệp 1 PDF</button>
+          <button type="button" class="pdf-mode-btn active" data-mode="merged" aria-pressed="true">Gộp thành 1 PDF</button>
         </div>
       </div>
 
@@ -79,32 +79,27 @@
         <span id="progressBar"></span>
       </div>
 
-      <button class="convert" id="convertBtn" type="button" disabled><span>Xuáº¥t thÃ nh PDF</span></button>
+      <button class="convert" id="convertBtn" type="button" disabled><span>Xuất thành PDF</span></button>
     </aside>
 
-    <button class="options-toggle" id="optsToggle" type="button">âš™ï¸ TÃ¹y chá»n chuyá»ƒn Ä‘á»•i</button>
+    <button class="options-toggle" id="optsToggle" type="button">⚙️ Tùy chọn chuyển đổi</button>
   </div>
 
   <script>
     window.CONVERTER_CONFIG = {
       slug: 'gif-sang-pdf',
       input: {
-        label: 'áº£nh',
-        labelPlural: 'áº£nh',
+        label: 'ảnh',
+        labelPlural: 'ảnh',
         mimeTypes: ['image/gif'],
         extensions: ['gif'],
         accept: '.gif,image/gif',
-        description: 'Chá»‰ há»— trá»£ tá»‡p GIF.'
+        description: 'Chỉ hỗ trợ ảnh GIF tĩnh.'
       },
       outputs: {
-        jpg: {
-          formatLabel: 'JPG',
-          buttonLabel: 'Chuyá»ƒn sang JPG',
-          zipNameBase: 'gif-sang-jpg'
-        },
         pdf: {
           formatLabel: 'PDF',
-          buttonLabel: 'Xuáº¥t thÃ nh PDF',
+          buttonLabel: 'Xuất thành PDF',
           zipNameBaseMerged: 'gif-gop-pdf',
           zipNameBaseSeparate: 'gif-sang-pdf'
         }
@@ -120,4 +115,3 @@
   <script src="./js/converter.js"></script>
 </body>
 </html>
-

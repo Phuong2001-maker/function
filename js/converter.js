@@ -1,32 +1,33 @@
-﻿// Shared converter logic for format-specific pages.
-// Each HTML file should populate window.CONVERTER_CONFIG before loading this script.
+// Shared converter logic for the standalone converters in /function.
+// Each HTML entry point must declare window.CONVERTER_CONFIG before loading this script.
 (() => {
   const defaultConfig = {
     slug: 'chuyen-doi',
-    fileLabel: 'tá»‡p',
-    fileLabelPlural: 'tá»‡p',
+    fileLabel: 'tệp',
+    fileLabelPlural: 'tệp',
     input: {
-      label: 'áº£nh',
-      labelPlural: 'áº£nh',
-      labelWhenUnknown: 'áº£nh',
+      label: 'ảnh',
+      labelPlural: 'ảnh',
+      labelWhenUnknown: 'ảnh',
       mimeTypes: ['image/png', 'image/jpeg', 'image/pjpeg', 'image/webp', 'image/gif'],
       extensions: ['png', 'jpg', 'jpeg', 'webp', 'gif'],
       accept: '.png,.jpg,.jpeg,.webp,.gif,image/png,image/jpeg,image/pjpeg,image/webp,image/gif',
-      description: 'Chá»‰ há»— trá»£ áº£nh PNG, JPG, JPEG, WebP hoáº·c GIF.'
+      description: 'Chỉ hỗ trợ ảnh PNG, JPG, JPEG, WebP hoặc GIF.'
     },
     outputs: {
       jpg: {
         formatLabel: 'JPG',
-        buttonLabel: 'Chuyá»ƒn sang JPG',
+        buttonLabel: 'Xuất ảnh JPG',
         zipNameBase: 'anh-sang-jpg'
       },
       pdf: {
         formatLabel: 'PDF',
-        buttonLabel: 'Xuáº¥t thÃ nh PDF',
+        buttonLabel: 'Xuất thành PDF',
         zipNameBaseMerged: 'anh-gop-pdf',
         zipNameBaseSeparate: 'anh-sang-pdf'
       }
     },
+    availableOutputs: ['jpg', 'pdf'],
     defaultOutput: 'jpg',
     allowPdfInput: false
   };
@@ -46,6 +47,15 @@
 
   const config = mergeConfig(defaultConfig, window.CONVERTER_CONFIG || {});
   const imageConfig = config.input || {};
+
+  const supportedOutputs = ['jpg', 'pdf'];
+  let availableOutputs = Array.isArray(config.availableOutputs)
+    ? config.availableOutputs.filter(fmt => supportedOutputs.includes(fmt) && config.outputs[fmt])
+    : supportedOutputs.filter(fmt => config.outputs[fmt]);
+  if (!availableOutputs.length) {
+    availableOutputs = config.outputs.jpg ? ['jpg'] : ['pdf'];
+  }
+
   const imageMimeSet = new Set(
     Array.isArray(imageConfig.mimeTypes) ? imageConfig.mimeTypes.filter(Boolean) : []
   );
@@ -59,9 +69,9 @@
 
   const pdfjs = config.allowPdfInput ? (window.pdfjsLib || null) : null;
 
-  const fileLabelSingular = config.fileLabel || 'tá»‡p';
+  const fileLabelSingular = config.fileLabel || 'tệp';
   const fileLabelPlural = config.fileLabelPlural || fileLabelSingular;
-  const itemLabelSingular = imageConfig.label || 'má»¥c';
+  const itemLabelSingular = imageConfig.label || 'mục';
   const itemLabelPlural = imageConfig.labelPlural || itemLabelSingular;
   const itemLabelWhenUnknown = imageConfig.labelWhenUnknown || itemLabelPlural;
 
@@ -86,14 +96,6 @@
   const formatOptions = document.querySelector('#formatOptions');
   const pdfOptions = document.querySelector('#pdfOptions');
   const pdfModeButtons = Array.from(document.querySelectorAll('.pdf-mode-btn'));
-  const supportedOutputs = ['jpg', 'pdf'];
-
-  let availableOutputs = Array.isArray(config.availableOutputs)
-    ? config.availableOutputs.filter(fmt => supportedOutputs.includes(fmt) && config.outputs[fmt])
-    : supportedOutputs.filter(fmt => config.outputs[fmt]);
-  if (!availableOutputs.length) {
-    availableOutputs = config.outputs.jpg ? ['jpg'] : ['pdf'];
-  }
 
   formatButtons.forEach(btn => {
     const fmt = btn.dataset.format;
@@ -104,7 +106,7 @@
   formatButtons = Array.from(document.querySelectorAll('.format-btn'));
 
   if (!dropzone || !fileInput || !grid || !convertBtn) {
-    console.error('Thiáº¿u pháº§n tá»­ giao diá»‡n cáº§n thiáº¿t.');
+    console.error('Thiếu phần tử giao diện cần thiết.');
     return;
   }
 
@@ -125,29 +127,21 @@
     const accepts = [];
     if (imageConfig.accept) accepts.push(imageConfig.accept);
     if (config.allowPdfInput) accepts.push('.pdf,application/pdf');
-    if (accepts.length) {
-      fileInput.setAttribute('accept', accepts.join(','));
-    }
+    if (accepts.length) fileInput.setAttribute('accept', accepts.join(','));
   }
 
   if (singleOutput) {
     const targetOutput = config.outputs[state.outputFormat] || {};
-    if (formatHeading) {
-      formatHeading.textContent = targetOutput.buttonLabel || defaultFormatHeading;
-    }
+    if (formatHeading) formatHeading.textContent = targetOutput.buttonLabel || defaultFormatHeading;
     if (formatOptions) {
       formatOptions.style.display = 'none';
       formatOptions.setAttribute('aria-hidden', 'true');
     }
   } else {
-    if (formatHeading) {
-      formatHeading.textContent = defaultFormatHeading;
-    }
+    if (formatHeading) formatHeading.textContent = defaultFormatHeading;
     if (formatOptions) {
       formatOptions.style.display = '';
-      if (typeof formatOptions.removeAttribute === 'function') {
-        formatOptions.removeAttribute('aria-hidden');
-      }
+      formatOptions.removeAttribute?.('aria-hidden');
     }
   }
 
@@ -168,7 +162,7 @@
     if (pdfjs) {
       pdfjs.GlobalWorkerOptions.workerSrc = './libs/pdfjs/pdf.worker.min.js';
     } else {
-      updateStatus('KhÃ´ng thá»ƒ táº£i thÆ° viá»‡n xá»­ lÃ½ PDF. Báº¡n váº«n cÃ³ thá»ƒ lÃ m viá»‡c vá»›i áº£nh.', 'warn');
+      updateStatus('Không thể tải thư viện PDF. Bạn vẫn có thể xử lý ảnh.', 'warn');
     }
   }
 
@@ -176,40 +170,40 @@
 
   const QUALITY_PRESETS = {
     normal: {
-      label: 'bÃ¬nh thÆ°á»ng',
+      label: 'bình thường',
       dpi: 150,
       jpegQuality: 0.82,
-      message: 'Cháº¿ Ä‘á»™ bÃ¬nh thÆ°á»ng (150 DPI) cÃ¢n báº±ng tá»‘c Ä‘á»™ vÃ  dung lÆ°á»£ng.',
+      message: 'Chế độ bình thường (150 DPI) cân bằng tốc độ và dung lượng.',
       tone: 'info'
     },
     high: {
       label: 'cao',
       dpi: 220,
       jpegQuality: 0.92,
-      message: 'Cháº¿ Ä‘á»™ cao (220 DPI) cho áº£nh nÃ©t hÆ¡n nhÆ°ng dung lÆ°á»£ng lá»›n hÆ¡n.',
+      message: 'Chế độ cao (220 DPI) cho ảnh nét hơn nhưng dung lượng lớn hơn.',
       tone: 'info'
     },
     ultra: {
-      label: 'siÃªu nÃ©t',
+      label: 'siêu nét',
       dpi: 600,
       jpegQuality: 1,
-      message: 'Cháº¿ Ä‘á»™ siÃªu nÃ©t (600 DPI) tá»‘n nhiá»u tÃ i nguyÃªn, chá»‰ nÃªn dÃ¹ng khi thá»±c sá»± cáº§n.',
+      message: 'Chế độ siêu nét (600 DPI) tiêu tốn nhiều tài nguyên, chỉ nên dùng khi cần.',
       tone: 'warn'
     }
   };
 
   const LONG_TASK_MESSAGES = {
     normal: {
-      after15: 'Äang xá»­ lÃ½ cÃ¡c tá»‡p lá»›n, vui lÃ²ng chá» thÃªm má»™t chÃºt.',
-      after45: 'Tiáº¿n trÃ¬nh váº«n tiáº¿p tá»¥c. Náº¿u quÃ¡ lÃ¢u, hÃ£y tÃ¡ch nhá» tá»‡p hoáº·c giáº£m cháº¥t lÆ°á»£ng.'
+      after15: 'Đang xử lý các tệp lớn, vui lòng chờ thêm một chút.',
+      after45: 'Tiến trình vẫn tiếp tục. Nếu quá lâu, hãy tách nhỏ tệp hoặc giảm chất lượng.'
     },
     high: {
-      after15: 'Äang xá»­ lÃ½ á»Ÿ cháº¿ Ä‘á»™ cháº¥t lÆ°á»£ng cao, sáº½ máº¥t thá»i gian lÃ¢u hÆ¡n.',
-      after45: 'QuÃ¡ trÃ¬nh váº«n cháº¡y á»Ÿ cháº¿ Ä‘á»™ cháº¥t lÆ°á»£ng cao. HÃ£y cÃ¢n nháº¯c quay vá» cháº¿ Ä‘á»™ bÃ¬nh thÆ°á»ng náº¿u cáº§n.'
+      after15: 'Đang xử lý ở chế độ chất lượng cao, sẽ mất thời gian lâu hơn.',
+      after45: 'Tiếp tục chờ ở chế độ chất lượng cao. Cân nhắc quay về chế độ bình thường nếu cần.'
     },
     ultra: {
-      after15: 'Äang xá»­ lÃ½ á»Ÿ cháº¿ Ä‘á»™ siÃªu nÃ©t, vui lÃ²ng kiÃªn nháº«n chá».',
-      after45: 'Váº«n Ä‘ang xá»­ lÃ½ cháº¿ Ä‘á»™ siÃªu nÃ©t. Vá»›i tá»‡p ráº¥t lá»›n, hÃ£y thá»­ láº¡i vá»›i cháº¥t lÆ°á»£ng tháº¥p hÆ¡n.'
+      after15: 'Đang xử lý ở chế độ siêu nét, vui lòng kiên nhẫn.',
+      after45: 'Vẫn xử lý chế độ siêu nét. Với tệp rất lớn, hãy thử lại với chất lượng thấp hơn.'
     }
   };
 
@@ -250,12 +244,11 @@
   function cleanupEntry(entry) {
     if (!entry) return;
     if (entry.pdf && typeof entry.pdf.destroy === 'function') {
-      try { entry.pdf.destroy(); } catch (err) { console.warn('KhÃ´ng thá»ƒ giáº£i phÃ³ng PDF', err); }
+      try { entry.pdf.destroy(); } catch (err) { console.warn('Không thể huỷ PDF', err); }
     }
     entry.pdf = null;
-    entry.pages = entry.type === 'pdf' ? 0 : entry.pages;
     if (typeof entry.revokeThumb === 'function') {
-      try { entry.revokeThumb(); } catch (err) { console.warn('KhÃ´ng thá»ƒ thu há»“i thumbnail', err); }
+      try { entry.revokeThumb(); } catch (err) { console.warn('Không thể thu hồi thumbnail', err); }
     }
     entry.thumb = null;
     entry.revokeThumb = null;
@@ -278,9 +271,7 @@
         }
         return sum + 1;
       }, 0);
-      const itemLabel = typeof itemTotal === 'number' && itemTotal > 0
-        ? (itemTotal === 1 ? itemLabelSingular : itemLabelPlural)
-        : itemLabelWhenUnknown;
+      const itemLabel = itemTotal === 1 ? itemLabelSingular : itemLabelPlural;
       pageCount.textContent = `${itemTotal} ${itemLabel}`;
     }
     if (emptyState) emptyState.style.display = fileTotal ? 'none' : 'block';
@@ -296,19 +287,17 @@
     }
     const cards = state.files.map(entry => {
       const info = entry.type === 'pdf'
-        ? (entry.pages ? `${entry.pages} trang` : 'Äang Ä‘áº¿m trangâ€¦')
-        : (entry.imageInfo
-          ? `${entry.imageInfo.width}Ã—${entry.imageInfo.height}`
-          : '1 áº£nh');
+        ? (entry.pages ? `${entry.pages} trang` : 'Đang đếm trang…')
+        : (entry.imageInfo ? `${entry.imageInfo.width}×${entry.imageInfo.height}` : '1 ảnh');
       const alt = entry.type === 'pdf'
-        ? `Trang Ä‘áº§u cá»§a ${entry.name}`
-        : `áº¢nh xem trÆ°á»›c cá»§a ${entry.name}`;
+        ? `Trang đầu của ${entry.name}`
+        : `Ảnh xem trước của ${entry.name}`;
       const thumb = entry.thumb
         ? `<img src="${entry.thumb}" alt="${alt}">`
-        : '<span class="muted">Äang táº¡o xem trÆ°á»›câ€¦</span>';
+        : '<span class="muted">Đang tạo xem trước…</span>';
       return `
         <div class="card">
-          <button class="remove" type="button" data-remove="${entry.id}" title="XÃ³a tá»‡p">Ã—</button>
+          <button class="remove" type="button" data-remove="${entry.id}" title="Xóa tệp">×</button>
           <div class="thumb" data-pages="${info}">
             ${thumb}
           </div>
@@ -320,7 +309,7 @@
   }
 
   async function rasterizeImageFile(file) {
-    if (!file) throw new Error('Thiáº¿u dá»¯ liá»‡u áº£nh nguá»“n.');
+    if (!file) throw new Error('Thiếu dữ liệu ảnh nguồn.');
 
     if ('createImageBitmap' in window && typeof createImageBitmap === 'function') {
       let bitmap;
@@ -337,7 +326,7 @@
         return canvas;
       } catch (err) {
         bitmap?.close?.();
-        console.warn('createImageBitmap tháº¥t báº¡i, dÃ¹ng áº£nh thÆ°á»ng.', err);
+        console.warn('createImageBitmap thất bại, dùng ảnh thường.', err);
       }
     }
 
@@ -368,7 +357,7 @@
     return await new Promise((resolve, reject) => {
       canvas.toBlob(result => {
         if (result) resolve(result);
-        else reject(new Error('KhÃ´ng thá»ƒ táº¡o áº£nh JPG.'));
+        else reject(new Error('Không thể tạo ảnh JPG.'));
       }, 'image/jpeg', quality);
     });
   }
@@ -378,7 +367,7 @@
   }
 
   async function loadPdf(entry) {
-    if (!pdfjs) throw new Error('ThÆ° viá»‡n PDF chÆ°a sáºµn sÃ ng.');
+    if (!pdfjs) throw new Error('Thư viện PDF chưa sẵn sàng.');
     if (entry.pdf) return entry.pdf;
     const buffer = await fileToArrayBuffer(entry.file);
     entry.pdf = await pdfjs.getDocument({data: buffer}).promise;
@@ -427,7 +416,7 @@
       };
       img.onerror = err => {
         URL.revokeObjectURL(objectUrl);
-        reject(err || new Error('KhÃ´ng thá»ƒ Ä‘á»c áº£nh.'));
+        reject(err || new Error('Không thể đọc ảnh.'));
       };
       img.src = objectUrl;
     });
@@ -490,7 +479,7 @@
       if (files.length) {
         handleFiles(files);
       } else {
-        const description = imageConfig.description || 'Vui lÃ²ng chá»n Ä‘Ãºng Ä‘á»‹nh dáº¡ng Ä‘Æ°á»£c há»— trá»£.';
+        const description = imageConfig.description || 'Vui lòng chọn đúng định dạng được hỗ trợ.';
         updateStatus(description, 'warn');
       }
     });
@@ -502,7 +491,7 @@
       state.files.forEach(cleanupEntry);
       state.files = [];
       renderGrid();
-      updateStatus('ÄÃ£ xÃ³a danh sÃ¡ch tá»‡p.', 'info');
+      updateStatus('Đã xóa danh sách tệp.', 'info');
     });
 
     grid.addEventListener('click', event => {
@@ -513,7 +502,7 @@
       if (entry) cleanupEntry(entry);
       state.files = state.files.filter(f => f.id !== id);
       renderGrid();
-      updateStatus('ÄÃ£ loáº¡i bá» tá»‡p khá»i danh sÃ¡ch.', 'info');
+      updateStatus('Đã loại bỏ tệp khỏi danh sách.', 'info');
     });
 
     document.querySelectorAll('.qitem').forEach(item => {
@@ -549,7 +538,7 @@
 
   async function handleFiles(files) {
     if (!files.length) return;
-    updateStatus('Äang táº£i tá»‡pâ€¦', 'info');
+    updateStatus('Đang tải tệp…', 'info');
     let added = 0;
     const skippedPdf = [];
     const unsupported = [];
@@ -592,34 +581,34 @@
         added++;
         renderGrid();
       } catch (err) {
-        console.error('KhÃ´ng thá»ƒ xá»­ lÃ½ tá»‡p', err);
+        console.error('Không thể xử lý tệp', err);
         cleanupEntry(entry);
         state.files = state.files.filter(f => f.id !== id);
         renderGrid();
-        updateStatus(`KhÃ´ng thá»ƒ xá»­ lÃ½ tá»‡p ${file.name}.`, 'error');
+        updateStatus(`Không thể xử lý tệp ${file.name}.`, 'error');
       }
     }
 
     if (added) {
       const notes = [];
       if (skippedPdf.length) {
-        notes.push(`Bá» qua ${skippedPdf.length} tá»‡p PDF vÃ¬ thÆ° viá»‡n PDF chÆ°a sáºµn sÃ ng.`);
+        notes.push(`Bỏ qua ${skippedPdf.length} tệp PDF vì thư viện PDF chưa sẵn sàng.`);
       }
       if (unsupported.length) {
-        notes.push(`Bá» qua ${unsupported.length} tá»‡p khÃ´ng Ä‘Ãºng Ä‘á»‹nh dáº¡ng.`);
+        notes.push(`Bỏ qua ${unsupported.length} tệp không đúng định dạng.`);
       }
       const actionLabel = state.outputFormat === 'pdf'
         ? config.outputs.pdf.buttonLabel
         : config.outputs.jpg.buttonLabel;
-      const message = [`Tá»‡p Ä‘Ã£ sáºµn sÃ ng, báº¥m "${actionLabel}".`, ...notes].join(' ');
+      const message = [`Tệp đã sẵn sàng, bấm "${actionLabel}".`, ...notes].join(' ');
       updateStatus(message, notes.length ? 'warn' : 'success');
     } else if (skippedPdf.length) {
-      updateStatus('KhÃ´ng thá»ƒ xá»­ lÃ½ PDF vÃ¬ thÆ° viá»‡n chÆ°a táº£i xong. HÃ£y kiá»ƒm tra káº¿t ná»‘i máº¡ng vÃ  thá»­ láº¡i.', 'error');
+      updateStatus('Không thể xử lý PDF vì thư viện chưa sẵn sàng. Kiểm tra kết nối rồi thử lại.', 'error');
     } else if (unsupported.length) {
-      const description = imageConfig.description || 'CÃ¡c tá»‡p vá»«a chá»n khÃ´ng thuá»™c Ä‘á»‹nh dáº¡ng Ä‘Æ°á»£c há»— trá»£.';
+      const description = imageConfig.description || 'Các tệp bạn chọn không thuộc định dạng được hỗ trợ.';
       updateStatus(description, 'warn');
     } else {
-      updateStatus('KhÃ´ng cÃ³ tá»‡p há»£p lá»‡ nÃ o Ä‘Æ°á»£c thÃªm.', 'info');
+      updateStatus('Không có tệp hợp lệ nào được thêm.', 'info');
     }
   }
 
@@ -636,7 +625,7 @@
   }
 
   function setOutputFormat(format) {
-    const next = format === 'pdf' ? 'pdf' : 'jpg';
+    const next = availableOutputs.includes(format) ? format : availableOutputs[0];
     state.outputFormat = next;
     formatButtons.forEach(btn => {
       const active = btn.dataset.format === next;
@@ -663,9 +652,7 @@
       btn.disabled = !show;
       btn.setAttribute('aria-disabled', show ? 'false' : 'true');
     });
-    if (show) {
-      setPdfMode(state.pdfMode);
-    }
+    if (show) setPdfMode(state.pdfMode);
   }
 
   function setPdfMode(mode) {
@@ -705,17 +692,17 @@
     const mergeAll = exportingPdf && state.pdfMode === 'merged';
 
     if (state.files.some(entry => entry.type === 'pdf') && !pdfjs) {
-      updateStatus('KhÃ´ng thá»ƒ xá»­ lÃ½ PDF vÃ¬ thÆ° viá»‡n chÆ°a sáºµn sÃ ng.', 'error');
+      updateStatus('Không thể xử lý PDF vì thư viện chưa tải xong.', 'error');
       return;
     }
 
     const jsPDFLib = exportingPdf ? (window.jspdf && window.jspdf.jsPDF) : null;
     if (exportingPdf && !jsPDFLib) {
-      updateStatus('KhÃ´ng thá»ƒ táº£i thÆ° viá»‡n táº¡o PDF. Vui lÃ²ng kiá»ƒm tra káº¿t ná»‘i máº¡ng rá»“i thá»­ láº¡i.', 'error');
+      updateStatus('Không thể tải thư viện tạo PDF. Vui lòng kiểm tra mạng rồi thử lại.', 'error');
       return;
     }
     if (typeof JSZip !== 'function' || typeof saveAs !== 'function') {
-      updateStatus('Thiáº¿u thÆ° viá»‡n nÃ©n hoáº·c táº£i xuá»‘ng. Vui lÃ²ng táº£i láº¡i trang.', 'error');
+      updateStatus('Thiếu thư viện nén hoặc tải xuống. Vui lòng tải lại trang.', 'error');
       return;
     }
 
@@ -729,9 +716,9 @@
 
     const startMessage = exportingPdf
       ? (mergeAll
-        ? 'Báº¯t Ä‘áº§u gá»™p cÃ¡c má»¥c sang má»™t tá»‡p PDF.'
-        : 'Báº¯t Ä‘áº§u xuáº¥t tá»«ng má»¥c sang PDF riÃªng.')
-      : 'Báº¯t Ä‘áº§u chuyá»ƒn sang JPG.';
+        ? 'Bắt đầu gộp tất cả sang một tệp PDF.'
+        : 'Bắt đầu xuất từng mục sang PDF riêng.')
+      : 'Bắt đầu xuất ảnh JPG.';
     updateStatus(startMessage, tone);
 
     if (progressWrap) {
@@ -770,7 +757,7 @@
         const targetLabel = exportingPdf
           ? config.outputs.pdf.formatLabel
           : config.outputs.jpg.formatLabel;
-        updateStatus(`Äang xá»­ lÃ½ "${entry.name}" sang ${targetLabel}â€¦`, tone);
+        updateStatus(`Đang xử lý "${entry.name}" sang ${targetLabel}…`, tone);
 
         const baseLabel = entry.name ? entry.name.replace(/\.[^.]+$/, '') : '';
         const folderBase = sanitizeName(baseLabel) || `tep-${entry.id}`;
@@ -788,7 +775,7 @@
               if (mergeAll) {
                 mergedDoc = appendCanvasToDoc(mergedDoc, canvas);
               } else {
-                let singleDoc = appendCanvasToDoc(null, canvas);
+                const singleDoc = appendCanvasToDoc(null, canvas);
                 const pdfBlob = singleDoc.output('blob');
                 const pdfName = pageCount > 1
                   ? `trang-${String(pageIndex).padStart(3, '0')}.pdf`
@@ -812,7 +799,7 @@
             if (mergeAll) {
               mergedDoc = appendCanvasToDoc(mergedDoc, canvas);
             } else {
-              let singleDoc = appendCanvasToDoc(null, canvas);
+              const singleDoc = appendCanvasToDoc(null, canvas);
               const pdfBlob = singleDoc.output('blob');
               container.file(`${folderBase}.pdf`, pdfBlob);
             }
@@ -839,10 +826,10 @@
         ? (mergeAll ? config.outputs.pdf.zipNameBaseMerged : config.outputs.pdf.zipNameBaseSeparate)
         : config.outputs.jpg.zipNameBase;
       saveAs(zipBlob, `${zipNameBase}-${Date.now()}.zip`);
-      updateStatus('HoÃ n táº¥t! Äang táº£i xuá»‘ng tá»‡p ZIP.', 'success');
+      updateStatus('Hoàn tất! Đang tải xuống tệp ZIP.', 'success');
     } catch (err) {
       console.error(err);
-      updateStatus('ÄÃ£ xáº£y ra lá»—i trong quÃ¡ trÃ¬nh chuyá»ƒn Ä‘á»•i. Vui lÃ²ng thá»­ láº¡i.', 'error');
+      updateStatus('Đã xảy ra lỗi trong quá trình chuyển đổi. Vui lòng thử lại.', 'error');
     } finally {
       releaseTimers();
       if (progressWrap) progressWrap.style.display = 'none';
@@ -852,8 +839,3 @@
     }
   }
 })();
-
-
-
-
-
