@@ -17,11 +17,11 @@
           <span class="arrow" aria-hidden="true">→</span>
           <span class="icon" title="JPG">🖼️</span>
         </div>
-        <strong>Kéo PDF hoặc ảnh vào đây</strong>
+        <strong>Kéo PDF vào đây</strong>
         <span>hoặc</span>
         <button type="button" id="chooseBtn">Chọn tệp</button>
-        <div class="muted">Hỗ trợ PDF, PNG, JPG/JPEG, WebP và GIF. Xuất ảnh JPG nhanh hoặc gom ảnh thành PDF.</div>
-        <input type="file" id="fileInput" accept=".pdf,application/pdf,.png,.jpg,.jpeg,.webp,.gif,image/png,image/jpeg,image/pjpeg,image/webp,image/gif" multiple hidden>
+        <div class="muted">Hỗ trợ tệp PDF, xuất ảnh JPG chất lượng cao.</div>
+        <input type="file" id="fileInput" accept=".pdf,application/pdf" multiple hidden>
       </div>
 
       <div class="selection-bar" id="selectionBar" style="display:none;">
@@ -30,7 +30,7 @@
       </div>
 
       <div class="grid" id="fileGrid"></div>
-      <div class="empty" id="emptyState">Chưa có tệp nào. Kéo PDF hoặc ảnh vào khung trên để bắt đầu.</div>
+      <div class="empty" id="emptyState">Chưa có tệp nào. Kéo PDF vào khung trên để bắt đầu.</div>
     </section>
 
     <aside class="rightpanel" id="panel">
@@ -81,10 +81,10 @@
         label: 'trang/ảnh',
         labelPlural: 'trang/ảnh',
         labelWhenUnknown: 'trang/ảnh',
-        mimeTypes: ['application/pdf','image/png','image/jpeg','image/pjpeg','image/webp','image/gif'],
-        extensions: ['pdf','png','jpg','jpeg','webp','gif'],
-        accept: '.pdf,application/pdf,.png,.jpg,.jpeg,.webp,.gif,image/png,image/jpeg,image/pjpeg,image/webp,image/gif',
-        description: 'Hỗ trợ tệp PDF cùng ảnh PNG, JPG/JPEG, WebP và GIF.'
+        mimeTypes: ['application/pdf'],
+        extensions: ['pdf'],
+        accept: '.pdf,application/pdf',
+        description: 'Chỉ hỗ trợ tệp PDF.'
       },
       outputs: {
         jpg: {
