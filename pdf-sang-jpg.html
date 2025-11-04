@@ -59,19 +59,8 @@
       </div>
 
       <div class="output-format" role="group" aria-label="Định dạng đầu ra">
-        <strong id="formatHeading">Chọn định dạng xuất</strong>
-        <div class="options" id="formatOptions">
-          <button type="button" class="format-btn active" data-format="jpg" aria-pressed="true">Xuất ảnh JPG</button>
-          <button type="button" class="format-btn" data-format="pdf" aria-pressed="false">Xuất thành PDF</button>
-        </div>
-      </div>
-
-      <div class="pdf-options" id="pdfOptions" role="group" aria-label="Chế độ xuất PDF" aria-hidden="true" style="display:none;">
-        <strong>Chế độ xuất PDF</strong>
-        <div class="options">
-          <button type="button" class="pdf-mode-btn" data-mode="separate" aria-pressed="false">Mỗi tệp 1 PDF</button>
-          <button type="button" class="pdf-mode-btn active" data-mode="merged" aria-pressed="true">Gộp thành 1 PDF</button>
-        </div>
+        <strong id="formatHeading">Xuất ảnh JPG</strong>
+        <div class="options" id="formatOptions" aria-hidden="true" style="display:none;"></div>
       </div>
 
       <div class="status" id="statusMessage" role="status" aria-live="polite"></div>
@@ -103,15 +92,9 @@
           formatLabel: 'JPG',
           buttonLabel: 'Xuất ảnh JPG',
           zipNameBase: 'pdf-sang-jpg'
-        },
-        pdf: {
-          formatLabel: 'PDF',
-          buttonLabel: 'Xuất thành PDF',
-          zipNameBaseMerged: 'pdf-gop-pdf',
-          zipNameBaseSeparate: 'pdf-sang-pdf'
         }
       },
-      availableOutputs: ['jpg', 'pdf'],
+      availableOutputs: ['jpg'],
       defaultOutput: 'jpg',
       allowPdfInput: true
     };
