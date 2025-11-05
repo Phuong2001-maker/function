@@ -1,10 +1,11 @@
+
 <!doctype html>
 <html lang="vi">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PDF sang JPG | Chuyển PDF sang JPG trực tuyến</title>
-  <meta name="description" content="Kéo thả PDF để tách trang sang ảnh JPG chất lượng cao hoặc gom ngược lại thành PDF trực tuyến.">
+  <meta name="description" content="Kéo thả PDF để tách trang sang ảnh JPG nhanh và tiện lợi.">
   <link rel="canonical" href="https://pdf-converter.tools/pdf-sang-jpg">
   <link rel="stylesheet" href="./css/converter.css">
 </head>
@@ -13,9 +14,9 @@
     <section class="board" id="board" aria-label="Danh sách tệp nguồn">
       <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Chọn hoặc kéo thả tệp PDF">
         <div class="conversion-flow" aria-hidden="true">
-          <span class="icon" title="PDF">📄</span>
-          <span class="arrow" aria-hidden="true">→</span>
-          <span class="icon" title="JPG">🖼️</span>
+          <span class="icon" title="PDF">PDF</span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
+          <span class="icon" title="JPG">JPG</span>
         </div>
         <strong>Kéo PDF vào đây</strong>
         <span>hoặc</span>
@@ -35,7 +36,7 @@
 
     <aside class="rightpanel" id="panel">
       <h1>PDF sang JPG</h1>
-      <p>Tách trang PDF sang JPG sắc nét, đồng thời tùy chọn gom lại thành PDF mới nếu cần.</p>
+      <p>Tách trang PDF sang JPG nhanh chóng và dễ dàng.</p>
 
       <div>
         <p style="font-weight:600;margin-bottom:10px;color:#1f2937;">Chất lượng xuất</p>
@@ -51,7 +52,7 @@
             <small>220 DPI</small>
           </div>
           <div class="qitem" tabindex="0" role="radio" data-quality="ultra" aria-checked="false">
-            <span class="badge">MAX DPI</span>
+            <span class="badge">Max DPI</span>
             <strong>Siêu nét</strong>
             <small>600 DPI</small>
           </div>
@@ -71,37 +72,38 @@
       <button class="convert" id="convertBtn" type="button" disabled><span>Xuất ảnh JPG</span></button>
     </aside>
 
-    <button class="options-toggle" id="optsToggle" type="button">⚙️ Tùy chọn chuyển đổi</button>
+    <button class="options-toggle" id="optsToggle" type="button">Mở tùy chọn chuyển đổi</button>
   </div>
 
   <script>
     window.CONVERTER_CONFIG = {
-      slug: 'pdf-sang-jpg',
-      input: {
-        label: 'trang/ảnh',
-        labelPlural: 'trang/ảnh',
-        labelWhenUnknown: 'trang/ảnh',
-        mimeTypes: ['application/pdf'],
-        extensions: ['pdf'],
-        accept: '.pdf,application/pdf',
-        description: 'Chỉ hỗ trợ tệp PDF.'
-      },
-      outputs: {
-        jpg: {
-          formatLabel: 'JPG',
-          buttonLabel: 'Xuất ảnh JPG',
-          zipNameBase: 'pdf-sang-jpg'
-        }
-      },
-      availableOutputs: ['jpg'],
-      defaultOutput: 'jpg',
-      allowPdfInput: true
-    };
+  slug: 'pdf-sang-jpg',
+  input: {
+    label: 'trang/ảnh',
+    labelPlural: 'trang/ảnh',
+    labelWhenUnknown: 'trang/ảnh',
+    mimeTypes: ['application/pdf'],
+    extensions: ['pdf'],
+    accept: '.pdf,application/pdf',
+    description: 'Chỉ hỗ trợ tệp PDF.'
+  },
+  outputs: {
+    jpg: {
+      formatLabel: 'JPG',
+      buttonLabel: 'Xuất ảnh JPG',
+      zipNameBase: 'pdf-sang-jpg',
+      mimeType: 'image/jpeg',
+      fileExtension: 'jpg'
+    }
+  },
+  availableOutputs: ['jpg'],
+  defaultOutput: 'jpg',
+  allowPdfInput: true
+};
   </script>
   <script src="./libs/pdfjs/pdf.min.js"></script>
   <script src="./libs/jszip/jszip.min.js"></script>
   <script src="./libs/filesaver/FileSaver.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
   <script src="./js/converter.js"></script>
 </body>
 </html>

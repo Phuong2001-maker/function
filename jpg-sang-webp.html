@@ -1,64 +1,65 @@
+
 <!doctype html>
 <html lang="vi">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>JPG sang WEBP | Chuyen JPG sang WEBP truc tuyen</title>
-  <meta name="description" content="Chuyen JPG sang WEBP truc tuyen, keo tha tep de bat dau.">
+  <title>JPG sang WEBP | Chuyển JPG sang WEBP trực tuyến</title>
+  <meta name="description" content="Chuyển JPG sang WEBP trực tuyến, kéo thả tệp để bắt đầu.">
   <link rel="canonical" href="https://pdf-converter.tools/jpg-sang-webp">
   <link rel="stylesheet" href="./css/converter.css">
 </head>
 <body>
   <div class="app">
-    <section class="board" id="board" aria-label="Danh sach tep nguon">
-      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Chon hoac keo tha anh JPG">
+    <section class="board" id="board" aria-label="Danh sách tệp nguồn">
+      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Chọn hoặc kéo thả ảnh JPG">
         <div class="conversion-flow" aria-hidden="true">
           <span class="icon" title="JPG">JPG</span>
           <span class="arrow" aria-hidden="true">&rarr;</span>
           <span class="icon" title="WEBP">WEBP</span>
         </div>
-        <strong>Keo anh JPG vao day</strong>
-        <span>hoac</span>
-        <button type="button" id="chooseBtn">Chon tep</button>
-        <div class="muted">Ho tro anh JPG. Xuat WEBP nhanh chong.</div>
+        <strong>Kéo ảnh JPG vào đây</strong>
+        <span>hoặc</span>
+        <button type="button" id="chooseBtn">Chọn tệp</button>
+        <div class="muted">Hỗ trợ ảnh JPG. Xuất WEBP nhanh chóng.</div>
         <input type="file" id="fileInput" accept=".jpg,.jpeg,image/jpeg,image/pjpeg" multiple hidden>
       </div>
 
       <div class="selection-bar" id="selectionBar" style="display:none;">
-        <div><strong id="selectionCount">0 tep</strong> <span id="pageCount">0 anh</span></div>
-        <button class="clear-btn" id="clearAll" type="button">Xoa tat ca</button>
+        <div><strong id="selectionCount">0 tệp</strong> <span id="pageCount">0 ảnh</span></div>
+        <button class="clear-btn" id="clearAll" type="button">Xóa tất cả</button>
       </div>
 
       <div class="grid" id="fileGrid"></div>
-      <div class="empty" id="emptyState">Chua co tep nao. Keo anh JPG vao khung tren de bat dau.</div>
+      <div class="empty" id="emptyState">Chưa có tệp nào. Kéo ảnh JPG vào khung trên để bắt đầu.</div>
     </section>
 
     <aside class="rightpanel" id="panel">
       <h1>JPG sang WEBP</h1>
-      <p>Chon chat luong xuat va chuyen anh JPG sang WEBP chi trong vai giay.</p>
+      <p>Chọn chất lượng xuất và chuyển ảnh JPG sang WEBP chỉ trong vài giây.</p>
 
       <div>
-        <p style="font-weight:600;margin-bottom:10px;color:#1f2937;">Chat luong anh</p>
+        <p style="font-weight:600;margin-bottom:10px;color:#1f2937;">Chất lượng ảnh</p>
         <div class="quality" role="radiogroup">
           <div class="qitem active" tabindex="0" role="radio" data-quality="normal" aria-checked="true">
-            <span class="badge">Khuyen dung</span>
-            <strong>Binh thuong</strong>
+            <span class="badge">Khuyên dùng</span>
+            <strong>Bình thường</strong>
             <small>150 DPI</small>
           </div>
           <div class="qitem" tabindex="0" role="radio" data-quality="high" aria-checked="false">
-            <span class="badge">Chi tiet</span>
+            <span class="badge">Chi tiết</span>
             <strong>Cao</strong>
             <small>220 DPI</small>
           </div>
           <div class="qitem" tabindex="0" role="radio" data-quality="ultra" aria-checked="false">
             <span class="badge">Max DPI</span>
-            <strong>Sieu net</strong>
+            <strong>Siêu nét</strong>
             <small>600 DPI</small>
           </div>
         </div>
       </div>
 
-      <div class="output-format" role="group" aria-label="Dinh dang dau ra">
+      <div class="output-format" role="group" aria-label="Định dạng đầu ra">
         <div class="options" id="formatOptions" aria-hidden="true" style="display:none;"></div>
       </div>
 
@@ -68,32 +69,32 @@
         <span id="progressBar"></span>
       </div>
 
-      <button class="convert" id="convertBtn" type="button" disabled><span>Xuat anh WEBP</span></button>
+      <button class="convert" id="convertBtn" type="button" disabled><span>Xuất ảnh WEBP</span></button>
     </aside>
 
-    <button class="options-toggle" id="optsToggle" type="button">Mo tay chon chuyen doi</button>
+    <button class="options-toggle" id="optsToggle" type="button">Mở tùy chọn chuyển đổi</button>
   </div>
 
   <script>
     window.CONVERTER_CONFIG = {
   slug: 'jpg-sang-webp',
   input: {
-      label: 'anh',
-      labelPlural: 'anh',
-      labelWhenUnknown: 'anh',
-      mimeTypes: ['image/jpeg','image/pjpeg'],
-      extensions: ['jpg','jpeg'],
-      accept: '.jpg,.jpeg,image/jpeg,image/pjpeg',
-      description: 'Chi ho tro anh JPG.'
+    label: 'ảnh',
+    labelPlural: 'ảnh',
+    labelWhenUnknown: 'ảnh',
+    mimeTypes: ['image/jpeg','image/pjpeg'],
+    extensions: ['jpg','jpeg'],
+    accept: '.jpg,.jpeg,image/jpeg,image/pjpeg',
+    description: 'Chỉ hỗ trợ ảnh JPG.'
   },
   outputs: {
     webp: {
-        formatLabel: 'WEBP',
-        buttonLabel: 'Xuat anh WEBP',
-        zipNameBase: 'jpg-sang-webp',
-        mimeType: 'image/webp',
-        fileExtension: 'webp',
-        preserveAlpha: true
+      formatLabel: 'WEBP',
+      buttonLabel: 'Xuất ảnh WEBP',
+      zipNameBase: 'jpg-sang-webp',
+      mimeType: 'image/webp',
+      fileExtension: 'webp',
+      preserveAlpha: true
     }
   },
   availableOutputs: ['webp'],
