@@ -514,6 +514,45 @@
     let processed = 0; return () => { processed++; if (progressBar) progressBar.style.width = `${Math.min(100, Math.round((processed / total) * 100))}%`; };
   }
 
+  // Native save helpers (Chromium-based browsers)
+  async function nativeSaveFile(blob, suggestedName, mime) {
+    if (!('showSaveFilePicker' in window)) return false;
+    try {
+      const handle = await window.showSaveFilePicker({
+        suggestedName,
+        types: [{ description: 'File', accept: { [mime || blob.type || 'application/octet-stream']: ['.' + (suggestedName.split('.').pop() || 'bin')] } }]
+      });
+      const writable = await handle.createWritable();
+      await writable.write(blob);
+      await writable.close();
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  async function nativeSaveMultiple(results) {
+    if (!('showDirectoryPicker' in window)) return false;
+    try {
+      const root = await window.showDirectoryPicker({ mode: 'readwrite' });
+      for (const item of results) {
+        const parts = item.zipPath.split('/').filter(Boolean);
+        let dir = root;
+        for (let i = 0; i < parts.length - 1; i++) {
+          dir = await dir.getDirectoryHandle(parts[i], { create: true });
+        }
+        const filename = parts[parts.length - 1];
+        const fileHandle = await dir.getFileHandle(filename, { create: true });
+        const writable = await fileHandle.createWritable();
+        await writable.write(item.blob);
+        await writable.close();
+      }
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
   async function convert() {
     if (!state.files.length || state.converting) return;
     const exportingPdf = state.outputFormat === 'pdf';
@@ -610,25 +649,38 @@
         const mergedName = state.files.length === 1
           ? `${sanitizeName(state.files[0].name.replace(/\.[^.]+$/, ''))}.pdf`
           : `${config.slug || 'tong-hop'}-${state.files.length}-tep.pdf`;
-        saveAs(mergedBlob, mergedName);
+        let saved = false;
+        try { saved = await nativeSaveFile(mergedBlob, mergedName, 'application/pdf'); } catch {}
+        if (!saved) saveAs(mergedBlob, mergedName);
         updateStatus('Hoàn tất. Tệp đã được tải xuống.', 'success');
       } else {
         if (resultFiles.length === 1) {
-          saveAs(resultFiles[0].blob, resultFiles[0].outputFilename);
+          const item = resultFiles[0];
+          let saved = false;
+          try { saved = await nativeSaveFile(item.blob, item.outputFilename, item.blob.type); } catch {}
+          if (!saved) saveAs(item.blob, item.outputFilename);
           updateStatus('Hoàn tất. Tệp đã được tải xuống.', 'success');
         } else {
-          const zip = new JSZip();
-          for (const item of resultFiles) {
-            zip.file(item.zipPath, item.blob);
+          let savedDir = false;
+          if ('showDirectoryPicker' in window) {
+            try { savedDir = await nativeSaveMultiple(resultFiles); } catch {}
           }
-          let zipNameBase;
-          if (exportingPdf) {
-            zipNameBase = mergeAll ? outputConfig.zipNameBaseMerged : outputConfig.zipNameBaseSeparate;
-          } else { zipNameBase = outputConfig.zipNameBase; }
-          if (!zipNameBase) zipNameBase = `${config.slug || 'ket-qua'}-${state.outputFormat || 'xuat'}`;
-          const zipBlob = await zip.generateAsync({type: 'blob'});
-          saveAs(zipBlob, `${zipNameBase}-${Date.now()}.zip`);
-          updateStatus('Hoàn tất. Tệp ZIP đã được tải xuống.', 'success');
+          if (savedDir) {
+            updateStatus('Hoàn tất. Tệp đã được lưu vào thư mục bạn chọn.', 'success');
+          } else {
+            const zip = new JSZip();
+            for (const item of resultFiles) {
+              zip.file(item.zipPath, item.blob);
+            }
+            let zipNameBase;
+            if (exportingPdf) {
+              zipNameBase = mergeAll ? outputConfig.zipNameBaseMerged : outputConfig.zipNameBaseSeparate;
+            } else { zipNameBase = outputConfig.zipNameBase; }
+            if (!zipNameBase) zipNameBase = `${config.slug || 'ket-qua'}-${state.outputFormat || 'xuat'}`;
+            const zipBlob = await zip.generateAsync({type: 'blob'});
+            saveAs(zipBlob, `${zipNameBase}-${Date.now()}.zip`);
+            updateStatus('Hoàn tất. Tệp ZIP đã được tải xuống.', 'success');
+          }
         }
       }
     } catch (err) {
