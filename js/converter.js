@@ -59,6 +59,25 @@
   }
 
   const config = mergeConfig(defaultConfig, window.CONVERTER_CONFIG || {});
+  const slugParts = (config.slug || '').split('-sang-');
+  const inputFormatKey = (slugParts[0] || '').toLowerCase();
+  const outputFormatKey = (slugParts[1] || config.defaultOutput || '').toLowerCase();
+  const FORMAT_ICON_MAP = {
+    gif: '🖼️',
+    jpg: '🖼️',
+    jpeg: '🖼️',
+    png: '🖼️',
+    webp: '🖼️',
+    pdf: '📄'
+  };
+  const FORMAT_LABEL_MAP = {
+    gif: 'Ảnh GIF',
+    jpg: 'Ảnh JPG',
+    jpeg: 'Ảnh JPEG',
+    png: 'Ảnh PNG',
+    webp: 'Ảnh WebP',
+    pdf: 'Tệp PDF'
+  };
   const imageConfig = config.input || {};
 
   const supportedOutputs = ['jpg', 'jpeg', 'png', 'webp', 'gif', 'pdf'];
@@ -92,6 +111,7 @@
   const itemLabelWhenUnknown = imageConfig.labelWhenUnknown || itemLabelPlural;
 
   const dropzone = document.querySelector('#dropzone');
+  const conversionFlow = document.querySelector('.conversion-flow');
   const fileInput = document.querySelector('#fileInput');
   const grid = document.querySelector('#fileGrid');
   const emptyState = document.querySelector('#emptyState');
@@ -171,6 +191,7 @@
   document.addEventListener('click', handleOutsidePanelClick);
 
   setPdfMode(state.pdfMode);
+  applyConversionIcons();
   setOutputFormat(state.outputFormat);
   renderGrid();
 
@@ -203,7 +224,7 @@
       label: 'siêu nét',
       dpi: 600,
       jpegQuality: 1,
-      message: 'Chế độ siêu nét (600 DPI) dùng nhiều tài nguyên, chỉ nên chọn khi cần.',
+      message: 'Chế độ siêu nét (600 DPI) tiêu tốn nhiều tài nguyên, chỉ nên chọn khi cần.',
       tone: 'warn'
     }
   };
@@ -293,6 +314,34 @@
     }
     if (emptyState) emptyState.style.display = fileTotal ? 'none' : 'block';
     convertBtn.disabled = !fileTotal || state.converting;
+  }
+
+  function resolveFormatIcon(key) {
+    return FORMAT_ICON_MAP[key] || '🗂️';
+  }
+
+  function resolveFormatLabel(key) {
+    return FORMAT_LABEL_MAP[key] || key?.toUpperCase?.() || 'Tệp';
+  }
+
+  function applyConversionIcons() {
+    if (!conversionFlow) return;
+    const icons = conversionFlow.querySelectorAll('.icon');
+    const arrow = conversionFlow.querySelector('.arrow');
+    if (icons[0]) {
+      icons[0].textContent = resolveFormatIcon(inputFormatKey);
+      icons[0].setAttribute('title', resolveFormatLabel(inputFormatKey));
+      icons[0].setAttribute('aria-hidden', 'true');
+    }
+    if (icons[1]) {
+      icons[1].textContent = resolveFormatIcon(outputFormatKey);
+      icons[1].setAttribute('title', resolveFormatLabel(outputFormatKey));
+      icons[1].setAttribute('aria-hidden', 'true');
+    }
+    if (arrow) {
+      arrow.textContent = '→';
+      arrow.setAttribute('aria-hidden', 'true');
+    }
   }
 
   function renderGrid() {
@@ -530,6 +579,9 @@ const cards = state.files.map(entry => {
   }
 
   function attachEventListeners() {
+    chooseBtn?.setAttribute('type', 'button');
+    chooseBtn?.setAttribute('aria-controls', 'fileInput');
+
     dropzone.addEventListener('click', event => {
       if (event.target.closest('button')) return;
       fileInput.click();
@@ -539,6 +591,12 @@ const cards = state.files.map(entry => {
       event.preventDefault();
       event.stopPropagation();
       fileInput.click();
+    });
+    chooseBtn?.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        fileInput.click();
+      }
     });
 
     fileInput.addEventListener('change', () => {

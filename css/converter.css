@@ -30,7 +30,8 @@
     .dropzone button{background:var(--primary);color:#fff;border:none;border-radius:14px;padding:14px 20px;font-weight:600;cursor:pointer;box-shadow:0 12px 24px rgba(229,57,53,.25);transition:background .2s,transform .2s;}    
     .dropzone button:hover{background:var(--primary-dark);transform:translateY(-1px);}    
     .conversion-flow{display:flex;align-items:center;gap:14px;font-weight:600;color:#1f2937;font-size:16px;letter-spacing:.01em;margin-bottom:8px;}
-    .conversion-flow .icon{font-size:40px;line-height:1;}
+.conversion-flow .icon{display:flex;align-items:center;justify-content:center;font-size:44px;line-height:1;}
+.conversion-flow .icon[aria-hidden="true"]{pointer-events:none;}
     .conversion-flow .arrow{font-size:28px;color:#9ca3af;}
 
     .selection-bar{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.85);border-radius:16px;padding:14px 18px;font-weight:600;color:#1f2937;box-shadow:0 12px 24px rgba(17,24,39,.06);backdrop-filter:blur(2px);}
