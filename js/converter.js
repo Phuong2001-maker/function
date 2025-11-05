@@ -479,9 +479,10 @@
       if (pdfCandidate && !pdfjs) { skippedPdf.push(file.name); continue; }
       const id = Math.random().toString(36).slice(2, 9);
       const entry = { id, type: pdfCandidate ? 'pdf' : 'image', file, name: file.name, pdf: null, pages: pdfCandidate ? 0 : 1, thumb: null, revokeThumb: null, imageInfo: null };
-      state.files.push(entry); renderGrid();
-      try { if (pdfCandidate) await loadPdfPreview(entry); else await loadImagePreview(entry); added++; renderGrid(); } catch (err) { console.error('Không thể xử lý tệp để tạo xem trước.', err); cleanupEntry(entry); state.files = state.files.filter(f => f.id !== id); renderGrid(); updateStatus(`Không thể xử lý tệp ${file.name}.`, 'error'); }
+      state.files.push(entry);
+      try { if (pdfCandidate) await loadPdfPreview(entry); else await loadImagePreview(entry); added++; } catch (err) { console.error('Không thể xử lý tệp để tạo xem trước.', err); cleanupEntry(entry); state.files = state.files.filter(f => f.id !== id); updateStatus(`Không thể xử lý tệp ${file.name}.`, 'error'); }
     }
+    renderGrid();
     if (added) {
       const notes = [];
       if (skippedPdf.length) notes.push(`Bỏ qua ${skippedPdf.length} tệp PDF do thiếu thư viện đọc PDF.`);
@@ -614,7 +615,7 @@
       } else {
         if (resultFiles.length === 1) {
           saveAs(resultFiles[0].blob, resultFiles[0].outputFilename);
-          updateStatus('Hoàn tất. Tệp đ�� được tải xuống.', 'success');
+          updateStatus('Hoàn tất. Tệp đã được tải xuống.', 'success');
         } else {
           const zip = new JSZip();
           for (const item of resultFiles) {
