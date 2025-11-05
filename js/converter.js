@@ -538,10 +538,15 @@
 
     if (progressWrap) { progressWrap.style.display = 'block'; if (progressBar) progressBar.style.width = '0%'; }
     const releaseTimers = createLongTaskTimers(state.quality, tone);
-    const zip = new JSZip();
     let totalItems = state.files.reduce((sum, e) => sum + (e.type === 'pdf' ? Math.max(1, e.pages || 0) : 1), 0);
     if (!totalItems) totalItems = state.files.length || 1;
     const increment = incrementProgressFactory(totalItems);
+
+    const resultFiles = [];
+    const pushResult = (folderBase, filename, blob, needsFolder) => {
+      const zipPath = needsFolder ? `${folderBase}/${filename}` : filename;
+      resultFiles.push({ zipPath, outputFilename: filename, blob });
+    };
 
     const appendCanvasToDoc = (doc, canvas) => {
       const orientation = canvas.width >= canvas.height ? 'l' : 'p';
@@ -558,7 +563,6 @@
         const baseLabel = entry.name ? entry.name.replace(/\.[^.]+$/, '') : '';
         const folderBase = sanitizeName(baseLabel) || `tep-${entry.id}`;
         const needsFolder = exportingPdf ? !mergeAll : true;
-        const container = needsFolder ? zip.folder(folderBase) : zip;
 
         if (entry.type === 'pdf') {
           const pdf = await loadPdf(entry);
@@ -573,13 +577,12 @@
                 const singleDoc = appendCanvasToDoc(null, canvas);
                 const pdfBlob = singleDoc.output('blob');
                 const pdfName = pageCount > 1 ? `trang-${String(pageIndex).padStart(3, '0')}.pdf` : `${folderBase}.pdf`;
-                container.file(pdfName, pdfBlob);
+                pushResult(folderBase, pdfName, pdfBlob, needsFolder);
               }
             } else {
               const blob = await canvasToImageBlob(canvas, outputConfig, preset);
-              const buffer = await blob.arrayBuffer();
               const outputName = pageCount > 1 ? `trang-${String(pageIndex).padStart(3, '0')}.${fileExtension}` : `${folderBase}.${fileExtension}`;
-              container.file(outputName, buffer);
+              pushResult(folderBase, outputName, blob, needsFolder);
             }
             increment();
           }
@@ -591,12 +594,11 @@
             } else {
               const singleDoc = appendCanvasToDoc(null, canvas);
               const pdfBlob = singleDoc.output('blob');
-              container.file(`${folderBase}.pdf`, pdfBlob);
+              pushResult(folderBase, `${folderBase}.pdf`, pdfBlob, needsFolder);
             }
           } else {
             const blob = await canvasToImageBlob(canvas, outputConfig, preset);
-            const buffer = await blob.arrayBuffer();
-            container.file(`${folderBase}.${fileExtension}`, buffer);
+            pushResult(folderBase, `${folderBase}.${fileExtension}`, blob, needsFolder);
           }
           increment();
         }
@@ -604,19 +606,30 @@
 
       if (mergeAll && exportingPdf && mergedDoc) {
         const mergedBlob = mergedDoc.output('blob');
-        const mergedName = state.files.length === 1 ? `${sanitizeName(state.files[0].name.replace(/\.[^.]+$/, ''))}.pdf` : `${config.slug || 'tong-hop'}-${state.files.length}-tep.pdf`;
-        zip.file(mergedName, mergedBlob);
+        const mergedName = state.files.length === 1
+          ? `${sanitizeName(state.files[0].name.replace(/\.[^.]+$/, ''))}.pdf`
+          : `${config.slug || 'tong-hop'}-${state.files.length}-tep.pdf`;
+        saveAs(mergedBlob, mergedName);
+        updateStatus('Hoàn tất. Tệp đã được tải xuống.', 'success');
+      } else {
+        if (resultFiles.length === 1) {
+          saveAs(resultFiles[0].blob, resultFiles[0].outputFilename);
+          updateStatus('Hoàn tất. Tệp đ�� được tải xuống.', 'success');
+        } else {
+          const zip = new JSZip();
+          for (const item of resultFiles) {
+            zip.file(item.zipPath, item.blob);
+          }
+          let zipNameBase;
+          if (exportingPdf) {
+            zipNameBase = mergeAll ? outputConfig.zipNameBaseMerged : outputConfig.zipNameBaseSeparate;
+          } else { zipNameBase = outputConfig.zipNameBase; }
+          if (!zipNameBase) zipNameBase = `${config.slug || 'ket-qua'}-${state.outputFormat || 'xuat'}`;
+          const zipBlob = await zip.generateAsync({type: 'blob'});
+          saveAs(zipBlob, `${zipNameBase}-${Date.now()}.zip`);
+          updateStatus('Hoàn tất. Tệp ZIP đã được tải xuống.', 'success');
+        }
       }
-
-      const zipBlob = await zip.generateAsync({type: 'blob'});
-      let zipNameBase;
-      if (exportingPdf) {
-        zipNameBase = mergeAll ? outputConfig.zipNameBaseMerged : outputConfig.zipNameBaseSeparate;
-      } else { zipNameBase = outputConfig.zipNameBase; }
-      if (!zipNameBase) zipNameBase = `${config.slug || 'ket-qua'}-${state.outputFormat || 'xuat'}`;
-      saveAs(zipBlob, `${zipNameBase}-${Date.now()}.zip`);
-
-      updateStatus('Hoàn tất. Tệp ZIP đã được tải xuống.', 'success');
     } catch (err) {
       console.error(err);
       updateStatus('Đã xảy ra lỗi trong quá trình chuyển đổi. Vui lòng thử lại.', 'error');
