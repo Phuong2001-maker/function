@@ -1,7 +1,4 @@
-// Shared converter logic for the standalone converters in /function.
-// Each HTML entry point must declare window.CONVERTER_CONFIG before loading this script.
 (function () {
-  // ---------- Utilities ----------
   function mergeConfig(base, override) {
     const result = {...(base || {})};
     for (const k of Object.keys(override || {})) {
@@ -43,7 +40,6 @@
     return new Blob([u8], {type: mime});
   }
 
-  // ---------- Config ----------
   const defaultConfig = {
     slug: 'chuyen-doi',
     fileLabel: 'tệp',
@@ -75,7 +71,6 @@
   const inputFormatKey = (slugParts[0] || '').toLowerCase();
   const outputFormatKey = (slugParts[1] || config.defaultOutput || '').toLowerCase();
 
-  // ---------- DOM ----------
   const dropzone = document.querySelector('#dropzone');
   const conversionFlow = document.querySelector('.conversion-flow');
   const fileInput = document.querySelector('#fileInput');
@@ -102,7 +97,6 @@
     return;
   }
 
-  // ---------- Input/Output availability ----------
   const supportedOutputs = ['jpg', 'jpeg', 'png', 'webp', 'gif', 'pdf'];
   let availableOutputs = Array.isArray(config.availableOutputs)
     ? config.availableOutputs.filter(fmt => supportedOutputs.includes(fmt) && config.outputs[fmt])
@@ -130,16 +124,14 @@
   const initialOutput = availableOutputs.includes(config.defaultOutput) ? config.defaultOutput : availableOutputs[0];
   const singleOutput = availableOutputs.length === 1;
 
-  // ---------- State ----------
   const state = {
-    files: [], // {id,type,file,name,pdf,pages,thumb,revokeThumb,imageInfo}
+    files: [],
     quality: 'normal',
     pdfMode: 'merged',
     outputFormat: initialOutput,
     converting: false
   };
 
-  // ---------- UI helpers ----------
   function updateStatus(text = '', tone = 'info') {
     if (!statusMessage) return;
     if (!text) {
@@ -205,7 +197,6 @@
     updateSelection();
   }
 
-  // ---------- Quality & format ----------
   const QUALITY_PRESETS = {
     normal: { label: 'bình thường', dpi: 150, jpegQuality: 0.82, message: 'Chế độ bình thường (150 DPI) cân bằng giữa chất lượng và dung lượng.', tone: 'info' },
     high:   { label: 'cao',          dpi: 220, jpegQuality: 0.92, message: 'Chế độ cao (220 DPI) cho ảnh rõ hơn nhưng dung lượng lớn hơn.', tone: 'info' },
@@ -263,7 +254,6 @@
     });
   }
 
-  // ---------- Input helpers ----------
   function isPdfFile(file) {
     return file && (file.type === 'application/pdf' || /\.pdf$/i.test(file.name || ''));
   }
@@ -333,7 +323,6 @@
         return canvas;
       } catch (e) {
         bitmap?.close?.();
-        // fallback below
       }
     }
     const objectUrl = URL.createObjectURL(file);
@@ -357,13 +346,11 @@
   }
 
   async function canvasToGif(canvas, outputConfig = {}) {
-    // Try direct
     const direct = await new Promise(resolve => {
       if (typeof canvas.toBlob !== 'function') return resolve(null);
       canvas.toBlob(b => resolve(b && b.type === 'image/gif' ? b : null), 'image/gif');
     });
     if (direct) return direct;
-    // Use gifshot if available
     if (typeof gifshot === 'object' && typeof gifshot?.createGIF === 'function') {
       const dataUrl = canvas.toDataURL('image/png');
       return await new Promise((resolve, reject) => {
@@ -388,15 +375,12 @@
     return dataUrlToBlob(canvas.toDataURL(mimeType, quality));
   }
 
-  // ---------- Events ----------
   function attachEventListeners() {
-    // Choose button
     chooseBtn?.setAttribute('type', 'button');
     chooseBtn?.setAttribute('aria-controls', 'fileInput');
     chooseBtn?.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); fileInput.click(); });
     chooseBtn?.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); } });
 
-    // Dropzone
     dropzone.addEventListener('click', (e) => { if (e.target.closest('button')) return; fileInput.click(); });
     ['dragenter', 'dragover'].forEach(evt => dropzone.addEventListener(evt, (e) => { e.preventDefault(); dropzone.classList.add('dragover'); if (e.dataTransfer) e.dataTransfer.dropEffect = 'copy'; }));
     dropzone.addEventListener('dragleave', (e) => { if (e.target === dropzone) dropzone.classList.remove('dragover'); });
@@ -406,42 +390,32 @@
       if (files.length) handleFiles(files); else updateStatus(imageConfig.description || 'Vui lòng chọn đúng loại tệp được hỗ trợ.', 'warn');
     });
 
-    // File input
     fileInput.addEventListener('change', () => { const files = Array.from(fileInput.files || []); handleFiles(files); fileInput.value = ''; });
 
-    // Clear
     document.querySelector('#clearAll')?.addEventListener('click', () => { state.files.forEach(cleanupEntry); state.files = []; renderGrid(); updateStatus('Đã xóa danh sách tệp.', 'info'); });
 
-    // Remove per item
     grid.addEventListener('click', (e) => { const btn = e.target.closest('[data-remove]'); if (!btn) return; const id = btn.getAttribute('data-remove'); const entry = state.files.find(f => f.id === id); if (entry) cleanupEntry(entry); state.files = state.files.filter(f => f.id !== id); renderGrid(); updateStatus('Đã loại bỏ tệp khỏi danh sách.', 'info'); });
 
-    // Quality
     document.querySelectorAll('.qitem').forEach(item => {
       item.addEventListener('click', () => setQuality(item.dataset.quality));
       item.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setQuality(item.dataset.quality); } });
     });
 
-    // Output
     formatButtons.forEach(btn => btn.addEventListener('click', () => setOutputFormat(btn.dataset.format)));
 
-    // PDF mode
     pdfModeButtons.forEach(btn => btn.addEventListener('click', () => { if (!btn.disabled) setPdfMode(btn.dataset.mode); }));
 
-    // Convert
     convertBtn.addEventListener('click', convert);
 
-    // Global prevent default browser open file on drop
     window.addEventListener('dragover', e => e.preventDefault());
     window.addEventListener('drop', e => e.preventDefault());
 
-    // Panel toggle on mobile
     const mql = window.matchMedia('(max-width:1100px)');
     function handleResponsive() { if (!optsToggle || !panel) return; const isCompact = mql.matches; optsToggle.style.display = isCompact ? 'inline-flex' : 'none'; if (!isCompact) panel.classList.remove('open'); }
     handleResponsive(); mql.addEventListener('change', handleResponsive);
     optsToggle?.addEventListener('click', () => panel?.classList.toggle('open'));
     document.addEventListener('click', (event) => { if (!panel || !optsToggle || !panel.classList.contains('open') || !mql.matches) return; if (panel.contains(event.target)) return; if (optsToggle.contains(event.target)) return; panel.classList.remove('open'); });
 
-    // Shortcuts
     window.addEventListener('keydown', (e) => { if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'o') { e.preventDefault(); fileInput.click(); } });
   }
 
@@ -499,10 +473,9 @@
     let processed = 0; return () => { processed++; if (progressBar) progressBar.style.width = `${Math.min(100, Math.round((processed / total) * 100))}%`; };
   }
 
-  // Native save helpers (Chromium-based browsers)
-  // Returns 'saved', 'cancelled', 'failed', or 'unsupported' so callers can decide on fallbacks.
+  const preferNativeFileSystem = false;
   async function nativeSaveFile(blob, suggestedName, mime) {
-    if (!('showSaveFilePicker' in window)) return 'unsupported';
+    if (!preferNativeFileSystem || !('showSaveFilePicker' in window)) return 'unsupported';
     try {
       const handle = await window.showSaveFilePicker({
         suggestedName,
@@ -519,9 +492,8 @@
     }
   }
 
-  // Same contract as nativeSaveFile but for directory writes.
   async function nativeSaveMultiple(results) {
-    if (!('showDirectoryPicker' in window)) return 'unsupported';
+    if (!preferNativeFileSystem || !('showDirectoryPicker' in window)) return 'unsupported';
     try {
       const root = await window.showDirectoryPicker({ mode: 'readwrite' });
       for (const item of results) {
@@ -701,16 +673,11 @@
     }
   }
 
-  // ---------- Init ----------
-  // Icons
   applyConversionIcons();
-  // Output heading options visibility
   if (singleOutput && formatOptions) { formatOptions.style.display = 'none'; formatOptions.setAttribute('aria-hidden', 'true'); }
   else if (formatOptions) { formatOptions.style.display = ''; formatOptions.removeAttribute?.('aria-hidden'); }
-  // Set initial state/UI
   setOutputFormat(state.outputFormat);
   renderGrid();
-  // Attach events
   attachEventListeners();
 })();
 
