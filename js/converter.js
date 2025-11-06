@@ -79,7 +79,6 @@
   const ICONS = {
     image: '<svg viewBox="0 0 64 64" width="52" height="52" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><filter id="imgShadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.18"/></filter><linearGradient id="imgSky" x1="0" y1="16" x2="0" y2="36" gradientUnits="userSpaceOnUse"><stop stop-color="#9CD6FF"/><stop offset="1" stop-color="#F1FAFF"/></linearGradient><linearGradient id="hillA" x1="0" y1="40" x2="64" y2="64" gradientUnits="userSpaceOnUse"><stop stop-color="#7ED957"/><stop offset="1" stop-color="#34C759"/></linearGradient><linearGradient id="hillB" x1="0" y1="42" x2="64" y2="64" gradientUnits="userSpaceOnUse"><stop stop-color="#B8E994"/><stop offset="1" stop-color="#7ED957"/></linearGradient></defs><rect x="8" y="12" width="48" height="36" rx="7" fill="#F7B267" stroke="#EB7A3C" stroke-width="2" filter="url(#imgShadow)"/><rect x="12" y="16" width="40" height="28" rx="6" fill="#FFFFFF"/><rect x="14" y="18" width="36" height="14" rx="4" fill="url(#imgSky)"/><circle cx="24" cy="25" r="4.6" fill="#FFD166"/><path d="M14 42c8-8 12-10 16-6l6 6 8-8c4-4 8 0 12 6v4H14v-2z" fill="url(#hillA)"/><path d="M14 44c6-6 10-8 14-4l6 6 6-6c3-3 6-1 14 6H14v-2z" fill="url(#hillB)"/></svg>',
     pdf:   '<svg viewBox="0 0 64 64" width="52" height="52" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><filter id="docShadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.18"/></filter><linearGradient id="docPaper" x1="0" y1="0" x2="0" y2="64" gradientUnits="userSpaceOnUse"><stop stop-color="#EEE5FF"/><stop offset="1" stop-color="#E9D8FD"/></linearGradient></defs><path d="M18 10h22l10 10v30a8 8 0 0 1-8 8H18a8 8 0 0 1-8-8V18a8 8 0 0 1 8-8z" fill="url(#docPaper)" stroke="#7C3AED" stroke-width="2" filter="url(#docShadow)"/><path d="M40 10v8a4 4 0 0 0 4 4h8" fill="#D6CCFF"/><path d="M22 32h22" stroke="#7C3AED" stroke-width="3" stroke-linecap="round" opacity=".9"/><path d="M22 40h22" stroke="#7C3AED" stroke-width="3" stroke-linecap="round" opacity=".7"/><path d="M22 48h16" stroke="#7C3AED" stroke-width="3" stroke-linecap="round" opacity=".6"/></svg>',
-    arrow: '<svg viewBox="0 0 24 24" width="28" height="28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14M13 6l6 6-6 6" stroke="#B0B8C3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>'
   };
   function getFormatIconSvg(key) {
     if (key === 'pdf') return ICONS.pdf;
@@ -191,7 +190,7 @@
       icons[1].setAttribute('aria-hidden', 'true');
     }
     if (arrow) {
-      arrow.innerHTML = ICONS.arrow;
+      arrow.textContent = '';
       arrow.setAttribute('aria-hidden', 'true');
     }
   }
