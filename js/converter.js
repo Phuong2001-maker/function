@@ -500,8 +500,9 @@
   }
 
   // Native save helpers (Chromium-based browsers)
+  // Returns 'saved', 'cancelled', 'failed', or 'unsupported' so callers can decide on fallbacks.
   async function nativeSaveFile(blob, suggestedName, mime) {
-    if (!('showSaveFilePicker' in window)) return false;
+    if (!('showSaveFilePicker' in window)) return 'unsupported';
     try {
       const handle = await window.showSaveFilePicker({
         suggestedName,
@@ -510,14 +511,17 @@
       const writable = await handle.createWritable();
       await writable.write(blob);
       await writable.close();
-      return true;
+      return 'saved';
     } catch (e) {
-      return false;
+      if (e && e.name === 'AbortError') return 'cancelled';
+      console.warn('nativeSaveFile failed, falling back to download.', e);
+      return 'failed';
     }
   }
 
+  // Same contract as nativeSaveFile but for directory writes.
   async function nativeSaveMultiple(results) {
-    if (!('showDirectoryPicker' in window)) return false;
+    if (!('showDirectoryPicker' in window)) return 'unsupported';
     try {
       const root = await window.showDirectoryPicker({ mode: 'readwrite' });
       for (const item of results) {
@@ -532,9 +536,11 @@
         await writable.write(item.blob);
         await writable.close();
       }
-      return true;
+      return 'saved';
     } catch (e) {
-      return false;
+      if (e && e.name === 'AbortError') return 'cancelled';
+      console.warn('nativeSaveMultiple failed, falling back to ZIP download.', e);
+      return 'failed';
     }
   }
 
@@ -634,23 +640,38 @@
         const mergedName = state.files.length === 1
           ? `${sanitizeName(state.files[0].name.replace(/\.[^.]+$/, ''))}.pdf`
           : `${config.slug || 'tong-hop'}-${state.files.length}-tep.pdf`;
-        let saved = false;
-        try { saved = await nativeSaveFile(mergedBlob, mergedName, 'application/pdf'); } catch {}
-        if (!saved) saveAs(mergedBlob, mergedName);
+        let saveOutcome = 'failed';
+        try { saveOutcome = await nativeSaveFile(mergedBlob, mergedName, 'application/pdf'); }
+        catch (err) { console.warn('nativeSaveFile failed for merged PDF.', err); }
+        if (saveOutcome === 'cancelled') {
+          updateStatus('Đã hủy lưu tệp. Không có tệp nào được tải xuống.', 'info');
+          return;
+        }
+        if (saveOutcome !== 'saved') saveAs(mergedBlob, mergedName);
         updateStatus('Hoàn tất. Tệp đã được tải xuống.', 'success');
       } else {
         if (resultFiles.length === 1) {
           const item = resultFiles[0];
-          let saved = false;
-          try { saved = await nativeSaveFile(item.blob, item.outputFilename, item.blob.type); } catch {}
-          if (!saved) saveAs(item.blob, item.outputFilename);
+          let saveOutcome = 'failed';
+          try { saveOutcome = await nativeSaveFile(item.blob, item.outputFilename, item.blob.type); }
+          catch (err) { console.warn('nativeSaveFile failed for single export.', err); }
+          if (saveOutcome === 'cancelled') {
+            updateStatus('Đã hủy lưu tệp. Không có tệp nào được tải xuống.', 'info');
+            return;
+          }
+          if (saveOutcome !== 'saved') saveAs(item.blob, item.outputFilename);
           updateStatus('Hoàn tất. Tệp đã được tải xuống.', 'success');
         } else {
-          let savedDir = false;
+          let dirOutcome = 'unsupported';
           if ('showDirectoryPicker' in window) {
-            try { savedDir = await nativeSaveMultiple(resultFiles); } catch {}
+            try { dirOutcome = await nativeSaveMultiple(resultFiles); }
+            catch (err) { console.warn('nativeSaveMultiple threw an error.', err); dirOutcome = 'failed'; }
           }
-          if (savedDir) {
+          if (dirOutcome === 'cancelled') {
+            updateStatus('Đã hủy lưu tệp. Không có tệp nào được tải xuống.', 'info');
+            return;
+          }
+          if (dirOutcome === 'saved') {
             updateStatus('Hoàn tất. Tệp đã được lưu vào thư mục bạn chọn.', 'success');
           } else {
             const zip = new JSZip();
@@ -692,3 +713,4 @@
   // Attach events
   attachEventListeners();
 })();
+
