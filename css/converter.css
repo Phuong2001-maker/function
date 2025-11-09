@@ -54,7 +54,7 @@
     .thumb img{width:100%;height:100%;object-fit:contain;}
     .thumb::after{content:attr(data-pages);position:absolute;bottom:10px;right:10px;background:rgba(17,24,39,.82);color:#fff;font-size:12px;font-weight:600;padding:4px 8px;border-radius:999px;}
     .filename{font-size:13px;font-weight:600;color:#1f2937;text-align:center;word-break:break-word;line-height:1.35;}
-    .remove{position:absolute;top:10px;right:10px;border:none;background:#fff;color:#ef4444;border-radius:10px;padding:6px 9px;font-weight:700;cursor:pointer;box-shadow:0 6px 16px rgba(239,68,68,.35);} 
+    .remove{position:absolute;top:4px;right:4px;border:none;background:rgba(255,255,255,.95);color:#ef4444;border-radius:999px;padding:4px 7px;font-weight:700;cursor:pointer;box-shadow:0 6px 14px rgba(239,68,68,.25);z-index:2;} 
     .empty{border:1px dashed #d1d5db;border-radius:16px;padding:28px 18px;text-align:center;color:#9ca3af;font-size:14px;}
 
     .rightpanel{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);padding:26px;display:flex;flex-direction:column;gap:22px;position:sticky;top:26px;align-self:flex-start;}

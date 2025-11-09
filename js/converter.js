@@ -545,10 +545,20 @@
     if (!totalItems) totalItems = state.files.length || 1;
     const increment = incrementProgressFactory(totalItems);
 
+    const archiveRootBase = sanitizeName(config.slug || 'ket-qua') || 'ket-qua';
+    const archiveRoot = `${archiveRootBase}-${state.outputFormat || 'xuat'}`;
+    const usedBaseNames = Object.create(null);
+    const getUniqueBaseName = (base) => {
+      const key = base || 'tep';
+      const count = usedBaseNames[key] || 0;
+      usedBaseNames[key] = count + 1;
+      return count ? `${key}-${count + 1}` : key;
+    };
     const resultFiles = [];
-    const pushResult = (folderBase, filename, blob, needsFolder) => {
-      const zipPath = needsFolder ? `${folderBase}/${filename}` : filename;
-      resultFiles.push({ zipPath, outputFilename: filename, blob });
+    const pushResult = (filename, blob) => {
+      const safeName = (filename || '').replace(/[\\/]+/g, '-');
+      const zipPath = `${archiveRoot}/${safeName}`;
+      resultFiles.push({ zipPath, outputFilename: safeName, blob });
     };
 
     const appendCanvasToDoc = (doc, canvas) => {
@@ -565,7 +575,7 @@
         updateStatus(`Đang xử lý "${entry.name}" sang ${targetFormatLabel}…`, tone);
         const baseLabel = entry.name ? entry.name.replace(/\.[^.]+$/, '') : '';
         const folderBase = sanitizeName(baseLabel) || `tep-${entry.id}`;
-        const needsFolder = exportingPdf ? !mergeAll : true;
+        const entryBase = getUniqueBaseName(folderBase);
 
         if (entry.type === 'pdf') {
           const pdf = await loadPdf(entry);
@@ -579,13 +589,15 @@
               } else {
                 const singleDoc = appendCanvasToDoc(null, canvas);
                 const pdfBlob = singleDoc.output('blob');
-                const pdfName = pageCount > 1 ? `trang-${String(pageIndex).padStart(3, '0')}.pdf` : `${folderBase}.pdf`;
-                pushResult(folderBase, pdfName, pdfBlob, needsFolder);
+                const suffix = pageCount > 1 ? `-trang-${String(pageIndex).padStart(3, '0')}` : '';
+                const pdfName = `${entryBase}${suffix}.pdf`;
+                pushResult(pdfName, pdfBlob);
               }
             } else {
               const blob = await canvasToImageBlob(canvas, outputConfig, preset);
-              const outputName = pageCount > 1 ? `trang-${String(pageIndex).padStart(3, '0')}.${fileExtension}` : `${folderBase}.${fileExtension}`;
-              pushResult(folderBase, outputName, blob, needsFolder);
+              const suffix = pageCount > 1 ? `-trang-${String(pageIndex).padStart(3, '0')}` : '';
+              const outputName = `${entryBase}${suffix}.${fileExtension}`;
+              pushResult(outputName, blob);
             }
             increment();
           }
@@ -597,11 +609,11 @@
             } else {
               const singleDoc = appendCanvasToDoc(null, canvas);
               const pdfBlob = singleDoc.output('blob');
-              pushResult(folderBase, `${folderBase}.pdf`, pdfBlob, needsFolder);
+              pushResult(`${entryBase}.pdf`, pdfBlob);
             }
           } else {
             const blob = await canvasToImageBlob(canvas, outputConfig, preset);
-            pushResult(folderBase, `${folderBase}.${fileExtension}`, blob, needsFolder);
+            pushResult(`${entryBase}.${fileExtension}`, blob);
           }
           increment();
         }
