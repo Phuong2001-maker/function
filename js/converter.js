@@ -517,7 +517,9 @@
         ? `tệp ${formattedNames}`
         : `${unsupported.length} tệp (${formattedNames}${extraText})`;
       const reason = imageConfig.description || 'Vui lòng chọn ảnh đúng định dạng được hỗ trợ.';
-      updateStatus(`Không thể thêm ${detailSegment} vì định dạng không được hỗ trợ. ${reason}`, 'warn');
+      const message = `Không thể thêm ${detailSegment} vì định dạng không được hỗ trợ. ${reason}`;
+      updateStatus(message, 'warn');
+      window.alert?.(message);
     } else {
       updateStatus('Không có tệp hợp lệ nào được thêm vào.', 'info');
     }
