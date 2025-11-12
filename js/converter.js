@@ -178,6 +178,8 @@
     return hint ? `${baseSentence} ${hint}` : baseSentence;
   }
 
+  let floatingAlertTimeout = null;
+
   function ensureInlineStatus() {
     if (inlineStatusInitialized) return inlineStatus;
     inlineStatusInitialized = true;
@@ -194,6 +196,28 @@
     container.setAttribute('aria-live', 'polite');
     dropzone.insertAdjacentElement('afterend', container);
     return inlineStatus = container;
+  }
+
+  function ensureFloatingAlert() {
+    let container = document.querySelector('#floatingAlert');
+    if (container) return container;
+    container = document.createElement('div');
+    container.id = 'floatingAlert';
+    container.className = 'floating-alert';
+    document.body.appendChild(container);
+    return container;
+  }
+
+  function showFloatingAlert(message, tone = 'warn', duration = 5000) {
+    if (!message) return;
+    const alertEl = ensureFloatingAlert();
+    alertEl.textContent = message;
+    alertEl.dataset.tone = tone;
+    alertEl.classList.add('visible');
+    if (floatingAlertTimeout) clearTimeout(floatingAlertTimeout);
+    floatingAlertTimeout = setTimeout(() => {
+      alertEl.classList.remove('visible');
+    }, duration);
   }
 
   function updateSelection() {
@@ -519,7 +543,7 @@
       const reason = imageConfig.description || 'Vui lòng chọn ảnh đúng định dạng được hỗ trợ.';
       const message = `Không thể thêm ${detailSegment} vì định dạng không được hỗ trợ. ${reason}`;
       updateStatus(message, 'warn');
-      window.alert?.(message);
+      showFloatingAlert(message, 'warn', 5000);
     } else {
       updateStatus('Không có tệp hợp lệ nào được thêm vào.', 'info');
     }
