@@ -208,15 +208,32 @@
     return container;
   }
 
+  function hideFloatingAlert() {
+    const alertEl = ensureFloatingAlert();
+    if (!alertEl) return;
+    if (floatingAlertTimeout) {
+      clearTimeout(floatingAlertTimeout);
+      floatingAlertTimeout = null;
+    }
+    alertEl.classList.remove('visible');
+    alertEl.classList.add('exiting');
+    const cleanup = () => {
+      alertEl.classList.remove('exiting');
+      alertEl.removeEventListener('animationend', cleanup);
+    };
+    alertEl.addEventListener('animationend', cleanup);
+  }
+
   function showFloatingAlert(message, tone = 'warn', duration = 5000) {
     if (!message) return;
     const alertEl = ensureFloatingAlert();
     alertEl.textContent = message;
     alertEl.dataset.tone = tone;
+    alertEl.classList.remove('exiting');
     alertEl.classList.add('visible');
     if (floatingAlertTimeout) clearTimeout(floatingAlertTimeout);
     floatingAlertTimeout = setTimeout(() => {
-      alertEl.classList.remove('visible');
+      hideFloatingAlert();
     }, duration);
   }
 
