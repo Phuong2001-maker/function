@@ -1,0 +1,122 @@
+﻿<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Chuyển WebP sang PDF | Chuyển WebP sang PDF trực tuyến</title>
+    <meta name='description' content='Chuyển WebP sang PDF trực tuyến, kéo thả hoặc chọn tệp để xử lý nhanh chóng.'>
+  <link rel="canonical" href="https://pdf-converter.tools/VN/webp-sang-pdf">
+  <link rel="stylesheet" href="../css/converter.css">
+  <meta name='keywords' content='Chuyển WebP sang PDF, WebP sang PDF, chuyển đổi WebP, chuyển đổi trực tuyến'>
+</head>
+<body>
+  <div class="app">
+    <section class="board" id="board" aria-label="Danh sách tệp nguồn">
+      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Chọn hoặc kéo thả ảnh WebP">
+        <div class="conversion-flow" aria-hidden="true">
+          <span class="icon" title="WebP">🖼️</span>
+          <span class="arrow" aria-hidden="true">→</span>
+          <span class="icon" title="PDF">📄</span>
+        </div>
+        <strong>Kéo ảnh WebP vào đây</strong>
+        <span>hoặc</span>
+        <button type="button" id="chooseBtn">Chọn tệp</button>
+        <div class="muted">Hỗ trợ WebP. Ghép ảnh thành PDF tiện lợi, giữ nguyên độ sắc nét.</div>
+        <input type="file" id="fileInput" accept=".webp,image/webp" multiple hidden>
+      </div>
+
+      <div class="selection-bar" id="selectionBar" style="display:none;">
+        <div><strong id="selectionCount">0 tệp</strong> <span id="pageCount">0 ảnh</span></div>
+        <button class="clear-btn" id="clearAll" type="button">Xóa tất cả</button>
+      </div>
+
+      <div class="grid" id="fileGrid"></div>
+      <div class="empty" id="emptyState">Chưa có tệp nào. Kéo ảnh WebP vào khung trên để bắt đầu.</div>
+    </section>
+
+    <aside class="rightpanel" id="panel">
+                  <h1>Chuyển WebP sang PDF</h1>
+      <p>Hỗ trợ chuyển nhanh ảnh WebP sang PDF, phù hợp chia sẻ, in ấn hoặc lưu trữ.</p>
+
+      <div>
+        <p style="font-weight:600;margin-bottom:10px;color:#1f2937;">Chất lượng ảnh</p>
+        <div class="quality" role="radiogroup">
+          <div class="qitem active" tabindex="0" role="radio" data-quality="normal" aria-checked="true">
+            <span class="badge">Khuyên dùng</span>
+            <strong>Bình thường</strong>
+            <small>150 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="high" aria-checked="false">
+            <span class="badge">Chi tiết</span>
+            <strong>Cao</strong>
+            <small>220 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="ultra" aria-checked="false">
+            <span class="badge">MAX DPI</span>
+            <strong>Siêu nét</strong>
+            <small>600 DPI</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="output-format" role="group" aria-label="Định dạng đầu ra">
+        <div class="options" id="formatOptions">
+          <button type="button" class="format-btn active" data-format="pdf" aria-pressed="true">Xuất thành PDF</button>
+        </div>
+      </div>
+
+      <div class="pdf-options" id="pdfOptions" role="group" aria-label="Chế độ xuất PDF">
+        <strong>Chế độ xuất PDF</strong>
+        <div class="options">
+          <button type="button" class="pdf-mode-btn" data-mode="separate" aria-pressed="false">Mỗi tệp 1 PDF</button>
+          <button type="button" class="pdf-mode-btn active" data-mode="merged" aria-pressed="true">Gộp thành 1 PDF</button>
+        </div>
+      </div>
+
+      <div class="status" id="statusMessage" role="status" aria-live="polite"></div>
+
+      <div class="progress" id="progressWrap" aria-hidden="true">
+        <span id="progressBar"></span>
+      </div>
+
+      <button class="convert" id="convertBtn" type="button" disabled><span>Xuất thành PDF</span></button>
+    </aside>
+
+    <button class="options-toggle" id="optsToggle" type="button">⚙️ Tùy chọn chuyển đổi</button>
+  </div>
+
+  <script>
+    window.CONVERTER_CONFIG = {
+      slug: 'webp-sang-pdf',
+      input: {
+        label: 'ảnh',
+        labelPlural: 'ảnh',
+        mimeTypes: ['image/webp'],
+        extensions: ['webp'],
+        accept: '.webp,image/webp',
+        description: 'Chỉ hỗ trợ ảnh WebP.'
+      },
+      outputs: {
+        pdf: {
+          formatLabel: 'PDF',
+          buttonLabel: 'Xuất thành PDF',
+          zipNameBaseMerged: 'webp-gop-pdf',
+          zipNameBaseSeparate: 'webp-sang-pdf'
+        }
+      },
+      availableOutputs: ['pdf'],
+      defaultOutput: 'pdf',
+      allowPdfInput: false
+    };
+  </script>
+  <script src="../libs/jszip/jszip.min.js"></script>
+  <script src="../libs/filesaver/FileSaver.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="../js/converter.js"></script>
+</body>
+</html>
+
+
+
+
+
