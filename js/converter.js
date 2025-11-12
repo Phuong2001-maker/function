@@ -143,6 +143,28 @@
     statusMessage.className = `status show ${tone}`;
   }
 
+  const DOWNLOAD_HINT_BROWSER = 'Kiểm tra thư mục Tải xuống của trình duyệt để mở tệp.';
+  const DOWNLOAD_HINT_FOLDER = 'Kiểm tra thư mục bạn chọn để mở tệp.';
+
+  function describeDownloadedTargets(names = []) {
+    const cleaned = (names || [])
+      .map(name => (name || '').toString())
+      .map(name => name.trim().replace(/\s+/g, ' '))
+      .filter(Boolean);
+    if (!cleaned.length) return '';
+    const quoted = cleaned.map(name => `"${name}"`);
+    if (quoted.length === 1) return `Tệp ${quoted[0]}`;
+    if (quoted.length === 2) return `Các tệp ${quoted[0]} và ${quoted[1]}`;
+    if (quoted.length === 3) return `Các tệp ${quoted[0]}, ${quoted[1]} và ${quoted[2]}`;
+    return `Các tệp ${quoted[0]}, ${quoted[1]} và ${quoted.length - 2} tệp khác`;
+  }
+
+  function buildDownloadAnnouncement(detail, hint) {
+    const trimmed = detail ? detail.toString().trim().replace(/\.*$/, '') : '';
+    const baseSentence = trimmed ? `Hoàn tất. ${trimmed}.` : 'Hoàn tất.';
+    return hint ? `${baseSentence} ${hint}` : baseSentence;
+  }
+
   function updateSelection() {
     const fileTotal = state.files.length;
     if (!fileTotal) {
@@ -451,7 +473,20 @@
     } else if (skippedPdf.length) {
       updateStatus('Không thể thêm tệp PDF vì thiếu thư viện đọc PDF.', 'error');
     } else if (unsupported.length) {
-      updateStatus(imageConfig.description || 'Các tệp đã chọn không phù hợp định dạng được hỗ trợ.', 'warn');
+      const previewCount = 3;
+      const rawPreview = unsupported.slice(0, previewCount);
+      const normalizedPreview = rawPreview
+        .map(name => (name || '').toString().trim().replace(/\s+/g, ' '))
+        .filter(Boolean);
+      const previewNames = normalizedPreview.length ? normalizedPreview : rawPreview;
+      const formattedNames = previewNames.map(name => `"${name}"`).join(', ');
+      const extraCount = unsupported.length - previewNames.length;
+      const extraText = extraCount > 0 ? ` và ${extraCount} tệp khác` : '';
+      const detailSegment = unsupported.length === 1
+        ? `tệp ${formattedNames}`
+        : `${unsupported.length} tệp (${formattedNames}${extraText})`;
+      const reason = imageConfig.description || 'Vui lòng chọn ảnh đúng định dạng được hỗ trợ.';
+      updateStatus(`Không thể thêm ${detailSegment} vì định dạng không được hỗ trợ. ${reason}`, 'warn');
     } else {
       updateStatus('Không có tệp hợp lệ nào được thêm vào.', 'info');
     }
@@ -555,6 +590,10 @@
       return count ? `${key}-${count + 1}` : key;
     };
     const resultFiles = [];
+    const gatherResultFileNames = () => resultFiles
+      .map((item) => (item.outputFilename || item.zipPath || '').split('/').pop() || '')
+      .map((name) => name.trim().replace(/\s+/g, ' '))
+      .filter(Boolean);
     const pushResult = (filename, blob) => {
       const safeName = (filename || '').replace(/[\\/]+/g, '-');
       const zipPath = `${archiveRoot}/${safeName}`;
@@ -632,7 +671,9 @@
           return;
         }
         if (saveOutcome !== 'saved') saveAs(mergedBlob, mergedName);
-        updateStatus('Hoàn tất. Tệp đã được tải xuống.', 'success');
+        const mergedDetail = describeDownloadedTargets([mergedName]);
+        const mergedMessage = mergedDetail ? `${mergedDetail} đã được tải xuống` : 'Tệp đã được tải xuống';
+        updateStatus(buildDownloadAnnouncement(mergedMessage, DOWNLOAD_HINT_BROWSER), 'success');
       } else {
         if (resultFiles.length === 1) {
           const item = resultFiles[0];
@@ -644,7 +685,9 @@
             return;
           }
           if (saveOutcome !== 'saved') saveAs(item.blob, item.outputFilename);
-          updateStatus('Hoàn tất. Tệp đã được tải xuống.', 'success');
+          const singleDetail = describeDownloadedTargets(gatherResultFileNames());
+          const singleMessage = singleDetail ? `${singleDetail} đã được tải xuống` : 'Tệp đã được tải xuống';
+          updateStatus(buildDownloadAnnouncement(singleMessage, DOWNLOAD_HINT_BROWSER), 'success');
         } else {
           let dirOutcome = 'unsupported';
           if ('showDirectoryPicker' in window) {
@@ -656,7 +699,9 @@
             return;
           }
           if (dirOutcome === 'saved') {
-            updateStatus('Hoàn tất. Tệp đã được lưu vào thư mục bạn chọn.', 'success');
+            const savedDetail = describeDownloadedTargets(gatherResultFileNames());
+            const savedMessage = savedDetail ? `${savedDetail} đã được lưu vào thư mục bạn chọn` : 'Các tệp đã được lưu vào thư mục bạn chọn';
+            updateStatus(buildDownloadAnnouncement(savedMessage, DOWNLOAD_HINT_FOLDER), 'success');
           } else {
             const zip = new JSZip();
             for (const item of resultFiles) {
@@ -668,8 +713,10 @@
             } else { zipNameBase = outputConfig.zipNameBase; }
             if (!zipNameBase) zipNameBase = `${config.slug || 'ket-qua'}-${state.outputFormat || 'xuat'}`;
             const zipBlob = await zip.generateAsync({type: 'blob'});
-            saveAs(zipBlob, `${zipNameBase}-${Date.now()}.zip`);
-            updateStatus('Hoàn tất. Tệp ZIP đã được tải xuống.', 'success');
+            const zipFilename = `${zipNameBase}-${Date.now()}.zip`;
+            saveAs(zipBlob, zipFilename);
+            const zipDetail = `Tệp ZIP "${zipFilename}" đã được tải xuống`;
+            updateStatus(buildDownloadAnnouncement(zipDetail, DOWNLOAD_HINT_BROWSER), 'success');
           }
         }
       }
