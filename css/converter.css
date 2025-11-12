@@ -96,6 +96,7 @@
     }
 
     .status{border-radius:16px;padding:14px 16px;font-size:13px;line-height:1.6;display:none;box-shadow:0 12px 30px rgba(15,23,42,.08);border:1px solid transparent;margin-bottom:18px;}
+    .dropzone-status{margin-top:12px;}
     .status.show{display:block;}
     .status.info{background:#eef2ff;color:#312e81;border-color:#c7d2fe;}
     .status.success{background:#ecfdf5;color:#047857;border-color:#bbf7d0;}

@@ -133,18 +133,31 @@
   };
 
   function updateStatus(text = '', tone = 'info') {
-    if (!statusMessage) return;
-    if (!text) {
-      statusMessage.className = 'status';
-      statusMessage.textContent = '';
-      return;
+    if (statusMessage) {
+      if (!text) {
+        statusMessage.className = 'status';
+        statusMessage.textContent = '';
+      } else {
+        statusMessage.textContent = text;
+        statusMessage.className = `status show ${tone}`;
+      }
     }
-    statusMessage.textContent = text;
-    statusMessage.className = `status show ${tone}`;
+    const dropzoneStatus = ensureInlineStatus();
+    if (!dropzoneStatus) return;
+    if (!text) {
+      dropzoneStatus.className = 'dropzone-status status';
+      dropzoneStatus.textContent = '';
+    } else {
+      dropzoneStatus.textContent = text;
+      dropzoneStatus.className = `dropzone-status status show ${tone}`;
+    }
   }
 
   const DOWNLOAD_HINT_BROWSER = 'Kiểm tra thư mục Tải xuống của trình duyệt để mở tệp.';
   const DOWNLOAD_HINT_FOLDER = 'Kiểm tra thư mục bạn chọn để mở tệp.';
+
+  let inlineStatus = null;
+  let inlineStatusInitialized = false;
 
   function describeDownloadedTargets(names = []) {
     const cleaned = (names || [])
@@ -163,6 +176,24 @@
     const trimmed = detail ? detail.toString().trim().replace(/\.*$/, '') : '';
     const baseSentence = trimmed ? `Hoàn tất. ${trimmed}.` : 'Hoàn tất.';
     return hint ? `${baseSentence} ${hint}` : baseSentence;
+  }
+
+  function ensureInlineStatus() {
+    if (inlineStatusInitialized) return inlineStatus;
+    inlineStatusInitialized = true;
+    if (!dropzone) return inlineStatus = null;
+    const boardElement = dropzone.closest('.board');
+    if (!boardElement) return inlineStatus = null;
+    const existing = boardElement.querySelector('#inlineDropzoneStatus');
+    if (existing) {
+      return inlineStatus = existing;
+    }
+    const container = document.createElement('div');
+    container.id = 'inlineDropzoneStatus';
+    container.className = 'dropzone-status status';
+    container.setAttribute('aria-live', 'polite');
+    dropzone.insertAdjacentElement('afterend', container);
+    return inlineStatus = container;
   }
 
   function updateSelection() {
