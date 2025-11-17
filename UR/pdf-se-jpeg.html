@@ -1,0 +1,118 @@
+﻿
+<!doctype html>
+<html lang="ur">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>PDF کو JPEG میں تبدیل کریں | آن لائن PDF سے JPEG</title>
+        <meta name="description" content="PDF کو JPEG میں آن لائن تبدیل کریں؛ تیزی سے شروع کرنے کے لیے فائلیں ڈریگ کریں یا منتخب کریں۔">
+  <link rel="canonical" href="https://pdf-converter.tools/UR/pdf-se-jpeg">
+  <link rel="stylesheet" href="../css/converter.css">
+      <meta name="keywords" content="PDF سے JPEG, آن لائن PDF سے JPEG, فائل کنورژن">
+</head>
+<body>
+  <div class="app">
+    <section class="board" id="board" aria-label="Source file list">
+      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="PDF فائلیں منتخب کریں یا گھسیٹیں">
+        <div class="conversion-flow" aria-hidden="true">
+          <span class="icon" title="PDF">PDF</span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
+          <span class="icon" title="JPEG">JPEG</span>
+        </div>
+        <strong>PDF یہاں گھسیٹیں</strong>
+        <span>یا</span>
+        <button type="button" id="chooseBtn">فائلیں منتخب کریں</button>
+        <div class="muted">PDF فائلیں معاونت یافتہ ہیں۔ تیزی سے JPEG میں ایکسپورٹ کریں۔</div>
+        <input type="file" id="fileInput" accept=".pdf,application/pdf" multiple hidden>
+      </div>
+
+      <div class="selection-bar" id="selectionBar" style="display:none;">
+        <div><strong id="selectionCount">0 فائلیں</strong> <span id="pageCount">0 تصاویر</span></div>
+        <button class="clear-btn" id="clearAll" type="button">سب صاف کریں</button>
+      </div>
+
+      <div class="grid" id="fileGrid"></div>
+      <div class="empty" id="emptyState">ابھی کوئی فائل نہیں۔ شروع کرنے کیلئے PDF کو اوپر والے باکس میں ڈالیں۔</div>
+    </section>
+
+    <aside class="rightpanel" id="panel">
+                  <h1>PDF کو JPEG میں تبدیل کریں</h1>
+      <p>PDF کو JPEG میں چند سیکنڈ میں آن لائن تبدیل کریں، انسٹال کی ضرورت نہیں۔</p>
+
+      <div>
+        <p style="font-weight:600;margin-bottom:10px;color:#1f2937;">آؤٹ پٹ معیار</p>
+        <div class="quality" role="radiogroup">
+          <div class="qitem active" tabindex="0" role="radio" data-quality="normal" aria-checked="true">
+            <span class="badge">تجویز کردہ</span>
+            <strong>معمولی</strong>
+            <small>150 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="high" aria-checked="false">
+            <span class="badge">تفصیلی</span>
+            <strong>اعلی</strong>
+            <small>220 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="ultra" aria-checked="false">
+            <span class="badge">زیادہ سے زیادہ DPI</span>
+            <strong>الٹرا</strong>
+            <small>600 DPI</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="output-format" role="group" aria-label="آؤٹ پٹ فارمیٹ">
+        <div class="options" id="formatOptions" aria-hidden="true" style="display:none;"></div>
+      </div>
+
+      <div class="status" id="statusMessage" role="status" aria-live="polite"></div>
+
+      <div class="progress" id="progressWrap" aria-hidden="true">
+        <span id="progressBar"></span>
+      </div>
+
+      <button class="convert" id="convertBtn" type="button" disabled><span>JPEG میں تبدیل کریں</span></button>
+    </aside>
+
+    <button class="options-toggle" id="optsToggle" type="button">کنورژن آپشنز کھولیں</button>
+  </div>
+
+  <script>
+    window.CONVERTER_CONFIG = {
+  slug: 'pdf-se-jpeg',
+  input: {
+    label: 'فائل',
+    labelPlural: 'فائلیں',
+    labelWhenUnknown: 'فائل',
+    mimeTypes: ['application/pdf'],
+    extensions: ['pdf'],
+    accept: '.pdf,application/pdf',
+    description: 'PDF فائلیں معاونت یافتہ ہیں۔ تیزی سے JPEG میں ایکسپورٹ کریں۔.'
+  },
+  outputs: {
+    jpeg: {
+      formatlabel: 'فائل',
+      buttonLabel: 'JPEG ایکسپورٹ',
+      zipNameBase: 'pdf-se-jpeg',
+      mimeType: 'image/jpeg',
+      fileExtension: 'jpeg'
+    }
+  },
+  availableOutputs: ['jpeg'],
+  defaultOutput: 'jpeg',
+  allowPdfInput: true
+};
+  </script>
+  <script src="../libs/pdfjs/pdf.min.js"></script>
+  <script src="../libs/jszip/jszip.min.js"></script>
+  <script src="../libs/filesaver/FileSaver.min.js"></script>
+  <script src="../js/converter.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+

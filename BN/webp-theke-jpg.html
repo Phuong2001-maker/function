@@ -1,0 +1,117 @@
+﻿
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>WebP থেকে JPG কনভার্ট করুন | অনলাইনে WebP থেকে JPG</title>
+        <meta name="description" content="WebP থেকে JPG অনলাইনে কনভার্ট করুন; দ্রুত শুরু করতে ফাইল ড্র্যাগ-ড্রপ বা নির্বাচন করুন।">
+  <link rel="canonical" href="https://pdf-converter.tools/BN/webp-theke-jpg">
+  <link rel="stylesheet" href="../css/converter.css">
+      <meta name="keywords" content="WebP থেকে JPG, অনলাইনে WebP থেকে JPG, ফাইল কনভার্সন">
+</head>
+<body>
+  <div class="app">
+    <section class="board" id="board" aria-label="Source file list">
+      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="WebP ফাইল বেছে নিন বা টেনে আনুন">
+        <div class="conversion-flow" aria-hidden="true">
+          <span class="icon" title="WEBP">WEBP</span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
+          <span class="icon" title="JPG">JPG</span>
+        </div>
+        <strong>WebP এখানে টেনে আনুন</strong>
+        <span>অথবা</span>
+        <button type="button" id="chooseBtn">ফাইল নির্বাচন করুন</button>
+        <div class="muted">WebP ফাইল সাপোর্টেড। দ্রুত JPG এ এক্সপোর্ট করুন।</div>
+        <input type="file" id="fileInput" accept=".webp,image/webp" multiple hidden>
+      </div>
+
+      <div class="selection-bar" id="selectionBar" style="display:none;">
+        <div><strong id="selectionCount">0 ফাইল</strong> <span id="pageCount">0 ছবি</span></div>
+        <button class="clear-btn" id="clearAll" type="button">সব মুছুন</button>
+      </div>
+
+      <div class="grid" id="fileGrid"></div>
+      <div class="empty" id="emptyState">এখনও কোনো ফাইল নেই। শুরু করতে উপরের বাক্সে WebP টেনে আনুন।</div>
+    </section>
+
+    <aside class="rightpanel" id="panel">
+                  <h1>WebP থেকে JPG কনভার্ট করুন</h1>
+      <p>WebP থেকে JPG কয়েক সেকেন্ডেই অনলাইনে কনভার্ট করুন, ইনস্টল দরকার নেই।</p>
+
+      <div>
+        <p style="font-weight:600;margin-bottom:10px;color:#1f2937;">ছবির গুণমান</p>
+        <div class="quality" role="radiogroup">
+          <div class="qitem active" tabindex="0" role="radio" data-quality="normal" aria-checked="true">
+            <span class="badge">সুপারিশকৃত</span>
+            <strong>সাধারণ</strong>
+            <small>150 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="high" aria-checked="false">
+            <span class="badge">বিস্তারিত</span>
+            <strong>উচ্চ</strong>
+            <small>220 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="ultra" aria-checked="false">
+            <span class="badge">সর্বোচ্চ DPI</span>
+            <strong>আল্ট্রা</strong>
+            <small>600 DPI</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="output-format" role="group" aria-label="আউটপুট ফরম্যাট">
+        <div class="options" id="formatOptions" aria-hidden="true" style="display:none;"></div>
+      </div>
+
+      <div class="status" id="statusMessage" role="status" aria-live="polite"></div>
+
+      <div class="progress" id="progressWrap" aria-hidden="true">
+        <span id="progressBar"></span>
+      </div>
+
+      <button class="convert" id="convertBtn" type="button" disabled><span>JPG এ রূপান্তর</span></button>
+    </aside>
+
+    <button class="options-toggle" id="optsToggle" type="button">কনভার্সন অপশন খুলুন</button>
+  </div>
+
+  <script>
+    window.CONVERTER_CONFIG = {
+  slug: 'webp-theke-jpg',
+  input: {
+    label: 'ফাইল',
+    labelPlural: 'ফাইল',
+    labelWhenUnknown: 'ফাইল',
+    mimeTypes: ['image/webp'],
+    extensions: ['webp'],
+    accept: '.webp,image/webp',
+    description: 'WebP ফাইল সাপোর্টেড. দ্রুত JPG এ এক্সপোর্ট করুন.'
+  },
+  outputs: {
+    jpg: {
+      formatlabel: 'ফাইল',
+      buttonLabel: 'JPG এক্সপোর্ট',
+      zipNameBase: 'webp-theke-jpg',
+      mimeType: 'image/jpeg',
+      fileExtension: 'jpg'
+    }
+  },
+  availableOutputs: ['jpg'],
+  defaultOutput: 'jpg',
+  allowPdfInput: false
+};
+  </script>
+  <script src="../libs/jszip/jszip.min.js"></script>
+  <script src="../libs/filesaver/FileSaver.min.js"></script>
+  <script src="../js/converter.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+

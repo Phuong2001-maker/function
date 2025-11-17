@@ -1,0 +1,119 @@
+﻿
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>แปลง WebP เป็น GIF | แปลง WebP เป็น GIF ออนไลน์</title>
+        <meta name="description" content="แปลง WebP เป็น GIF ออนไลน์ ลากวางหรือเลือกไฟล์เพื่อเริ่มได้ทันที">
+  <link rel="canonical" href="https://pdf-converter.tools/TH/webp-to-gif">
+  <link rel="stylesheet" href="../css/converter.css">
+      <meta name="keywords" content="แปลง WebP เป็น GIF, WebP เป็น GIF ออนไลน์, แปลงไฟล์">
+</head>
+<body>
+  <div class="app">
+    <section class="board" id="board" aria-label="Source file list">
+      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="เลือกหรือลากไฟล์ WebP">
+        <div class="conversion-flow" aria-hidden="true">
+          <span class="icon" title="WEBP">WEBP</span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
+          <span class="icon" title="GIF">GIF</span>
+        </div>
+        <strong>ลาก WebP มาที่นี่</strong>
+        <span>หรือ</span>
+        <button type="button" id="chooseBtn">เลือกไฟล์</button>
+        <div class="muted">รองรับไฟล์ WebP ส่งออกเป็น GIF ได้รวดเร็ว</div>
+        <input type="file" id="fileInput" accept=".webp,image/webp" multiple hidden>
+      </div>
+
+      <div class="selection-bar" id="selectionBar" style="display:none;">
+        <div><strong id="selectionCount">0 ไฟล์</strong> <span id="pageCount">0 รูปภาพ</span></div>
+        <button class="clear-btn" id="clearAll" type="button">ล้างทั้งหมด</button>
+      </div>
+
+      <div class="grid" id="fileGrid"></div>
+      <div class="empty" id="emptyState">ยังไม่มีไฟล์ ลาก WebP ไปที่กล่องด้านบนเพื่อเริ่มต้น</div>
+    </section>
+
+    <aside class="rightpanel" id="panel">
+                  <h1>แปลง WebP เป็น GIF</h1>
+      <p>แปลง WebP เป็น GIF ออนไลน์ในไม่กี่วินาที ไม่ต้องติดตั้ง</p>
+
+      <div>
+        <p style="font-weight:600;margin-bottom:10px;color:#1f2937;">คุณภาพรูปภาพ</p>
+        <div class="quality" role="radiogroup">
+          <div class="qitem active" tabindex="0" role="radio" data-quality="normal" aria-checked="true">
+            <span class="badge">แนะนำ</span>
+            <strong>ปกติ</strong>
+            <small>150 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="high" aria-checked="false">
+            <span class="badge">ละเอียด</span>
+            <strong>สูง</strong>
+            <small>220 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="ultra" aria-checked="false">
+            <span class="badge">สูงสุด DPI</span>
+            <strong>สูงมาก</strong>
+            <small>600 DPI</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="output-format" role="group" aria-label="รูปแบบผลลัพธ์">
+        <div class="options" id="formatOptions" aria-hidden="true" style="display:none;"></div>
+      </div>
+
+      <div class="status" id="statusMessage" role="status" aria-live="polite"></div>
+
+      <div class="progress" id="progressWrap" aria-hidden="true">
+        <span id="progressBar"></span>
+      </div>
+
+      <button class="convert" id="convertBtn" type="button" disabled><span>แปลงเป็น GIF</span></button>
+    </aside>
+
+    <button class="options-toggle" id="optsToggle" type="button">เปิดตัวเลือกการแปลง</button>
+  </div>
+
+  <script>
+    window.CONVERTER_CONFIG = {
+  slug: 'webp-to-gif',
+  input: {
+    label: 'ไฟล์',
+    labelPlural: 'ไฟล์',
+    labelWhenUnknown: 'ไฟล์',
+    mimeTypes: ['image/webp'],
+    extensions: ['webp'],
+    accept: '.webp,image/webp',
+    description: 'รองรับไฟล์ WebP ส่งออกเป็น GIF ได้รวดเร็ว.'
+  },
+  outputs: {
+    gif: {
+      formatlabel: 'ไฟล์',
+      buttonLabel: 'ส่งออก GIF',
+      zipNameBase: 'webp-to-gif',
+      mimeType: 'image/gif',
+      fileExtension: 'gif',
+      preserveAlpha: true
+    }
+  },
+  availableOutputs: ['gif'],
+  defaultOutput: 'gif',
+  allowPdfInput: false
+};
+  </script>
+  <script src="../libs/jszip/jszip.min.js"></script>
+  <script src="../libs/filesaver/FileSaver.min.js"></script>
+  <script src="../libs/gifshot/gifshot.min.js"></script>
+  <script src="../js/converter.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,126 @@
+﻿<!doctype html>
+<html lang="ur">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>JPEG کو PDF میں تبدیل کریں | آن لائن JPEG سے PDF</title>
+        <meta name="description" content="JPEG کو PDF میں آن لائن تبدیل کریں؛ تیزی سے شروع کرنے کے لیے فائلیں ڈریگ کریں یا منتخب کریں۔">
+  <link rel="canonical" href="https://pdf-converter.tools/UR/jpeg-se-pdf">
+  <link rel="stylesheet" href="../css/converter.css">
+      <meta name="keywords" content="JPEG سے PDF, آن لائن JPEG سے PDF, فائل کنورژن">
+</head>
+<body>
+  <div class="app">
+    <section class="board" id="board" aria-label="Source file list">
+      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="JPEG فائلیں منتخب کریں یا گھسیٹیں">
+        <div class="conversion-flow" aria-hidden="true">
+          <span class="icon" title="JPEG">🖼️</span>
+          <span class="arrow" aria-hidden="true">→</span>
+          <span class="icon" title="PDF">📄</span>
+        </div>
+        <strong>JPEG یہاں گھسیٹیں</strong>
+        <span>یا</span>
+        <button type="button" id="chooseBtn">فائلیں منتخب کریں</button>
+        <div class="muted">JPEG فائلیں معاونت یافتہ ہیں۔ تیزی سے PDF میں ایکسپورٹ کریں۔</div>
+        <input type="file" id="fileInput" accept=".jpg,.jpeg,image/jpeg,image/pjpeg" multiple hidden>
+      </div>
+
+      <div class="selection-bar" id="selectionBar" style="display:none;">
+        <div><strong id="selectionCount">0 فائلیں</strong> <span id="pageCount">0 تصاویر</span></div>
+        <button class="clear-btn" id="clearAll" type="button">سب صاف کریں</button>
+      </div>
+
+      <div class="grid" id="fileGrid"></div>
+      <div class="empty" id="emptyState">ابھی کوئی فائل نہیں۔ شروع کرنے کیلئے JPEG کو اوپر والے باکس میں ڈالیں۔</div>
+    </section>
+
+    <aside class="rightpanel" id="panel">
+                  <h1>JPEG کو PDF میں تبدیل کریں</h1>
+      <p>JPEG کو PDF میں چند سیکنڈ میں آن لائن تبدیل کریں، انسٹال کی ضرورت نہیں۔</p>
+
+      <div>
+        <p style="font-weight:600;margin-bottom:10px;color:#1f2937;">تصویر کا معیار</p>
+        <div class="quality" role="radiogroup">
+          <div class="qitem active" tabindex="0" role="radio" data-quality="normal" aria-checked="true">
+            <span class="badge">تجویز کردہ</span>
+            <strong>معمولی</strong>
+            <small>150 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="high" aria-checked="false">
+            <span class="badge">تفصیلی</span>
+            <strong>اعلی</strong>
+            <small>220 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="ultra" aria-checked="false">
+            <span class="badge">MAX DPI</span>
+            <strong>الٹرا</strong>
+            <small>600 DPI</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="output-format" role="group" aria-label="آؤٹ پٹ فارمیٹ">
+        <div class="options" id="formatOptions">
+          <button type="button" class="format-btn active" data-format="pdf" aria-pressed="true">بطور PDF ایکسپورٹ</button>
+        </div>
+      </div>
+
+      <div class="pdf-options" id="pdfOptions" role="group" aria-label="PDF ایکسپورٹ موڈ">
+        <strong>PDF ایکسپورٹ موڈ</strong>
+        <div class="options">
+          <button type="button" class="pdf-mode-btn" data-mode="separate" aria-pressed="false">ہر فائل پر ایک PDF</button>
+          <button type="button" class="pdf-mode-btn active" data-mode="merged" aria-pressed="true">ایک PDF میں ضم کریں</button>
+        </div>
+      </div>
+
+      <div class="status" id="statusMessage" role="status" aria-live="polite"></div>
+
+      <div class="progress" id="progressWrap" aria-hidden="true">
+        <span id="progressBar"></span>
+      </div>
+
+      <button class="convert" id="convertBtn" type="button" disabled><span>PDF میں تبدیل کریں</span></button>
+    </aside>
+
+    <button class="options-toggle" id="optsToggle" type="button">⚙️ Conversion options</button>
+  </div>
+
+  <script>
+    window.CONVERTER_CONFIG = {
+      slug: 'jpeg-se-pdf',
+      input: {
+        label: 'فائل',
+        labelPlural: 'فائلیں',
+        mimeTypes: ['image/jpeg', 'image/pjpeg'],
+        extensions: ['jpg', 'jpeg'],
+        accept: '.jpg,.jpeg,image/jpeg,image/pjpeg',
+        description: 'JPEG فائلیں معاونت یافتہ ہیں۔ تیزی سے PDF میں ایکسپورٹ کریں۔.'
+      },
+      outputs: {
+        pdf: {
+          formatlabel: 'فائل',
+          buttonLabel: 'PDF ایکسپورٹ',
+          zipNameBaseMerged: 'jpeg-se-pdf-merged',
+          zipNameBaseSeparate: 'jpeg-se-pdf-separate'
+        }
+      },
+      availableOutputs: ['pdf'],
+      defaultOutput: 'pdf',
+      allowPdfInput: false
+    };
+  </script>
+  <script src="../libs/jszip/jszip.min.js"></script>
+  <script src="../libs/filesaver/FileSaver.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="../js/converter.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

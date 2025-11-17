@@ -1,0 +1,126 @@
+﻿<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>Konversi WebP ke PDF | Konversi WebP ke PDF online</title>
+        <meta name="description" content="Konversi WebP ke PDF secara online; seret & lepas atau pilih file untuk mulai cepat.">
+  <link rel="canonical" href="https://pdf-converter.tools/ID/webp-ke-pdf">
+  <link rel="stylesheet" href="../css/converter.css">
+      <meta name="keywords" content="Konversi WebP ke PDF, WebP ke PDF online, konversi file.">
+</head>
+<body>
+  <div class="app">
+    <section class="board" id="board" aria-label="Source file list">
+      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Pilih atau seret file WebP">
+        <div class="conversion-flow" aria-hidden="true">
+          <span class="icon" title="WebP">🖼️</span>
+          <span class="arrow" aria-hidden="true">→</span>
+          <span class="icon" title="PDF">📄</span>
+        </div>
+        <strong>Seret WebP ke sini</strong>
+        <span>atau</span>
+        <button type="button" id="chooseBtn">Pilih file</button>
+        <div class="muted">Mendukung file WebP. Ekspor cepat ke PDF.</div>
+        <input type="file" id="fileInput" accept=".webp,image/webp" multiple hidden>
+      </div>
+
+      <div class="selection-bar" id="selectionBar" style="display:none;">
+        <div><strong id="selectionCount">0 file</strong> <span id="pageCount">0 gambar</span></div>
+        <button class="clear-btn" id="clearAll" type="button">Bersihkan semua</button>
+      </div>
+
+      <div class="grid" id="fileGrid"></div>
+      <div class="empty" id="emptyState">Belum ada file. Seret WebP ke kotak di atas untuk memulai.</div>
+    </section>
+
+    <aside class="rightpanel" id="panel">
+                  <h1>Konversi WebP ke PDF</h1>
+      <p>Konversi WebP ke PDF online dalam hitungan detik, tanpa instalasi.</p>
+
+      <div>
+        <p style="font-weight:600;margin-bottom:10px;color:#1f2937;">Kualitas gambar</p>
+        <div class="quality" role="radiogroup">
+          <div class="qitem active" tabindex="0" role="radio" data-quality="normal" aria-checked="true">
+            <span class="badge">DISARANKAN</span>
+            <strong>Normal</strong>
+            <small>150 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="high" aria-checked="false">
+            <span class="badge">DETAIL</span>
+            <strong>Tinggi</strong>
+            <small>220 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="ultra" aria-checked="false">
+            <span class="badge">MAX DPI</span>
+            <strong>Ultra</strong>
+            <small>600 DPI</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="output-format" role="group" aria-label="Format keluaran">
+        <div class="options" id="formatOptions">
+          <button type="button" class="format-btn active" data-format="pdf" aria-pressed="true">Ekspor sebagai PDF</button>
+        </div>
+      </div>
+
+      <div class="pdf-options" id="pdfOptions" role="group" aria-label="Mode ekspor PDF">
+        <strong>Mode ekspor PDF</strong>
+        <div class="options">
+          <button type="button" class="pdf-mode-btn" data-mode="separate" aria-pressed="false">Satu PDF per file</button>
+          <button type="button" class="pdf-mode-btn active" data-mode="merged" aria-pressed="true">Gabung jadi satu PDF</button>
+        </div>
+      </div>
+
+      <div class="status" id="statusMessage" role="status" aria-live="polite"></div>
+
+      <div class="progress" id="progressWrap" aria-hidden="true">
+        <span id="progressBar"></span>
+      </div>
+
+      <button class="convert" id="convertBtn" type="button" disabled><span>Konversi ke PDF</span></button>
+    </aside>
+
+    <button class="options-toggle" id="optsToggle" type="button">⚙️ Conversion options</button>
+  </div>
+
+  <script>
+    window.CONVERTER_CONFIG = {
+      slug: 'webp-ke-pdf',
+      input: {
+        label: 'file',
+        labelPlural: 'file',
+        mimeTypes: ['image/webp'],
+        extensions: ['webp'],
+        accept: '.webp,image/webp',
+        description: 'Mendukung file WebP. Ekspor cepat ke PDF.'
+      },
+      outputs: {
+        pdf: {
+          formatlabel: 'file',
+          buttonLabel: 'Ekspor PDF',
+          zipNameBaseMerged: 'webp-ke-pdf-merged',
+          zipNameBaseSeparate: 'webp-ke-pdf-separate'
+        }
+      },
+      availableOutputs: ['pdf'],
+      defaultOutput: 'pdf',
+      allowPdfInput: false
+    };
+  </script>
+  <script src="../libs/jszip/jszip.min.js"></script>
+  <script src="../libs/filesaver/FileSaver.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="../js/converter.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

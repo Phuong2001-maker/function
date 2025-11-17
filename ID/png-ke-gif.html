@@ -1,0 +1,119 @@
+﻿
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>Konversi PNG ke GIF | Konversi PNG ke GIF online</title>
+        <meta name="description" content="Konversi PNG ke GIF secara online; seret & lepas atau pilih file untuk mulai cepat.">
+  <link rel="canonical" href="https://pdf-converter.tools/ID/png-ke-gif">
+  <link rel="stylesheet" href="../css/converter.css">
+      <meta name="keywords" content="Konversi PNG ke GIF, PNG ke GIF online, konversi file.">
+</head>
+<body>
+  <div class="app">
+    <section class="board" id="board" aria-label="Source file list">
+      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Pilih atau seret file PNG">
+        <div class="conversion-flow" aria-hidden="true">
+          <span class="icon" title="PNG">PNG</span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
+          <span class="icon" title="GIF">GIF</span>
+        </div>
+        <strong>Seret PNG ke sini</strong>
+        <span>atau</span>
+        <button type="button" id="chooseBtn">Pilih file</button>
+        <div class="muted">Mendukung file PNG. Ekspor cepat ke GIF.</div>
+        <input type="file" id="fileInput" accept=".png,image/png" multiple hidden>
+      </div>
+
+      <div class="selection-bar" id="selectionBar" style="display:none;">
+        <div><strong id="selectionCount">0 file</strong> <span id="pageCount">0 gambar</span></div>
+        <button class="clear-btn" id="clearAll" type="button">Bersihkan semua</button>
+      </div>
+
+      <div class="grid" id="fileGrid"></div>
+      <div class="empty" id="emptyState">Belum ada file. Seret PNG ke kotak di atas untuk memulai.</div>
+    </section>
+
+    <aside class="rightpanel" id="panel">
+                  <h1>Konversi PNG ke GIF</h1>
+      <p>Konversi PNG ke GIF online dalam hitungan detik, tanpa instalasi.</p>
+
+      <div>
+        <p style="font-weight:600;margin-bottom:10px;color:#1f2937;">Kualitas gambar</p>
+        <div class="quality" role="radiogroup">
+          <div class="qitem active" tabindex="0" role="radio" data-quality="normal" aria-checked="true">
+            <span class="badge">DISARANKAN</span>
+            <strong>Normal</strong>
+            <small>150 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="high" aria-checked="false">
+            <span class="badge">DETAIL</span>
+            <strong>Tinggi</strong>
+            <small>220 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="ultra" aria-checked="false">
+            <span class="badge">MAKS DPI</span>
+            <strong>Ultra</strong>
+            <small>600 DPI</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="output-format" role="group" aria-label="Format keluaran">
+        <div class="options" id="formatOptions" aria-hidden="true" style="display:none;"></div>
+      </div>
+
+      <div class="status" id="statusMessage" role="status" aria-live="polite"></div>
+
+      <div class="progress" id="progressWrap" aria-hidden="true">
+        <span id="progressBar"></span>
+      </div>
+
+      <button class="convert" id="convertBtn" type="button" disabled><span>Konversi ke GIF</span></button>
+    </aside>
+
+    <button class="options-toggle" id="optsToggle" type="button">Buka opsi konversi</button>
+  </div>
+
+  <script>
+    window.CONVERTER_CONFIG = {
+  slug: 'png-ke-gif',
+  input: {
+    label: 'file',
+    labelPlural: 'file',
+    labelWhenUnknown: 'file',
+    mimeTypes: ['image/png'],
+    extensions: ['png'],
+    accept: '.png,image/png',
+    description: 'Mendukung file PNG. Ekspor cepat ke GIF.'
+  },
+  outputs: {
+    gif: {
+      formatlabel: 'file',
+      buttonLabel: 'Ekspor GIF',
+      zipNameBase: 'png-ke-gif',
+      mimeType: 'image/gif',
+      fileExtension: 'gif',
+      preserveAlpha: true
+    }
+  },
+  availableOutputs: ['gif'],
+  defaultOutput: 'gif',
+  allowPdfInput: false
+};
+  </script>
+  <script src="../libs/jszip/jszip.min.js"></script>
+  <script src="../libs/filesaver/FileSaver.min.js"></script>
+  <script src="../libs/gifshot/gifshot.min.js"></script>
+  <script src="../js/converter.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+

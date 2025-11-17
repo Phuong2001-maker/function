@@ -1,0 +1,126 @@
+﻿<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>PNG থেকে PDF কনভার্ট করুন | অনলাইনে PNG থেকে PDF</title>
+        <meta name="description" content="PNG থেকে PDF অনলাইনে কনভার্ট করুন; দ্রুত শুরু করতে ফাইল ড্র্যাগ-ড্রপ বা নির্বাচন করুন।">
+  <link rel="canonical" href="https://pdf-converter.tools/BN/png-theke-pdf">
+  <link rel="stylesheet" href="../css/converter.css">
+      <meta name="keywords" content="PNG থেকে PDF, অনলাইনে PNG থেকে PDF, ফাইল কনভার্সন">
+</head>
+<body>
+  <div class="app">
+    <section class="board" id="board" aria-label="Source file list">
+      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="PNG ফাইল বেছে নিন বা টেনে আনুন">
+        <div class="conversion-flow" aria-hidden="true">
+          <span class="icon" title="PNG">🖼️</span>
+          <span class="arrow" aria-hidden="true">→</span>
+          <span class="icon" title="PDF">📄</span>
+        </div>
+        <strong>PNG এখানে টেনে আনুন</strong>
+        <span>অথবা</span>
+        <button type="button" id="chooseBtn">ফাইল নির্বাচন করুন</button>
+        <div class="muted">PNG ফাইল সাপোর্টেড। দ্রুত PDF এ এক্সপোর্ট করুন।</div>
+        <input type="file" id="fileInput" accept=".png,image/png" multiple hidden>
+      </div>
+
+      <div class="selection-bar" id="selectionBar" style="display:none;">
+        <div><strong id="selectionCount">0 ফাইল</strong> <span id="pageCount">0 ছবি</span></div>
+        <button class="clear-btn" id="clearAll" type="button">সব মুছুন</button>
+      </div>
+
+      <div class="grid" id="fileGrid"></div>
+      <div class="empty" id="emptyState">এখনও কোনো ফাইল নেই। শুরু করতে উপরের বাক্সে PNG টেনে আনুন।</div>
+    </section>
+
+    <aside class="rightpanel" id="panel">
+                  <h1>PNG থেকে PDF কনভার্ট করুন</h1>
+      <p>PNG থেকে PDF কয়েক সেকেন্ডেই অনলাইনে কনভার্ট করুন, ইনস্টল দরকার নেই।</p>
+
+      <div>
+        <p style="font-weight:600;margin-bottom:10px;color:#1f2937;">ছবির গুণমান</p>
+        <div class="quality" role="radiogroup">
+          <div class="qitem active" tabindex="0" role="radio" data-quality="normal" aria-checked="true">
+            <span class="badge">সুপারিশকৃত</span>
+            <strong>সাধারণ</strong>
+            <small>150 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="high" aria-checked="false">
+            <span class="badge">বিস্তারিত</span>
+            <strong>উচ্চ</strong>
+            <small>220 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="ultra" aria-checked="false">
+            <span class="badge">MAX DPI</span>
+            <strong>আল্ট্রা</strong>
+            <small>600 DPI</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="output-format" role="group" aria-label="আউটপুট ফরম্যাট">
+        <div class="options" id="formatOptions">
+          <button type="button" class="format-btn active" data-format="pdf" aria-pressed="true">PDF হিসেবে এক্সপোর্ট</button>
+        </div>
+      </div>
+
+      <div class="pdf-options" id="pdfOptions" role="group" aria-label="PDF এক্সপোর্ট মোড">
+        <strong>PDF এক্সপোর্ট মোড</strong>
+        <div class="options">
+          <button type="button" class="pdf-mode-btn" data-mode="separate" aria-pressed="false">প্রতি ফাইলে এক PDF</button>
+          <button type="button" class="pdf-mode-btn active" data-mode="merged" aria-pressed="true">একটি PDF তে মর্জ করুন</button>
+        </div>
+      </div>
+
+      <div class="status" id="statusMessage" role="status" aria-live="polite"></div>
+
+      <div class="progress" id="progressWrap" aria-hidden="true">
+        <span id="progressBar"></span>
+      </div>
+
+      <button class="convert" id="convertBtn" type="button" disabled><span>PDF এ রূপান্তর</span></button>
+    </aside>
+
+    <button class="options-toggle" id="optsToggle" type="button">⚙️ Conversion options</button>
+  </div>
+
+  <script>
+    window.CONVERTER_CONFIG = {
+      slug: 'png-theke-pdf',
+      input: {
+        label: 'ফাইল',
+        labelPlural: 'ফাইল',
+        mimeTypes: ['image/png'],
+        extensions: ['png'],
+        accept: '.png,image/png',
+        description: 'PNG ফাইল সাপোর্টেড. দ্রুত PDF এ এক্সপোর্ট করুন.'
+      },
+      outputs: {
+        pdf: {
+          formatlabel: 'ফাইল',
+          buttonLabel: 'PDF এক্সপোর্ট',
+          zipNameBaseMerged: 'png-theke-pdf-merged',
+          zipNameBaseSeparate: 'png-theke-pdf-separate'
+        }
+      },
+      availableOutputs: ['pdf'],
+      defaultOutput: 'pdf',
+      allowPdfInput: false
+    };
+  </script>
+  <script src="../libs/jszip/jszip.min.js"></script>
+  <script src="../libs/filesaver/FileSaver.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="../js/converter.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
