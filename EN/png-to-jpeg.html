@@ -4,26 +4,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-          <title>Convert WebP to JPEG | Convert WebP to JPEG online</title>
-        <meta name="description" content="Convert WebP to JPEG online, drag and drop or select files to start quickly.">
-  <link rel="canonical" href="https://pdf-converter.tools/EN/webp-sang-jpeg">
+          <title>Convert PNG to JPEG | Convert PNG to JPEG online</title>
+        <meta name="description" content="Convert PNG to JPEG online, drag and drop or select files to start quickly.">
+  <link rel="canonical" href="https://pdf-converter.tools/EN/png-to-jpeg">
   <link rel="stylesheet" href="../css/converter.css">
-      <meta name="keywords" content="Convert WebP to JPEG, WebP to JPEG online, file conversion.">
+      <meta name="keywords" content="Convert PNG to JPEG, PNG to JPEG online, file conversion.">
 </head>
 <body>
   <div class="app">
     <section class="board" id="board" aria-label="Source file list">
-      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Choose or drag WebP files">
+      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Choose or drag PNG files">
         <div class="conversion-flow" aria-hidden="true">
-          <span class="icon" title="WEBP">WEBP</span>
+          <span class="icon" title="PNG">PNG</span>
           <span class="arrow" aria-hidden="true">&rarr;</span>
           <span class="icon" title="JPEG">JPEG</span>
         </div>
-        <strong>Drag WebP here</strong>
+        <strong>Drag PNG here</strong>
         <span>or</span>
         <button type="button" id="chooseBtn">Choose files</button>
-        <div class="muted">Supports WebP files. Export to JPEG quickly.</div>
-        <input type="file" id="fileInput" accept=".webp,image/webp" multiple hidden>
+        <div class="muted">Supports PNG files. Export to JPEG quickly.</div>
+        <input type="file" id="fileInput" accept=".png,image/png" multiple hidden>
       </div>
 
       <div class="selection-bar" id="selectionBar" style="display:none;">
@@ -32,12 +32,12 @@
       </div>
 
       <div class="grid" id="fileGrid"></div>
-      <div class="empty" id="emptyState">No files yet. Drag WebP into the box above to start.</div>
+      <div class="empty" id="emptyState">No files yet. Drag PNG into the box above to start.</div>
     </section>
 
     <aside class="rightpanel" id="panel">
-                  <h1>Convert WebP to JPEG</h1>
-      <p>Convert WebP to JPEG online in seconds, no install required.</p>
+                  <h1>Convert PNG to JPEG</h1>
+      <p>Convert PNG to JPEG online in seconds, no install required.</p>
 
       <div>
         <p style="font-weight:600;margin-bottom:10px;color:#1f2937;">Image quality</p>
@@ -78,21 +78,21 @@
 
   <script>
     window.CONVERTER_CONFIG = {
-  slug: 'webp-sang-jpeg',
+  slug: 'png-to-jpeg',
   input: {
     label: 'file',
     labelPlural: 'files',
     labelWhenUnknown: 'file',
-    mimeTypes: ['image/webp'],
-    extensions: ['webp'],
-    accept: '.webp,image/webp',
-    description: 'Supports WebP files.'
+    mimeTypes: ['image/png'],
+    extensions: ['png'],
+    accept: '.png,image/png',
+    description: 'Supports PNG files.'
   },
   outputs: {
     jpeg: {
       formatlabel: 'file',
       buttonLabel: 'Export JPEG',
-      zipNameBase: 'webp-sang-jpeg',
+      zipNameBase: 'png-to-jpeg',
       mimeType: 'image/jpeg',
       fileExtension: 'jpeg'
     }

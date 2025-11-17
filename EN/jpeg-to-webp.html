@@ -4,11 +4,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-          <title>Convert JPEG to GIF | Convert JPEG to GIF online</title>
-        <meta name="description" content="Convert JPEG to GIF online, drag and drop or select files to start quickly.">
-  <link rel="canonical" href="https://pdf-converter.tools/EN/jpeg-sang-gif">
+          <title>Convert JPEG to WebP | Convert JPEG to WebP online</title>
+        <meta name="description" content="Convert JPEG to WebP online, drag and drop or select files to start quickly.">
+  <link rel="canonical" href="https://pdf-converter.tools/EN/jpeg-to-webp">
   <link rel="stylesheet" href="../css/converter.css">
-      <meta name="keywords" content="Convert JPEG to GIF, JPEG to GIF online, file conversion.">
+      <meta name="keywords" content="Convert JPEG to WebP, JPEG to WebP online, file conversion.">
 </head>
 <body>
   <div class="app">
@@ -17,12 +17,12 @@
         <div class="conversion-flow" aria-hidden="true">
           <span class="icon" title="JPEG">JPEG</span>
           <span class="arrow" aria-hidden="true">&rarr;</span>
-          <span class="icon" title="GIF">GIF</span>
+          <span class="icon" title="WEBP">WEBP</span>
         </div>
         <strong>Drag JPEG here</strong>
         <span>or</span>
         <button type="button" id="chooseBtn">Choose files</button>
-        <div class="muted">Supports JPEG files. Export to GIF quickly.</div>
+        <div class="muted">Supports JPEG files. Export to WebP quickly.</div>
         <input type="file" id="fileInput" accept=".jpeg,.jpg,image/jpeg,image/pjpeg" multiple hidden>
       </div>
 
@@ -36,8 +36,8 @@
     </section>
 
     <aside class="rightpanel" id="panel">
-                  <h1>Convert JPEG to GIF</h1>
-      <p>Convert JPEG to GIF online in seconds, no install required.</p>
+                  <h1>Convert JPEG to WebP</h1>
+      <p>Convert JPEG to WebP online in seconds, no install required.</p>
 
       <div>
         <p style="font-weight:600;margin-bottom:10px;color:#1f2937;">Image quality</p>
@@ -70,7 +70,7 @@
         <span id="progressBar"></span>
       </div>
 
-      <button class="convert" id="convertBtn" type="button" disabled><span>Convert to GIF</span></button>
+      <button class="convert" id="convertBtn" type="button" disabled><span>Convert to WebP</span></button>
     </aside>
 
     <button class="options-toggle" id="optsToggle" type="button">Open conversion options</button>
@@ -78,7 +78,7 @@
 
   <script>
     window.CONVERTER_CONFIG = {
-  slug: 'jpeg-sang-gif',
+  slug: 'jpeg-to-webp',
   input: {
     label: 'file',
     labelPlural: 'files',
@@ -89,23 +89,22 @@
     description: 'Supports JPEG files.'
   },
   outputs: {
-    gif: {
+    webp: {
       formatlabel: 'file',
-      buttonLabel: 'Export GIF',
-      zipNameBase: 'jpeg-sang-gif',
-      mimeType: 'image/gif',
-      fileExtension: 'gif',
+      buttonLabel: 'Export WebP',
+      zipNameBase: 'jpeg-to-webp',
+      mimeType: 'image/webp',
+      fileExtension: 'webp',
       preserveAlpha: true
     }
   },
-  availableOutputs: ['gif'],
-  defaultOutput: 'gif',
+  availableOutputs: ['webp'],
+  defaultOutput: 'webp',
   allowPdfInput: false
 };
   </script>
   <script src="../libs/jszip/jszip.min.js"></script>
   <script src="../libs/filesaver/FileSaver.min.js"></script>
-  <script src="../libs/gifshot/gifshot.min.js"></script>
   <script src="../js/converter.js"></script>
 </body>
 </html>

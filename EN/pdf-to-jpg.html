@@ -4,11 +4,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-          <title>Convert PDF to PNG | Convert PDF to PNG online</title>
-        <meta name="description" content="Convert PDF to PNG online, drag and drop or select files to start quickly.">
-  <link rel="canonical" href="https://pdf-converter.tools/EN/pdf-sang-png">
+          <title>Convert PDF to JPG | Convert PDF to JPG online</title>
+        <meta name="description" content="Convert PDF to JPG online, drag and drop or select files to start quickly.">
+      <meta name="keywords" content="Convert PDF to JPG, PDF to JPG online, file conversion.">
+  <link rel="canonical" href="https://pdf-converter.tools/EN/pdf-to-jpg">
   <link rel="stylesheet" href="../css/converter.css">
-      <meta name="keywords" content="Convert PDF to PNG, PDF to PNG online, file conversion.">
 </head>
 <body>
   <div class="app">
@@ -17,12 +17,12 @@
         <div class="conversion-flow" aria-hidden="true">
           <span class="icon" title="PDF">PDF</span>
           <span class="arrow" aria-hidden="true">&rarr;</span>
-          <span class="icon" title="PNG">PNG</span>
+          <span class="icon" title="JPG">JPG</span>
         </div>
         <strong>Drag PDF here</strong>
         <span>or</span>
         <button type="button" id="chooseBtn">Choose files</button>
-        <div class="muted">Supports PDF files. Export to PNG quickly.</div>
+        <div class="muted">Supports PDF files. Export to JPG quickly.</div>
         <input type="file" id="fileInput" accept=".pdf,application/pdf" multiple hidden>
       </div>
 
@@ -36,8 +36,8 @@
     </section>
 
     <aside class="rightpanel" id="panel">
-                  <h1>Convert PDF to PNG</h1>
-      <p>Convert PDF to PNG online in seconds, no install required.</p>
+                  <h1>Convert PDF to JPG</h1>
+      <p>Convert PDF to JPG online in seconds, no install required.</p>
 
       <div>
         <p style="font-weight:600;margin-bottom:10px;color:#1f2937;">Output quality</p>
@@ -70,7 +70,7 @@
         <span id="progressBar"></span>
       </div>
 
-      <button class="convert" id="convertBtn" type="button" disabled><span>Convert to PNG</span></button>
+      <button class="convert" id="convertBtn" type="button" disabled><span>Convert to JPG</span></button>
     </aside>
 
     <button class="options-toggle" id="optsToggle" type="button">Open conversion options</button>
@@ -78,7 +78,7 @@
 
   <script>
     window.CONVERTER_CONFIG = {
-  slug: 'pdf-sang-png',
+  slug: 'pdf-to-jpg',
   input: {
     label: 'file',
     labelPlural: 'files',
@@ -89,17 +89,16 @@
     description: 'Supports PDF files.'
   },
   outputs: {
-    png: {
+    jpg: {
       formatlabel: 'file',
-      buttonLabel: 'Export PNG',
-      zipNameBase: 'pdf-sang-png',
-      mimeType: 'image/png',
-      fileExtension: 'png',
-      preserveAlpha: true
+      buttonLabel: 'Export JPG',
+      zipNameBase: 'pdf-to-jpg',
+      mimeType: 'image/jpeg',
+      fileExtension: 'jpg'
     }
   },
-  availableOutputs: ['png'],
-  defaultOutput: 'png',
+  availableOutputs: ['jpg'],
+  defaultOutput: 'jpg',
   allowPdfInput: true
 };
   </script>

@@ -4,26 +4,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-          <title>Convert PNG to JPG | Convert PNG to JPG online</title>
-        <meta name="description" content="Convert PNG to JPG online, drag and drop or select files to start quickly.">
-  <link rel="canonical" href="https://pdf-converter.tools/EN/png-sang-jpg">
+          <title>Convert PDF to JPEG | Convert PDF to JPEG online</title>
+        <meta name="description" content="Convert PDF to JPEG online, drag and drop or select files to start quickly.">
+  <link rel="canonical" href="https://pdf-converter.tools/EN/pdf-to-jpeg">
   <link rel="stylesheet" href="../css/converter.css">
-      <meta name="keywords" content="Convert PNG to JPG, PNG to JPG online, file conversion.">
+      <meta name="keywords" content="Convert PDF to JPEG, PDF to JPEG online, file conversion.">
 </head>
 <body>
   <div class="app">
     <section class="board" id="board" aria-label="Source file list">
-      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Choose or drag PNG files">
+      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Choose or drag PDF files">
         <div class="conversion-flow" aria-hidden="true">
-          <span class="icon" title="PNG">PNG</span>
+          <span class="icon" title="PDF">PDF</span>
           <span class="arrow" aria-hidden="true">&rarr;</span>
-          <span class="icon" title="JPG">JPG</span>
+          <span class="icon" title="JPEG">JPEG</span>
         </div>
-        <strong>Drag PNG here</strong>
+        <strong>Drag PDF here</strong>
         <span>or</span>
         <button type="button" id="chooseBtn">Choose files</button>
-        <div class="muted">Supports PNG files. Export to JPG quickly.</div>
-        <input type="file" id="fileInput" accept=".png,image/png" multiple hidden>
+        <div class="muted">Supports PDF files. Export to JPEG quickly.</div>
+        <input type="file" id="fileInput" accept=".pdf,application/pdf" multiple hidden>
       </div>
 
       <div class="selection-bar" id="selectionBar" style="display:none;">
@@ -32,15 +32,15 @@
       </div>
 
       <div class="grid" id="fileGrid"></div>
-      <div class="empty" id="emptyState">No files yet. Drag PNG into the box above to start.</div>
+      <div class="empty" id="emptyState">No files yet. Drag PDF into the box above to start.</div>
     </section>
 
     <aside class="rightpanel" id="panel">
-                  <h1>Convert PNG to JPG</h1>
-      <p>Convert PNG to JPG online in seconds, no install required.</p>
+                  <h1>Convert PDF to JPEG</h1>
+      <p>Convert PDF to JPEG online in seconds, no install required.</p>
 
       <div>
-        <p style="font-weight:600;margin-bottom:10px;color:#1f2937;">Image quality</p>
+        <p style="font-weight:600;margin-bottom:10px;color:#1f2937;">Output quality</p>
         <div class="quality" role="radiogroup">
           <div class="qitem active" tabindex="0" role="radio" data-quality="normal" aria-checked="true">
             <span class="badge">Recommended</span>
@@ -70,7 +70,7 @@
         <span id="progressBar"></span>
       </div>
 
-      <button class="convert" id="convertBtn" type="button" disabled><span>Convert to JPG</span></button>
+      <button class="convert" id="convertBtn" type="button" disabled><span>Convert to JPEG</span></button>
     </aside>
 
     <button class="options-toggle" id="optsToggle" type="button">Open conversion options</button>
@@ -78,30 +78,31 @@
 
   <script>
     window.CONVERTER_CONFIG = {
-  slug: 'png-sang-jpg',
+  slug: 'pdf-to-jpeg',
   input: {
     label: 'file',
     labelPlural: 'files',
     labelWhenUnknown: 'file',
-    mimeTypes: ['image/png'],
-    extensions: ['png'],
-    accept: '.png,image/png',
-    description: 'Supports PNG files.'
+    mimeTypes: ['application/pdf'],
+    extensions: ['pdf'],
+    accept: '.pdf,application/pdf',
+    description: 'Supports PDF files.'
   },
   outputs: {
-    jpg: {
+    jpeg: {
       formatlabel: 'file',
-      buttonLabel: 'Export JPG',
-      zipNameBase: 'png-sang-jpg',
+      buttonLabel: 'Export JPEG',
+      zipNameBase: 'pdf-to-jpeg',
       mimeType: 'image/jpeg',
-      fileExtension: 'jpg'
+      fileExtension: 'jpeg'
     }
   },
-  availableOutputs: ['jpg'],
-  defaultOutput: 'jpg',
-  allowPdfInput: false
+  availableOutputs: ['jpeg'],
+  defaultOutput: 'jpeg',
+  allowPdfInput: true
 };
   </script>
+  <script src="../libs/pdfjs/pdf.min.js"></script>
   <script src="../libs/jszip/jszip.min.js"></script>
   <script src="../libs/filesaver/FileSaver.min.js"></script>
   <script src="../js/converter.js"></script>

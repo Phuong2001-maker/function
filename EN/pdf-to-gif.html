@@ -4,26 +4,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-          <title>Convert GIF to JPEG | Convert GIF to JPEG online</title>
-        <meta name="description" content="Convert GIF to JPEG online, drag and drop or select files to start quickly.">
-  <link rel="canonical" href="https://pdf-converter.tools/EN/gif-sang-jpeg">
+          <title>Convert PDF to GIF | Convert PDF to GIF online</title>
+        <meta name="description" content="Convert PDF to GIF online, drag and drop or select files to start quickly.">
+  <link rel="canonical" href="https://pdf-converter.tools/EN/pdf-to-gif">
   <link rel="stylesheet" href="../css/converter.css">
-      <meta name="keywords" content="Convert GIF to JPEG, GIF to JPEG online, file conversion.">
+      <meta name="keywords" content="Convert PDF to GIF, PDF to GIF online, file conversion.">
 </head>
 <body>
   <div class="app">
     <section class="board" id="board" aria-label="Source file list">
-      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Choose or drag GIF files">
+      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Choose or drag PDF files">
         <div class="conversion-flow" aria-hidden="true">
-          <span class="icon" title="GIF">GIF</span>
+          <span class="icon" title="PDF">PDF</span>
           <span class="arrow" aria-hidden="true">&rarr;</span>
-          <span class="icon" title="JPEG">JPEG</span>
+          <span class="icon" title="GIF">GIF</span>
         </div>
-        <strong>Drag GIF here</strong>
+        <strong>Drag PDF here</strong>
         <span>or</span>
         <button type="button" id="chooseBtn">Choose files</button>
-        <div class="muted">Supports GIF files. Export to JPEG quickly.</div>
-        <input type="file" id="fileInput" accept=".gif,image/gif" multiple hidden>
+        <div class="muted">Supports PDF files. Export to GIF quickly.</div>
+        <input type="file" id="fileInput" accept=".pdf,application/pdf" multiple hidden>
       </div>
 
       <div class="selection-bar" id="selectionBar" style="display:none;">
@@ -32,15 +32,15 @@
       </div>
 
       <div class="grid" id="fileGrid"></div>
-      <div class="empty" id="emptyState">No files yet. Drag GIF into the box above to start.</div>
+      <div class="empty" id="emptyState">No files yet. Drag PDF into the box above to start.</div>
     </section>
 
     <aside class="rightpanel" id="panel">
-                  <h1>Convert GIF to JPEG</h1>
-      <p>Convert GIF to JPEG online in seconds, no install required.</p>
+                  <h1>Convert PDF to GIF</h1>
+      <p>Convert PDF to GIF online in seconds, no install required.</p>
 
       <div>
-        <p style="font-weight:600;margin-bottom:10px;color:#1f2937;">Image quality</p>
+        <p style="font-weight:600;margin-bottom:10px;color:#1f2937;">Output quality</p>
         <div class="quality" role="radiogroup">
           <div class="qitem active" tabindex="0" role="radio" data-quality="normal" aria-checked="true">
             <span class="badge">Recommended</span>
@@ -70,7 +70,7 @@
         <span id="progressBar"></span>
       </div>
 
-      <button class="convert" id="convertBtn" type="button" disabled><span>Convert to JPEG</span></button>
+      <button class="convert" id="convertBtn" type="button" disabled><span>Convert to GIF</span></button>
     </aside>
 
     <button class="options-toggle" id="optsToggle" type="button">Open conversion options</button>
@@ -78,32 +78,35 @@
 
   <script>
     window.CONVERTER_CONFIG = {
-  slug: 'gif-sang-jpeg',
+  slug: 'pdf-to-gif',
   input: {
     label: 'file',
     labelPlural: 'files',
     labelWhenUnknown: 'file',
-    mimeTypes: ['image/gif'],
-    extensions: ['gif'],
-    accept: '.gif,image/gif',
-    description: 'Supports GIF files.'
+    mimeTypes: ['application/pdf'],
+    extensions: ['pdf'],
+    accept: '.pdf,application/pdf',
+    description: 'Supports PDF files.'
   },
   outputs: {
-    jpeg: {
+    gif: {
       formatlabel: 'file',
-      buttonLabel: 'Export JPEG',
-      zipNameBase: 'gif-sang-jpeg',
-      mimeType: 'image/jpeg',
-      fileExtension: 'jpeg'
+      buttonLabel: 'Export GIF',
+      zipNameBase: 'pdf-to-gif',
+      mimeType: 'image/gif',
+      fileExtension: 'gif',
+      preserveAlpha: true
     }
   },
-  availableOutputs: ['jpeg'],
-  defaultOutput: 'jpeg',
-  allowPdfInput: false
+  availableOutputs: ['gif'],
+  defaultOutput: 'gif',
+  allowPdfInput: true
 };
   </script>
+  <script src="../libs/pdfjs/pdf.min.js"></script>
   <script src="../libs/jszip/jszip.min.js"></script>
   <script src="../libs/filesaver/FileSaver.min.js"></script>
+  <script src="../libs/gifshot/gifshot.min.js"></script>
   <script src="../js/converter.js"></script>
 </body>
 </html>

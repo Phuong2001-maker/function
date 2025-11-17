@@ -4,26 +4,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-          <title>Convert GIF to PNG | Convert GIF to PNG online</title>
-        <meta name="description" content="Convert GIF to PNG online, drag and drop or select files to start quickly.">
-  <link rel="canonical" href="https://pdf-converter.tools/EN/gif-sang-png">
+          <title>Convert PNG to WebP | Convert PNG to WebP online</title>
+        <meta name="description" content="Convert PNG to WebP online, drag and drop or select files to start quickly.">
+  <link rel="canonical" href="https://pdf-converter.tools/EN/png-to-webp">
   <link rel="stylesheet" href="../css/converter.css">
-      <meta name="keywords" content="Convert GIF to PNG, GIF to PNG online, file conversion.">
+      <meta name="keywords" content="Convert PNG to WebP, PNG to WebP online, file conversion.">
 </head>
 <body>
   <div class="app">
     <section class="board" id="board" aria-label="Source file list">
-      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Choose or drag GIF files">
+      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Choose or drag PNG files">
         <div class="conversion-flow" aria-hidden="true">
-          <span class="icon" title="GIF">GIF</span>
-          <span class="arrow" aria-hidden="true">&rarr;</span>
           <span class="icon" title="PNG">PNG</span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
+          <span class="icon" title="WEBP">WEBP</span>
         </div>
-        <strong>Drag GIF here</strong>
+        <strong>Drag PNG here</strong>
         <span>or</span>
         <button type="button" id="chooseBtn">Choose files</button>
-        <div class="muted">Supports GIF files. Export to PNG quickly.</div>
-        <input type="file" id="fileInput" accept=".gif,image/gif" multiple hidden>
+        <div class="muted">Supports PNG files. Export to WebP quickly.</div>
+        <input type="file" id="fileInput" accept=".png,image/png" multiple hidden>
       </div>
 
       <div class="selection-bar" id="selectionBar" style="display:none;">
@@ -32,12 +32,12 @@
       </div>
 
       <div class="grid" id="fileGrid"></div>
-      <div class="empty" id="emptyState">No files yet. Drag GIF into the box above to start.</div>
+      <div class="empty" id="emptyState">No files yet. Drag PNG into the box above to start.</div>
     </section>
 
     <aside class="rightpanel" id="panel">
-                  <h1>Convert GIF to PNG</h1>
-      <p>Convert GIF to PNG online in seconds, no install required.</p>
+                  <h1>Convert PNG to WebP</h1>
+      <p>Convert PNG to WebP online in seconds, no install required.</p>
 
       <div>
         <p style="font-weight:600;margin-bottom:10px;color:#1f2937;">Image quality</p>
@@ -70,7 +70,7 @@
         <span id="progressBar"></span>
       </div>
 
-      <button class="convert" id="convertBtn" type="button" disabled><span>Convert to PNG</span></button>
+      <button class="convert" id="convertBtn" type="button" disabled><span>Convert to WebP</span></button>
     </aside>
 
     <button class="options-toggle" id="optsToggle" type="button">Open conversion options</button>
@@ -78,28 +78,28 @@
 
   <script>
     window.CONVERTER_CONFIG = {
-  slug: 'gif-sang-png',
+  slug: 'png-to-webp',
   input: {
     label: 'file',
     labelPlural: 'files',
     labelWhenUnknown: 'file',
-    mimeTypes: ['image/gif'],
-    extensions: ['gif'],
-    accept: '.gif,image/gif',
-    description: 'Supports GIF files.'
+    mimeTypes: ['image/png'],
+    extensions: ['png'],
+    accept: '.png,image/png',
+    description: 'Supports PNG files.'
   },
   outputs: {
-    png: {
+    webp: {
       formatlabel: 'file',
-      buttonLabel: 'Export PNG',
-      zipNameBase: 'gif-sang-png',
-      mimeType: 'image/png',
-      fileExtension: 'png',
+      buttonLabel: 'Export WebP',
+      zipNameBase: 'png-to-webp',
+      mimeType: 'image/webp',
+      fileExtension: 'webp',
       preserveAlpha: true
     }
   },
-  availableOutputs: ['png'],
-  defaultOutput: 'png',
+  availableOutputs: ['webp'],
+  defaultOutput: 'webp',
   allowPdfInput: false
 };
   </script>
