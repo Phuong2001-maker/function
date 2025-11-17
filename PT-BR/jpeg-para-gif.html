@@ -1,0 +1,119 @@
+﻿
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>Converter JPEG para GIF | Converter JPEG para GIF online</title>
+        <meta name="description" content="Converta JPEG para GIF online; arraste e solte ou selecione arquivos para começar rápido.">
+  <link rel="canonical" href="https://pdf-converter.tools/PT-BR/jpeg-para-gif">
+  <link rel="stylesheet" href="../css/converter.css">
+      <meta name="keywords" content="Converter JPEG para GIF, JPEG para GIF online, conversão de arquivos.">
+</head>
+<body>
+  <div class="app">
+    <section class="board" id="board" aria-label="Source file list">
+      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Escolha ou arraste arquivos JPEG">
+        <div class="conversion-flow" aria-hidden="true">
+          <span class="icon" title="JPEG">JPEG</span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
+          <span class="icon" title="GIF">GIF</span>
+        </div>
+        <strong>Arraste JPEG aqui</strong>
+        <span>ou</span>
+        <button type="button" id="chooseBtn">Escolher arquivos</button>
+        <div class="muted">Suporta arquivos JPEG. Exporte para GIF rapidamente.</div>
+        <input type="file" id="fileInput" accept=".jpeg,.jpg,image/jpeg,image/pjpeg" multiple hidden>
+      </div>
+
+      <div class="selection-bar" id="selectionBar" style="display:none;">
+        <div><strong id="selectionCount">0 arquivos</strong> <span id="pageCount">0 imagens</span></div>
+        <button class="clear-btn" id="clearAll" type="button">Limpar tudo</button>
+      </div>
+
+      <div class="grid" id="fileGrid"></div>
+      <div class="empty" id="emptyState">Nenhum arquivo ainda. Arraste JPEG para a caixa acima para começar.</div>
+    </section>
+
+    <aside class="rightpanel" id="panel">
+                  <h1>Converter JPEG para GIF</h1>
+      <p>Converta JPEG para GIF online em segundos, sem instalar nada.</p>
+
+      <div>
+        <p style="font-weight:600;margin-bottom:10px;color:#1f2937;">Qualidade da imagem</p>
+        <div class="quality" role="radiogroup">
+          <div class="qitem active" tabindex="0" role="radio" data-quality="normal" aria-checked="true">
+            <span class="badge">RECOMENDADO</span>
+            <strong>Normal</strong>
+            <small>150 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="high" aria-checked="false">
+            <span class="badge">DETALHADO</span>
+            <strong>Alta</strong>
+            <small>220 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="ultra" aria-checked="false">
+            <span class="badge">MÁX DPI</span>
+            <strong>Ultra</strong>
+            <small>600 DPI</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="output-format" role="group" aria-label="Formato de saída">
+        <div class="options" id="formatOptions" aria-hidden="true" style="display:none;"></div>
+      </div>
+
+      <div class="status" id="statusMessage" role="status" aria-live="polite"></div>
+
+      <div class="progress" id="progressWrap" aria-hidden="true">
+        <span id="progressBar"></span>
+      </div>
+
+      <button class="convert" id="convertBtn" type="button" disabled><span>Converter para GIF</span></button>
+    </aside>
+
+    <button class="options-toggle" id="optsToggle" type="button">Abrir opções de conversão</button>
+  </div>
+
+  <script>
+    window.CONVERTER_CONFIG = {
+  slug: 'jpeg-para-gif',
+  input: {
+    label: 'arquivo',
+    labelPlural: 'arquivos',
+    labelWhenUnknown: 'arquivo',
+    mimeTypes: ['image/jpeg','image/pjpeg'],
+    extensions: ['jpeg','jpg'],
+    accept: '.jpeg,.jpg,image/jpeg,image/pjpeg',
+    description: 'Suporta arquivos JPEG. Exporte para GIF rapidamente.'
+  },
+  outputs: {
+    gif: {
+      formatlabel: 'arquivo',
+      buttonLabel: 'Exportar GIF',
+      zipNameBase: 'jpeg-para-gif',
+      mimeType: 'image/gif',
+      fileExtension: 'gif',
+      preserveAlpha: true
+    }
+  },
+  availableOutputs: ['gif'],
+  defaultOutput: 'gif',
+  allowPdfInput: false
+};
+  </script>
+  <script src="../libs/jszip/jszip.min.js"></script>
+  <script src="../libs/filesaver/FileSaver.min.js"></script>
+  <script src="../libs/gifshot/gifshot.min.js"></script>
+  <script src="../js/converter.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+

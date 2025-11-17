@@ -1,0 +1,117 @@
+﻿
+<!doctype html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>تحويل PNG إلى JPEG | تحويل PNG إلى JPEG أونلاين</title>
+        <meta name="description" content="حوّل PNG إلى JPEG أونلاين؛ اسحب وافلت أو اختر الملفات للبدء سريعًا.">
+  <link rel="canonical" href="https://pdf-converter.tools/AR/png-ila-jpeg">
+  <link rel="stylesheet" href="../css/converter.css">
+      <meta name="keywords" content="تحويل PNG إلى JPEG, PNG إلى JPEG أونلاين, تحويل ملفات">
+</head>
+<body>
+  <div class="app">
+    <section class="board" id="board" aria-label="Source file list">
+      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="اختر أو اسحب ملفات PNG">
+        <div class="conversion-flow" aria-hidden="true">
+          <span class="icon" title="PNG">PNG</span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
+          <span class="icon" title="JPEG">JPEG</span>
+        </div>
+        <strong>اسحب PNG هنا</strong>
+        <span>أو</span>
+        <button type="button" id="chooseBtn">اختر الملفات</button>
+        <div class="muted">يدعم ملفات PNG. صدّر إلى JPEG بسرعة.</div>
+        <input type="file" id="fileInput" accept=".png,image/png" multiple hidden>
+      </div>
+
+      <div class="selection-bar" id="selectionBar" style="display:none;">
+        <div><strong id="selectionCount">0 ملفات</strong> <span id="pageCount">0 صور</span></div>
+        <button class="clear-btn" id="clearAll" type="button">مسح الكل</button>
+      </div>
+
+      <div class="grid" id="fileGrid"></div>
+      <div class="empty" id="emptyState">لا توجد ملفات بعد. اسحب PNG إلى الصندوق أعلاه للبدء.</div>
+    </section>
+
+    <aside class="rightpanel" id="panel">
+                  <h1>تحويل PNG إلى JPEG</h1>
+      <p>حوّل PNG إلى JPEG أونلاين في ثوانٍ بدون تثبيت.</p>
+
+      <div>
+        <p style="font-weight:600;margin-bottom:10px;color:#1f2937;">جودة الصورة</p>
+        <div class="quality" role="radiogroup">
+          <div class="qitem active" tabindex="0" role="radio" data-quality="normal" aria-checked="true">
+            <span class="badge">موصى به</span>
+            <strong>عادي</strong>
+            <small>150 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="high" aria-checked="false">
+            <span class="badge">تفصيلي</span>
+            <strong>عالية</strong>
+            <small>220 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="ultra" aria-checked="false">
+            <span class="badge">أعلى DPI</span>
+            <strong>فائقة</strong>
+            <small>600 DPI</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="output-format" role="group" aria-label="صيغة الإخراج">
+        <div class="options" id="formatOptions" aria-hidden="true" style="display:none;"></div>
+      </div>
+
+      <div class="status" id="statusMessage" role="status" aria-live="polite"></div>
+
+      <div class="progress" id="progressWrap" aria-hidden="true">
+        <span id="progressBar"></span>
+      </div>
+
+      <button class="convert" id="convertBtn" type="button" disabled><span>تحويل إلى JPEG</span></button>
+    </aside>
+
+    <button class="options-toggle" id="optsToggle" type="button">فتح خيارات التحويل</button>
+  </div>
+
+  <script>
+    window.CONVERTER_CONFIG = {
+  slug: 'png-ila-jpeg',
+  input: {
+    label: 'ملف',
+    labelPlural: 'ملفات',
+    labelWhenUnknown: 'ملف',
+    mimeTypes: ['image/png'],
+    extensions: ['png'],
+    accept: '.png,image/png',
+    description: 'يدعم ملفات PNG. صدّر إلى JPEG بسرعة.'
+  },
+  outputs: {
+    jpeg: {
+      formatlabel: 'ملف',
+      buttonLabel: 'تصدير JPEG',
+      zipNameBase: 'png-ila-jpeg',
+      mimeType: 'image/jpeg',
+      fileExtension: 'jpeg'
+    }
+  },
+  availableOutputs: ['jpeg'],
+  defaultOutput: 'jpeg',
+  allowPdfInput: false
+};
+  </script>
+  <script src="../libs/jszip/jszip.min.js"></script>
+  <script src="../libs/filesaver/FileSaver.min.js"></script>
+  <script src="../js/converter.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,118 @@
+﻿
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>Converter PDF para JPEG | Converter PDF para JPEG online</title>
+        <meta name="description" content="Converta PDF para JPEG online; arraste e solte ou selecione arquivos para começar rápido.">
+  <link rel="canonical" href="https://pdf-converter.tools/PT-BR/pdf-para-jpeg">
+  <link rel="stylesheet" href="../css/converter.css">
+      <meta name="keywords" content="Converter PDF para JPEG, PDF para JPEG online, conversão de arquivos.">
+</head>
+<body>
+  <div class="app">
+    <section class="board" id="board" aria-label="Source file list">
+      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Escolha ou arraste arquivos PDF">
+        <div class="conversion-flow" aria-hidden="true">
+          <span class="icon" title="PDF">PDF</span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
+          <span class="icon" title="JPEG">JPEG</span>
+        </div>
+        <strong>Arraste PDF aqui</strong>
+        <span>ou</span>
+        <button type="button" id="chooseBtn">Escolher arquivos</button>
+        <div class="muted">Suporta arquivos PDF. Exporte para JPEG rapidamente.</div>
+        <input type="file" id="fileInput" accept=".pdf,application/pdf" multiple hidden>
+      </div>
+
+      <div class="selection-bar" id="selectionBar" style="display:none;">
+        <div><strong id="selectionCount">0 arquivos</strong> <span id="pageCount">0 imagens</span></div>
+        <button class="clear-btn" id="clearAll" type="button">Limpar tudo</button>
+      </div>
+
+      <div class="grid" id="fileGrid"></div>
+      <div class="empty" id="emptyState">Nenhum arquivo ainda. Arraste PDF para a caixa acima para começar.</div>
+    </section>
+
+    <aside class="rightpanel" id="panel">
+                  <h1>Converter PDF para JPEG</h1>
+      <p>Converta PDF para JPEG online em segundos, sem instalar nada.</p>
+
+      <div>
+        <p style="font-weight:600;margin-bottom:10px;color:#1f2937;">Qualidade de saída</p>
+        <div class="quality" role="radiogroup">
+          <div class="qitem active" tabindex="0" role="radio" data-quality="normal" aria-checked="true">
+            <span class="badge">RECOMENDADO</span>
+            <strong>Normal</strong>
+            <small>150 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="high" aria-checked="false">
+            <span class="badge">DETALHADO</span>
+            <strong>Alta</strong>
+            <small>220 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="ultra" aria-checked="false">
+            <span class="badge">MÁX DPI</span>
+            <strong>Ultra</strong>
+            <small>600 DPI</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="output-format" role="group" aria-label="Formato de saída">
+        <div class="options" id="formatOptions" aria-hidden="true" style="display:none;"></div>
+      </div>
+
+      <div class="status" id="statusMessage" role="status" aria-live="polite"></div>
+
+      <div class="progress" id="progressWrap" aria-hidden="true">
+        <span id="progressBar"></span>
+      </div>
+
+      <button class="convert" id="convertBtn" type="button" disabled><span>Converter para JPEG</span></button>
+    </aside>
+
+    <button class="options-toggle" id="optsToggle" type="button">Abrir opções de conversão</button>
+  </div>
+
+  <script>
+    window.CONVERTER_CONFIG = {
+  slug: 'pdf-para-jpeg',
+  input: {
+    label: 'arquivo',
+    labelPlural: 'arquivos',
+    labelWhenUnknown: 'arquivo',
+    mimeTypes: ['application/pdf'],
+    extensions: ['pdf'],
+    accept: '.pdf,application/pdf',
+    description: 'Suporta arquivos PDF. Exporte para JPEG rapidamente.'
+  },
+  outputs: {
+    jpeg: {
+      formatlabel: 'arquivo',
+      buttonLabel: 'Exportar JPEG',
+      zipNameBase: 'pdf-para-jpeg',
+      mimeType: 'image/jpeg',
+      fileExtension: 'jpeg'
+    }
+  },
+  availableOutputs: ['jpeg'],
+  defaultOutput: 'jpeg',
+  allowPdfInput: true
+};
+  </script>
+  <script src="../libs/pdfjs/pdf.min.js"></script>
+  <script src="../libs/jszip/jszip.min.js"></script>
+  <script src="../libs/filesaver/FileSaver.min.js"></script>
+  <script src="../js/converter.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
