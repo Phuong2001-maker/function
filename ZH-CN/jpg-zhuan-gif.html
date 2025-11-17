@@ -1,0 +1,119 @@
+﻿
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>将 JPG 转换为 GIF | 在线将 JPG 转换为 GIF</title>
+        <meta name="description" content="在线将 JPG 转换为 GIF，拖放或选择文件即可快速开始。">
+  <link rel="canonical" href="https://pdf-converter.tools/ZH-CN/jpg-zhuan-gif">
+  <link rel="stylesheet" href="../css/converter.css">
+      <meta name="keywords" content="JPG 转 GIF, 在线 JPG 转 GIF, 文件转换">
+</head>
+<body>
+  <div class="app">
+    <section class="board" id="board" aria-label="Source file list">
+      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="选择或拖拽 JPG 文件">
+        <div class="conversion-flow" aria-hidden="true">
+          <span class="icon" title="JPG">JPG</span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
+          <span class="icon" title="GIF">GIF</span>
+        </div>
+        <strong>将 JPG 拖到这里</strong>
+        <span>或</span>
+        <button type="button" id="chooseBtn">选择文件</button>
+        <div class="muted">支持 JPG 文件。快速导出为 GIF。</div>
+        <input type="file" id="fileInput" accept=".jpg,.jpeg,image/jpeg,image/pjpeg" multiple hidden>
+      </div>
+
+      <div class="selection-bar" id="selectionBar" style="display:none;">
+        <div><strong id="selectionCount">0 文件</strong> <span id="pageCount">0 图片</span></div>
+        <button class="clear-btn" id="clearAll" type="button">清空全部</button>
+      </div>
+
+      <div class="grid" id="fileGrid"></div>
+      <div class="empty" id="emptyState">暂无文件。将 JPG 拖到上面的框中开始。</div>
+    </section>
+
+    <aside class="rightpanel" id="panel">
+                  <h1>将 JPG 转换为 GIF</h1>
+      <p>在线将 JPG 转换为 GIF，无需安装，数秒完成。</p>
+
+      <div>
+        <p style="font-weight:600;margin-bottom:10px;color:#1f2937;">图像质量</p>
+        <div class="quality" role="radiogroup">
+          <div class="qitem active" tabindex="0" role="radio" data-quality="normal" aria-checked="true">
+            <span class="badge">推荐</span>
+            <strong>标准</strong>
+            <small>150 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="high" aria-checked="false">
+            <span class="badge">精细</span>
+            <strong>高</strong>
+            <small>220 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="ultra" aria-checked="false">
+            <span class="badge">最高 DPI</span>
+            <strong>超清</strong>
+            <small>600 DPI</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="output-format" role="group" aria-label="输出格式">
+        <div class="options" id="formatOptions" aria-hidden="true" style="display:none;"></div>
+      </div>
+
+      <div class="status" id="statusMessage" role="status" aria-live="polite"></div>
+
+      <div class="progress" id="progressWrap" aria-hidden="true">
+        <span id="progressBar"></span>
+      </div>
+
+      <button class="convert" id="convertBtn" type="button" disabled><span>转换为 GIF</span></button>
+    </aside>
+
+    <button class="options-toggle" id="optsToggle" type="button">打开转换选项</button>
+  </div>
+
+  <script>
+    window.CONVERTER_CONFIG = {
+  slug: 'jpg-zhuan-gif',
+  input: {
+    label: '文件',
+    labelPlural: '文件',
+    labelWhenUnknown: '文件',
+    mimeTypes: ['image/jpeg','image/pjpeg'],
+    extensions: ['jpg','jpeg'],
+    accept: '.jpg,.jpeg,image/jpeg,image/pjpeg',
+    description: '支持 JPG 文件.快速导出为 GIF.'
+  },
+  outputs: {
+    gif: {
+      formatlabel: '文件',
+      buttonLabel: '导出 GIF',
+      zipNameBase: 'jpg-zhuan-gif',
+      mimeType: 'image/gif',
+      fileExtension: 'gif',
+      preserveAlpha: true
+    }
+  },
+  availableOutputs: ['gif'],
+  defaultOutput: 'gif',
+  allowPdfInput: false
+};
+  </script>
+  <script src="../libs/jszip/jszip.min.js"></script>
+  <script src="../libs/filesaver/FileSaver.min.js"></script>
+  <script src="../libs/gifshot/gifshot.min.js"></script>
+  <script src="../js/converter.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
