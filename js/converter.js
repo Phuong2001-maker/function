@@ -134,9 +134,9 @@
 
   const i18n = config.i18n || {};
   const qualityMessages = {
-    normal: i18n.qualityMessages?.normal || 'Chế độ bình thường (150 DPI) cân bằng giữa chất lượng và dung lượng.',
-    high:   i18n.qualityMessages?.high   || 'Chế độ cao (220 DPI) cho ảnh rõ hơn nhưng dung lượng lớn hơn.',
-    ultra:  i18n.qualityMessages?.ultra  || 'Chế độ siêu nét (600 DPI) tiêu tốn nhiều tài nguyên, chỉ nên chọn khi cần.'
+    normal: i18n.qualityMessages?.normal || 'Normal mode (150 DPI) balances quality and size.',
+    high:   i18n.qualityMessages?.high   || 'High mode (220 DPI) is clearer but produces larger files.',
+    ultra:  i18n.qualityMessages?.ultra  || 'Ultra mode (600 DPI) takes longer; use it only when needed.'
   };
 
   function updateStatus(text = '', tone = 'info') {
@@ -150,8 +150,8 @@
     }
   }
 
-  const DOWNLOAD_HINT_BROWSER = 'Kiểm tra thư mục Tải xuống của trình duyệt để mở tệp.';
-  const DOWNLOAD_HINT_FOLDER = 'Kiểm tra thư mục bạn chọn để mở tệp.';
+  const DOWNLOAD_HINT_BROWSER = 'Check your browser downloads folder to open the file.';
+  const DOWNLOAD_HINT_FOLDER = 'Check the folder you selected to open the files.';
 
   function describeDownloadedTargets(names = []) {
     const cleaned = (names || [])
@@ -160,15 +160,15 @@
       .filter(Boolean);
     if (!cleaned.length) return '';
     const quoted = cleaned.map(name => `"${name}"`);
-    if (quoted.length === 1) return `Tệp ${quoted[0]}`;
-    if (quoted.length === 2) return `Các tệp ${quoted[0]} và ${quoted[1]}`;
-    if (quoted.length === 3) return `Các tệp ${quoted[0]}, ${quoted[1]} và ${quoted[2]}`;
-    return `Các tệp ${quoted[0]}, ${quoted[1]} và ${quoted.length - 2} tệp khác`;
+    if (quoted.length === 1) return `File ${quoted[0]}`;
+    if (quoted.length === 2) return `Files ${quoted[0]} and ${quoted[1]}`;
+    if (quoted.length === 3) return `Files ${quoted[0]}, ${quoted[1]} and ${quoted[2]}`;
+    return `Files ${quoted[0]}, ${quoted[1]} and ${quoted.length - 2} more`;
   }
 
   function buildDownloadAnnouncement(detail, hint) {
     const trimmed = detail ? detail.toString().trim().replace(/\.*$/, '') : '';
-    const baseSentence = trimmed ? `Hoàn tất. ${trimmed}.` : 'Hoàn tất.';
+    const baseSentence = trimmed ? `Done. ${trimmed}.` : 'Done.';
     return hint ? `${baseSentence} ${hint}` : baseSentence;
   }
 
@@ -457,14 +457,14 @@
     dropzone.addEventListener('drop', (e) => {
       e.preventDefault(); dropzone.classList.remove('dragover');
       const files = Array.from(e.dataTransfer?.files || []).filter(f => (config.allowPdfInput && isPdfFile(f)) || isImageFile(f));
-      if (files.length) handleFiles(files); else updateStatus(imageConfig.description || 'Vui lòng chọn đúng loại tệp được hỗ trợ.', 'warn');
+      if (files.length) handleFiles(files); else updateStatus(imageConfig.description || 'Please choose supported file types.', 'warn');
     });
 
     fileInput.addEventListener('change', () => { const files = Array.from(fileInput.files || []); handleFiles(files); fileInput.value = ''; });
 
-    document.querySelector('#clearAll')?.addEventListener('click', () => { state.files.forEach(cleanupEntry); state.files = []; renderGrid(); updateStatus('Đã xóa danh sách tệp.', 'info'); });
+    document.querySelector('#clearAll')?.addEventListener('click', () => { state.files.forEach(cleanupEntry); state.files = []; renderGrid(); updateStatus('File list cleared.', 'info'); });
 
-    grid.addEventListener('click', (e) => { const btn = e.target.closest('[data-remove]'); if (!btn) return; const id = btn.getAttribute('data-remove'); const entry = state.files.find(f => f.id === id); if (entry) cleanupEntry(entry); state.files = state.files.filter(f => f.id !== id); renderGrid(); updateStatus('Đã loại bỏ tệp khỏi danh sách.', 'info'); });
+    grid.addEventListener('click', (e) => { const btn = e.target.closest('[data-remove]'); if (!btn) return; const id = btn.getAttribute('data-remove'); const entry = state.files.find(f => f.id === id); if (entry) cleanupEntry(entry); state.files = state.files.filter(f => f.id !== id); renderGrid(); updateStatus('Removed the file from the list.', 'info'); });
 
     document.querySelectorAll('.qitem').forEach(item => {
       item.addEventListener('click', () => setQuality(item.dataset.quality));
@@ -499,7 +499,7 @@
 
   async function handleFiles(files) {
     if (!files.length) return;
-    updateStatus('Đang tải và tạo xem trước…', 'info');
+    updateStatus('Loading files and generating previews…', 'info');
     let added = 0; const skippedPdf = []; const unsupported = [];
     for (const file of files) {
       const pdfCandidate = config.allowPdfInput && isPdfFile(file);
@@ -509,17 +509,17 @@
       const id = Math.random().toString(36).slice(2, 9);
       const entry = { id, type: pdfCandidate ? 'pdf' : 'image', file, name: file.name, pdf: null, pages: pdfCandidate ? 0 : 1, thumb: null, revokeThumb: null, imageInfo: null };
       state.files.push(entry);
-      try { if (pdfCandidate) await loadPdfPreview(entry); else await loadImagePreview(entry); added++; } catch (err) { console.error('Không thể xử lý tệp để tạo xem trước.', err); cleanupEntry(entry); state.files = state.files.filter(f => f.id !== id); updateStatus(`Không thể xử lý tệp ${file.name}.`, 'error'); }
+      try { if (pdfCandidate) await loadPdfPreview(entry); else await loadImagePreview(entry); added++; } catch (err) { console.error('Cannot process file for preview.', err); cleanupEntry(entry); state.files = state.files.filter(f => f.id !== id); updateStatus(`Could not process file ${file.name}.`, 'error'); }
     }
     renderGrid();
     if (added) {
       const notes = [];
-      if (skippedPdf.length) notes.push(`Bỏ qua ${skippedPdf.length} tệp PDF do thiếu thư viện đọc PDF.`);
-      if (unsupported.length) notes.push(`Bỏ qua ${unsupported.length} tệp không đúng định dạng.`);
-      const outputDetails = config.outputs[state.outputFormat] || {}; const actionLabel = outputDetails.buttonLabel || 'Bắt đầu chuyển đổi';
-      updateStatus([`Tệp đã sẵn sàng, bấm "${actionLabel}".`, ...notes].join(' '), notes.length ? 'warn' : 'success');
+      if (skippedPdf.length) notes.push(`Skipped ${skippedPdf.length} PDF files because the PDF reader library is missing.`);
+      if (unsupported.length) notes.push(`Skipped ${unsupported.length} unsupported files.`);
+      const outputDetails = config.outputs[state.outputFormat] || {}; const actionLabel = outputDetails.buttonLabel || 'Start converting';
+      updateStatus([`Files are ready, click "${actionLabel}".`, ...notes].join(' '), notes.length ? 'warn' : 'success');
     } else if (skippedPdf.length) {
-      updateStatus('Không thể thêm tệp PDF vì thiếu thư viện đọc PDF.', 'error');
+      updateStatus('Cannot add PDF because the PDF reader library is missing.', 'error');
     } else if (unsupported.length) {
       const previewCount = 3;
       const rawPreview = unsupported.slice(0, previewCount);
@@ -531,22 +531,22 @@
       const extraCount = unsupported.length - previewNames.length;
       const extraText = extraCount > 0 ? ` và ${extraCount} tệp khác` : '';
       const detailSegment = unsupported.length === 1
-        ? `tệp ${formattedNames}`
-        : `${unsupported.length} tệp (${formattedNames}${extraText})`;
-      const reason = imageConfig.description || 'Vui lòng chọn ảnh đúng định dạng được hỗ trợ.';
-      const message = `Không thể thêm ${detailSegment} vì định dạng không được hỗ trợ. ${reason}`;
+        ? `file ${formattedNames}`
+        : `${unsupported.length} files (${formattedNames}${extraText})`;
+      const reason = imageConfig.description || 'Please choose valid image formats.';
+      const message = `Could not add ${detailSegment} because the format is unsupported. ${reason}`;
       updateStatus(message, 'warn');
       showFloatingAlert(message, 'warn', 5000);
     } else {
-      updateStatus('Không có tệp hợp lệ nào được thêm vào.', 'info');
+      updateStatus('No valid files were added.', 'info');
     }
   }
 
   function createLongTaskTimers(quality = 'normal', tone = 'info') {
     const messages = {
-      normal: { after15: 'Đang xử lý các tệp lớn, vui lòng chờ thêm một chút.', after45: 'Nếu quá lâu, hãy chia nhỏ tệp hoặc giảm chất lượng.' },
-      high:   { after15: 'Đang xử lý ở chất lượng cao, thời gian có thể lâu hơn.', after45: 'Hãy chờ thêm hoặc chọn chất lượng thấp hơn để nhanh hơn.' },
-      ultra:  { after15: 'Đang xử lý ở chế độ siêu nét, vui lòng tiếp tục chờ.', after45: 'Chế độ siêu nét cần nhiều thời gian. Cân nhắc chất lượng thấp hơn nếu cần.' }
+      normal: { after15: 'Processing large files, please wait a bit longer.', after45: 'If it takes too long, split files or choose lower quality.' },
+      high:   { after15: 'Processing at high quality may take longer.', after45: 'Please wait more or choose lower quality for faster export.' },
+      ultra:  { after15: 'Processing in ultra mode, please keep waiting.', after45: 'Ultra mode needs more time; consider lower quality if needed.' }
     }[quality] || { after15: '', after45: '' };
     const timers = [];
     if (messages.after15) timers.push(setTimeout(() => updateStatus(messages.after15, tone), 15000));
@@ -610,11 +610,11 @@
     const preserveAlpha = Boolean(outputConfig.preserveAlpha);
     const targetFormatLabel = outputConfig.formatLabel || (state.outputFormat || 'tệp').toUpperCase();
 
-    if (state.files.some(e => e.type === 'pdf') && !pdfjs) { updateStatus('Không thể xử lý tệp PDF vì thiếu thư viện PDF.', 'error'); return; }
+    if (state.files.some(e => e.type === 'pdf') && !pdfjs) { updateStatus('Cannot process PDF files because the PDF library is missing.', 'error'); return; }
 
     const jsPDFLib = exportingPdf ? (window.jspdf && window.jspdf.jsPDF) : null;
-    if (exportingPdf && !jsPDFLib) { updateStatus('Thiếu thư viện tạo PDF. Vui lòng bổ sung jsPDF hoặc chọn định dạng ảnh.', 'error'); return; }
-    if (typeof JSZip !== 'function' || typeof saveAs !== 'function') { updateStatus('Thiếu thư viện nén/tải xuống. Vui lòng đảm bảo JSZip và FileSaver đã được nạp.', 'error'); return; }
+    if (exportingPdf && !jsPDFLib) { updateStatus('Missing PDF generator library. Please include jsPDF or choose an image format.', 'error'); return; }
+    if (typeof JSZip !== 'function' || typeof saveAs !== 'function') { updateStatus('Missing ZIP/download library. Please ensure JSZip and FileSaver are loaded.', 'error'); return; }
 
     state.converting = true; convertBtn.disabled = true;
 
@@ -622,7 +622,7 @@
     const tone = preset.tone === 'warn' ? 'warn' : 'info';
     const scale = preset.dpi / 72; const jpegQuality = preset.jpegQuality;
 
-    updateStatus(exportingPdf ? (mergeAll ? 'Bắt đầu gộp tất cả sang một tệp PDF.' : 'Bắt đầu xuất từng mục sang PDF riêng.') : `Bắt đầu xuất ${targetFormatLabel}.`, tone);
+    updateStatus(exportingPdf ? (mergeAll ? 'Merging everything into a single PDF.' : 'Exporting each item to a separate PDF.') : `Starting export to ${targetFormatLabel}.`, tone);
 
     if (progressWrap) { progressWrap.style.display = 'block'; if (progressBar) progressBar.style.width = '0%'; }
     const releaseTimers = createLongTaskTimers(state.quality, tone);
@@ -661,7 +661,7 @@
     try {
       let mergedDoc = null;
       for (const entry of state.files) {
-        updateStatus(`Đang xử lý "${entry.name}" sang ${targetFormatLabel}…`, tone);
+        updateStatus(`Processing "${entry.name}" to ${targetFormatLabel}…`, tone);
         const baseLabel = entry.name ? entry.name.replace(/\.[^.]+$/, '') : '';
         const folderBase = sanitizeName(baseLabel) || `tep-${entry.id}`;
         const entryBase = getUniqueBaseName(folderBase);
@@ -717,7 +717,7 @@
         try { saveOutcome = await nativeSaveFile(mergedBlob, mergedName, 'application/pdf'); }
         catch (err) { console.warn('nativeSaveFile failed for merged PDF.', err); }
         if (saveOutcome === 'cancelled') {
-          updateStatus('Đã hủy lưu tệp. Không có tệp nào được tải xuống.', 'info');
+          updateStatus('Save canceled. No files were downloaded.', 'info');
           return;
         }
         if (saveOutcome !== 'saved') saveAs(mergedBlob, mergedName);
@@ -731,7 +731,7 @@
           try { saveOutcome = await nativeSaveFile(item.blob, item.outputFilename, item.blob.type); }
           catch (err) { console.warn('nativeSaveFile failed for single export.', err); }
           if (saveOutcome === 'cancelled') {
-            updateStatus('Đã hủy lưu tệp. Không có tệp nào được tải xuống.', 'info');
+          updateStatus('Save canceled. No files were downloaded.', 'info');
             return;
           }
           if (saveOutcome !== 'saved') saveAs(item.blob, item.outputFilename);
@@ -745,7 +745,7 @@
             catch (err) { console.warn('nativeSaveMultiple threw an error.', err); dirOutcome = 'failed'; }
           }
           if (dirOutcome === 'cancelled') {
-            updateStatus('Đã hủy lưu tệp. Không có tệp nào được tải xuống.', 'info');
+          updateStatus('Save canceled. No files were downloaded.', 'info');
             return;
           }
           if (dirOutcome === 'saved') {
@@ -772,7 +772,7 @@
       }
     } catch (err) {
       console.error(err);
-      updateStatus('Đã xảy ra lỗi trong quá trình chuyển đổi. Vui lòng thử lại.', 'error');
+      updateStatus('An error occurred during conversion. Please try again.', 'error');
     } finally {
       state.converting = false;
       convertBtn.disabled = !state.files.length;
