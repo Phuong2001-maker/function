@@ -100,7 +100,14 @@
   },
   availableOutputs: ['png'],
   defaultOutput: 'png',
-  allowPdfInput: false
+  allowPdfInput: false,
+  i18n: {
+    qualityMessages: {
+      normal: 'Normal mode (150 DPI) balances quality and size.',
+      high: 'High mode (220 DPI) is clearer but creates larger files.',
+      ultra: 'Ultra mode (600 DPI) takes longer; use it when needed.'
+    }
+  }
 };
   </script>
   <script src="../libs/jszip/jszip.min.js"></script>

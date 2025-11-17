@@ -99,7 +99,14 @@
   },
   availableOutputs: ['jpeg'],
   defaultOutput: 'jpeg',
-  allowPdfInput: false
+  allowPdfInput: false,
+  i18n: {
+    qualityMessages: {
+      normal: '일반 모드(150 DPI)는 품질과 용량을 균형 있게 유지합니다.',
+      high: '고화질 모드(220 DPI)는 더 선명하지만 파일이 커집니다.',
+      ultra: '울트라 모드(600 DPI)는 시간이 오래 걸리니 필요할 때만 사용하세요.'
+    }
+  }
 };
   </script>
   <script src="../libs/jszip/jszip.min.js"></script>

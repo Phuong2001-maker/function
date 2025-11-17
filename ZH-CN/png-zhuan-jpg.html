@@ -99,7 +99,14 @@
   },
   availableOutputs: ['jpg'],
   defaultOutput: 'jpg',
-  allowPdfInput: false
+  allowPdfInput: false,
+    i18n: {
+    qualityMessages: {
+      normal: '标准模式 (150 DPI) 兼顾质量与体积。',
+      high: '高质量模式 (220 DPI) 更清晰，但文件更大。',
+      ultra: '超清模式 (600 DPI) 处理耗时更长，仅在需要时使用。'
+    }
+  }
 };
   </script>
   <script src="../libs/jszip/jszip.min.js"></script>

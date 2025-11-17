@@ -100,7 +100,14 @@
   },
   availableOutputs: ['gif'],
   defaultOutput: 'gif',
-  allowPdfInput: false
+  allowPdfInput: false,
+  i18n: {
+    qualityMessages: {
+      normal: 'Обычный режим (150 DPI) баланс между качеством и размером.',
+      high: 'Высокий режим (220 DPI) чётче, но файлы больше.',
+      ultra: 'Ультра (600 DPI) обрабатывается дольше; включайте только при необходимости.'
+    }
+  }
 };
   </script>
   <script src="../libs/jszip/jszip.min.js"></script>

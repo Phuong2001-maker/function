@@ -99,7 +99,14 @@
   },
   availableOutputs: ['jpeg'],
   defaultOutput: 'jpeg',
-  allowPdfInput: false
+  allowPdfInput: false,
+  i18n: {
+    qualityMessages: {
+      normal: '標準モード（150 DPI）は品質と容量のバランスが取れます。',
+      high: '高画質モード（220 DPI）はより鮮明ですがファイルが大きくなります。',
+      ultra: '超高画質（600 DPI）は時間がかかるので必要なときに使ってください。'
+    }
+  }
 };
   </script>
   <script src="../libs/jszip/jszip.min.js"></script>

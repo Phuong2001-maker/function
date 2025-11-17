@@ -132,6 +132,13 @@
     converting: false
   };
 
+  const i18n = config.i18n || {};
+  const qualityMessages = {
+    normal: i18n.qualityMessages?.normal || 'Chế độ bình thường (150 DPI) cân bằng giữa chất lượng và dung lượng.',
+    high:   i18n.qualityMessages?.high   || 'Chế độ cao (220 DPI) cho ảnh rõ hơn nhưng dung lượng lớn hơn.',
+    ultra:  i18n.qualityMessages?.ultra  || 'Chế độ siêu nét (600 DPI) tiêu tốn nhiều tài nguyên, chỉ nên chọn khi cần.'
+  };
+
   function updateStatus(text = '', tone = 'info') {
     if (!statusMessage) return;
     if (!text) {
@@ -261,9 +268,9 @@
   }
 
   const QUALITY_PRESETS = {
-    normal: { label: 'bình thường', dpi: 150, jpegQuality: 0.82, message: 'Chế độ bình thường (150 DPI) cân bằng giữa chất lượng và dung lượng.', tone: 'info' },
-    high:   { label: 'cao',          dpi: 220, jpegQuality: 0.92, message: 'Chế độ cao (220 DPI) cho ảnh rõ hơn nhưng dung lượng lớn hơn.', tone: 'info' },
-    ultra:  { label: 'siêu nét',     dpi: 600, jpegQuality: 1.00, message: 'Chế độ siêu nét (600 DPI) tiêu tốn nhiều tài nguyên, chỉ nên chọn khi cần.', tone: 'warn' }
+    normal: { label: 'bình thường', dpi: 150, jpegQuality: 0.82, message: qualityMessages.normal, tone: 'info' },
+    high:   { label: 'cao',          dpi: 220, jpegQuality: 0.92, message: qualityMessages.high,   tone: 'info' },
+    ultra:  { label: 'siêu nét',     dpi: 600, jpegQuality: 1.00, message: qualityMessages.ultra,  tone: 'warn' }
   };
 
   function setQuality(quality) {

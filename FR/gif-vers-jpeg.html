@@ -99,7 +99,14 @@
   },
   availableOutputs: ['jpeg'],
   defaultOutput: 'jpeg',
-  allowPdfInput: false
+  allowPdfInput: false,
+  i18n: {
+    qualityMessages: {
+      normal: 'Le mode normal (150 DPI) équilibre qualité et taille.',
+      high: 'Le mode élevé (220 DPI) est plus net mais les fichiers sont plus lourds.',
+      ultra: 'Le mode ultra (600 DPI) prend plus de temps ; à utiliser si nécessaire.'
+    }
+  }
 };
   </script>
   <script src="../libs/jszip/jszip.min.js"></script>

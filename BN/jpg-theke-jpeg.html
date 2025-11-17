@@ -99,7 +99,14 @@
   },
   availableOutputs: ['jpeg'],
   defaultOutput: 'jpeg',
-  allowPdfInput: false
+  allowPdfInput: false,
+  i18n: {
+    qualityMessages: {
+      normal: 'নরমাল মোড (150 DPI) মান ও সাইজকে ভারসাম্য রাখে।',
+      high: 'হাই মোড (220 DPI) আরও পরিষ্কার কিন্তু ফাইল বড় হয়।',
+      ultra: 'আল্ট্রা মোড (600 DPI) সময় বেশি নেয়; প্রয়োজন হলে ব্যবহার করুন।'
+    }
+  }
 };
   </script>
   <script src="../libs/jszip/jszip.min.js"></script>

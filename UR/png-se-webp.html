@@ -100,7 +100,14 @@
   },
   availableOutputs: ['webp'],
   defaultOutput: 'webp',
-  allowPdfInput: false
+  allowPdfInput: false,
+  i18n: {
+    qualityMessages: {
+      normal: 'نارمل موڈ (150 DPI) معیار اور سائز میں توازن رکھتا ہے۔',
+      high: 'ہائی موڈ (220 DPI) زیادہ واضح ہے لیکن فائل بڑی ہوتی ہے۔',
+      ultra: 'الٹرا موڈ (600 DPI) زیادہ وقت لیتا ہے؛ صرف ضرورت پر استعمال کریں۔'
+    }
+  }
 };
   </script>
   <script src="../libs/jszip/jszip.min.js"></script>

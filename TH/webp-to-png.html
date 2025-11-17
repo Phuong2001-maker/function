@@ -100,7 +100,14 @@
   },
   availableOutputs: ['png'],
   defaultOutput: 'png',
-  allowPdfInput: false
+  allowPdfInput: false,
+  i18n: {
+    qualityMessages: {
+      normal: 'โหมดปกติ (150 DPI) สมดุลระหว่างคุณภาพกับขนาดไฟล์',
+      high: 'โหมดสูง (220 DPI) ชัดขึ้นแต่ไฟล์ใหญ่ขึ้น',
+      ultra: 'โหมดอัลตร้า (600 DPI) ใช้เวลามากขึ้น ควรใช้เมื่อจำเป็น'
+    }
+  }
 };
   </script>
   <script src="../libs/jszip/jszip.min.js"></script>

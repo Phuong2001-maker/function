@@ -100,7 +100,14 @@
   },
   availableOutputs: ['png'],
   defaultOutput: 'png',
-  allowPdfInput: false
+  allowPdfInput: false,
+  i18n: {
+    qualityMessages: {
+      normal: 'الوضع العادي (150 DPI) يوازن بين الجودة والحجم.',
+      high: 'وضع عالي الجودة (220 DPI) أوضح لكن الحجم أكبر.',
+      ultra: 'الوضع الفائق (600 DPI) يستغرق وقتًا أطول؛ استخدمه عند الحاجة فقط.'
+    }
+  }
 };
   </script>
   <script src="../libs/jszip/jszip.min.js"></script>
