@@ -1,0 +1,126 @@
+﻿<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>WebP를 PDF(으)로 변환 | WebP를 PDF(으)로 온라인 변환</title>
+        <meta name="description" content="WebP를 PDF(으)로 온라인 변환; 빠르게 시작하려면 파일을 끌어놓거나 선택하세요.">
+  <link rel="canonical" href="https://pdf-converter.tools/KO/webp-to-pdf">
+  <link rel="stylesheet" href="../css/converter.css">
+      <meta name="keywords" content="WebP PDF 변환, 온라인 WebP PDF 변환, 파일 변환">
+</head>
+<body>
+  <div class="app">
+    <section class="board" id="board" aria-label="Source file list">
+      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="WebP 파일을 선택하거나 드래그">
+        <div class="conversion-flow" aria-hidden="true">
+          <span class="icon" title="WebP">🖼️</span>
+          <span class="arrow" aria-hidden="true">→</span>
+          <span class="icon" title="PDF">📄</span>
+        </div>
+        <strong>WebP를 여기로 드래그</strong>
+        <span>또는</span>
+        <button type="button" id="chooseBtn">파일 선택</button>
+        <div class="muted">WebP 파일을 지원합니다. 빠르게 PDF(으)로 내보내세요.</div>
+        <input type="file" id="fileInput" accept=".webp,image/webp" multiple hidden>
+      </div>
+
+      <div class="selection-bar" id="selectionBar" style="display:none;">
+        <div><strong id="selectionCount">0 파일</strong> <span id="pageCount">0 이미지</span></div>
+        <button class="clear-btn" id="clearAll" type="button">모두 지우기</button>
+      </div>
+
+      <div class="grid" id="fileGrid"></div>
+      <div class="empty" id="emptyState">아직 파일이 없습니다. WebP를 위 박스로 드래그해 시작하세요.</div>
+    </section>
+
+    <aside class="rightpanel" id="panel">
+                  <h1>WebP를 PDF(으)로 변환</h1>
+      <p>WebP를 PDF(으)로 몇 초 만에 온라인 변환, 설치 불필요.</p>
+
+      <div>
+        <p style="font-weight:600;margin-bottom:10px;color:#1f2937;">이미지 품질</p>
+        <div class="quality" role="radiogroup">
+          <div class="qitem active" tabindex="0" role="radio" data-quality="normal" aria-checked="true">
+            <span class="badge">추천</span>
+            <strong>보통</strong>
+            <small>150 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="high" aria-checked="false">
+            <span class="badge">상세</span>
+            <strong>높음</strong>
+            <small>220 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="ultra" aria-checked="false">
+            <span class="badge">MAX DPI</span>
+            <strong>울트라</strong>
+            <small>600 DPI</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="output-format" role="group" aria-label="출력 형식">
+        <div class="options" id="formatOptions">
+          <button type="button" class="format-btn active" data-format="pdf" aria-pressed="true">PDF로 내보내기</button>
+        </div>
+      </div>
+
+      <div class="pdf-options" id="pdfOptions" role="group" aria-label="PDF 내보내기 모드">
+        <strong>PDF 내보내기 모드</strong>
+        <div class="options">
+          <button type="button" class="pdf-mode-btn" data-mode="separate" aria-pressed="false">파일당 한 개 PDF</button>
+          <button type="button" class="pdf-mode-btn active" data-mode="merged" aria-pressed="true">하나의 PDF로 병합</button>
+        </div>
+      </div>
+
+      <div class="status" id="statusMessage" role="status" aria-live="polite"></div>
+
+      <div class="progress" id="progressWrap" aria-hidden="true">
+        <span id="progressBar"></span>
+      </div>
+
+      <button class="convert" id="convertBtn" type="button" disabled><span>PDF로 변환</span></button>
+    </aside>
+
+    <button class="options-toggle" id="optsToggle" type="button">⚙️ Conversion options</button>
+  </div>
+
+  <script>
+    window.CONVERTER_CONFIG = {
+      slug: 'webp-to-pdf',
+      input: {
+        label: '파일',
+        labelPlural: '파일',
+        mimeTypes: ['image/webp'],
+        extensions: ['webp'],
+        accept: '.webp,image/webp',
+        description: 'WebP 파일을 지원합니다. 빠르게 PDF(으)로 내보내세요.'
+      },
+      outputs: {
+        pdf: {
+          formatlabel: '파일',
+          buttonLabel: 'PDF 내보내기',
+          zipNameBaseMerged: 'webp-to-pdf-merged',
+          zipNameBaseSeparate: 'webp-to-pdf-separate'
+        }
+      },
+      availableOutputs: ['pdf'],
+      defaultOutput: 'pdf',
+      allowPdfInput: false
+    };
+  </script>
+  <script src="../libs/jszip/jszip.min.js"></script>
+  <script src="../libs/filesaver/FileSaver.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="../js/converter.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

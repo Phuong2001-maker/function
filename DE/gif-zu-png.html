@@ -1,0 +1,118 @@
+﻿
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>GIF in PNG umwandeln | GIF in PNG online umwandeln</title>
+        <meta name="description" content="GIF in PNG online umwandeln; Dateien zum schnellen Start ziehen oder auswählen.">
+  <link rel="canonical" href="https://pdf-converter.tools/DE/gif-zu-png">
+  <link rel="stylesheet" href="../css/converter.css">
+      <meta name="keywords" content="GIF in PNG umwandeln, GIF zu PNG online, Dateikonvertierung">
+</head>
+<body>
+  <div class="app">
+    <section class="board" id="board" aria-label="Source file list">
+      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="GIF-Dateien wählen oder ziehen">
+        <div class="conversion-flow" aria-hidden="true">
+          <span class="icon" title="GIF">GIF</span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
+          <span class="icon" title="PNG">PNG</span>
+        </div>
+        <strong>GIF hierher ziehen</strong>
+        <span>oder</span>
+        <button type="button" id="chooseBtn">Dateien auswählen</button>
+        <div class="muted">GIF-Dateien werden unterstützt. Schneller Export nach PNG.</div>
+        <input type="file" id="fileInput" accept=".gif,image/gif" multiple hidden>
+      </div>
+
+      <div class="selection-bar" id="selectionBar" style="display:none;">
+        <div><strong id="selectionCount">0 Dateien</strong> <span id="pageCount">0 Bilder</span></div>
+        <button class="clear-btn" id="clearAll" type="button">Alles löschen</button>
+      </div>
+
+      <div class="grid" id="fileGrid"></div>
+      <div class="empty" id="emptyState">Noch keine Dateien. Ziehen Sie GIF in das Feld oben, um zu starten.</div>
+    </section>
+
+    <aside class="rightpanel" id="panel">
+                  <h1>GIF in PNG umwandeln</h1>
+      <p>GIF in PNG online in Sekunden umwandeln, keine Installation nötig.</p>
+
+      <div>
+        <p style="font-weight:600;margin-bottom:10px;color:#1f2937;">Bildqualität</p>
+        <div class="quality" role="radiogroup">
+          <div class="qitem active" tabindex="0" role="radio" data-quality="normal" aria-checked="true">
+            <span class="badge">EMPFOHLEN</span>
+            <strong>Normal</strong>
+            <small>150 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="high" aria-checked="false">
+            <span class="badge">DETAILLIERT</span>
+            <strong>Hoch</strong>
+            <small>220 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="ultra" aria-checked="false">
+            <span class="badge">MAX DPI</span>
+            <strong>Ultra</strong>
+            <small>600 DPI</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="output-format" role="group" aria-label="Ausgabeformat">
+        <div class="options" id="formatOptions" aria-hidden="true" style="display:none;"></div>
+      </div>
+
+      <div class="status" id="statusMessage" role="status" aria-live="polite"></div>
+
+      <div class="progress" id="progressWrap" aria-hidden="true">
+        <span id="progressBar"></span>
+      </div>
+
+      <button class="convert" id="convertBtn" type="button" disabled><span>In PNG umwandeln</span></button>
+    </aside>
+
+    <button class="options-toggle" id="optsToggle" type="button">Konvertierungsoptionen öffnen</button>
+  </div>
+
+  <script>
+    window.CONVERTER_CONFIG = {
+  slug: 'gif-zu-png',
+  input: {
+    label: 'Datei',
+    labelPlural: 'Dateien',
+    labelWhenUnknown: 'Datei',
+    mimeTypes: ['image/gif'],
+    extensions: ['gif'],
+    accept: '.gif,image/gif',
+    description: 'GIF-Dateien werden unterstützt. Schneller Export nach PNG.'
+  },
+  outputs: {
+    png: {
+      formatlabel: 'Datei',
+      buttonLabel: 'PNG exportieren',
+      zipNameBase: 'gif-zu-png',
+      mimeType: 'image/png',
+      fileExtension: 'png',
+      preserveAlpha: true
+    }
+  },
+  availableOutputs: ['png'],
+  defaultOutput: 'png',
+  allowPdfInput: false
+};
+  </script>
+  <script src="../libs/jszip/jszip.min.js"></script>
+  <script src="../libs/filesaver/FileSaver.min.js"></script>
+  <script src="../js/converter.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+

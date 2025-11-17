@@ -1,0 +1,117 @@
+﻿
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>Convertir JPEG en JPG | Convertir JPEG en JPG en ligne</title>
+        <meta name="description" content="Convertissez JPEG en JPG en ligne ; glissez-déposez ou sélectionnez des fichiers pour démarrer rapidement.">
+  <link rel="canonical" href="https://pdf-converter.tools/FR/jpeg-vers-jpg">
+  <link rel="stylesheet" href="../css/converter.css">
+      <meta name="keywords" content="Convertir JPEG en JPG, JPEG vers JPG en ligne, conversion de fichiers.">
+</head>
+<body>
+  <div class="app">
+    <section class="board" id="board" aria-label="Source file list">
+      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Choisissez ou faites glisser des fichiers JPEG">
+        <div class="conversion-flow" aria-hidden="true">
+          <span class="icon" title="JPEG">JPEG</span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
+          <span class="icon" title="JPG">JPG</span>
+        </div>
+        <strong>Glissez JPEG ici</strong>
+        <span>ou</span>
+        <button type="button" id="chooseBtn">Choisir des fichiers</button>
+        <div class="muted">Prend en charge les fichiers JPEG. Exportez en JPG rapidement.</div>
+        <input type="file" id="fileInput" accept=".jpeg,.jpg,image/jpeg,image/pjpeg" multiple hidden>
+      </div>
+
+      <div class="selection-bar" id="selectionBar" style="display:none;">
+        <div><strong id="selectionCount">0 fichiers</strong> <span id="pageCount">0 images</span></div>
+        <button class="clear-btn" id="clearAll" type="button">Tout effacer</button>
+      </div>
+
+      <div class="grid" id="fileGrid"></div>
+      <div class="empty" id="emptyState">Aucun fichier pour le moment. Glissez JPEG dans la zone ci-dessus pour commencer.</div>
+    </section>
+
+    <aside class="rightpanel" id="panel">
+                  <h1>Convertir JPEG en JPG</h1>
+      <p>Convertissez JPEG en JPG en ligne en quelques secondes, sans installation.</p>
+
+      <div>
+        <p style="font-weight:600;margin-bottom:10px;color:#1f2937;">Qualité d’image</p>
+        <div class="quality" role="radiogroup">
+          <div class="qitem active" tabindex="0" role="radio" data-quality="normal" aria-checked="true">
+            <span class="badge">RECOMMANDÉ</span>
+            <strong>Normal</strong>
+            <small>150 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="high" aria-checked="false">
+            <span class="badge">DÉTAILLÉ</span>
+            <strong>Élevée</strong>
+            <small>220 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="ultra" aria-checked="false">
+            <span class="badge">MAX DPI</span>
+            <strong>Ultra</strong>
+            <small>600 DPI</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="output-format" role="group" aria-label="Format de sortie">
+        <div class="options" id="formatOptions" aria-hidden="true" style="display:none;"></div>
+      </div>
+
+      <div class="status" id="statusMessage" role="status" aria-live="polite"></div>
+
+      <div class="progress" id="progressWrap" aria-hidden="true">
+        <span id="progressBar"></span>
+      </div>
+
+      <button class="convert" id="convertBtn" type="button" disabled><span>Convertir en JPG</span></button>
+    </aside>
+
+    <button class="options-toggle" id="optsToggle" type="button">Ouvrir les options de conversion</button>
+  </div>
+
+  <script>
+    window.CONVERTER_CONFIG = {
+  slug: 'jpeg-vers-jpg',
+  input: {
+    label: 'fichier',
+    labelPlural: 'fichiers',
+    labelWhenUnknown: 'fichier',
+    mimeTypes: ['image/jpeg','image/pjpeg'],
+    extensions: ['jpeg','jpg'],
+    accept: '.jpeg,.jpg,image/jpeg,image/pjpeg',
+    description: 'Prend en charge les fichiers JPEG. Exportez en JPG rapidement.'
+  },
+  outputs: {
+    jpg: {
+      formatlabel: 'fichier',
+      buttonLabel: 'Exporter JPG',
+      zipNameBase: 'jpeg-vers-jpg',
+      mimeType: 'image/jpeg',
+      fileExtension: 'jpg'
+    }
+  },
+  availableOutputs: ['jpg'],
+  defaultOutput: 'jpg',
+  allowPdfInput: false
+};
+  </script>
+  <script src="../libs/jszip/jszip.min.js"></script>
+  <script src="../libs/filesaver/FileSaver.min.js"></script>
+  <script src="../js/converter.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+

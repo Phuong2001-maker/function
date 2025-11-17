@@ -1,0 +1,118 @@
+﻿
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>PDFをJPEGに変換 | PDFをJPEGにオンライン変換</title>
+        <meta name="description" content="PDFをJPEGにオンライン変換。ドラッグ＆ドロップまたはファイル選択ですぐ開始。">
+  <link rel="canonical" href="https://pdf-converter.tools/JA/pdf-kara-jpeg">
+  <link rel="stylesheet" href="../css/converter.css">
+      <meta name="keywords" content="PDF JPEG 変換, PDF JPEG オンライン, ファイル変換">
+</head>
+<body>
+  <div class="app">
+    <section class="board" id="board" aria-label="Source file list">
+      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="PDFファイルを選択またはドラッグ">
+        <div class="conversion-flow" aria-hidden="true">
+          <span class="icon" title="PDF">PDF</span>
+          <span class="arrow" aria-hidden="true">&rarr;</span>
+          <span class="icon" title="JPEG">JPEG</span>
+        </div>
+        <strong>PDFをここにドラッグ</strong>
+        <span>または</span>
+        <button type="button" id="chooseBtn">ファイルを選択</button>
+        <div class="muted">PDFファイルに対応。JPEGへ素早くエクスポート。</div>
+        <input type="file" id="fileInput" accept=".pdf,application/pdf" multiple hidden>
+      </div>
+
+      <div class="selection-bar" id="selectionBar" style="display:none;">
+        <div><strong id="selectionCount">0 ファイル</strong> <span id="pageCount">0 画像</span></div>
+        <button class="clear-btn" id="clearAll" type="button">すべてクリア</button>
+      </div>
+
+      <div class="grid" id="fileGrid"></div>
+      <div class="empty" id="emptyState">まだファイルがありません。上の枠にPDFをドラッグして開始。</div>
+    </section>
+
+    <aside class="rightpanel" id="panel">
+                  <h1>PDFをJPEGに変換</h1>
+      <p>PDFをJPEGに数秒でオンライン変換。インストール不要。</p>
+
+      <div>
+        <p style="font-weight:600;margin-bottom:10px;color:#1f2937;">出力品質</p>
+        <div class="quality" role="radiogroup">
+          <div class="qitem active" tabindex="0" role="radio" data-quality="normal" aria-checked="true">
+            <span class="badge">推奨</span>
+            <strong>標準</strong>
+            <small>150 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="high" aria-checked="false">
+            <span class="badge">詳細</span>
+            <strong>高</strong>
+            <small>220 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="ultra" aria-checked="false">
+            <span class="badge">最大DPI</span>
+            <strong>超高</strong>
+            <small>600 DPI</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="output-format" role="group" aria-label="出力形式">
+        <div class="options" id="formatOptions" aria-hidden="true" style="display:none;"></div>
+      </div>
+
+      <div class="status" id="statusMessage" role="status" aria-live="polite"></div>
+
+      <div class="progress" id="progressWrap" aria-hidden="true">
+        <span id="progressBar"></span>
+      </div>
+
+      <button class="convert" id="convertBtn" type="button" disabled><span>JPEGに変換</span></button>
+    </aside>
+
+    <button class="options-toggle" id="optsToggle" type="button">変換オプションを開く</button>
+  </div>
+
+  <script>
+    window.CONVERTER_CONFIG = {
+  slug: 'pdf-kara-jpeg',
+  input: {
+    label: 'ファイル',
+    labelPlural: 'ファイル',
+    labelWhenUnknown: 'ファイル',
+    mimeTypes: ['application/pdf'],
+    extensions: ['pdf'],
+    accept: '.pdf,application/pdf',
+    description: 'PDFファイルに対応.JPEGへ素早くエクスポート.'
+  },
+  outputs: {
+    jpeg: {
+      formatlabel: 'ファイル',
+      buttonLabel: 'JPEGを出力',
+      zipNameBase: 'pdf-kara-jpeg',
+      mimeType: 'image/jpeg',
+      fileExtension: 'jpeg'
+    }
+  },
+  availableOutputs: ['jpeg'],
+  defaultOutput: 'jpeg',
+  allowPdfInput: true
+};
+  </script>
+  <script src="../libs/pdfjs/pdf.min.js"></script>
+  <script src="../libs/jszip/jszip.min.js"></script>
+  <script src="../libs/filesaver/FileSaver.min.js"></script>
+  <script src="../js/converter.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+

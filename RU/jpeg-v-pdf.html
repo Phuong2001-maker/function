@@ -1,0 +1,126 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>Конвертировать JPEG в PDF | Онлайн-конвертация JPEG в PDF</title>
+        <meta name="description" content="Конвертируйте JPEG в PDF онлайн: перетащите или выберите файлы для быстрого старта.">
+  <link rel="canonical" href="https://pdf-converter.tools/RU/jpeg-v-pdf">
+  <link rel="stylesheet" href="../css/converter.css">
+      <meta name="keywords" content="Конвертировать JPEG в PDF, JPEG в PDF онлайн, конвертация файлов.">
+</head>
+<body>
+  <div class="app">
+    <section class="board" id="board" aria-label="Source file list">
+      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Выберите или перетащите файлы JPEG">
+        <div class="conversion-flow" aria-hidden="true">
+          <span class="icon" title="JPEG">🖼️</span>
+          <span class="arrow" aria-hidden="true">→</span>
+          <span class="icon" title="PDF">📄</span>
+        </div>
+        <strong>Перетащите JPEG сюда</strong>
+        <span>или</span>
+        <button type="button" id="chooseBtn">Выбрать файлы</button>
+        <div class="muted">Поддерживаются файлы JPEG. Экспорт в PDF быстро.</div>
+        <input type="file" id="fileInput" accept=".jpg,.jpeg,image/jpeg,image/pjpeg" multiple hidden>
+      </div>
+
+      <div class="selection-bar" id="selectionBar" style="display:none;">
+        <div><strong id="selectionCount">0 файлы</strong> <span id="pageCount">0 изображения</span></div>
+        <button class="clear-btn" id="clearAll" type="button">Очистить все</button>
+      </div>
+
+      <div class="grid" id="fileGrid"></div>
+      <div class="empty" id="emptyState">Файлов пока нет. Перетащите JPEG в поле выше, чтобы начать.</div>
+    </section>
+
+    <aside class="rightpanel" id="panel">
+                  <h1>Конвертировать JPEG в PDF</h1>
+      <p>Конвертируйте JPEG в PDF онлайн за секунды без установки.</p>
+
+      <div>
+        <p style="font-weight:600;margin-bottom:10px;color:#1f2937;">Качество изображения</p>
+        <div class="quality" role="radiogroup">
+          <div class="qitem active" tabindex="0" role="radio" data-quality="normal" aria-checked="true">
+            <span class="badge">РЕКОМЕНД.</span>
+            <strong>Норм.</strong>
+            <small>150 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="high" aria-checked="false">
+            <span class="badge">ДЕТАЛЬНО</span>
+            <strong>Высок.</strong>
+            <small>220 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="ultra" aria-checked="false">
+            <span class="badge">MAX DPI</span>
+            <strong>Ультра</strong>
+            <small>600 DPI</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="output-format" role="group" aria-label="Формат вывода">
+        <div class="options" id="formatOptions">
+          <button type="button" class="format-btn active" data-format="pdf" aria-pressed="true">Экспорт в PDF</button>
+        </div>
+      </div>
+
+      <div class="pdf-options" id="pdfOptions" role="group" aria-label="Режим экспорта PDF">
+        <strong>Режим экспорта PDF</strong>
+        <div class="options">
+          <button type="button" class="pdf-mode-btn" data-mode="separate" aria-pressed="false">Один PDF на файл</button>
+          <button type="button" class="pdf-mode-btn active" data-mode="merged" aria-pressed="true">Объединить в один PDF</button>
+        </div>
+      </div>
+
+      <div class="status" id="statusMessage" role="status" aria-live="polite"></div>
+
+      <div class="progress" id="progressWrap" aria-hidden="true">
+        <span id="progressBar"></span>
+      </div>
+
+      <button class="convert" id="convertBtn" type="button" disabled><span>Конвертировать в PDF</span></button>
+    </aside>
+
+    <button class="options-toggle" id="optsToggle" type="button">⚙️ Conversion options</button>
+  </div>
+
+  <script>
+    window.CONVERTER_CONFIG = {
+      slug: 'jpeg-v-pdf',
+      input: {
+        label: 'файл',
+        labelPlural: 'файлы',
+        mimeTypes: ['image/jpeg', 'image/pjpeg'],
+        extensions: ['jpg', 'jpeg'],
+        accept: '.jpg,.jpeg,image/jpeg,image/pjpeg',
+        description: 'Поддерживаются файлы JPEG. Экспорт в PDF быстро.'
+      },
+      outputs: {
+        pdf: {
+          formatlabel: 'файл',
+          buttonLabel: 'Экспорт PDF',
+          zipNameBaseMerged: 'jpeg-v-pdf-merged',
+          zipNameBaseSeparate: 'jpeg-v-pdf-separate'
+        }
+      },
+      availableOutputs: ['pdf'],
+      defaultOutput: 'pdf',
+      allowPdfInput: false
+    };
+  </script>
+  <script src="../libs/jszip/jszip.min.js"></script>
+  <script src="../libs/filesaver/FileSaver.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="../js/converter.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
