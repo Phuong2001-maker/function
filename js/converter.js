@@ -40,6 +40,372 @@
     return new Blob([u8], {type: mime});
   }
 
+  const LOCALE_TEXT = {
+    en: {
+      fileLabel: 'file', fileLabelPlural: 'files',
+      imageLabel: 'image', imageLabelPlural: 'images',
+      status: {
+        chooseSupported: 'Please choose supported file types.',
+        listCleared: 'File list cleared.',
+        fileRemoved: 'Removed the file from the list.',
+        loadingPreviews: 'Loading files and generating previews…',
+        couldNotProcessFile: 'Could not process file {name}.',
+        filesReady: 'Files are ready, click "{action}".',
+        missingPdfReader: 'Cannot add PDF because the PDF reader library is missing.',
+        unsupportedFormat: 'Could not add {detail} because the format is unsupported.',
+        skippedPdf: 'Skipped {count} PDF file(s) because the reader is missing.',
+        skippedUnsupported: 'Skipped {count} unsupported file(s).',
+        noValidFiles: 'No valid files were added.',
+        saveCanceled: 'Save canceled. No files were downloaded.',
+        conversionError: 'An error occurred during conversion. Please try again.',
+        missingPdfGenerator: 'Missing PDF generator library. Please include jsPDF or choose an image format.',
+        missingZipLibrary: 'Missing ZIP/download library. Please ensure JSZip and FileSaver are loaded.'
+      }
+    },
+    ar: {
+      fileLabel: 'ملف', fileLabelPlural: 'ملفات',
+      imageLabel: 'صورة', imageLabelPlural: 'صور',
+      status: {
+        chooseSupported: 'يرجى اختيار أنواع الملفات المدعومة.',
+        listCleared: 'تم مسح قائمة الملفات.',
+        fileRemoved: 'تمت إزالة الملف من القائمة.',
+        loadingPreviews: 'جارٍ تحميل الملفات وإنشاء المعاينات…',
+        couldNotProcessFile: 'تعذّر معالجة الملف {name}.',
+        filesReady: 'الملفات جاهزة، انقر على "{action}".',
+        missingPdfReader: 'لا يمكن إضافة PDF لأن مكتبة قراءة PDF غير متوفرة.',
+        unsupportedFormat: 'تعذّر إضافة {detail} لأن التنسيق غير مدعوم.',
+        skippedPdf: 'تم تجاوز {count} ملف PDF لأن قارئ PDF مفقود.',
+        skippedUnsupported: 'تم تجاوز {count} ملف غير مدعوم.',
+        noValidFiles: 'لم تتم إضافة أي ملفات صالحة.',
+        saveCanceled: 'تم إلغاء الحفظ. لم يتم تنزيل أي ملفات.',
+        conversionError: 'حدث خطأ أثناء التحويل. يُرجى المحاولة مرة أخرى.'
+      }
+    },
+    bn: {
+      fileLabel: 'ফাইল', fileLabelPlural: 'ফাইল',
+      imageLabel: 'ছবি', imageLabelPlural: 'ছবিগুলি',
+      status: {
+        chooseSupported: 'সমর্থিত ফাইল ধরনগুলি অনুগ্রহ করে নির্বাচন করুন।',
+        listCleared: 'ফাইল তালিকা মুছে ফেলা হয়েছে।',
+        fileRemoved: 'ফাইলটি তালিকা থেকে সরানো হয়েছে।',
+        loadingPreviews: 'ফাইল লোড হচ্ছে এবং প্রিভিউ তৈরি করা হচ্ছে…',
+        couldNotProcessFile: '{name} ফাইলটি প্রক্রিয়া করা যায়নি।',
+        filesReady: 'ফাইলগুলি প্রস্তুত, "{action}" চাপুন।',
+        missingPdfReader: 'PDF ফাইল যোগ করা যাবে না কারণ PDF রিডার লাইব্রেরি অনুপস্থিত।',
+        unsupportedFormat: '{detail} যোগ করা যায়নি কারণ ফর্ম্যাটটি সমর্থিত নয়।',
+        skippedPdf: '{count}টি PDF ফাইল বাদ দেওয়া হয়েছে কারণ PDF রিডার নেই।',
+        skippedUnsupported: '{count}টি অসমর্থিত ফাইল বাদ দেওয়া হয়েছে।',
+        noValidFiles: 'কোনো বৈধ ফাইল যোগ হয়নি।',
+        saveCanceled: 'সংরক্ষণ বাতিল করা হয়েছে। কোনো ফাইল ডাউনলোড হয়নি।',
+        conversionError: 'রূপান্তরে একটি ত্রুটি হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।'
+      }
+    },
+    de: {
+      fileLabel: 'Datei', fileLabelPlural: 'Dateien',
+      imageLabel: 'Bild', imageLabelPlural: 'Bilder',
+      status: {
+        chooseSupported: 'Bitte wählen Sie unterstützte Dateitypen aus.',
+        listCleared: 'Dateiliste wurde gelöscht.',
+        fileRemoved: 'Die Datei wurde aus der Liste entfernt.',
+        loadingPreviews: 'Lade Dateien und erstelle Vorschauen…',
+        couldNotProcessFile: 'Datei {name} konnte nicht verarbeitet werden.',
+        filesReady: 'Die Dateien sind bereit, klicken Sie auf "{action}".',
+        missingPdfReader: 'PDF kann nicht hinzugefügt werden, weil die PDF-Bibliothek fehlt.',
+        unsupportedFormat: '{detail} konnte nicht hinzugefügt werden, weil das Format nicht unterstützt wird.',
+        skippedPdf: '{count} PDF-Datei(en) wurden übersprungen, da der PDF-Reader fehlt.',
+        skippedUnsupported: '{count} nicht unterstützte Datei(en) wurden übersprungen.',
+        noValidFiles: 'Es wurden keine gültigen Dateien hinzugefügt.',
+        saveCanceled: 'Speichern abgebrochen. Es wurden keine Dateien heruntergeladen.',
+        conversionError: 'Bei der Konvertierung ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.'
+      }
+    },
+    es: {
+      fileLabel: 'archivo', fileLabelPlural: 'archivos',
+      imageLabel: 'imagen', imageLabelPlural: 'imágenes',
+      status: {
+        chooseSupported: 'Seleccione tipos de archivo compatibles.',
+        listCleared: 'Lista de archivos borrada.',
+        fileRemoved: 'El archivo se ha eliminado de la lista.',
+        loadingPreviews: 'Cargando archivos y generando vistas previas…',
+        couldNotProcessFile: 'No se pudo procesar el archivo {name}.',
+        filesReady: 'Los archivos están listos, haz clic en "{action}".',
+        missingPdfReader: 'No se puede agregar PDF porque falta la biblioteca del lector de PDF.',
+        unsupportedFormat: 'No se pudo agregar {detail} porque el formato no es compatible.',
+        skippedPdf: 'Se omitieron {count} archivos PDF porque falta el lector.',
+        skippedUnsupported: 'Se omitieron {count} archivos no compatibles.',
+        noValidFiles: 'No se agregaron archivos válidos.',
+        saveCanceled: 'Descarga cancelada. No se descargaron archivos.',
+        conversionError: 'Ocurrió un error durante la conversión. Intenta de nuevo.'
+      }
+    },
+    fr: {
+      fileLabel: 'fichier', fileLabelPlural: 'fichiers',
+      imageLabel: 'image', imageLabelPlural: 'images',
+      status: {
+        chooseSupported: 'Veuillez choisir des types de fichiers pris en charge.',
+        listCleared: 'Liste de fichiers effacée.',
+        fileRemoved: 'Le fichier a été retiré de la liste.',
+        loadingPreviews: 'Chargement des fichiers et génération des aperçus…',
+        couldNotProcessFile: 'Impossible de traiter le fichier {name}.',
+        filesReady: 'Les fichiers sont prêts, cliquez sur « {action} ».',
+        missingPdfReader: 'Impossible d’ajouter le PDF car la bibliothèque de lecture PDF est manquante.',
+        unsupportedFormat: 'Impossible d’ajouter {detail} car le format n’est pas pris en charge.',
+        skippedPdf: '{count} fichier(s) PDF ignoré(s) car le lecteur est manquant.',
+        skippedUnsupported: '{count} fichier(s) non pris en charge ignoré(s).',
+        noValidFiles: 'Aucun fichier valide n’a été ajouté.',
+        saveCanceled: 'Enregistrement annulé. Aucun fichier n’a été téléchargé.',
+        conversionError: 'Une erreur est survenue pendant la conversion. Veuillez réessayer.'
+      }
+    },
+    hi: {
+      fileLabel: 'फ़ाइल', fileLabelPlural: 'फ़ाइलें',
+      imageLabel: 'छवि', imageLabelPlural: 'छवियाँ',
+      status: {
+        chooseSupported: 'कृपया समर्थित फ़ाइल प्रकार चुनें।',
+        listCleared: 'फ़ाइल सूची साफ़ कर दी गई।',
+        fileRemoved: 'फ़ाइल सूची से हटा दी गई।',
+        loadingPreviews: 'फ़ाइलें लोड हो रही हैं और पूर्वावलोकन बना रहे हैं…',
+        couldNotProcessFile: 'फ़ाइल {name} को संसाधित नहीं किया जा सका।',
+        filesReady: 'फ़ाइलें तैयार हैं, "{action}" क्लिक करें।',
+        missingPdfReader: 'PDF जोड़ना संभव नहीं है क्योंकि PDF रीडर लाइब्रेरी मौजूद नहीं है।',
+        unsupportedFormat: '{detail} नहीं जोड़ा जा सका क्योंकि फ़ॉर्मैट समर्थित नहीं है।',
+        skippedPdf: '{count} PDF फ़ाइलें छोड़ दी गईं क्योंकि PDF रीडर नहीं है।',
+        skippedUnsupported: '{count} असमर्थित फ़ाइलें छोड़ी गईं।',
+        noValidFiles: 'कोई मान्य फ़ाइल जोड़नी नहीं हुई।',
+        saveCanceled: 'सहेजना रद्द कर दिया गया। कोई फ़ाइल डाउनलोड नहीं हुई।',
+        conversionError: 'कन्वर्शन के दौरान त्रुटि हुई। कृपया फिर से प्रयास करें।'
+      }
+    },
+    id: {
+      fileLabel: 'file', fileLabelPlural: 'file',
+      imageLabel: 'gambar', imageLabelPlural: 'gambar',
+      status: {
+        chooseSupported: 'Pilih jenis file yang didukung.',
+        listCleared: 'Daftar file dibersihkan.',
+        fileRemoved: 'File telah dihapus dari daftar.',
+        loadingPreviews: 'Memuat file dan membuat pratinjau…',
+        couldNotProcessFile: 'Tidak dapat memproses file {name}.',
+        filesReady: 'File siap, klik "{action}".',
+        missingPdfReader: 'Tidak dapat menambahkan PDF karena pustaka pembaca PDF tidak tersedia.',
+        unsupportedFormat: 'Tidak dapat menambahkan {detail} karena format tidak didukung.',
+        skippedPdf: 'Dilewati {count} file PDF karena pembaca tidak tersedia.',
+        skippedUnsupported: 'Dilewati {count} file yang tidak didukung.',
+        noValidFiles: 'Tidak ada file valid yang ditambahkan.',
+        saveCanceled: 'Simpan dibatalkan. Tidak ada file yang diunduh.',
+        conversionError: 'Terjadi kesalahan saat konversi. Silakan coba lagi.'
+      }
+    },
+    it: {
+      fileLabel: 'file', fileLabelPlural: 'file',
+      imageLabel: 'immagine', imageLabelPlural: 'immagini',
+      status: {
+        chooseSupported: 'Seleziona tipi di file supportati.',
+        listCleared: 'Elenco file cancellato.',
+        fileRemoved: 'Il file è stato rimosso dall’elenco.',
+        loadingPreviews: 'Caricamento file e generazione anteprime…',
+        couldNotProcessFile: 'Impossibile elaborare il file {name}.',
+        filesReady: 'I file sono pronti, clicca su "{action}".',
+        missingPdfReader: 'Impossibile aggiungere PDF perché manca la libreria di lettura PDF.',
+        unsupportedFormat: 'Impossibile aggiungere {detail} perché il formato non è supportato.',
+        skippedPdf: 'Saltati {count} file PDF perché manca il lettore PDF.',
+        skippedUnsupported: 'Saltati {count} file non supportati.',
+        noValidFiles: 'Nessun file valido è stato aggiunto.',
+        saveCanceled: 'Salvataggio annullato. Nessun file è stato scaricato.',
+        conversionError: 'Si è verificato un errore durante la conversione. Riprova.'
+      }
+    },
+    ja: {
+      fileLabel: 'ファイル', fileLabelPlural: 'ファイル',
+      imageLabel: '画像', imageLabelPlural: '画像',
+      status: {
+        chooseSupported: '対応するファイル形式を選択してください。',
+        listCleared: 'ファイル一覧をクリアしました。',
+        fileRemoved: 'ファイルがリストから削除されました。',
+        loadingPreviews: 'ファイルを読み込み、プレビューを生成しています…',
+        couldNotProcessFile: '{name} を処理できませんでした。',
+        filesReady: 'ファイルの準備ができました。「{action}」をクリックしてください。',
+        missingPdfReader: 'PDFライブラリがないため、PDFを追加できません。',
+        unsupportedFormat: '{detail} はサポートされていない形式のため追加できませんでした。',
+        skippedPdf: 'PDFリーダーがないため、{count}個のPDFファイルをスキップしました。',
+        skippedUnsupported: 'サポートされていない{count}個のファイルをスキップしました。',
+        noValidFiles: '有効なファイルが追加されていません。',
+        saveCanceled: '保存がキャンセルされました。ファイルはダウンロードされませんでした。',
+        conversionError: '変換中にエラーが発生しました。もう一度お試しください。'
+      }
+    },
+    ko: {
+      fileLabel: '파일', fileLabelPlural: '파일',
+      imageLabel: '이미지', imageLabelPlural: '이미지',
+      status: {
+        chooseSupported: '지원되는 파일 형식을 선택하세요.',
+        listCleared: '파일 목록이 비워졌습니다.',
+        fileRemoved: '파일이 목록에서 제거되었습니다.',
+        loadingPreviews: '파일을 불러오고 미리보기를 생성하는 중…',
+        couldNotProcessFile: '{name} 파일을 처리할 수 없습니다.',
+        filesReady: '파일이 준비되었습니다. "{action}"을 클릭하세요.',
+        missingPdfReader: 'PDF 리더 라이브러리가 없어 PDF를 추가할 수 없습니다.',
+        unsupportedFormat: '{detail}은(는) 지원되지 않는 형식이라 추가할 수 없습니다.',
+        skippedPdf: 'PDF 리더가 없어 {count}개의 PDF 파일을 건너뛰었습니다.',
+        skippedUnsupported: '{count}개의 지원되지 않는 파일을 건너뛰었습니다.',
+        noValidFiles: '유효한 파일이 추가되지 않았습니다.',
+        saveCanceled: '저장이 취소되었습니다. 파일이 다운로드되지 않았습니다.',
+        conversionError: '변환 중 오류가 발생했습니다. 다시 시도하세요.'
+      }
+    },
+    ms: {
+      fileLabel: 'fail', fileLabelPlural: 'fail',
+      imageLabel: 'imej', imageLabelPlural: 'imej',
+      status: {
+        chooseSupported: 'Sila pilih jenis fail yang disokong.',
+        listCleared: 'Senarai fail telah dikosongkan.',
+        fileRemoved: 'Fail telah dikeluarkan daripada senarai.',
+        loadingPreviews: 'Memuatkan fail dan menjana pratonton…',
+        couldNotProcessFile: 'Tidak dapat memproses fail {name}.',
+        filesReady: 'Fail sudah sedia, klik "{action}".',
+        missingPdfReader: 'Tidak dapat menambah PDF kerana perpustakaan pembaca PDF tidak dijumpai.',
+        unsupportedFormat: 'Tidak dapat menambah {detail} kerana format tidak disokong.',
+        skippedPdf: 'Melepasi {count} fail PDF kerana pembaca tidak ada.',
+        skippedUnsupported: 'Melepasi {count} fail yang tidak disokong.',
+        noValidFiles: 'Tiada fail sah ditambah.',
+        saveCanceled: 'Simpanan dibatalkan. Tiada fail dimuat turun.',
+        conversionError: 'Ralat berlaku semasa penukaran. Sila cuba sekali lagi.'
+      }
+    },
+    'pt-br': {
+      fileLabel: 'arquivo', fileLabelPlural: 'arquivos',
+      imageLabel: 'imagem', imageLabelPlural: 'imagens',
+      status: {
+        chooseSupported: 'Selecione os tipos de arquivo compatíveis.',
+        listCleared: 'Lista de arquivos limpa.',
+        fileRemoved: 'O arquivo foi removido da lista.',
+        loadingPreviews: 'Carregando arquivos e gerando pré-visualizações…',
+        couldNotProcessFile: 'Não foi possível processar o arquivo {name}.',
+        filesReady: 'Os arquivos estão prontos, clique em "{action}".',
+        missingPdfReader: 'Não é possível adicionar o PDF porque falta o leitor de PDF.',
+        unsupportedFormat: 'Não foi possível adicionar {detail} porque o formato não é compatível.',
+        skippedPdf: '{count} arquivo(s) PDF foram ignorados porque o leitor está ausente.',
+        skippedUnsupported: '{count} arquivo(s) não compatíveis foram ignorados.',
+        noValidFiles: 'Nenhum arquivo válido foi adicionado.',
+        saveCanceled: 'Salvamento cancelado. Nenhum arquivo foi baixado.',
+        conversionError: 'Ocorreu um erro durante a conversão. Tente novamente.'
+      }
+    },
+    ru: {
+      fileLabel: 'файл', fileLabelPlural: 'файлы',
+      imageLabel: 'изображение', imageLabelPlural: 'изображения',
+      status: {
+        chooseSupported: 'Выберите поддерживаемые типы файлов.',
+        listCleared: 'Список файлов очищен.',
+        fileRemoved: 'Файл удалён из списка.',
+        loadingPreviews: 'Загрузка файлов и создание превью…',
+        couldNotProcessFile: 'Не удалось обработать файл {name}.',
+        filesReady: 'Файлы готовы, нажмите "{action}".',
+        missingPdfReader: 'Невозможно добавить PDF, так как отсутствует библиотека PDF.',
+        unsupportedFormat: 'Невозможно добавить {detail}, потому что формат не поддерживается.',
+        skippedPdf: 'Пропущено {count} PDF-файлов, так как отсутствует читатель.',
+        skippedUnsupported: 'Пропущено {count} неподдерживаемых файлов.',
+        noValidFiles: 'Не было добавлено ни одного допустимого файла.',
+        saveCanceled: 'Сохранение отменено. Файлы не были загружены.',
+        conversionError: 'Произошла ошибка при конвертации. Повторите попытку.'
+      }
+    },
+    th: {
+      fileLabel: 'ไฟล์', fileLabelPlural: 'ไฟล์',
+      imageLabel: 'ภาพ', imageLabelPlural: 'ภาพ',
+      status: {
+        chooseSupported: 'กรุณาเลือกประเภทไฟล์ที่รองรับ',
+        listCleared: 'รายการไฟล์ถูกล้างแล้ว',
+        fileRemoved: 'ลบไฟล์ออกจากรายการแล้ว',
+        loadingPreviews: 'กำลังโหลดไฟล์และสร้างตัวอย่าง…',
+        couldNotProcessFile: 'ไม่สามารถประมวลผลไฟล์ {name} ได้',
+        filesReady: 'ไฟล์พร้อมแล้ว คลิก "{action}"',
+        missingPdfReader: 'ไม่สามารถเพิ่ม PDF ได้เนื่องจากไม่พบไลบรารีอ่าน PDF',
+        unsupportedFormat: 'ไม่สามารถเพิ่ม {detail} ได้ เนื่องจากรูปแบบไม่รองรับ',
+        skippedPdf: 'ข้าม {count} ไฟล์ PDF เนื่องจากไม่พบโปรแกรมอ่าน PDF',
+        skippedUnsupported: 'ข้าม {count} ไฟล์ที่ไม่รองรับ',
+        noValidFiles: 'ไม่มีไฟล์ที่ใช้งานได้ถูกเพิ่ม',
+        saveCanceled: 'ยกเลิกการบันทึก ไฟล์ไม่ได้ดาวน์โหลด',
+        conversionError: 'เกิดข้อผิดพลาดระหว่างการแปลง กรุณาลองใหม่'
+      }
+    },
+    tr: {
+      fileLabel: 'dosya', fileLabelPlural: 'dosyalar',
+      imageLabel: 'görsel', imageLabelPlural: 'görseller',
+      status: {
+        chooseSupported: 'Desteklenen dosya türlerini seçin.',
+        listCleared: 'Dosya listesi temizlendi.',
+        fileRemoved: 'Dosya listeden kaldırıldı.',
+        loadingPreviews: 'Dosyalar yükleniyor ve önizlemeler hazırlanıyor…',
+        couldNotProcessFile: '{name} dosyası işlenemedi.',
+        filesReady: 'Dosyalar hazır, "{action}" tıklayın.',
+        missingPdfReader: 'PDF okuyucu kütüphanesi olmadığı için PDF eklenemiyor.',
+        unsupportedFormat: '{detail} eklenemedi çünkü format desteklenmiyor.',
+        skippedPdf: '{count} PDF dosyası atlandı çünkü okuyucu yok.',
+        skippedUnsupported: '{count} desteklenmeyen dosya atlandı.',
+        noValidFiles: 'Geçerli dosya eklenmedi.',
+        saveCanceled: 'Kaydetme iptal edildi. Dosya indirilmedi.',
+        conversionError: 'Dönüştürme sırasında hata oluştu. Lütfen tekrar deneyin.'
+      }
+    },
+    ur: {
+      fileLabel: 'فائل', fileLabelPlural: 'فائلیں',
+      imageLabel: 'تصویر', imageLabelPlural: 'تصاویر',
+      status: {
+        chooseSupported: 'براہ کرم معاون فائل اقسام منتخب کریں۔',
+        listCleared: 'فائل لسٹ خالی کر دی گئی ہے۔',
+        fileRemoved: 'فائل فہرست سے ہٹا دی گئی ہے۔',
+        loadingPreviews: 'فائلیں لوڈ ہو رہی ہیں اور پیش نظارہ تیار کیا جا رہا ہے…',
+        couldNotProcessFile: 'فائل {name} پر عمل نہیں ہو سکا۔',
+        filesReady: 'فائلیں تیار ہیں، "{action}" پر کلک کریں۔',
+        missingPdfReader: 'PDF کو شامل نہیں کیا جا سکتا کیونکہ PDF ریڈر لائبریری موجود نہیں ہے۔',
+        unsupportedFormat: '{detail} شامل نہیں کیا جا سکا کیونکہ فارمیٹ معاون نہیں ہے۔',
+        skippedPdf: '{count} PDF فائلیں چھوڑ دی گئیں کیونکہ ریڈر موجود نہیں۔',
+        skippedUnsupported: '{count} غیر معاون فائلیں چھوڑ دی گئیں۔',
+        noValidFiles: 'کوئی درست فائل شامل نہیں کی گئی۔',
+        saveCanceled: 'محفوظ کرنا منسوخ کر دیا گیا۔ کوئی فائل ڈاؤن لوڈ نہیں ہوئی۔',
+        conversionError: 'تبدیلی کے دوران ایک خرابی پیش آئی۔ دوبارہ کوشش کریں۔'
+      }
+    },
+    vi: {
+      fileLabel: 'tệp', fileLabelPlural: 'tệp',
+      imageLabel: 'ảnh', imageLabelPlural: 'ảnh',
+      status: {
+        chooseSupported: 'Vui lòng chọn các loại tệp được hỗ trợ.',
+        listCleared: 'Đã xóa danh sách tệp.',
+        fileRemoved: 'Đã xóa tệp khỏi danh sách.',
+        loadingPreviews: 'Đang tải tệp và tạo xem trước…',
+        couldNotProcessFile: 'Không thể xử lý tệp {name}.',
+        filesReady: 'Tệp đã sẵn sàng, nhấn "{action}".',
+        missingPdfReader: 'Không thể thêm PDF vì thiếu thư viện đọc PDF.',
+        unsupportedFormat: 'Không thể thêm {detail} vì định dạng không được hỗ trợ.',
+        skippedPdf: 'Bỏ qua {count} tệp PDF vì thiếu trình đọc.',
+        skippedUnsupported: 'Bỏ qua {count} tệp không được hỗ trợ.',
+        noValidFiles: 'Chưa có tệp hợp lệ nào được thêm.',
+        saveCanceled: 'Hủy lưu. Chưa có tệp nào được tải xuống.',
+        conversionError: 'Đã xảy ra lỗi trong quá trình chuyển đổi. Vui lòng thử lại.'
+      }
+    },
+    'zh-cn': {
+      fileLabel: '文件', fileLabelPlural: '文件',
+      imageLabel: '图片', imageLabelPlural: '图片',
+      status: {
+        chooseSupported: '请选择支持的文件类型。',
+        listCleared: '文件列表已清空。',
+        fileRemoved: '文件已从列表中移除。',
+        loadingPreviews: '正在加载文件并生成预览…',
+        couldNotProcessFile: '无法处理文件 {name}。',
+        filesReady: '文件已准备好，请点击“{action}”。',
+        missingPdfReader: '由于缺少 PDF 阅读库，无法添加 PDF。',
+        unsupportedFormat: '无法添加 {detail}，因为该格式不受支持。',
+        skippedPdf: '跳过了 {count} 个 PDF 文件，因为缺少阅读器。',
+        skippedUnsupported: '跳过了 {count} 个不受支持的文件。',
+        noValidFiles: '未添加任何有效文件。',
+        saveCanceled: '保存已取消。未下载任何文件。',
+        conversionError: '转换过程中出现错误。请再试一次。'
+      }
+    }
+  };
+
   const defaultConfig = {
     slug: 'chuyen-doi',
     fileLabel: 'tệp',
@@ -51,7 +417,7 @@
       mimeTypes: ['image/png', 'image/jpeg', 'image/pjpeg', 'image/webp', 'image/gif'],
       extensions: ['png', 'jpg', 'jpeg', 'webp', 'gif'],
       accept: '.png,.jpg,.jpeg,.webp,.gif,image/png,image/jpeg,image/pjpeg,image/webp,image/gif',
-      description: 'Chỉ hỗ trợ ảnh PNG, JPG, JPEG, WebP hoặc GIF.'
+      description: 'Supports PNG, JPG, JPEG, WebP, and GIF files.'
     },
     outputs: {
       jpg: { formatLabel: 'JPG', buttonLabel: 'Xuất ảnh JPG', zipNameBase: 'anh-sang-jpg', mimeType: 'image/jpeg', fileExtension: 'jpg' },
@@ -66,7 +432,55 @@
     allowPdfInput: false
   };
 
-  const config = mergeConfig(defaultConfig, window.CONVERTER_CONFIG || {});
+  const userConfig = window.CONVERTER_CONFIG || {};
+  const config = mergeConfig(defaultConfig, userConfig);
+
+  const requestedLocale = (document.documentElement.lang || (userConfig.locale || '')).toLowerCase();
+  const localeCandidates = [requestedLocale, requestedLocale.split('-')[0]];
+  const localeKey = localeCandidates.find(code => code && LOCALE_TEXT.hasOwnProperty(code)) || 'en';
+  const localeDefaults = LOCALE_TEXT[localeKey] || LOCALE_TEXT.en;
+
+  function formatTemplate(template = '', data = {}) {
+    if (!template) return '';
+    return template.replace(/\{([^}]+)\}/g, (_, token) => {
+      const value = data?.[token];
+      if (value === undefined || value === null) return '';
+      return value.toString();
+    });
+  }
+
+  const STATUS_DEFAULTS = LOCALE_TEXT.en.status;
+  const userStatus = config.i18n?.status || {};
+  const localeStatus = localeDefaults.status || {};
+
+  function resolveStatusTemplate(key) {
+    return userStatus[key] || localeStatus[key] || STATUS_DEFAULTS[key] || '';
+  }
+
+  function statusText(key, data = {}) {
+    return formatTemplate(resolveStatusTemplate(key), data);
+  }
+
+  if (!Object.prototype.hasOwnProperty.call(userConfig, 'fileLabel') && localeDefaults.fileLabel) {
+    config.fileLabel = localeDefaults.fileLabel;
+  }
+  if (!Object.prototype.hasOwnProperty.call(userConfig, 'fileLabelPlural') && localeDefaults.fileLabelPlural) {
+    config.fileLabelPlural = localeDefaults.fileLabelPlural;
+  }
+
+  const userInput = userConfig.input || {};
+  if (!Object.prototype.hasOwnProperty.call(userInput, 'label') && localeDefaults.imageLabel) {
+    config.input = config.input || {};
+    config.input.label = localeDefaults.imageLabel;
+  }
+  if (!Object.prototype.hasOwnProperty.call(userInput, 'labelPlural') && localeDefaults.imageLabelPlural) {
+    config.input = config.input || {};
+    config.input.labelPlural = localeDefaults.imageLabelPlural;
+  }
+  if (!Object.prototype.hasOwnProperty.call(userInput, 'labelWhenUnknown') && localeDefaults.imageLabel) {
+    config.input = config.input || {};
+    config.input.labelWhenUnknown = localeDefaults.imageLabel;
+  }
   const slugParts = (config.slug || '').split('-sang-');
   const inputFormatKey = (slugParts[0] || '').toLowerCase();
   const outputFormatKey = (slugParts[1] || config.defaultOutput || '').toLowerCase();
@@ -217,13 +631,13 @@
     const fileTotal = state.files.length;
     if (!fileTotal) {
       selectionBar && (selectionBar.style.display = 'none');
-      selectionCount && (selectionCount.textContent = '0 ' + (config.fileLabelPlural || 'tệp'));
-      pageCount && (pageCount.textContent = '0 ' + (imageConfig.labelPlural || 'ảnh'));
+      selectionCount && (selectionCount.textContent = '0 ' + (config.fileLabelPlural || 'files'));
+      pageCount && (pageCount.textContent = '0 ' + (imageConfig.labelPlural || 'images'));
     } else {
       selectionBar && (selectionBar.style.display = 'flex');
-      selectionCount && (selectionCount.textContent = `${fileTotal} ${fileTotal === 1 ? (config.fileLabel || 'tệp') : (config.fileLabelPlural || 'tệp')}`);
+      selectionCount && (selectionCount.textContent = `${fileTotal} ${fileTotal === 1 ? (config.fileLabel || 'file') : (config.fileLabelPlural || 'files')}`);
       const itemTotal = state.files.reduce((sum, e) => sum + (e.type === 'pdf' ? Math.max(1, e.pages || 0) : 1), 0);
-      pageCount && (pageCount.textContent = `${itemTotal} ${itemTotal === 1 ? (imageConfig.label || 'ảnh') : (imageConfig.labelPlural || 'ảnh')}`);
+      pageCount && (pageCount.textContent = `${itemTotal} ${itemTotal === 1 ? (imageConfig.label || 'image') : (imageConfig.labelPlural || 'images')}`);
     }
     emptyState && (emptyState.style.display = fileTotal ? 'none' : 'block');
     convertBtn.disabled = !fileTotal || state.converting;
@@ -251,12 +665,14 @@
       return;
     }
     const cards = state.files.map(entry => {
-      const info = entry.type === 'pdf' ? (entry.pages ? `${entry.pages} trang` : 'Đang đếm trang…') : (entry.imageInfo ? `${entry.imageInfo.width}×${entry.imageInfo.height}` : '1 ảnh');
-      const alt = entry.type === 'pdf' ? `Trang đầu của ${entry.name}` : `Ảnh xem trước của ${entry.name}`;
-      const thumb = entry.thumb ? `<img src="${entry.thumb}" alt="${alt}">` : '<span class="muted">Đang tạo xem trước…</span>';
+      const info = entry.type === 'pdf'
+        ? (entry.pages ? `${entry.pages} page` : 'Counting pages…')
+        : (entry.imageInfo ? `${entry.imageInfo.width}×${entry.imageInfo.height}` : '1 image');
+      const alt = entry.type === 'pdf' ? `First page of ${entry.name}` : `Preview image of ${entry.name}`;
+      const thumb = entry.thumb ? `<img src="${entry.thumb}" alt="${alt}">` : '<span class="muted">Generating preview…</span>';
       return `
         <div class="card">
-          <button class="remove" type="button" data-remove="${entry.id}" title="Xóa tệp">×</button>
+          <button class="remove" type="button" data-remove="${entry.id}" title="Remove file">×</button>
           <div class="thumb" data-pages="${info}">
             ${thumb}
           </div>
@@ -457,14 +873,14 @@
     dropzone.addEventListener('drop', (e) => {
       e.preventDefault(); dropzone.classList.remove('dragover');
       const files = Array.from(e.dataTransfer?.files || []).filter(f => (config.allowPdfInput && isPdfFile(f)) || isImageFile(f));
-      if (files.length) handleFiles(files); else updateStatus(imageConfig.description || 'Please choose supported file types.', 'warn');
+      if (files.length) handleFiles(files); else updateStatus(imageConfig.description || statusText('chooseSupported'), 'warn');
     });
 
     fileInput.addEventListener('change', () => { const files = Array.from(fileInput.files || []); handleFiles(files); fileInput.value = ''; });
 
-    document.querySelector('#clearAll')?.addEventListener('click', () => { state.files.forEach(cleanupEntry); state.files = []; renderGrid(); updateStatus('File list cleared.', 'info'); });
+    document.querySelector('#clearAll')?.addEventListener('click', () => { state.files.forEach(cleanupEntry); state.files = []; renderGrid(); updateStatus(statusText('listCleared'), 'info'); });
 
-    grid.addEventListener('click', (e) => { const btn = e.target.closest('[data-remove]'); if (!btn) return; const id = btn.getAttribute('data-remove'); const entry = state.files.find(f => f.id === id); if (entry) cleanupEntry(entry); state.files = state.files.filter(f => f.id !== id); renderGrid(); updateStatus('Removed the file from the list.', 'info'); });
+    grid.addEventListener('click', (e) => { const btn = e.target.closest('[data-remove]'); if (!btn) return; const id = btn.getAttribute('data-remove'); const entry = state.files.find(f => f.id === id); if (entry) cleanupEntry(entry); state.files = state.files.filter(f => f.id !== id); renderGrid(); updateStatus(statusText('fileRemoved'), 'info'); });
 
     document.querySelectorAll('.qitem').forEach(item => {
       item.addEventListener('click', () => setQuality(item.dataset.quality));
@@ -499,7 +915,7 @@
 
   async function handleFiles(files) {
     if (!files.length) return;
-    updateStatus('Loading files and generating previews…', 'info');
+    updateStatus(statusText('loadingPreviews'), 'info');
     let added = 0; const skippedPdf = []; const unsupported = [];
     for (const file of files) {
       const pdfCandidate = config.allowPdfInput && isPdfFile(file);
@@ -509,17 +925,19 @@
       const id = Math.random().toString(36).slice(2, 9);
       const entry = { id, type: pdfCandidate ? 'pdf' : 'image', file, name: file.name, pdf: null, pages: pdfCandidate ? 0 : 1, thumb: null, revokeThumb: null, imageInfo: null };
       state.files.push(entry);
-      try { if (pdfCandidate) await loadPdfPreview(entry); else await loadImagePreview(entry); added++; } catch (err) { console.error('Cannot process file for preview.', err); cleanupEntry(entry); state.files = state.files.filter(f => f.id !== id); updateStatus(`Could not process file ${file.name}.`, 'error'); }
+      try { if (pdfCandidate) await loadPdfPreview(entry); else await loadImagePreview(entry); added++; } catch (err) { console.error('Cannot process file for preview.', err); cleanupEntry(entry); state.files = state.files.filter(f => f.id !== id); updateStatus(statusText('couldNotProcessFile', {name: file.name}), 'error'); }
     }
     renderGrid();
     if (added) {
       const notes = [];
-      if (skippedPdf.length) notes.push(`Skipped ${skippedPdf.length} PDF files because the PDF reader library is missing.`);
-      if (unsupported.length) notes.push(`Skipped ${unsupported.length} unsupported files.`);
+      if (skippedPdf.length) notes.push(statusText('skippedPdf', {count: skippedPdf.length}));
+      if (unsupported.length) notes.push(statusText('skippedUnsupported', {count: unsupported.length}));
       const outputDetails = config.outputs[state.outputFormat] || {}; const actionLabel = outputDetails.buttonLabel || 'Start converting';
-      updateStatus([`Files are ready, click "${actionLabel}".`, ...notes].join(' '), notes.length ? 'warn' : 'success');
+      const readyMessage = statusText('filesReady', {action: actionLabel});
+      const statusParts = [readyMessage, ...notes].filter(Boolean);
+      updateStatus(statusParts.join(' '), notes.length ? 'warn' : 'success');
     } else if (skippedPdf.length) {
-      updateStatus('Cannot add PDF because the PDF reader library is missing.', 'error');
+      updateStatus(statusText('missingPdfReader'), 'error');
     } else if (unsupported.length) {
       const previewCount = 3;
       const rawPreview = unsupported.slice(0, previewCount);
@@ -529,16 +947,16 @@
       const previewNames = normalizedPreview.length ? normalizedPreview : rawPreview;
       const formattedNames = previewNames.map(name => `"${name}"`).join(', ');
       const extraCount = unsupported.length - previewNames.length;
-      const extraText = extraCount > 0 ? ` và ${extraCount} tệp khác` : '';
+      const extraText = extraCount > 0 ? ` and ${extraCount} more` : '';
       const detailSegment = unsupported.length === 1
         ? `file ${formattedNames}`
         : `${unsupported.length} files (${formattedNames}${extraText})`;
-      const reason = imageConfig.description || 'Please choose valid image formats.';
+      const reason = imageConfig.description || statusText('chooseSupported');
       const message = `Could not add ${detailSegment} because the format is unsupported. ${reason}`;
       updateStatus(message, 'warn');
       showFloatingAlert(message, 'warn', 5000);
     } else {
-      updateStatus('No valid files were added.', 'info');
+      updateStatus(statusText('noValidFiles'), 'info');
     }
   }
 
@@ -610,11 +1028,11 @@
     const preserveAlpha = Boolean(outputConfig.preserveAlpha);
     const targetFormatLabel = outputConfig.formatLabel || (state.outputFormat || 'tệp').toUpperCase();
 
-    if (state.files.some(e => e.type === 'pdf') && !pdfjs) { updateStatus('Cannot process PDF files because the PDF library is missing.', 'error'); return; }
+    if (state.files.some(e => e.type === 'pdf') && !pdfjs) { updateStatus(statusText('missingPdfReader'), 'error'); return; }
 
     const jsPDFLib = exportingPdf ? (window.jspdf && window.jspdf.jsPDF) : null;
-    if (exportingPdf && !jsPDFLib) { updateStatus('Missing PDF generator library. Please include jsPDF or choose an image format.', 'error'); return; }
-    if (typeof JSZip !== 'function' || typeof saveAs !== 'function') { updateStatus('Missing ZIP/download library. Please ensure JSZip and FileSaver are loaded.', 'error'); return; }
+    if (exportingPdf && !jsPDFLib) { updateStatus(statusText('missingPdfGenerator'), 'error'); return; }
+    if (typeof JSZip !== 'function' || typeof saveAs !== 'function') { updateStatus(statusText('missingZipLibrary'), 'error'); return; }
 
     state.converting = true; convertBtn.disabled = true;
 
@@ -717,12 +1135,12 @@
         try { saveOutcome = await nativeSaveFile(mergedBlob, mergedName, 'application/pdf'); }
         catch (err) { console.warn('nativeSaveFile failed for merged PDF.', err); }
         if (saveOutcome === 'cancelled') {
-          updateStatus('Save canceled. No files were downloaded.', 'info');
+          updateStatus(statusText('saveCanceled'), 'info');
           return;
         }
         if (saveOutcome !== 'saved') saveAs(mergedBlob, mergedName);
         const mergedDetail = describeDownloadedTargets([mergedName]);
-        const mergedMessage = mergedDetail ? `${mergedDetail} đã được tải xuống` : 'Tệp đã được tải xuống';
+        const mergedMessage = mergedDetail ? `${mergedDetail} downloaded` : 'File downloaded';
         updateStatus(buildDownloadAnnouncement(mergedMessage, DOWNLOAD_HINT_BROWSER), 'success');
       } else {
         if (resultFiles.length === 1) {
@@ -731,12 +1149,12 @@
           try { saveOutcome = await nativeSaveFile(item.blob, item.outputFilename, item.blob.type); }
           catch (err) { console.warn('nativeSaveFile failed for single export.', err); }
           if (saveOutcome === 'cancelled') {
-          updateStatus('Save canceled. No files were downloaded.', 'info');
+          updateStatus(statusText('saveCanceled'), 'info');
             return;
           }
           if (saveOutcome !== 'saved') saveAs(item.blob, item.outputFilename);
           const singleDetail = describeDownloadedTargets(gatherResultFileNames());
-          const singleMessage = singleDetail ? `${singleDetail} đã được tải xuống` : 'Tệp đã được tải xuống';
+          const singleMessage = singleDetail ? `${singleDetail} downloaded` : 'File downloaded';
           updateStatus(buildDownloadAnnouncement(singleMessage, DOWNLOAD_HINT_BROWSER), 'success');
         } else {
           let dirOutcome = 'unsupported';
@@ -745,12 +1163,12 @@
             catch (err) { console.warn('nativeSaveMultiple threw an error.', err); dirOutcome = 'failed'; }
           }
           if (dirOutcome === 'cancelled') {
-          updateStatus('Save canceled. No files were downloaded.', 'info');
+          updateStatus(statusText('saveCanceled'), 'info');
             return;
           }
           if (dirOutcome === 'saved') {
             const savedDetail = describeDownloadedTargets(gatherResultFileNames());
-            const savedMessage = savedDetail ? `${savedDetail} đã được lưu vào thư mục bạn chọn` : 'Các tệp đã được lưu vào thư mục bạn chọn';
+            const savedMessage = savedDetail ? `${savedDetail} saved` : 'Files saved';
             updateStatus(buildDownloadAnnouncement(savedMessage, DOWNLOAD_HINT_FOLDER), 'success');
           } else {
             const zip = new JSZip();
@@ -765,14 +1183,14 @@
             const zipBlob = await zip.generateAsync({type: 'blob'});
             const zipFilename = `${zipNameBase}-${Date.now()}.zip`;
             saveAs(zipBlob, zipFilename);
-            const zipDetail = `Tệp ZIP "${zipFilename}" đã được tải xuống`;
+            const zipDetail = `ZIP "${zipFilename}" downloaded`;
             updateStatus(buildDownloadAnnouncement(zipDetail, DOWNLOAD_HINT_BROWSER), 'success');
           }
         }
       }
     } catch (err) {
       console.error(err);
-      updateStatus('An error occurred during conversion. Please try again.', 'error');
+      updateStatus(statusText('conversionError'), 'error');
     } finally {
       state.converting = false;
       convertBtn.disabled = !state.files.length;
