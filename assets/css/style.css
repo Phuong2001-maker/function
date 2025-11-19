@@ -96,6 +96,7 @@ main {
   justify-content: center;
   gap: 4px;
   transition: border-color 0.2s, background 0.2s;
+  position: relative;
 }
 
 .nav-toggle span {
@@ -103,19 +104,41 @@ main {
   width: 18px;
   height: 2px;
   background: var(--text);
-  transition: transform 0.3s, opacity 0.2s;
+  transition: opacity 0.2s;
 }
 
-body.nav-open .nav-toggle span:nth-child(1) {
-  transform: translateY(6px) rotate(45deg);
+.nav-toggle .close-icon {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.2s;
 }
 
-body.nav-open .nav-toggle span:nth-child(2) {
+.nav-toggle .close-icon::before,
+.nav-toggle .close-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--text);
+  transform: translateY(-50%);
+}
+
+.nav-toggle .close-icon::after {
+  transform: translateY(-50%) rotate(90deg);
+}
+
+body.nav-open .nav-toggle span {
   opacity: 0;
 }
 
-body.nav-open .nav-toggle span:nth-child(3) {
-  transform: translateY(-6px) rotate(-45deg);
+body.nav-open .nav-toggle .close-icon {
+  opacity: 1;
 }
 
 .hero {
@@ -638,12 +661,28 @@ body.nav-open .nav-overlay {
     height: 100vh;
     width: min(320px, 80vw);
     flex-direction: column;
-    background: #fff;
-    padding: 6rem 2rem;
-    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+    align-items: flex-start;
+    gap: 1.25rem;
+    background: linear-gradient(165deg, #ffffff 0%, #fff7fb 70%);
+    border-left: 1px solid rgba(240, 91, 126, 0.18);
+    border-top-left-radius: 28px;
+    border-bottom-left-radius: 28px;
+    padding: 6rem 2.5rem 3rem;
+    box-shadow: -18px 0 40px rgba(31, 31, 43, 0.15);
     transform: translateX(100%);
     opacity: 0;
     transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .nav-links a {
+    width: 100%;
+    padding: 0.25rem 0;
+    border-bottom: 1px solid rgba(31, 31, 43, 0.08);
+    font-size: 1.05rem;
+  }
+
+  .nav-links a:last-child {
+    border-bottom: none;
   }
 
   .lang-switch {
