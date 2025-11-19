@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>محول الصور | FluxConvert</title>
+  <meta name="description" content="تحويل JPG وPNG وWebP محليًا بدون حدود للتحميل.">
+  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="alternate" hreflang="ar" href="https://fluxconvert.tools/AR/image-converter.html">
+<link rel="alternate" hreflang="bn" href="https://fluxconvert.tools/BN/image-converter.html">
+<link rel="alternate" hreflang="de" href="https://fluxconvert.tools/DE/image-converter.html">
+<link rel="alternate" hreflang="en" href="https://fluxconvert.tools/EN/image-converter.html">
+<link rel="alternate" hreflang="es" href="https://fluxconvert.tools/ES/image-converter.html">
+<link rel="alternate" hreflang="fr" href="https://fluxconvert.tools/FR/image-converter.html">
+<link rel="alternate" hreflang="hi" href="https://fluxconvert.tools/HI/image-converter.html">
+<link rel="alternate" hreflang="id" href="https://fluxconvert.tools/ID/image-converter.html">
+<link rel="alternate" hreflang="it" href="https://fluxconvert.tools/IT/image-converter.html">
+<link rel="alternate" hreflang="ja" href="https://fluxconvert.tools/JA/image-converter.html">
+<link rel="alternate" hreflang="ko" href="https://fluxconvert.tools/KO/image-converter.html">
+<link rel="alternate" hreflang="ms" href="https://fluxconvert.tools/MS/image-converter.html">
+<link rel="alternate" hreflang="pt-BR" href="https://fluxconvert.tools/PT-BR/image-converter.html">
+<link rel="alternate" hreflang="ru" href="https://fluxconvert.tools/RU/image-converter.html">
+<link rel="alternate" hreflang="th" href="https://fluxconvert.tools/TH/image-converter.html">
+<link rel="alternate" hreflang="tr" href="https://fluxconvert.tools/TR/image-converter.html">
+<link rel="alternate" hreflang="ur" href="https://fluxconvert.tools/UR/image-converter.html">
+<link rel="alternate" hreflang="vi" href="https://fluxconvert.tools/VI/image-converter.html">
+<link rel="alternate" hreflang="zh-CN" href="https://fluxconvert.tools/ZH-CN/image-converter.html">
+  <link rel="alternate" hreflang="x-default" href="https://fluxconvert.tools/EN/image-converter.html">
+</head>
+<body data-page="image-converter">
+  
+    <header class="site-header" data-page="image-converter">
+      <!-- Placeholder brand/email. Replace FluxConvert + contact@example.com with real info. -->
+      <div class="logo">FluxConvert</div>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html">الصفحة الرئيسية</a>
+        <a href="all-tools.html">جميع الأدوات</a>
+        <a href="about.html">حول</a>
+        <a href="blog.html">المدونة و الأدلة</a>
+        <a href="contact.html">اتصل</a>
+      </nav>
+      <div class="lang-switch">
+        <label for="languageSelect" class="sr-only">Language</label>
+        <select id="languageSelect" data-current="AR">
+          <option value="AR" selected>العربية</option><option value="BN">বাংলা</option><option value="DE">Deutsch</option><option value="EN">English</option><option value="ES">Español</option><option value="FR">Français</option><option value="HI">हिन्दी</option><option value="ID">Bahasa Indonesia</option><option value="IT">Italiano</option><option value="JA">�-�本語</option><option value="KO">한국어</option><option value="MS">Bahasa Melayu</option><option value="PT-BR">Português (Brasil)</option><option value="RU">Русский</option><option value="TH">ไ�-ย</option><option value="TR">Türkçe</option><option value="UR">اردو</option><option value="VI">Tiếng Việt</option><option value="ZH-CN">简体中文</option>
+        </select>
+      </div>
+    </header>
+  
+  <main>
+    
+    <section class="tool-layout">
+      <article class="tool-drop">
+        <h1>محول الصور</h1>
+        <p>التبديل بسرعة بين JPG وPNG وWebP دون ضغط التفاصيل.</p>
+        <div class="dropzone" data-input="ملفات الصور">
+          <p class="drop-title">اسحب الملفات هنا</p>
+          <p>أسقط ملفات الصور هنا أو انقر أدناه لاختيارها من جهازك.</p>
+          <button type="button" class="primary-btn">اختر الملفات</button>
+          <p class="note">FluxConvert يتم تشغيله محليًا، لذا لا يوجد حد لحجم الملف ولا شيء يمس خوادمنا.</p>
+          <input type="file" class="hidden-input" multiple>
+        </div>
+        <div class="file-queue">
+          <h2>الملفات في قائمة الانتظار</h2>
+          <ul data-role="file-list" data-empty="لا توجد ملفات حتى الآن - ابدأ بإضافة شيء أعلاه.">
+            <li class="empty">لا توجد ملفات حتى الآن - ابدأ بإضافة شيء أعلاه.</li>
+          </ul>
+        </div>
+      </article>
+      <aside class="tool-panel">
+        <h2>خيارات التحويل</h2>
+        <label>
+          تنسيق الإخراج
+          <select>
+            
+    <option value="JPG" selected>JPG</option>
+  
+    <option value="PNG">PNG</option>
+  
+    <option value="WEBP">WEBP</option>
+  
+          </select>
+        </label>
+        <div class="quality-options">
+          <p>الجودة الإعدادات المسبقة</p>
+          <div class="quality-group">
+            
+    <button type="button" class="quality-card active" data-quality="0">
+      <strong>متوازنة</strong>
+      <p>أفضل مزيج من الوضوح والحجم.</p>
+    </button>
+  
+    <button type="button" class="quality-card" data-quality="1">
+      <strong>عالية</strong>
+      <p>مزيد من التفاصيل للشاشات والطباعة.</p>
+    </button>
+  
+    <button type="button" class="quality-card" data-quality="2">
+      <strong>Ultra</strong>
+      <p>الحد الأقصى لعدد النقاط في البوصة، يستخدم المزيد من الذاكرة.</p>
+    </button>
+  
+          </div>
+        </div>
+        <button class="primary-btn convert" data-processing="جارٍ المعالجة...">تحويل الملفات</button>
+        <p class="note">تتم المعالجة في المتصفح، لذلك يحدد جهازك الحد.</p>
+      </aside>
+    </section>
+    <section class="tool-info">
+      <p>هل تحتاج إلى ملخص سريع؟ مثالي للمصممين الذين يرسلون الأدلة أو المسوقين الذين يقومون بتحديث الأصول - بدون تحميل، لا انتظار.</p>
+      <h3>الأدوات ذات الصلة</h3>
+      <ul><li><a href="compress-png.html">ضغط PNG</a></li><li><a href="jpg-to-pdf.html">JPG إلى PDF</a></li></ul>
+    </section>
+  
+  </main>
+  
+    <footer class="site-footer">
+      <div class="footer-brand">FluxConvert</div>
+      <p>FluxConvert يقوم بتحويل الصور وملفات PDF وملفات المكتب مباشرة داخل متصفحك وبالتالي فإن الحد الوحيد هو جهازك. لا توجد تحميلات ولا تخزين ولا تسجيل - فقط أدوات سريعة تحترم الخصوصية.</p>
+      <div class="footer-links">
+        <a href="about.html">حول</a>
+        <a href="all-tools.html">جميع الأدوات</a>
+        <a href="blog.html">المدونة و الأدلة</a>
+        <a href="privacy.html">سياسة الخصوصية</a>
+        <a href="terms.html">شروط الاستخدام</a>
+        <a href="contact.html">اتصل</a>
+      </div>
+      <a href="mailto:contact@example.com" class="footer-email">contact@example.com</a>
+      <p class="copyright">&copy; 2025 FluxConvert</p>
+    </footer>
+  
+  <script src="../assets/js/main.js" defer></script>
+<script src="../assets/js/tools.js" defer></script>
+</body>
+</html>

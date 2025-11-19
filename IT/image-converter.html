@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="it" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Convertitore di immagini | __BRAND</title>
+  <meta name="description" content="Converti JPG, PNG e WebP localmente senza limiti di caricamento.">
+  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="alternate" hreflang="ar" href="https://fluxconvert.tools/AR/image-converter.html">
+<link rel="alternate" hreflang="bn" href="https://fluxconvert.tools/BN/image-converter.html">
+<link rel="alternate" hreflang="de" href="https://fluxconvert.tools/DE/image-converter.html">
+<link rel="alternate" hreflang="en" href="https://fluxconvert.tools/EN/image-converter.html">
+<link rel="alternate" hreflang="es" href="https://fluxconvert.tools/ES/image-converter.html">
+<link rel="alternate" hreflang="fr" href="https://fluxconvert.tools/FR/image-converter.html">
+<link rel="alternate" hreflang="hi" href="https://fluxconvert.tools/HI/image-converter.html">
+<link rel="alternate" hreflang="id" href="https://fluxconvert.tools/ID/image-converter.html">
+<link rel="alternate" hreflang="it" href="https://fluxconvert.tools/IT/image-converter.html">
+<link rel="alternate" hreflang="ja" href="https://fluxconvert.tools/JA/image-converter.html">
+<link rel="alternate" hreflang="ko" href="https://fluxconvert.tools/KO/image-converter.html">
+<link rel="alternate" hreflang="ms" href="https://fluxconvert.tools/MS/image-converter.html">
+<link rel="alternate" hreflang="pt-BR" href="https://fluxconvert.tools/PT-BR/image-converter.html">
+<link rel="alternate" hreflang="ru" href="https://fluxconvert.tools/RU/image-converter.html">
+<link rel="alternate" hreflang="th" href="https://fluxconvert.tools/TH/image-converter.html">
+<link rel="alternate" hreflang="tr" href="https://fluxconvert.tools/TR/image-converter.html">
+<link rel="alternate" hreflang="ur" href="https://fluxconvert.tools/UR/image-converter.html">
+<link rel="alternate" hreflang="vi" href="https://fluxconvert.tools/VI/image-converter.html">
+<link rel="alternate" hreflang="zh-CN" href="https://fluxconvert.tools/ZH-CN/image-converter.html">
+  <link rel="alternate" hreflang="x-default" href="https://fluxconvert.tools/EN/image-converter.html">
+</head>
+<body data-page="image-converter">
+  
+    <header class="site-header" data-page="image-converter">
+      <!-- Placeholder brand/email. Replace FluxConvert + contact@example.com with real info. -->
+      <div class="logo">FluxConvert</div>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="all-tools.html">Tutti gli strumenti</a>
+        <a href="about.html">Informazioni</a>
+        <a href="blog.html">Blog e guide</a>
+        <a href="contact.html">Contatti</a>
+      </nav>
+      <div class="lang-switch">
+        <label for="languageSelect" class="sr-only">Language</label>
+        <select id="languageSelect" data-current="IT">
+          <option value="AR">العربية</option><option value="BN">বাংলা</option><option value="DE">Deutsch</option><option value="EN">English</option><option value="ES">Español</option><option value="FR">Français</option><option value="HI">हिन्दी</option><option value="ID">Bahasa Indonesia</option><option value="IT" selected>Italiano</option><option value="JA">�-�本語</option><option value="KO">한국어</option><option value="MS">Bahasa Melayu</option><option value="PT-BR">Português (Brasil)</option><option value="RU">Русский</option><option value="TH">ไ�-ย</option><option value="TR">Türkçe</option><option value="UR">اردو</option><option value="VI">Tiếng Việt</option><option value="ZH-CN">简体中文</option>
+        </select>
+      </div>
+    </header>
+  
+  <main>
+    
+    <section class="tool-layout">
+      <article class="tool-drop">
+        <h1>Convertitore di immagini</h1>
+        <p>Passa rapidamente tra JPG, PNG e WebP senza comprimere i dettagli.</p>
+        <div class="dropzone" data-input="file immagine">
+          <p class="drop-title">Trascina i file qui</p>
+          <p>Rilascia qui il tuo file immagine o fai clic sotto per scegliere dal tuo dispositivo.</p>
+          <button type="button" class="primary-btn">Scegli i file</button>
+          <p class="note">FluxConvert viene eseguito localmente, quindi non ci sono limiti alle dimensioni dei file e nulla tocca i nostri server.</p>
+          <input type="file" class="hidden-input" multiple>
+        </div>
+        <div class="file-queue">
+          <h2>File in coda</h2>
+          <ul data-role="file-list" data-empty="Ancora nessun file: inizia aggiungendo qualcosa sopra.">
+            <li class="empty">Ancora nessun file: inizia aggiungendo qualcosa sopra.</li>
+          </ul>
+        </div>
+      </article>
+      <aside class="tool-panel">
+        <h2>Opzioni di conversione</h2>
+        <label>
+          Formato output
+          <select>
+            
+    <option value="JPG" selected>JPG</option>
+  
+    <option value="PNG">PNG</option>
+  
+    <option value="WEBP">WEBP</option>
+  
+          </select>
+        </label>
+        <div class="quality-options">
+          <p>Preimpostazioni qualità</p>
+          <div class="quality-group">
+            
+    <button type="button" class="quality-card active" data-quality="0">
+      <strong>Balanced</strong>
+      <p>Miglior mix di chiarezza e dimensioni.</p>
+    </button>
+  
+    <button type="button" class="quality-card" data-quality="1">
+      <strong>High</strong>
+      <p>Maggiori dettagli per visualizzazione e stampa.</p>
+    </button>
+  
+    <button type="button" class="quality-card" data-quality="2">
+      <strong>Ultra</strong>
+      <p>DPI massimo, utilizza più memoria.</p>
+    </button>
+  
+          </div>
+        </div>
+        <button class="primary-btn convert" data-processing="Elaborazione...">Converti file</button>
+        <p class="note">L'elaborazione avviene nel browser, quindi il tuo dispositivo definisce il limite.</p>
+      </aside>
+    </section>
+    <section class="tool-info">
+      <p>Hai bisogno di un breve riepilogo? Perfetto per i designer che inviano prove o per gli esperti di marketing che aggiornano le risorse: nessun caricamento, nessuna attesa.</p>
+      <h3>Strumenti correlati</h3>
+      <ul><li><a href="compress-png.html">Comprimi PNG</a></li><li><a href="jpg-to-pdf.html">JPG in PDF</a></li></ul>
+    </section>
+  
+  </main>
+  
+    <footer class="site-footer">
+      <div class="footer-brand">FluxConvert</div>
+      <p>FluxConvert converte immagini, PDF e file di Office direttamente nel tuo browser, quindi l'unico limite è il tuo dispositivo. Nessun caricamento, nessuno spazio di archiviazione e nessuna registrazione: solo strumenti veloci che rispettano la privacy.</p>
+      <div class="footer-links">
+        <a href="about.html">Informazioni</a>
+        <a href="all-tools.html">Tutti gli strumenti</a>
+        <a href="blog.html">Blog e guide</a>
+        <a href="privacy.html">Privacy Politica</a>
+        <a href="terms.html">Termini di utilizzo</a>
+        <a href="contact.html">Contatti</a>
+      </div>
+      <a href="mailto:contact@example.com" class="footer-email">contact@example.com</a>
+      <p class="copyright">&copy; 2025 FluxConvert</p>
+    </footer>
+  
+  <script src="../assets/js/main.js" defer></script>
+<script src="../assets/js/tools.js" defer></script>
+</body>
+</html>
