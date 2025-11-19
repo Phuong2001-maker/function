@@ -74,6 +74,71 @@
       const next = '/' + parts.join('/');
       window.location.href = next;
     });
+
+    const langWrapper = langSelect.closest('.lang-switch');
+    if (langWrapper && !langWrapper.querySelector('.lang-dropdown')) {
+      const dropdown = document.createElement('div');
+      dropdown.className = 'lang-dropdown';
+      const toggle = document.createElement('button');
+      toggle.type = 'button';
+      toggle.className = 'lang-dropdown-toggle';
+      const toggleLabel = document.createElement('span');
+      toggle.appendChild(toggleLabel);
+      const list = document.createElement('ul');
+      list.className = 'lang-dropdown-list';
+      const optionButtons = [];
+
+      const updateSelection = () => {
+        const current = langSelect.options[langSelect.selectedIndex];
+        toggleLabel.textContent = current ? current.textContent : '';
+        optionButtons.forEach(entry => {
+          entry.button.classList.toggle('active', entry.value === langSelect.value);
+        });
+      };
+
+      Array.from(langSelect.options).forEach(option => {
+        const li = document.createElement('li');
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.textContent = option.textContent;
+        button.addEventListener('click', () => {
+          if (langSelect.value !== option.value) {
+            langSelect.value = option.value;
+            langSelect.dispatchEvent(new Event('change', { bubbles: true }));
+          }
+          dropdown.classList.remove('open');
+          updateSelection();
+        });
+        li.appendChild(button);
+        list.appendChild(li);
+        optionButtons.push({ value: option.value, button });
+      });
+
+      const closeDropdown = () => dropdown.classList.remove('open');
+
+      toggle.addEventListener('click', event => {
+        event.stopPropagation();
+        dropdown.classList.toggle('open');
+      });
+
+      document.addEventListener('click', event => {
+        if (!dropdown.contains(event.target)) {
+          closeDropdown();
+        }
+      });
+
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') {
+          closeDropdown();
+        }
+      });
+
+      dropdown.appendChild(toggle);
+      dropdown.appendChild(list);
+      langWrapper.appendChild(dropdown);
+      langSelect.classList.add('lang-select-hidden');
+      updateSelection();
+    }
   }
 
   document.querySelectorAll('.faq-item').forEach(item => {
