@@ -47,6 +47,8 @@
     const button = item.querySelector('.faq-question');
     const answer = item.querySelector('.faq-answer');
     if (!button || !answer) return;
+    button.setAttribute('aria-expanded', 'false');
+    answer.setAttribute('hidden', '');
     button.addEventListener('click', () => {
       const expanded = button.getAttribute('aria-expanded') === 'true';
       button.setAttribute('aria-expanded', (!expanded).toString());
