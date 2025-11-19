@@ -4,12 +4,45 @@
   const navLinks = document.querySelector('.nav-links');
 
   if (navToggle && navLinks) {
+    const navOverlay = document.createElement('div');
+    navOverlay.className = 'nav-overlay';
+    document.body.appendChild(navOverlay);
+
+    const closeNav = () => {
+      if (!body.classList.contains('nav-open')) return;
+      body.classList.remove('nav-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    };
+
+    const openNav = () => {
+      body.classList.add('nav-open');
+      navToggle.setAttribute('aria-expanded', 'true');
+    };
+
     navToggle.addEventListener('click', () => {
-      const open = body.classList.toggle('nav-open');
-      navToggle.setAttribute('aria-expanded', open);
+      if (body.classList.contains('nav-open')) {
+        closeNav();
+      } else {
+        openNav();
+      }
     });
+
+    navOverlay.addEventListener('click', closeNav);
+
+    document.addEventListener('click', event => {
+      if (!body.classList.contains('nav-open')) return;
+      if (navLinks.contains(event.target) || navToggle.contains(event.target)) return;
+      closeNav();
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        closeNav();
+      }
+    });
+
     navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => body.classList.remove('nav-open'));
+      link.addEventListener('click', closeNav);
     });
   }
 
