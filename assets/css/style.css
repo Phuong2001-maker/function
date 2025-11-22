@@ -47,6 +47,7 @@ main {
   backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(240, 91, 126, 0.1);
 }
+.site-header > .page-shell { display: contents; }
 
 .logo {
   font-weight: 700;
