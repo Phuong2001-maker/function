@@ -11,6 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .page-shell{max-width:1200px;margin:0 auto;padding:0 16px 40px;}
+  </style>
   <link rel="alternate" hreflang="ar" href="https://fluxconvert.tools/AR/all-tools.html">
 <link rel="alternate" hreflang="bn" href="https://fluxconvert.tools/BN/all-tools.html">
 <link rel="alternate" hreflang="de" href="https://fluxconvert.tools/DE/all-tools.html">
@@ -35,27 +38,29 @@
 <body data-page="all-tools">
   
     <header class="site-header" data-page="all-tools">
-      <!-- Placeholder brand/email. Replace FluxConvert + contact@example.com with real info. -->
-      <div class="logo">FluxConvert</div>
-      <button class="nav-toggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="index.html">Trang chủ</a>
-        <a href="all-tools.html">Tất cả công cụ</a>
-        <a href="about.html">Giới thiệu</a>
-        <a href="blog.html">Blog và hướng dẫn</a>
-        <a href="contact.html">Liên hệ</a>
-      </nav>
-      <div class="lang-switch">
-        <label for="languageSelect" class="sr-only">Ngôn ngữ</label>
-        <select id="languageSelect" data-current="VI">
-          <option value="AR">العربية</option><option value="BN">বাংলা</option><option value="DE">Deutsch</option><option value="EN">English</option><option value="ES">Español</option><option value="FR">Français</option><option value="HI">हिन्दी</option><option value="ID">Bahasa Indonesia</option><option value="IT">Italiano</option><option value="JA">日本語</option><option value="KO">한국어</option><option value="MS">Bahasa Melayu</option><option value="PT-BR">Português (Brasil)</option><option value="RU">Русский</option><option value="TH">ไทย</option><option value="TR">Türkçe</option><option value="UR">اردو</option><option value="VI" selected>Tiếng Việt</option><option value="ZH-CN">简体中文</option>
-        </select>
+      <div class="page-shell" style="padding:0 16px;display:flex;align-items:center;gap:18px;">
+        <!-- Placeholder brand/email. Replace FluxConvert + contact@example.com with real info. -->
+        <div class="logo">FluxConvert</div>
+        <button class="nav-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="index.html">Trang chủ</a>
+          <a href="all-tools.html">Tất cả công cụ</a>
+          <a href="about.html">Giới thiệu</a>
+          <a href="blog.html">Blog và hướng dẫn</a>
+          <a href="contact.html">Liên hệ</a>
+        </nav>
+        <div class="lang-switch">
+          <label for="languageSelect" class="sr-only">Ngôn ngữ</label>
+          <select id="languageSelect" data-current="VI">
+            <option value="AR">العربية</option><option value="BN">বাংলা</option><option value="DE">Deutsch</option><option value="EN">English</option><option value="ES">Español</option><option value="FR">Français</option><option value="HI">हिन्दी</option><option value="ID">Bahasa Indonesia</option><option value="IT">Italiano</option><option value="JA">日本語</option><option value="KO">한국어</option><option value="MS">Bahasa Melayu</option><option value="PT-BR">Português (Brasil)</option><option value="RU">Русский</option><option value="TH">ไทย</option><option value="TR">Türkçe</option><option value="UR">اردو</option><option value="VI" selected>Tiếng Việt</option><option value="ZH-CN">简体中文</option>
+          </select>
+        </div>
       </div>
     </header>
   
-  <main>
+  <main class="page-shell">
     
     <section class="page-hero">
       <h1>Khám phá mọi thứ bộ chuyển đổi</h1>
@@ -85,17 +90,8 @@
     </section>
     <section class="tool-grid full">
       
-      <article class="tool-card" data-category="hình ảnh">
-        <div class="tool-icon" aria-hidden="true">🖼️</div>
-        <div>
-          <h3>Trình chuyển đổi hình ảnh</h3>
-          <p>Chuyển đổi hàng loạt tệp JPG, PNG và WebP chỉ bằng một lần kéo.</p>
-        </div>
-        <a class="pill-button" href="image-converter.html">Sử dụng công cụ</a>
-      </article>
-    
       <article class="tool-card" data-category="images">
-        <div class="tool-icon" aria-hidden="true">📄</div>
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
         <div>
           <h3>PNG sang JPG</h3>
           <p>Chuyển đổi ảnh PNG sang JPG rõ nét ngay trong trình duyệt, không cần tải lên.</p>
@@ -103,22 +99,67 @@
         <a class="pill-button" href="png-sang-jpg.html">Sử dụng công cụ</a>
       </article>
     
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>JPG sang PNG</h3>
+          <p>Xuất ảnh JPG thành PNG giữ nguyên độ nét, xử lý ngay trên máy.</p>
+        </div>
+        <a class="pill-button" href="jpg-sang-png.html">Sử dụng công cụ</a>
+      </article>
+    
       <article class="tool-card" data-category="documents">
         <div class="tool-icon" aria-hidden="true">📚</div>
         <div>
-          <h3>JPG thành PDF</h3>
-          <p>Hợp nhất ảnh thành một tệp PDF nhẹ sẵn sàng chia sẻ.</p>
+          <h3>JPG sang PDF</h3>
+          <p>Ghép nhiều ảnh JPG thành một tệp PDF nhẹ, sẵn sàng chia sẻ.</p>
         </div>
-        <a class="pill-button" href="jpg-to-pdf.html">Sử dụng công cụ</a>
+        <a class="pill-button" href="jpg-sang-pdf.html">Sử dụng công cụ</a>
       </article>
     
-      <article class="tool-card" data-category="hình ảnh nén">
-        <div class="tool-icon" aria-hidden="true">✨</div>
+      <article class="tool-card" data-category="documents">
+        <div class="tool-icon" aria-hidden="true">📄</div>
         <div>
-          <h3>Nén PNG</h3>
-          <p>Thu nhỏ tệp PNG trong khi vẫn giữ được màu sắc thương hiệu cục bộ.</p>
+          <h3>PDF sang JPG</h3>
+          <p>Trích xuất trang PDF thành JPG sắc nét mà không cần tải lên máy chủ.</p>
         </div>
-        <a class="pill-button" href="compress-png.html">Sử dụng công cụ</a>
+        <a class="pill-button" href="pdf-sang-jpg.html">Sử dụng công cụ</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>PNG sang PDF</h3>
+          <p>Biến ảnh PNG thành tệp PDF gọn nhẹ, chạy hoàn toàn trong trình duyệt.</p>
+        </div>
+        <a class="pill-button" href="png-sang-pdf.html">Sử dụng công cụ</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>PNG sang WebP</h3>
+          <p>Giảm dung lượng với WebP nhưng vẫn giữ chất lượng màu từ file PNG.</p>
+        </div>
+        <a class="pill-button" href="png-sang-webp.html">Sử dụng công cụ</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>WEBP sang PNG</h3>
+          <p>Chuyển WebP về PNG tương thích rộng rãi, không cần tải lên đám mây.</p>
+        </div>
+        <a class="pill-button" href="webp-sang-png.html">Sử dụng công cụ</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>GIF sang PNG</h3>
+          <p>Chuyển đổi khung GIF thành PNG tĩnh để dễ chỉnh sửa và lưu trữ.</p>
+        </div>
+        <a class="pill-button" href="gif-sang-png.html">Sử dụng công cụ</a>
       </article>
     
     </section>
@@ -126,18 +167,20 @@
   </main>
   
     <footer class="site-footer">
-      <div class="footer-brand">FluxConvert</div>
-      <p>FluxConvert chuyển đổi hình ảnh, Các tệp PDF và tệp văn phòng trực tiếp bên trong trình duyệt của bạn nên giới hạn duy nhất là thiết bị của bạn. Không tải lên, không lưu trữ và không cần đăng ký - chỉ là những công cụ nhanh chóng tôn trọng quyền riêng tư.</p>
-      <div class="footer-links">
-        <a href="about.html">Giới thiệu</a>
-        <a href="all-tools.html">Tất cả công cụ</a>
-        <a href="blog.html">Blog và hướng dẫn</a>
-        <a href="privacy.html">Chính sách bảo mật</a>
-        <a href="terms.html">Điều khoản sử dụng</a>
-        <a href="contact.html">Liên hệ</a>
+      <div class="page-shell">
+        <div class="footer-brand">FluxConvert</div>
+        <p>FluxConvert chuyển đổi hình ảnh, Các tệp PDF và tệp văn phòng trực tiếp bên trong trình duyệt của bạn nên giới hạn duy nhất là thiết bị của bạn. Không tải lên, không lưu trữ và không cần đăng ký - chỉ là những công cụ nhanh chóng tôn trọng quyền riêng tư.</p>
+        <div class="footer-links">
+          <a href="about.html">Giới thiệu</a>
+          <a href="all-tools.html">Tất cả công cụ</a>
+          <a href="blog.html">Blog và hướng dẫn</a>
+          <a href="privacy.html">Chính sách bảo mật</a>
+          <a href="terms.html">Điều khoản sử dụng</a>
+          <a href="contact.html">Liên hệ</a>
+        </div>
+        <a href="mailto:contact@example.com" class="footer-email">contact@example.com</a>
+        <p class="copyright">&copy; 2025 FluxConvert</p>
       </div>
-      <a href="mailto:contact@example.com" class="footer-email">contact@example.com</a>
-      <p class="copyright">&copy; 2025 FluxConvert</p>
     </footer>
   
   <script src="../assets/js/main.js" defer></script>
