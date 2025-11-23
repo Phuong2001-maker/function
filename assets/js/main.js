@@ -49,6 +49,43 @@
   const langSelect = document.getElementById('languageSelect');
   if (langSelect) {
     const localeValues = Array.from(langSelect.options).map(opt => opt.value.toLowerCase());
+    const prepositionMap = {
+      'ar': 'ila',
+      'bn': 'theke',
+      'de': 'zu',
+      'es': 'a',
+      'fr': 'vers',
+      'hi': 'se',
+      'id': 'ke',
+      'it': 'in',
+      'ja': 'kara',
+      'ko': 'to',
+      'ms': 'ke',
+      'pt-br': 'para',
+      'ru': 'v',
+      'th': 'to',
+      'tr': 'a',
+      'ur': 'se',
+      'vi': 'sang',
+      'zh-cn': 'zhuan'
+    };
+    const canonicalizeSlug = slug => {
+      const parts = slug.split('-');
+      if (parts.length === 3) {
+        return `${parts[0]}-to-${parts[2]}`;
+      }
+      return slug;
+    };
+    const localizeSlug = (canonical, locale) => {
+      const loc = (locale || '').toLowerCase();
+      const parts = canonical.split('-');
+      if (parts.length === 3 && parts[1] === 'to') {
+        const prep = prepositionMap[loc] || 'to';
+        return `${parts[0]}-${prep}-${parts[2]}`;
+      }
+      return canonical;
+    };
+
     langSelect.value = langSelect.dataset.current || langSelect.value;
     langSelect.addEventListener('change', e => {
       const target = e.target.value;
@@ -58,6 +95,11 @@
       if (!fileName.endsWith('.html')) {
         fileName = 'index.html';
       }
+      const currentSlug = fileName.replace(/\.html$/i, '');
+      const canonical = canonicalizeSlug(currentSlug);
+      const targetSlug = localizeSlug(canonical, target);
+      const targetFile = `${targetSlug}.html`;
+
       let localeIndex = -1;
       for (let i = parts.length - 1; i >= 0; i--) {
         if (localeValues.includes(parts[i].toLowerCase())) {
@@ -70,7 +112,7 @@
       } else {
         parts[localeIndex] = target;
       }
-      parts.push(fileName);
+      parts.push(targetFile);
       const next = '/' + parts.join('/');
       window.location.href = next;
     });
