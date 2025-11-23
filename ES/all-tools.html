@@ -11,6 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .page-shell{max-width:1200px;margin:0 auto;padding:0 16px 40px;}
+  </style>
   <link rel="alternate" hreflang="ar" href="https://fluxconvert.tools/AR/all-tools.html">
 <link rel="alternate" hreflang="bn" href="https://fluxconvert.tools/BN/all-tools.html">
 <link rel="alternate" hreflang="de" href="https://fluxconvert.tools/DE/all-tools.html">
@@ -55,11 +58,11 @@
       </div>
     </header>
   
-  <main>
+  <main class="page-shell">
     
     <section class="page-hero">
       <h1>Explorar cada convertidor</h1>
-      <p>Agrupar herramientas por flujo de trabajo o explorar el completo lista. Cada uno es instantáneo, privado y gratuito.</p>
+      <p>Agrupa las herramientas por flujo de trabajo o explora la lista completa. Cada una es instantánea, privada y gratuita.</p>
     </section>
     <section class="filters">
       <p>Filtrar por tipo</p>
@@ -77,48 +80,278 @@
       Documentos
     </button>
   
-    <button type="button" class="filter-btn" data-filter="compression">
-      Compresión
-    </button>
-  
       </div>
     </section>
     <section class="tool-grid full">
       
-      <article class="tool-card" data-category="imágenes">
+      <article class="tool-card" data-category="images">
         <div class="tool-icon" aria-hidden="true">🖼️</div>
         <div>
-          <h3>Convertidor de imágenes</h3>
-          <p>Convertir JPG, PNG, y archivos WebP en lotes con un solo arrastre.</p>
+          <h3>PNG a JPG</h3>
+          <p>Convierte PNG a JPG de forma local sin subidas, sin límites de tamaño y con privacidad total.</p>
         </div>
-        <a class="pill-button" href="image-converter.html">Utilizar herramienta</a>
+        <a class="pill-button" href="png-a-jpg.html">Utilizar herramienta</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>PNG a JPEG</h3>
+          <p>Convierte PNG a JPEG de forma local sin subidas, sin límites de tamaño y con privacidad total.</p>
+        </div>
+        <a class="pill-button" href="png-a-jpeg.html">Utilizar herramienta</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>PNG a GIF</h3>
+          <p>Convierte PNG a GIF de forma local sin subidas, sin límites de tamaño y con privacidad total.</p>
+        </div>
+        <a class="pill-button" href="png-a-gif.html">Utilizar herramienta</a>
       </article>
     
       <article class="tool-card" data-category="documents">
-        <div class="tool-icon" aria-hidden="true">📄</div>
+        <div class="tool-icon" aria-hidden="true">📚</div>
         <div>
-          <h3>PDF a JPG</h3>
-          <p>Representa páginas JPG nítidas desde cualquier PDF sin cargarlas.</p>
+          <h3>PNG a PDF</h3>
+          <p>Convierte PNG a PDF de forma local sin subidas, sin límites de tamaño y con privacidad total.</p>
         </div>
-        <a class="pill-button" href="pdf-to-jpg.html">Utilizar herramienta</a>
+        <a class="pill-button" href="png-a-pdf.html">Utilizar herramienta</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>PNG a WebP</h3>
+          <p>Convierte PNG a WebP de forma local sin subidas, sin límites de tamaño y con privacidad total.</p>
+        </div>
+        <a class="pill-button" href="png-a-webp.html">Utilizar herramienta</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>JPG a PNG</h3>
+          <p>Convierte JPG a PNG de forma local sin subidas, sin límites de tamaño y con privacidad total.</p>
+        </div>
+        <a class="pill-button" href="jpg-a-png.html">Utilizar herramienta</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>JPG a JPEG</h3>
+          <p>Convierte JPG a JPEG de forma local sin subidas, sin límites de tamaño y con privacidad total.</p>
+        </div>
+        <a class="pill-button" href="jpg-a-jpeg.html">Utilizar herramienta</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>JPG a GIF</h3>
+          <p>Convierte JPG a GIF de forma local sin subidas, sin límites de tamaño y con privacidad total.</p>
+        </div>
+        <a class="pill-button" href="jpg-a-gif.html">Utilizar herramienta</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>JPG a WebP</h3>
+          <p>Convierte JPG a WebP de forma local sin subidas, sin límites de tamaño y con privacidad total.</p>
+        </div>
+        <a class="pill-button" href="jpg-a-webp.html">Utilizar herramienta</a>
       </article>
     
       <article class="tool-card" data-category="documents">
         <div class="tool-icon" aria-hidden="true">📚</div>
         <div>
           <h3>JPG a PDF</h3>
-          <p>Combina fotos en un PDF liviano que está listo para compartir.</p>
+          <p>Convierte JPG a PDF de forma local sin subidas, sin límites de tamaño y con privacidad total.</p>
         </div>
-        <a class="pill-button" href="jpg-to-pdf.html">Utilizar herramienta</a>
+        <a class="pill-button" href="jpg-a-pdf.html">Utilizar herramienta</a>
       </article>
     
-      <article class="tool-card" data-category="imágenes compresión">
-        <div class="tool-icon" aria-hidden="true">✨</div>
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
         <div>
-          <h3>Comprimir PNG</h3>
-          <p>Reducir archivos PNG conservando los colores de la marca localmente.</p>
+          <h3>JPEG a PNG</h3>
+          <p>Convierte JPEG a PNG de forma local sin subidas, sin límites de tamaño y con privacidad total.</p>
         </div>
-        <a class="pill-button" href="compress-png.html">Utilizar herramienta</a>
+        <a class="pill-button" href="jpeg-a-png.html">Utilizar herramienta</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>JPEG a JPG</h3>
+          <p>Convierte JPEG a JPG de forma local sin subidas, sin límites de tamaño y con privacidad total.</p>
+        </div>
+        <a class="pill-button" href="jpeg-a-jpg.html">Utilizar herramienta</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>JPEG a GIF</h3>
+          <p>Convierte JPEG a GIF de forma local sin subidas, sin límites de tamaño y con privacidad total.</p>
+        </div>
+        <a class="pill-button" href="jpeg-a-gif.html">Utilizar herramienta</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>JPEG a WebP</h3>
+          <p>Convierte JPEG a WebP de forma local sin subidas, sin límites de tamaño y con privacidad total.</p>
+        </div>
+        <a class="pill-button" href="jpeg-a-webp.html">Utilizar herramienta</a>
+      </article>
+    
+      <article class="tool-card" data-category="documents">
+        <div class="tool-icon" aria-hidden="true">📚</div>
+        <div>
+          <h3>JPEG a PDF</h3>
+          <p>Convierte JPEG a PDF de forma local sin subidas, sin límites de tamaño y con privacidad total.</p>
+        </div>
+        <a class="pill-button" href="jpeg-a-pdf.html">Utilizar herramienta</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>GIF a JPG</h3>
+          <p>Convierte GIF a JPG de forma local sin subidas, sin límites de tamaño y con privacidad total.</p>
+        </div>
+        <a class="pill-button" href="gif-a-jpg.html">Utilizar herramienta</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>GIF a JPEG</h3>
+          <p>Convierte GIF a JPEG de forma local sin subidas, sin límites de tamaño y con privacidad total.</p>
+        </div>
+        <a class="pill-button" href="gif-a-jpeg.html">Utilizar herramienta</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>GIF a PNG</h3>
+          <p>Convierte GIF a PNG de forma local sin subidas, sin límites de tamaño y con privacidad total.</p>
+        </div>
+        <a class="pill-button" href="gif-a-png.html">Utilizar herramienta</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>GIF a WebP</h3>
+          <p>Convierte GIF a WebP de forma local sin subidas, sin límites de tamaño y con privacidad total.</p>
+        </div>
+        <a class="pill-button" href="gif-a-webp.html">Utilizar herramienta</a>
+      </article>
+    
+      <article class="tool-card" data-category="documents">
+        <div class="tool-icon" aria-hidden="true">📚</div>
+        <div>
+          <h3>GIF a PDF</h3>
+          <p>Convierte GIF a PDF de forma local sin subidas, sin límites de tamaño y con privacidad total.</p>
+        </div>
+        <a class="pill-button" href="gif-a-pdf.html">Utilizar herramienta</a>
+      </article>
+    
+      <article class="tool-card" data-category="documents">
+        <div class="tool-icon" aria-hidden="true">📄</div>
+        <div>
+          <h3>PDF a JPG</h3>
+          <p>Convierte PDF a JPG de forma local sin subidas, sin límites de tamaño y con privacidad total.</p>
+        </div>
+        <a class="pill-button" href="pdf-a-jpg.html">Utilizar herramienta</a>
+      </article>
+    
+      <article class="tool-card" data-category="documents">
+        <div class="tool-icon" aria-hidden="true">📄</div>
+        <div>
+          <h3>PDF a JPEG</h3>
+          <p>Convierte PDF a JPEG de forma local sin subidas, sin límites de tamaño y con privacidad total.</p>
+        </div>
+        <a class="pill-button" href="pdf-a-jpeg.html">Utilizar herramienta</a>
+      </article>
+    
+      <article class="tool-card" data-category="documents">
+        <div class="tool-icon" aria-hidden="true">📄</div>
+        <div>
+          <h3>PDF a PNG</h3>
+          <p>Convierte PDF a PNG de forma local sin subidas, sin límites de tamaño y con privacidad total.</p>
+        </div>
+        <a class="pill-button" href="pdf-a-png.html">Utilizar herramienta</a>
+      </article>
+    
+      <article class="tool-card" data-category="documents">
+        <div class="tool-icon" aria-hidden="true">📄</div>
+        <div>
+          <h3>PDF a WebP</h3>
+          <p>Convierte PDF a WebP de forma local sin subidas, sin límites de tamaño y con privacidad total.</p>
+        </div>
+        <a class="pill-button" href="pdf-a-webp.html">Utilizar herramienta</a>
+      </article>
+    
+      <article class="tool-card" data-category="documents">
+        <div class="tool-icon" aria-hidden="true">📄</div>
+        <div>
+          <h3>PDF a GIF</h3>
+          <p>Convierte PDF a GIF de forma local sin subidas, sin límites de tamaño y con privacidad total.</p>
+        </div>
+        <a class="pill-button" href="pdf-a-gif.html">Utilizar herramienta</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>WebP a JPG</h3>
+          <p>Convierte WebP a JPG de forma local sin subidas, sin límites de tamaño y con privacidad total.</p>
+        </div>
+        <a class="pill-button" href="webp-a-jpg.html">Utilizar herramienta</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>WebP a JPEG</h3>
+          <p>Convierte WebP a JPEG de forma local sin subidas, sin límites de tamaño y con privacidad total.</p>
+        </div>
+        <a class="pill-button" href="webp-a-jpeg.html">Utilizar herramienta</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>WebP a GIF</h3>
+          <p>Convierte WebP a GIF de forma local sin subidas, sin límites de tamaño y con privacidad total.</p>
+        </div>
+        <a class="pill-button" href="webp-a-gif.html">Utilizar herramienta</a>
+      </article>
+    
+      <article class="tool-card" data-category="documents">
+        <div class="tool-icon" aria-hidden="true">📚</div>
+        <div>
+          <h3>WebP a PDF</h3>
+          <p>Convierte WebP a PDF de forma local sin subidas, sin límites de tamaño y con privacidad total.</p>
+        </div>
+        <a class="pill-button" href="webp-a-pdf.html">Utilizar herramienta</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>WebP a PNG</h3>
+          <p>Convierte WebP a PNG de forma local sin subidas, sin límites de tamaño y con privacidad total.</p>
+        </div>
+        <a class="pill-button" href="webp-a-png.html">Utilizar herramienta</a>
       </article>
     
     </section>
@@ -126,18 +359,20 @@
   </main>
   
     <footer class="site-footer">
-      <div class="footer-brand">FluxConvert</div>
-      <p>FluxConvert convierte imágenes, archivos PDF, y archivos de Office directamente dentro de su navegador, por lo que el único límite es su dispositivo. Sin cargas, sin almacenamiento y sin registro: solo herramientas rápidas que respetan la privacidad.</p>
-      <div class="footer-links">
-        <a href="about.html">Acerca de</a>
-        <a href="all-tools.html">Todas las herramientas</a>
-        <a href="blog.html">Blog y guías</a>
-        <a href="privacy.html">Política de privacidad</a>
-        <a href="terms.html">Términos de uso</a>
-        <a href="contact.html">Contacto</a>
+      <div class="page-shell">
+        <div class="footer-brand">FluxConvert</div>
+        <p>FluxConvert convierte imágenes, archivos PDF y archivos de Office directamente en su navegador, por lo que el único límite es su dispositivo. Sin cargas, sin almacenamiento y sin registro: solo herramientas rápidas que respetan la privacidad.</p>
+        <div class="footer-links">
+          <a href="about.html">Acerca de</a>
+          <a href="all-tools.html">Todas las herramientas</a>
+          <a href="blog.html">Blog y guías</a>
+          <a href="privacy.html">Política de privacidad</a>
+          <a href="terms.html">Términos de uso</a>
+          <a href="contact.html">Contacto</a>
+        </div>
+        <a href="mailto:contact@example.com" class="footer-email">contact@example.com</a>
+        <p class="copyright">&copy; 2025 FluxConvert</p>
       </div>
-      <a href="mailto:contact@example.com" class="footer-email">contact@example.com</a>
-      <p class="copyright">&copy; 2025 FluxConvert</p>
     </footer>
   
   <script src="../assets/js/main.js" defer></script>
