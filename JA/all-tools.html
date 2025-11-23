@@ -11,6 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .page-shell{max-width:1200px;margin:0 auto;padding:0 16px 40px;}
+  </style>
   <link rel="alternate" hreflang="ar" href="https://fluxconvert.tools/AR/all-tools.html">
 <link rel="alternate" hreflang="bn" href="https://fluxconvert.tools/BN/all-tools.html">
 <link rel="alternate" hreflang="de" href="https://fluxconvert.tools/DE/all-tools.html">
@@ -55,11 +58,11 @@
       </div>
     </header>
   
-  <main>
+  <main class="page-shell">
     
     <section class="page-hero">
       <h1>すべてのコンバータを探索</h1>
-      <p>ワークフローごとにツールをグループ化するか、完全なリストを参照します。</p>
+      <p>ワークフローごとにツールをグループ化するか、完全なリストを参照します。すべて即時・プライベート・無料です。</p>
     </section>
     <section class="filters">
       <p>タイプによるフィルター</p>
@@ -76,49 +79,279 @@
     <button type="button" class="filter-btn" data-filter="documents">
       ドキュメント
     </button>
-  
-    <button type="button" class="filter-btn" data-filter="compression">
-      圧縮
-    </button>
-  
+ 
       </div>
     </section>
     <section class="tool-grid full">
       
-      <article class="tool-card" data-category="画像">
+      <article class="tool-card" data-category="images">
         <div class="tool-icon" aria-hidden="true">🖼️</div>
         <div>
-          <h3>画像コンバータ</h3>
-          <p>JPG、PNG、WebP ファイルを 1 回のドラッグでバッチで変換します。</p>
+          <h3>PNGからJPG</h3>
+          <p>アップロードなし、サイズ制限なし、完全なプライバシーでローカル変換。</p>
         </div>
-        <a class="pill-button" href="image-converter.html">ツールの使用</a>
+        <a class="pill-button" href="png-kara-jpg.html">ツールの使用</a>
       </article>
     
-      <article class="tool-card" data-category="documents">
-        <div class="tool-icon" aria-hidden="true">📄</div>
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
         <div>
-          <h3>PDF から JPG</h3>
-          <p>アップロードせずに、PDF から鮮明な JPG ページをレンダリングします。</p>
+          <h3>PNGからJPEG</h3>
+          <p>アップロードなし、サイズ制限なし、完全なプライバシーでローカル変換。</p>
         </div>
-        <a class="pill-button" href="pdf-to-jpg.html">ツールの使用</a>
+        <a class="pill-button" href="png-kara-jpeg.html">ツールの使用</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>PNGからGIF</h3>
+          <p>アップロードなし、サイズ制限なし、完全なプライバシーでローカル変換。</p>
+        </div>
+        <a class="pill-button" href="png-kara-gif.html">ツールの使用</a>
       </article>
     
       <article class="tool-card" data-category="documents">
         <div class="tool-icon" aria-hidden="true">📚</div>
         <div>
-          <h3>JPG から PDF</h3>
-          <p>写真を軽量 PDF に結合して、すぐに共有できます。</p>
+          <h3>PNGからPDF</h3>
+          <p>アップロードなし、サイズ制限なし、完全なプライバシーでローカル変換。</p>
         </div>
-        <a class="pill-button" href="jpg-to-pdf.html">ツールの使用</a>
+        <a class="pill-button" href="png-kara-pdf.html">ツールの使用</a>
       </article>
     
-      <article class="tool-card" data-category="画像 圧縮">
-        <div class="tool-icon" aria-hidden="true">✨</div>
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
         <div>
-          <h3>PNG を圧縮</h3>
-          <p>ブランド カラーを維持しながら PNG ファイルを縮小します</p>
+          <h3>PNGからWebP</h3>
+          <p>アップロードなし、サイズ制限なし、完全なプライバシーでローカル変換。</p>
         </div>
-        <a class="pill-button" href="compress-png.html">ツールの使用</a>
+        <a class="pill-button" href="png-kara-webp.html">ツールの使用</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>JPGからPNG</h3>
+          <p>アップロードなし、サイズ制限なし、完全なプライバシーでローカル変換。</p>
+        </div>
+        <a class="pill-button" href="jpg-kara-png.html">ツールの使用</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>JPGからJPEG</h3>
+          <p>アップロードなし、サイズ制限なし、完全なプライバシーでローカル変換。</p>
+        </div>
+        <a class="pill-button" href="jpg-kara-jpeg.html">ツールの使用</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>JPGからGIF</h3>
+          <p>アップロードなし、サイズ制限なし、完全なプライバシーでローカル変換。</p>
+        </div>
+        <a class="pill-button" href="jpg-kara-gif.html">ツールの使用</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>JPGからWebP</h3>
+          <p>アップロードなし、サイズ制限なし、完全なプライバシーでローカル変換。</p>
+        </div>
+        <a class="pill-button" href="jpg-kara-webp.html">ツールの使用</a>
+      </article>
+    
+      <article class="tool-card" data-category="documents">
+        <div class="tool-icon" aria-hidden="true">📚</div>
+        <div>
+          <h3>JPGからPDF</h3>
+          <p>アップロードなし、サイズ制限なし、完全なプライバシーでローカル変換。</p>
+        </div>
+        <a class="pill-button" href="jpg-kara-pdf.html">ツールの使用</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>JPEGからPNG</h3>
+          <p>アップロードなし、サイズ制限なし、完全なプライバシーでローカル変換。</p>
+        </div>
+        <a class="pill-button" href="jpeg-kara-png.html">ツールの使用</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>JPEGからJPG</h3>
+          <p>アップロードなし、サイズ制限なし、完全なプライバシーでローカル変換。</p>
+        </div>
+        <a class="pill-button" href="jpeg-kara-jpg.html">ツールの使用</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>JPEGからGIF</h3>
+          <p>アップロードなし、サイズ制限なし、完全なプライバシーでローカル変換。</p>
+        </div>
+        <a class="pill-button" href="jpeg-kara-gif.html">ツールの使用</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>JPEGからWebP</h3>
+          <p>アップロードなし、サイズ制限なし、完全なプライバシーでローカル変換。</p>
+        </div>
+        <a class="pill-button" href="jpeg-kara-webp.html">ツールの使用</a>
+      </article>
+    
+      <article class="tool-card" data-category="documents">
+        <div class="tool-icon" aria-hidden="true">📚</div>
+        <div>
+          <h3>JPEGからPDF</h3>
+          <p>アップロードなし、サイズ制限なし、完全なプライバシーでローカル変換。</p>
+        </div>
+        <a class="pill-button" href="jpeg-kara-pdf.html">ツールの使用</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>GIFからJPG</h3>
+          <p>アップロードなし、サイズ制限なし、完全なプライバシーでローカル変換。</p>
+        </div>
+        <a class="pill-button" href="gif-kara-jpg.html">ツールの使用</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>GIFからJPEG</h3>
+          <p>アップロードなし、サイズ制限なし、完全なプライバシーでローカル変換。</p>
+        </div>
+        <a class="pill-button" href="gif-kara-jpeg.html">ツールの使用</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>GIFからPNG</h3>
+          <p>アップロードなし、サイズ制限なし、完全なプライバシーでローカル変換。</p>
+        </div>
+        <a class="pill-button" href="gif-kara-png.html">ツールの使用</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>GIFからWebP</h3>
+          <p>アップロードなし、サイズ制限なし、完全なプライバシーでローカル変換。</p>
+        </div>
+        <a class="pill-button" href="gif-kara-webp.html">ツールの使用</a>
+      </article>
+    
+      <article class="tool-card" data-category="documents">
+        <div class="tool-icon" aria-hidden="true">📚</div>
+        <div>
+          <h3>GIFからPDF</h3>
+          <p>アップロードなし、サイズ制限なし、完全なプライバシーでローカル変換。</p>
+        </div>
+        <a class="pill-button" href="gif-kara-pdf.html">ツールの使用</a>
+      </article>
+    
+      <article class="tool-card" data-category="documents">
+        <div class="tool-icon" aria-hidden="true">📄</div>
+        <div>
+          <h3>PDFからJPG</h3>
+          <p>アップロードなし、サイズ制限なし、完全なプライバシーでローカル変換。</p>
+        </div>
+        <a class="pill-button" href="pdf-kara-jpg.html">ツールの使用</a>
+      </article>
+    
+      <article class="tool-card" data-category="documents">
+        <div class="tool-icon" aria-hidden="true">📄</div>
+        <div>
+          <h3>PDFからJPEG</h3>
+          <p>アップロードなし、サイズ制限なし、完全なプライバシーでローカル変換。</p>
+        </div>
+        <a class="pill-button" href="pdf-kara-jpeg.html">ツールの使用</a>
+      </article>
+    
+      <article class="tool-card" data-category="documents">
+        <div class="tool-icon" aria-hidden="true">📄</div>
+        <div>
+          <h3>PDFからPNG</h3>
+          <p>アップロードなし、サイズ制限なし、完全なプライバシーでローカル変換。</p>
+        </div>
+        <a class="pill-button" href="pdf-kara-png.html">ツールの使用</a>
+      </article>
+    
+      <article class="tool-card" data-category="documents">
+        <div class="tool-icon" aria-hidden="true">📄</div>
+        <div>
+          <h3>PDFからWebP</h3>
+          <p>アップロードなし、サイズ制限なし、完全なプライバシーでローカル変換。</p>
+        </div>
+        <a class="pill-button" href="pdf-kara-webp.html">ツールの使用</a>
+      </article>
+    
+      <article class="tool-card" data-category="documents">
+        <div class="tool-icon" aria-hidden="true">📄</div>
+        <div>
+          <h3>PDFからGIF</h3>
+          <p>アップロードなし、サイズ制限なし、完全なプライバシーでローカル変換。</p>
+        </div>
+        <a class="pill-button" href="pdf-kara-gif.html">ツールの使用</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>WebPからJPG</h3>
+          <p>アップロードなし、サイズ制限なし、完全なプライバシーでローカル変換。</p>
+        </div>
+        <a class="pill-button" href="webp-kara-jpg.html">ツールの使用</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>WebPからJPEG</h3>
+          <p>アップロードなし、サイズ制限なし、完全なプライバシーでローカル変換。</p>
+        </div>
+        <a class="pill-button" href="webp-kara-jpeg.html">ツールの使用</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>WebPからGIF</h3>
+          <p>アップロードなし、サイズ制限なし、完全なプライバシーでローカル変換。</p>
+        </div>
+        <a class="pill-button" href="webp-kara-gif.html">ツールの使用</a>
+      </article>
+    
+      <article class="tool-card" data-category="documents">
+        <div class="tool-icon" aria-hidden="true">📚</div>
+        <div>
+          <h3>WebPからPDF</h3>
+          <p>アップロードなし、サイズ制限なし、完全なプライバシーでローカル変換。</p>
+        </div>
+        <a class="pill-button" href="webp-kara-pdf.html">ツールの使用</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>WebPからPNG</h3>
+          <p>アップロードなし、サイズ制限なし、完全なプライバシーでローカル変換。</p>
+        </div>
+        <a class="pill-button" href="webp-kara-png.html">ツールの使用</a>
       </article>
     
     </section>
@@ -126,18 +359,20 @@
   </main>
   
     <footer class="site-footer">
-      <div class="footer-brand">FluxConvert</div>
-      <p>FluxConvert は、画像、PDF、Office ファイルをブラウザ内で直接変換するため、制限を受けるのはデバイスだけです。アップロード、ストレージ、登録は必要ありません。プライバシーを尊重する高速ツールだけです。</p>
-      <div class="footer-links">
-        <a href="about.html">私たちについて</a>
-        <a href="all-tools.html">すべてのツール</a>
-        <a href="blog.html">ブログとガイド</a>
-        <a href="privacy.html">プライバシー ポリシー</a>
-        <a href="terms.html">利用規約</a>
-        <a href="contact.html">連絡先</a>
+      <div class="page-shell">
+        <div class="footer-brand">FluxConvert</div>
+        <p>FluxConvert は、画像、PDF、Office ファイルをブラウザ内で直接変換するため、制限を受けるのはデバイスだけです。アップロード、ストレージ、登録は不要で、プライバシーを尊重する高速ツールだけです。</p>
+        <div class="footer-links">
+          <a href="about.html">私たちについて</a>
+          <a href="all-tools.html">すべてのツール</a>
+          <a href="blog.html">ブログとガイド</a>
+          <a href="privacy.html">プライバシー ポリシー</a>
+          <a href="terms.html">利用規約</a>
+          <a href="contact.html">連絡先</a>
+        </div>
+        <a href="mailto:contact@example.com" class="footer-email">contact@example.com</a>
+        <p class="copyright">&copy; 2025 FluxConvert</p>
       </div>
-      <a href="mailto:contact@example.com" class="footer-email">contact@example.com</a>
-      <p class="copyright">&copy; 2025 FluxConvert</p>
     </footer>
   
   <script src="../assets/js/main.js" defer></script>

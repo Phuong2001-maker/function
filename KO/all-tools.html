@@ -4,13 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>모든 변환 도구 | FluxConvert</title>
-  <meta name="description" content="모든 변환기에서 기기에 있는 이미지, PDF 및 자산을 찾아보세요.">
+  <meta name="description" content="기기에 남아 있는 이미지, PDF 및 자산을 위한 모든 변환기를 둘러보세요.">
   
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .page-shell{max-width:1200px;margin:0 auto;padding:0 16px 40px;}
+  </style>
   <link rel="alternate" hreflang="ar" href="https://fluxconvert.tools/AR/all-tools.html">
 <link rel="alternate" hreflang="bn" href="https://fluxconvert.tools/BN/all-tools.html">
 <link rel="alternate" hreflang="de" href="https://fluxconvert.tools/DE/all-tools.html">
@@ -43,7 +46,7 @@
       <nav class="nav-links" aria-label="Main navigation">
         <a href="index.html">홈</a>
         <a href="all-tools.html">모든 도구</a>
-        <a href="about.html">정보</a>
+        <a href="about.html">소개</a>
         <a href="blog.html">블로그 & 가이드</a>
         <a href="contact.html">연락처</a>
       </nav>
@@ -55,18 +58,18 @@
       </div>
     </header>
   
-  <main>
+  <main class="page-shell">
     
     <section class="page-hero">
-      <h1>모든 변환기 탐색</h1>
-      <p>작업 흐름별로 도구를 그룹화하거나 전체 목록을 찾아보세요. 각각은 즉각적이고 비공개이며 무료입니다.</p>
+      <h1>모든 변환기를 살펴보세요</h1>
+      <p>워크플로우별로 도구를 묶거나 전체 목록을 탐색하세요. 모두 즉시, 개인적이며 무료입니다.</p>
     </section>
     <section class="filters">
-      <p>유형별 필터링</p>
+      <p>유형별 필터</p>
       <div class="filter-group">
         
     <button type="button" class="filter-btn active" data-filter="all">
-      All
+      모두
     </button>
   
     <button type="button" class="filter-btn" data-filter="images">
@@ -76,49 +79,279 @@
     <button type="button" class="filter-btn" data-filter="documents">
       문서
     </button>
-  
-    <button type="button" class="filter-btn" data-filter="compression">
-      압축
-    </button>
-  
+ 
       </div>
     </section>
     <section class="tool-grid full">
       
-      <article class="tool-card" data-category="이미지">
+      <article class="tool-card" data-category="images">
         <div class="tool-icon" aria-hidden="true">🖼️</div>
         <div>
-          <h3>이미지 변환기</h3>
-          <p>드래그 한 번으로 JPG, PNG 및 WebP 파일을 일괄 변환합니다.</p>
+          <h3>PNG를 JPG로</h3>
+          <p>업로드 없이 로컬에서 변환, 용량 제한 없음, 완전한 프라이버시.</p>
         </div>
-        <a class="pill-button" href="image-converter.html">도구 사용</a>
+        <a class="pill-button" href="png-to-jpg.html">도구 사용</a>
       </article>
     
-      <article class="tool-card" data-category="문서">
-        <div class="tool-icon" aria-hidden="true">📄</div>
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
         <div>
-          <h3>PDF를 JPG</h3>
-          <p>업로드하지 않고도 모든 PDF에서 선명한 JPG 페이지를 렌더링합니다.</p>
+          <h3>PNG를 JPEG로</h3>
+          <p>업로드 없이 로컬에서 변환, 용량 제한 없음, 완전한 프라이버시.</p>
         </div>
-        <a class="pill-button" href="pdf-to-jpg.html">도구 사용</a>
+        <a class="pill-button" href="png-to-jpeg.html">도구 사용</a>
       </article>
     
-      <article class="tool-card" data-category="문서">
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>PNG를 GIF로</h3>
+          <p>업로드 없이 로컬에서 변환, 용량 제한 없음, 완전한 프라이버시.</p>
+        </div>
+        <a class="pill-button" href="png-to-gif.html">도구 사용</a>
+      </article>
+    
+      <article class="tool-card" data-category="documents">
+        <div class="tool-icon" aria-hidden="true">📚</div>
+        <div>
+          <h3>PNG를 PDF로</h3>
+          <p>업로드 없이 로컬에서 변환, 용량 제한 없음, 완전한 프라이버시.</p>
+        </div>
+        <a class="pill-button" href="png-to-pdf.html">도구 사용</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>PNG를 WebP로</h3>
+          <p>업로드 없이 로컬에서 변환, 용량 제한 없음, 완전한 프라이버시.</p>
+        </div>
+        <a class="pill-button" href="png-to-webp.html">도구 사용</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>JPG를 PNG로</h3>
+          <p>업로드 없이 로컬에서 변환, 용량 제한 없음, 완전한 프라이버시.</p>
+        </div>
+        <a class="pill-button" href="jpg-to-png.html">도구 사용</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>JPG를 JPEG로</h3>
+          <p>업로드 없이 로컬에서 변환, 용량 제한 없음, 완전한 프라이버시.</p>
+        </div>
+        <a class="pill-button" href="jpg-to-jpeg.html">도구 사용</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>JPG를 GIF로</h3>
+          <p>업로드 없이 로컬에서 변환, 용량 제한 없음, 완전한 프라이버시.</p>
+        </div>
+        <a class="pill-button" href="jpg-to-gif.html">도구 사용</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>JPG를 WebP로</h3>
+          <p>업로드 없이 로컬에서 변환, 용량 제한 없음, 완전한 프라이버시.</p>
+        </div>
+        <a class="pill-button" href="jpg-to-webp.html">도구 사용</a>
+      </article>
+    
+      <article class="tool-card" data-category="documents">
         <div class="tool-icon" aria-hidden="true">📚</div>
         <div>
           <h3>JPG를 PDF로</h3>
-          <p>사진을 공유할 수 있는 가벼운 PDF로 병합합니다.</p>
+          <p>업로드 없이 로컬에서 변환, 용량 제한 없음, 완전한 프라이버시.</p>
         </div>
         <a class="pill-button" href="jpg-to-pdf.html">도구 사용</a>
       </article>
     
-      <article class="tool-card" data-category="이미지 compression">
-        <div class="tool-icon" aria-hidden="true">✨</div>
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
         <div>
-          <h3>PNG 압축</h3>
-          <p>브랜드 색상을 유지하면서 PNG 파일 축소 로컬로.</p>
+          <h3>JPEG를 PNG로</h3>
+          <p>업로드 없이 로컬에서 변환, 용량 제한 없음, 완전한 프라이버시.</p>
         </div>
-        <a class="pill-button" href="compress-png.html">도구 사용</a>
+        <a class="pill-button" href="jpeg-to-png.html">도구 사용</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>JPEG를 JPG로</h3>
+          <p>업로드 없이 로컬에서 변환, 용량 제한 없음, 완전한 프라이버시.</p>
+        </div>
+        <a class="pill-button" href="jpeg-to-jpg.html">도구 사용</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>JPEG를 GIF로</h3>
+          <p>업로드 없이 로컬에서 변환, 용량 제한 없음, 완전한 프라이버시.</p>
+        </div>
+        <a class="pill-button" href="jpeg-to-gif.html">도구 사용</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>JPEG를 WebP로</h3>
+          <p>업로드 없이 로컬에서 변환, 용량 제한 없음, 완전한 프라이버시.</p>
+        </div>
+        <a class="pill-button" href="jpeg-to-webp.html">도구 사용</a>
+      </article>
+    
+      <article class="tool-card" data-category="documents">
+        <div class="tool-icon" aria-hidden="true">📚</div>
+        <div>
+          <h3>JPEG를 PDF로</h3>
+          <p>업로드 없이 로컬에서 변환, 용량 제한 없음, 완전한 프라이버시.</p>
+        </div>
+        <a class="pill-button" href="jpeg-to-pdf.html">도구 사용</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>GIF를 JPG로</h3>
+          <p>업로드 없이 로컬에서 변환, 용량 제한 없음, 완전한 프라이버시.</p>
+        </div>
+        <a class="pill-button" href="gif-to-jpg.html">도구 사용</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>GIF를 JPEG로</h3>
+          <p>업로드 없이 로컬에서 변환, 용량 제한 없음, 완전한 프라이버시.</p>
+        </div>
+        <a class="pill-button" href="gif-to-jpeg.html">도구 사용</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>GIF를 PNG로</h3>
+          <p>업로드 없이 로컬에서 변환, 용량 제한 없음, 완전한 프라이버시.</p>
+        </div>
+        <a class="pill-button" href="gif-to-png.html">도구 사용</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>GIF를 WebP로</h3>
+          <p>업로드 없이 로컬에서 변환, 용량 제한 없음, 완전한 프라이버시.</p>
+        </div>
+        <a class="pill-button" href="gif-to-webp.html">도구 사용</a>
+      </article>
+    
+      <article class="tool-card" data-category="documents">
+        <div class="tool-icon" aria-hidden="true">📚</div>
+        <div>
+          <h3>GIF를 PDF로</h3>
+          <p>업로드 없이 로컬에서 변환, 용량 제한 없음, 완전한 프라이버시.</p>
+        </div>
+        <a class="pill-button" href="gif-to-pdf.html">도구 사용</a>
+      </article>
+    
+      <article class="tool-card" data-category="documents">
+        <div class="tool-icon" aria-hidden="true">📄</div>
+        <div>
+          <h3>PDF를 JPG로</h3>
+          <p>업로드 없이 로컬에서 변환, 용량 제한 없음, 완전한 프라이버시.</p>
+        </div>
+        <a class="pill-button" href="pdf-to-jpg.html">도구 사용</a>
+      </article>
+    
+      <article class="tool-card" data-category="documents">
+        <div class="tool-icon" aria-hidden="true">📄</div>
+        <div>
+          <h3>PDF를 JPEG로</h3>
+          <p>업로드 없이 로컬에서 변환, 용량 제한 없음, 완전한 프라이버시.</p>
+        </div>
+        <a class="pill-button" href="pdf-to-jpeg.html">도구 사용</a>
+      </article>
+    
+      <article class="tool-card" data-category="documents">
+        <div class="tool-icon" aria-hidden="true">📄</div>
+        <div>
+          <h3>PDF를 PNG로</h3>
+          <p>업로드 없이 로컬에서 변환, 용량 제한 없음, 완전한 프라이버시.</p>
+        </div>
+        <a class="pill-button" href="pdf-to-png.html">도구 사용</a>
+      </article>
+    
+      <article class="tool-card" data-category="documents">
+        <div class="tool-icon" aria-hidden="true">📄</div>
+        <div>
+          <h3>PDF를 WebP로</h3>
+          <p>업로드 없이 로컬에서 변환, 용량 제한 없음, 완전한 프라이버시.</p>
+        </div>
+        <a class="pill-button" href="pdf-to-webp.html">도구 사용</a>
+      </article>
+    
+      <article class="tool-card" data-category="documents">
+        <div class="tool-icon" aria-hidden="true">📄</div>
+        <div>
+          <h3>PDF를 GIF로</h3>
+          <p>업로드 없이 로컬에서 변환, 용량 제한 없음, 완전한 프라이버시.</p>
+        </div>
+        <a class="pill-button" href="pdf-to-gif.html">도구 사용</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>WebP를 JPG로</h3>
+          <p>업로드 없이 로컬에서 변환, 용량 제한 없음, 완전한 프라이버시.</p>
+        </div>
+        <a class="pill-button" href="webp-to-jpg.html">도구 사용</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>WebP를 JPEG로</h3>
+          <p>업로드 없이 로컬에서 변환, 용량 제한 없음, 완전한 프라이버시.</p>
+        </div>
+        <a class="pill-button" href="webp-to-jpeg.html">도구 사용</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>WebP를 GIF로</h3>
+          <p>업로드 없이 로컬에서 변환, 용량 제한 없음, 완전한 프라이버시.</p>
+        </div>
+        <a class="pill-button" href="webp-to-gif.html">도구 사용</a>
+      </article>
+    
+      <article class="tool-card" data-category="documents">
+        <div class="tool-icon" aria-hidden="true">📚</div>
+        <div>
+          <h3>WebP를 PDF로</h3>
+          <p>업로드 없이 로컬에서 변환, 용량 제한 없음, 완전한 프라이버시.</p>
+        </div>
+        <a class="pill-button" href="webp-to-pdf.html">도구 사용</a>
+      </article>
+    
+      <article class="tool-card" data-category="images">
+        <div class="tool-icon" aria-hidden="true">🖼️</div>
+        <div>
+          <h3>WebP를 PNG로</h3>
+          <p>업로드 없이 로컬에서 변환, 용량 제한 없음, 완전한 프라이버시.</p>
+        </div>
+        <a class="pill-button" href="webp-to-png.html">도구 사용</a>
       </article>
     
     </section>
@@ -126,18 +359,20 @@
   </main>
   
     <footer class="site-footer">
-      <div class="footer-brand">FluxConvert</div>
-      <p>FluxConvert는 이미지, PDF 및 사무실 파일을 브라우저 내에서 직접 변환하므로 유일한 제한은 장치입니다. 업로드, 저장, 등록이 필요 없으며 개인 정보 보호를 존중하는 빠른 도구입니다.</p>
-      <div class="footer-links">
-        <a href="about.html">정보</a>
-        <a href="all-tools.html">모든 도구</a>
-        <a href="blog.html">블로그 & 가이드</a>
-        <a href="privacy.html">개인정보 보호정책</a>
-        <a href="terms.html">이용약관</a>
-        <a href="contact.html">연락처</a>
+      <div class="page-shell">
+        <div class="footer-brand">FluxConvert</div>
+        <p>FluxConvert는 이미지, PDF, 오피스 파일을 브라우저 안에서 직접 변환하므로 한계는 기기뿐입니다. 업로드, 저장, 가입 없이 프라이버시를 존중하는 빠른 도구만 제공합니다.</p>
+        <div class="footer-links">
+          <a href="about.html">소개</a>
+          <a href="all-tools.html">모든 도구</a>
+          <a href="blog.html">블로그 & 가이드</a>
+          <a href="privacy.html">개인정보 처리방침</a>
+          <a href="terms.html">이용 약관</a>
+          <a href="contact.html">연락처</a>
+        </div>
+        <a href="mailto:contact@example.com" class="footer-email">contact@example.com</a>
+        <p class="copyright">&copy; 2025 FluxConvert</p>
       </div>
-      <a href="mailto:contact@example.com" class="footer-email">contact@example.com</a>
-      <p class="copyright">&copy; 2025 FluxConvert</p>
     </footer>
   
   <script src="../assets/js/main.js" defer></script>
