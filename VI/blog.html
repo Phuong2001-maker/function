@@ -31,6 +31,65 @@
 <link rel="alternate" hreflang="vi" href="https://fluxconvert.tools/vi/blog.html">
 <link rel="alternate" hreflang="zh-CN" href="https://fluxconvert.tools/zh-cn/blog.html">
   <link rel="alternate" hreflang="x-default" href="https://fluxconvert.tools/en/blog.html">
+  <style>
+    .page-hero {
+      text-align: center;
+      margin: 2rem auto;
+      max-width: 760px;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(236, 151, 170, 0.25);
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 1rem auto 3rem;
+      max-width: 1100px;
+      padding: 0 1rem;
+    }
+    .blog-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 20px 60px rgba(239, 150, 189, 0.25);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: left;
+    }
+    .blog-card h3 {
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .blog-card p {
+      margin-bottom: 1.25rem;
+      color: #4b4e57;
+      line-height: 1.6;
+    }
+    .blog-card .tag {
+      display: block;
+      text-align: center;
+      background: #e7f9f4;
+      color: #0c4b3b;
+      border-radius: 999px;
+      padding: 0.25rem 0.75rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .blog-card .step-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: #51545b;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .blog-card .step-list li + li {
+      margin-top: 0.35rem;
+    }
+  </style>
 </head>
 <body data-page="blog">
   
@@ -61,28 +120,38 @@
       <p>Tìm hiểu các mẹo thực tế để có quy trình chuyển đổi nhanh hơn, an toàn hơn.</p>
     </section>
     <section class="blog-grid">
-      
-    <article class="blog-card">
-      <span class="tag">Quyền riêng tư</span>
-      <h3>Giữ nội dung thương hiệu ở chế độ riêng tư bằng các công cụ cục bộ</h3>
-      <p>Xem cách chuyển đổi trên thiết bị bảo vệ dữ liệu khách hàng và tệp thiết kế.</p>
-      <a href="#" class="ghost-btn">Đọc thêm</a>
-    </article>
-  
-    <article class="blog-card">
-      <span class="tag">PDF</span>
-      <h3>Chuẩn bị tệp PDF để xuất JPG sắc nét</h3>
-      <p>Danh sách kiểm tra để làm phẳng phông chữ và màu sắc trước khi xuất mỗi trang.</p>
-      <a href="#" class="ghost-btn">Đọc thêm</a>
-    </article>
-  
-    <article class="blog-card">
-      <span class="tag">Hình ảnh</span>
-      <h3>Nén PNG mà không có dải màu</h3>
-      <p>Sử dụng các cài đặt trước về chất lượng để thu nhỏ đồ họa tiếp thị PNG một cách an toàn.</p>
-      <a href="#" class="ghost-btn">Đọc thêm</a>
-    </article>
-  
+      <article class="blog-card">
+        <span class="tag">Quyền riêng tư</span>
+        <h3>Giữ nội dung thương hiệu ở chế độ riêng tư bằng các công cụ cục bộ</h3>
+        <p>Các conversion chỉ chạy trong trình duyệt, không upload tập tin gốc, nên bạn có thể xóa lịch sử sau khi đổi định dạng và vẫn đảm bảo dữ liệu khách hàng được bảo vệ.</p>
+        <ul class="step-list">
+          <li>1. Chọn công cụ muốn dùng trong danh mục.</li>
+          <li>2. Kéo thả hoặc chọn file từ thiết bị rồi kiểm tra trước khi xuất.</li>
+          <li>3. Tải tập tin xuống và xóa lịch sử duyệt nếu cần.</li>
+        </ul>
+      </article>
+
+      <article class="blog-card">
+        <span class="tag">PDF</span>
+        <h3>Chuẩn bị tệp PDF để xuất JPG/PNG sắc nét</h3>
+        <p>Theo dõi checklist: điều chỉnh DPI, xác định định dạng đầu ra, kiểm tra font và màu sắc trước khi chuyển đổi, rồi dùng công cụ tương ứng để đổi định dạng – không thực hiện nén thêm.</p>
+        <ul class="step-list">
+          <li>1. Chọn phép đổi phù hợp (PDF → JPG/PNG hoặc PDF → Word).</li>
+          <li>2. Điều chỉnh chất lượng, DPI hoặc phần xem trước nếu muốn.</li>
+          <li>3. Xuất file và mở lại để kiểm tra màu sắc/font trước khi chia sẻ.</li>
+        </ul>
+      </article>
+
+      <article class="blog-card">
+        <span class="tag">Hình ảnh</span>
+        <h3>Đổi định dạng ảnh và giữ chất lượng mà không nén PNG</h3>
+        <p>Chọn công cụ từ menu, điều chỉnh chất lượng, và xuất ra JPG/WEBP/PNG mong muốn; phần hướng dẫn hiển thị chi tiết từng bước sử dụng, không có thao tác nén riêng cho PNG.</p>
+        <ul class="step-list">
+          <li>1. Kéo ảnh vào vùng thả hoặc chọn từng file nếu cần.</li>
+          <li>2. Chọn định dạng đầu ra và mức chất lượng phù hợp.</li>
+          <li>3. Nhấn xuất và lưu lại bản mới – không dùng tính năng nén.</li>
+        </ul>
+      </article>
     </section>
   
   </main>
