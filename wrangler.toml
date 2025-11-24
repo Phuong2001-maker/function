@@ -1,6 +1,26 @@
-name = "patient-limit-809ffilexo-multilang"
+name = "filexo-static"
+main = "worker.js"
 compatibility_date = "2024-11-24"
+workers_dev = true
+
+# Điền account_id nếu muốn tránh nhập tay khi deploy
+# account_id = ""
 
 [assets]
-# Nếu index.html nằm ngay trong folder hiện tại:
-directory = "./"
+# Phục vụ toàn bộ site tĩnh từ thư mục gốc, lọc bỏ file build/script không cần thiết
+directory = "."
+exclude = [
+  "**/.wrangler/**",
+  "**/.git/**",
+  "**/*.ps1",
+  "**/*.sh",
+  "scripts/**",
+  "update_footer.py",
+  "wrangler.toml",
+  "worker.js"
+]
+
+# Nếu gắn domain, bỏ comment và chỉnh pattern + zone_name
+# routes = [
+#   { pattern = "filexo.online/*", zone_name = "filexo.online" }
+# ]
