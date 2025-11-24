@@ -31,6 +31,65 @@
 <link rel="alternate" hreflang="vi" href="https://fluxconvert.tools/vi/blog.html">
 <link rel="alternate" hreflang="zh-CN" href="https://fluxconvert.tools/zh-cn/blog.html">
   <link rel="alternate" hreflang="x-default" href="https://fluxconvert.tools/en/blog.html">
+  <style>
+    .page-hero {
+      text-align: center;
+      margin: 2rem auto;
+      max-width: 760px;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(236, 151, 170, 0.25);
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 1rem auto 3rem;
+      max-width: 1100px;
+      padding: 0 1rem;
+    }
+    .blog-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 20px 60px rgba(239, 150, 189, 0.25);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: left;
+    }
+    .blog-card h3 {
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .blog-card p {
+      margin-bottom: 1.25rem;
+      color: #4b4e57;
+      line-height: 1.6;
+    }
+    .blog-card .tag {
+      display: block;
+      text-align: center;
+      background: #e7f9f4;
+      color: #0c4b3b;
+      border-radius: 999px;
+      padding: 0.25rem 0.75rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .blog-card .step-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: #50545b;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .blog-card .step-list li + li {
+      margin-top: 0.35rem;
+    }
+  </style>
 </head>
 <body data-page="blog">
   
@@ -61,28 +120,38 @@
       <p>より速く、より安全に変換するための実践的なヒントを学びましょう</p>
     </section>
     <section class="blog-grid">
-      
-    <article class="blog-card">
-      <span class="tag">プライバシー</span>
-      <h3>ローカル ツールでブランド資産を非公開に保つ</h3>
-      <p>オンデバイス変換が顧客データとデザイン ファイルをどのように保護するかをご覧ください。</p>
-      <a href="#" class="ghost-btn">続きを読む</a>
-    </article>
-  
-    <article class="blog-card">
-      <span class="tag">PDF</span>
-      <h3>鮮明な JPG エクスポートのための PDF の準備</h3>
-      <p>各ページをエクスポートする前にフォントと色を統一するためのチェックリスト</p>
-      <a href="#" class="ghost-btn">続きを読む</a>
-    </article>
-  
-    <article class="blog-card">
-      <span class="tag">画像</span>
-      <h3>カラー バンディングなしで PNG を圧縮</h3>
-      <p>品質プリセットを使用して、PNG マーケティング グラフィックを安全に縮小します。</p>
-      <a href="#" class="ghost-btn">続きを読む</a>
-    </article>
-  
+      <article class="blog-card">
+        <span class="tag">プライバシー</span>
+        <h3>ローカルツールでブランドコンテンツを非公開に保つ</h3>
+        <p>変換はすべてブラウザ内で完結しアップロードしないため、履歴を消去して顧客データを守れます。</p>
+        <ul class="step-list">
+          <li>1. カテゴリ一覧からツールを選ぶ。</li>
+          <li>2. ファイルをドラッグまたは選択し、書き出し前に確認。</li>
+          <li>3. 結果をダウンロードし、必要なら履歴を削除。</li>
+        </ul>
+      </article>
+
+      <article class="blog-card">
+        <span class="tag">PDF</span>
+        <h3>JPG/PNG出力に向けてPDFを整える</h3>
+        <p>チェックリストに従いDPI調整、出力フォーマット設定、フォントと色の確認を行い、余分な圧縮なしで変換してください。</p>
+        <ul class="step-list">
+          <li>1. 適切な変換（PDF → JPG/PNGまたはPDF → Word）を選ぶ。</li>
+          <li>2. 品質・DPI・プレビューを必要に応じて調整。</li>
+          <li>3. ファイルを出力し再度開いて色やフォントを確認。</li>
+        </ul>
+      </article>
+
+      <article class="blog-card">
+        <span class="tag">画像</span>
+        <h3>PNGを圧縮せずに画質を維持してフォーマット変換</h3>
+        <p>ツールを選び、品質を調整してJPG/WEBP/PNGを出力。ここでは各ステップを説明し、PNG専用の圧縮機能はありません。</p>
+        <ul class="step-list">
+          <li>1. 画像をドロップゾーンにドラッグするか個別に選択。</li>
+          <li>2. 出力フォーマットと品質レベルを設定。</li>
+          <li>3. 出力して新しいバージョンを保存—追加の圧縮ステップなし。</li>
+        </ul>
+      </article>
     </section>
   
   </main>

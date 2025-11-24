@@ -31,6 +31,65 @@
 <link rel="alternate" hreflang="vi" href="https://fluxconvert.tools/vi/blog.html">
 <link rel="alternate" hreflang="zh-CN" href="https://fluxconvert.tools/zh-cn/blog.html">
   <link rel="alternate" hreflang="x-default" href="https://fluxconvert.tools/en/blog.html">
+  <style>
+    .page-hero {
+      text-align: center;
+      margin: 2rem auto;
+      max-width: 760px;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(236, 151, 170, 0.25);
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 1rem auto 3rem;
+      max-width: 1100px;
+      padding: 0 1rem;
+    }
+    .blog-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 20px 60px rgba(239, 150, 189, 0.25);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: left;
+    }
+    .blog-card h3 {
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .blog-card p {
+      margin-bottom: 1.25rem;
+      color: #4b4e57;
+      line-height: 1.6;
+    }
+    .blog-card .tag {
+      display: block;
+      text-align: center;
+      background: #e7f9f4;
+      color: #0c4b3b;
+      border-radius: 999px;
+      padding: 0.25rem 0.75rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .blog-card .step-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: #50545b;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .blog-card .step-list li + li {
+      margin-top: 0.35rem;
+    }
+  </style>
 </head>
 <body data-page="blog">
   
@@ -61,28 +120,38 @@
       <p>学习更快、更安全转换的实用技巧工作流程。</p>
     </section>
     <section class="blog-grid">
-      
-    <article class="blog-card">
-      <span class="tag">隐私</span>
-      <h3>使用本地工具保护品牌资产的私密性</h3>
-      <p>了解设备上转换如何保护客户数据和设计文件。</p>
-      <a href="#" class="ghost-btn">了解更多</a>
-    </article>
-  
-    <article class="blog-card">
-      <span class="tag">PDF</span>
-      <h3>为清晰的 JPG 导出准备 PDF</h3>
-      <p>导出每个页面之前平整字体和颜色的清单。</p>
-      <a href="#" class="ghost-btn">了解更多</a>
-    </article>
-  
-    <article class="blog-card">
-      <span class="tag">图像</span>
-      <h3>压缩不带色带的 PNG</h3>
-      <p>使用用于安全缩小 PNG 营销图形的质量预设。</p>
-      <a href="#" class="ghost-btn">了解更多</a>
-    </article>
-  
+      <article class="blog-card">
+        <span class="tag">隐私</span>
+        <h3>用本地工具将品牌内容保持私密</h3>
+        <p>所有转换都在浏览器内完成，不上传文件，因此可以删除历史记录并保护客户资料。</p>
+        <ul class="step-list">
+          <li>1. 从类别列表选择所需工具。</li>
+          <li>2. 拖拽或选择文件，导出前先检查。</li>
+          <li>3. 下载结果文件，如需可清除历史记录。</li>
+        </ul>
+      </article>
+
+      <article class="blog-card">
+        <span class="tag">PDF</span>
+        <h3>为导出清晰的 JPG/PNG 准备 PDF</h3>
+        <p>按照清单操作：调整 DPI、设置输出格式、预览字体和颜色，然后在不额外压缩的情况下转换。</p>
+        <ul class="step-list">
+          <li>1. 选择合适的转换（PDF → JPG/PNG 或 PDF → Word）。</li>
+          <li>2. 必要时调整质量、DPI 或预览窗格。</li>
+          <li>3. 输出文件并再次打开，确认颜色/字体再分享。</li>
+        </ul>
+      </article>
+
+      <article class="blog-card">
+        <span class="tag">图片</span>
+        <h3>保持质量转换图像格式，无需压缩 PNG</h3>
+        <p>选择工具、调整质量即可导出 JPG/WEBP/PNG——此卡片逐步说明，没有专门的 PNG 压缩设置。</p>
+        <ul class="step-list">
+          <li>1. 将图片拖到投放区或逐个选择。</li>
+          <li>2. 设定输出格式与质量等级。</li>
+          <li>3. 导出并保存新版本，无需额外压缩步骤。</li>
+        </ul>
+      </article>
     </section>
   
   </main>

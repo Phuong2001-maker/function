@@ -31,6 +31,65 @@
 <link rel="alternate" hreflang="vi" href="https://fluxconvert.tools/vi/blog.html">
 <link rel="alternate" hreflang="zh-CN" href="https://fluxconvert.tools/zh-cn/blog.html">
   <link rel="alternate" hreflang="x-default" href="https://fluxconvert.tools/en/blog.html">
+  <style>
+    .page-hero {
+      text-align: center;
+      margin: 2rem auto;
+      max-width: 760px;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(236, 151, 170, 0.25);
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 1rem auto 3rem;
+      max-width: 1100px;
+      padding: 0 1rem;
+    }
+    .blog-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 20px 60px rgba(239, 150, 189, 0.25);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: left;
+    }
+    .blog-card h3 {
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .blog-card p {
+      margin-bottom: 1.25rem;
+      color: #4b4e57;
+      line-height: 1.6;
+    }
+    .blog-card .tag {
+      display: block;
+      text-align: center;
+      background: #e7f9f4;
+      color: #0c4b3b;
+      border-radius: 999px;
+      padding: 0.25rem 0.75rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .blog-card .step-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: #50545b;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .blog-card .step-list li + li {
+      margin-top: 0.35rem;
+    }
+  </style>
 </head>
 <body data-page="blog">
   
@@ -61,28 +120,38 @@
       <p>Pelajari tips praktis untuk konversi yang lebih cepat dan aman alur kerja.</p>
     </section>
     <section class="blog-grid">
-      
-    <article class="blog-card">
-      <span class="tag">Privasi</span>
-      <h3>Jaga kerahasiaan aset merek dengan alat lokal</h3>
-      <p>Lihat bagaimana konversi pada perangkat melindungi data pelanggan dan file desain.</p>
-      <a href="#" class="ghost-btn">Baca selengkapnya</a>
-    </article>
-  
-    <article class="blog-card">
-      <span class="tag">PDF</span>
-      <h3>Menyiapkan PDF untuk ekspor JPG yang tajam</h3>
-      <p>Daftar periksa untuk meratakan font dan warna sebelum mengekspor setiap halaman.</p>
-      <a href="#" class="ghost-btn">Baca selengkapnya</a>
-    </article>
-  
-    <article class="blog-card">
-      <span class="tag">Gambar</span>
-      <h3>Mengompresi PNG tanpa garis warna</h3>
-      <p>Gunakan preset kualitas untuk mengecilkan grafik pemasaran PNG dengan aman.</p>
-      <a href="#" class="ghost-btn">Baca selengkapnya</a>
-    </article>
-  
+      <article class="blog-card">
+        <span class="tag">Privasi</span>
+        <h3>Jaga konten merek tetap pribadi dengan alat lokal</h3>
+        <p>Konversi berjalan sepenuhnya di browser tanpa upload, jadi Anda bisa menghapus riwayat dan menjaga data pelanggan aman.</p>
+        <ul class="step-list">
+          <li>1. Pilih alat dari daftar kategori.</li>
+          <li>2. Seret atau pilih file lalu tinjau sebelum ekspor.</li>
+          <li>3. Unduh hasilnya dan hapus riwayat bila perlu.</li>
+        </ul>
+      </article>
+
+      <article class="blog-card">
+        <span class="tag">PDF</span>
+        <h3>Siapkan PDF untuk ekspor JPG/PNG tajam</h3>
+        <p>Ikuti daftar periksa: atur DPI, pilih format keluaran, tinjau font dan warna, lalu konversi tanpa kompresi tambahan.</p>
+        <ul class="step-list">
+          <li>1. Pilih konversi yang tepat (PDF → JPG/PNG atau PDF → Word).</li>
+          <li>2. Sesuaikan kualitas, DPI, atau pratinjau jika perlu.</li>
+          <li>3. Ekspor file, lalu buka lagi untuk memeriksa warna/font sebelum dibagikan.</li>
+        </ul>
+      </article>
+
+      <article class="blog-card">
+        <span class="tag">Gambar</span>
+        <h3>Ubah format gambar sambil menjaga kualitas tanpa mengompres PNG</h3>
+        <p>Pilih alat, atur kualitas, dan ekspor ke JPG/WEBP/PNG—card ini menjelaskan setiap langkah tanpa pilihan kompresi PNG tambahan.</p>
+        <ul class="step-list">
+          <li>1. Tarik gambar ke area drop atau pilih satu persatu.</li>
+          <li>2. Tentukan format output dan tingkat kualitas.</li>
+          <li>3. Ekspor dan simpan versi baru tanpa langkah kompresi tambahan.</li>
+        </ul>
+      </article>
     </section>
   
   </main>

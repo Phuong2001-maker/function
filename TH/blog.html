@@ -31,6 +31,65 @@
 <link rel="alternate" hreflang="vi" href="https://fluxconvert.tools/vi/blog.html">
 <link rel="alternate" hreflang="zh-CN" href="https://fluxconvert.tools/zh-cn/blog.html">
   <link rel="alternate" hreflang="x-default" href="https://fluxconvert.tools/en/blog.html">
+  <style>
+    .page-hero {
+      text-align: center;
+      margin: 2rem auto;
+      max-width: 760px;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(236, 151, 170, 0.25);
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 1rem auto 3rem;
+      max-width: 1100px;
+      padding: 0 1rem;
+    }
+    .blog-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 20px 60px rgba(239, 150, 189, 0.25);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: left;
+    }
+    .blog-card h3 {
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .blog-card p {
+      margin-bottom: 1.25rem;
+      color: #4b4e57;
+      line-height: 1.6;
+    }
+    .blog-card .tag {
+      display: block;
+      text-align: center;
+      background: #e7f9f4;
+      color: #0c4b3b;
+      border-radius: 999px;
+      padding: 0.25rem 0.75rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .blog-card .step-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: #50545b;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .blog-card .step-list li + li {
+      margin-top: 0.35rem;
+    }
+  </style>
 </head>
 <body data-page="blog">
   
@@ -61,28 +120,38 @@
       <p>เรียนรู้เคล็ดลับที่ใช้งานได้จริงเพื่อการแปลงที่รวดเร็วและปลอดภัยยิ่งขึ้น ขั้นตอนการทำงาน</p>
     </section>
     <section class="blog-grid">
-      
-    <article class="blog-card">
-      <span class="tag">ความเป็นส่วนตัว</span>
-      <h3>รักษาทรัพย์สินของแบรนด์ให้เป็นส่วนตัวด้วยเครื่องมือในท้องถิ่น</h3>
-      <p>ดูว่าการแปลงบนอุปกรณ์ปกป้องข้อมูลลูกค้าและไฟล์การออกแบบอย่างไร</p>
-      <a href="#" class="ghost-btn">อ่านเพิ่มเติม</a>
-    </article>
-  
-    <article class="blog-card">
-      <span class="tag">PDF</span>
-      <h3>การเตรียม PDF สำหรับการส่งออก JPG ที่คมชัด</h3>
-      <p>รายการตรวจสอบสำหรับการปรับแบบอักษรและสีให้เรียบก่อนที่จะส่งออกทุกหน้า</p>
-      <a href="#" class="ghost-btn">อ่านเพิ่มเติม</a>
-    </article>
-  
-    <article class="blog-card">
-      <span class="tag">รูปภาพ</span>
-      <h3>การบีบอัด PNG โดยไม่มีแถบสี</h3>
-      <p>ใช้ค่าที่กำหนดล่วงหน้าคุณภาพเพื่อลดขนาดกราฟิกการตลาด PNG อย่างปลอดภัย</p>
-      <a href="#" class="ghost-btn">อ่านเพิ่มเติม</a>
-    </article>
-  
+      <article class="blog-card">
+        <span class="tag">ความเป็นส่วนตัว</span>
+        <h3>รักษาคอนเทนต์แบรนด์ไว้แบบส่วนตัวด้วยเครื่องมือในเครื่อง</h3>
+        <p>การแปลงทำงานในเบราว์เซอร์ทั้งหมดโดยไม่อัปโหลด ช่วยให้ล้างประวัติและเก็บข้อมูลลูกค้าไว้ได้ปลอดภัย.</p>
+        <ul class="step-list">
+          <li>1. เลือกเครื่องมือจากรายการหมวดหมู่.</li>
+          <li>2. ลากหรือตั้งค่าไฟล์แล้วตรวจสอบก่อนส่งออก.</li>
+          <li>3. ดาวน์โหลดผลลัพธ์และล้างประวัติหากต้องการ.</li>
+        </ul>
+      </article>
+
+      <article class="blog-card">
+        <span class="tag">PDF</span>
+        <h3>เตรียม PDF เพื่อส่งออก JPG/PNG ให้คมชัด</h3>
+        <p>ทำตามเช็คลิสต์: ปรับ DPI, กำหนดรูปแบบที่ต้องการ, ตรวจสอบฟอนต์และสี แล้วแปลงโดยไม่มีการบีบอัดเพิ่มเติม.</p>
+        <ul class="step-list">
+          <li>1. เลือกการแปลงที่เหมาะสม (PDF → JPG/PNG หรือ PDF → Word).</li>
+          <li>2. ปรับคุณภาพ, DPI หรือพรีวิวตามต้องการ.</li>
+          <li>3. ส่งออกไฟล์แล้วเปิดใหม่เพื่อตรวจสอบสี/ฟอนต์ก่อนแชร์.</li>
+        </ul>
+      </article>
+
+      <article class="blog-card">
+        <span class="tag">รูปภาพ</span>
+        <h3>แปลงรูปแบบภาพโดยคงคุณภาพไว้และไม่บีบอัด PNG</h3>
+        <p>เลือกเครื่องมือ, ปรับคุณภาพ, และส่งออก JPG/WEBP/PNG—กับขั้นตอนทั้งหมดที่อธิบายในการ์ดนี้ โดยไม่มีฟีเจอร์บีบอัด PNG แยกต่างหาก.</p>
+        <ul class="step-list">
+          <li>1. ลากภาพลงในพื้นที่หรือเลือกทีละไฟล์.</li>
+          <li>2. กำหนดรูปแบบเอาต์พุตและระดับคุณภาพ.</li>
+          <li>3. ส่งออกและบันทึกเวอร์ชันใหม่โดยไม่ต้องบีบอัดเพิ่ม.</li>
+        </ul>
+      </article>
     </section>
   
   </main>

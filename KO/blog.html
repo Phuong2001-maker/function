@@ -31,6 +31,65 @@
 <link rel="alternate" hreflang="vi" href="https://fluxconvert.tools/vi/blog.html">
 <link rel="alternate" hreflang="zh-CN" href="https://fluxconvert.tools/zh-cn/blog.html">
   <link rel="alternate" hreflang="x-default" href="https://fluxconvert.tools/en/blog.html">
+  <style>
+    .page-hero {
+      text-align: center;
+      margin: 2rem auto;
+      max-width: 760px;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(236, 151, 170, 0.25);
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 1rem auto 3rem;
+      max-width: 1100px;
+      padding: 0 1rem;
+    }
+    .blog-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 20px 60px rgba(239, 150, 189, 0.25);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: left;
+    }
+    .blog-card h3 {
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .blog-card p {
+      margin-bottom: 1.25rem;
+      color: #4b4e57;
+      line-height: 1.6;
+    }
+    .blog-card .tag {
+      display: block;
+      text-align: center;
+      background: #e7f9f4;
+      color: #0c4b3b;
+      border-radius: 999px;
+      padding: 0.25rem 0.75rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .blog-card .step-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: #50545b;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .blog-card .step-list li + li {
+      margin-top: 0.35rem;
+    }
+  </style>
 </head>
 <body data-page="blog">
   
@@ -61,28 +120,38 @@
       <p>더 빠르고 안전한 변환을 위한 실용적인 팁 알아보기 워크플로.</p>
     </section>
     <section class="blog-grid">
-      
-    <article class="blog-card">
-      <span class="tag">개인 정보 보호</span>
-      <h3>로컬 도구를 사용하여 브랜드 자산을 비공개로 유지</h3>
-      <p>기기 내 변환이 고객 데이터 및 디자인 파일을 어떻게 보호하는지 알아보세요.</p>
-      <a href="#" class="ghost-btn">자세히 알아보기</a>
-    </article>
-  
-    <article class="blog-card">
-      <span class="tag">PDF</span>
-      <h3>깨끗한 JPG 내보내기를 위해 PDF 준비</h3>
-      <p>모든 페이지를 내보내기 전에 글꼴 및 색상을 병합하기 위한 체크리스트입니다.</p>
-      <a href="#" class="ghost-btn">자세히 알아보기</a>
-    </article>
-  
-    <article class="blog-card">
-      <span class="tag">이미지</span>
-      <h3>색상 밴딩 없이 PNG 압축</h3>
-      <p>품질 사전 설정을 사용하여 PNG 마케팅 그래픽을 안전하게 축소하세요.</p>
-      <a href="#" class="ghost-btn">자세히 알아보기</a>
-    </article>
-  
+      <article class="blog-card">
+        <span class="tag">개인정보</span>
+        <h3>로컬 도구로 브랜드 콘텐츠를 비공개로 유지하세요</h3>
+        <p>변환은 브라우저에서만 이루어지고 업로드하지 않아 기록을 지우고 고객 데이터를 지킬 수 있습니다.</p>
+        <ul class="step-list">
+          <li>1. 카테고리 목록에서 도구를 선택.</li>
+          <li>2. 파일을 끌어오거나 선택한 후 내보내기 전에 검토.</li>
+          <li>3. 결과를 다운로드하고 필요시 기록을 삭제.</li>
+        </ul>
+      </article>
+
+      <article class="blog-card">
+        <span class="tag">PDF</span>
+        <h3>선명한 JPG/PNG 출력용 PDF를 준비하세요</h3>
+        <p>체크리스트를 따라 DPI 조정, 출력 포맷 설정, 글꼴과 색상 확인 후 추가 압축 없이 변환하세요.</p>
+        <ul class="step-list">
+          <li>1. 적절한 변환을 선택(PDF → JPG/PNG 또는 PDF → Word).</li>
+          <li>2. 필요에 따라 품질, DPI 또는 미리보기를 조정.</li>
+          <li>3. 파일을 내보내고 다시 열어 색상/글꼴을 확인.</li>
+        </ul>
+      </article>
+
+      <article class="blog-card">
+        <span class="tag">이미지</span>
+        <h3>PNG 압축 없이 화질을 지키며 이미지 포맷 변환</h3>
+        <p>도구를 선택하고 품질을 조정해 JPG/WEBP/PNG로 내보내세요—각 단계가 설명되며 PNG 전용 압축은 없습니다.</p>
+        <ul class="step-list">
+          <li>1. 이미지를 드롭존으로 끌어오거나 하나씩 선택.</li>
+          <li>2. 필요한 출력 포맷과 품질 수준을 선택.</li>
+          <li>3. 내보내고 새 버전을 저장—추가 압축 단계 없음.</li>
+        </ul>
+      </article>
     </section>
   
   </main>

@@ -31,6 +31,65 @@
 <link rel="alternate" hreflang="vi" href="https://fluxconvert.tools/vi/blog.html">
 <link rel="alternate" hreflang="zh-CN" href="https://fluxconvert.tools/zh-cn/blog.html">
   <link rel="alternate" hreflang="x-default" href="https://fluxconvert.tools/en/blog.html">
+  <style>
+    .page-hero {
+      text-align: center;
+      margin: 2rem auto;
+      max-width: 760px;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(236, 151, 170, 0.25);
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 1rem auto 3rem;
+      max-width: 1100px;
+      padding: 0 1rem;
+    }
+    .blog-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 20px 60px rgba(239, 150, 189, 0.25);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: left;
+    }
+    .blog-card h3 {
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .blog-card p {
+      margin-bottom: 1.25rem;
+      color: #4b4e57;
+      line-height: 1.6;
+    }
+    .blog-card .tag {
+      display: block;
+      text-align: center;
+      background: #e7f9f4;
+      color: #0c4b3b;
+      border-radius: 999px;
+      padding: 0.25rem 0.75rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .blog-card .step-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: #50545b;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .blog-card .step-list li + li {
+      margin-top: 0.35rem;
+    }
+  </style>
 </head>
 <body data-page="blog">
   
@@ -61,28 +120,38 @@
       <p>Изучите практические советы для более быстрого и безопасного преобразования рабочие процессы.</p>
     </section>
     <section class="blog-grid">
-      
-    <article class="blog-card">
-      <span class="tag">Конфиденциальность</span>
-      <h3>Сохраняйте конфиденциальность активов бренда с помощью локальных инструментов</h3>
-      <p>Узнайте, как преобразование на устройстве защищает данные клиентов и файлы дизайна.</p>
-      <a href="#" class="ghost-btn">Подробнее</a>
-    </article>
-  
-    <article class="blog-card">
-      <span class="tag">PDF</span>
-      <h3>Подготовка PDF-файлов для экспорта в JPG</h3>
-      <p>Контрольный список по выравниванию шрифтов и цветов перед экспортом каждой страницы.</p>
-      <a href="#" class="ghost-btn">Подробнее</a>
-    </article>
-  
-    <article class="blog-card">
-      <span class="tag">Изображения</span>
-      <h3>Сжатие PNG без цветных полос</h3>
-      <p>Используйте настройки качества для безопасного сжатия маркетинговой графики PNG.</p>
-      <a href="#" class="ghost-btn">Подробнее</a>
-    </article>
-  
+      <article class="blog-card">
+        <span class="tag">Конфиденциальность</span>
+        <h3>Храните брендовый контент локально</h3>
+        <p>Конвертация проходит полностью в браузере без загрузок, можно очистить историю и защитить данные клиентов.</p>
+        <ul class="step-list">
+          <li>1. Выберите нужный инструмент в списке.</li>
+          <li>2. Перетащите файлы или выберите их, затем проверьте перед экспортом.</li>
+          <li>3. Скачайте результат и удалите историю, если нужно.</li>
+        </ul>
+      </article>
+
+      <article class="blog-card">
+        <span class="tag">PDF</span>
+        <h3>Подготовьте PDF для четкого экспорта JPG/PNG</h3>
+        <p>Следуйте чеклисту: настройте DPI, выберите формат вывода, проверьте шрифты и цвета, потом конвертируйте без дополнительного сжатия.</p>
+        <ul class="step-list">
+          <li>1. Выберите подходящую конвертацию (PDF → JPG/PNG или PDF → Word).</li>
+          <li>2. Настройте качество, DPI или предпросмотр при необходимости.</li>
+          <li>3. Экспортируйте файл и снова откройте, чтобы проверить цвета/шрифты перед публикацией.</li>
+        </ul>
+      </article>
+
+      <article class="blog-card">
+        <span class="tag">Изображения</span>
+        <h3>Меняйте форматы изображений, сохраняя качество без сжатия PNG</h3>
+        <p>Выберите инструмент, настройте качество и экспортируйте JPG/WEBP/PNG — здесь описан каждый этап, без отдельных настроек сжатия PNG.</p>
+        <ul class="step-list">
+          <li>1. Перетащите изображения в область или выберите по одному файл.</li>
+          <li>2. Установите нужный формат и уровень качества.</li>
+          <li>3. Экспортируйте и сохраните новую версию без дополнительных шагов сжатия.</li>
+        </ul>
+      </article>
     </section>
   
   </main>

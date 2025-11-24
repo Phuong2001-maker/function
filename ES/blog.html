@@ -31,6 +31,65 @@
 <link rel="alternate" hreflang="vi" href="https://fluxconvert.tools/vi/blog.html">
 <link rel="alternate" hreflang="zh-CN" href="https://fluxconvert.tools/zh-cn/blog.html">
   <link rel="alternate" hreflang="x-default" href="https://fluxconvert.tools/en/blog.html">
+  <style>
+    .page-hero {
+      text-align: center;
+      margin: 2rem auto;
+      max-width: 760px;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(236, 151, 170, 0.25);
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 1rem auto 3rem;
+      max-width: 1100px;
+      padding: 0 1rem;
+    }
+    .blog-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 20px 60px rgba(239, 150, 189, 0.25);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: left;
+    }
+    .blog-card h3 {
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .blog-card p {
+      margin-bottom: 1.25rem;
+      color: #4b4e57;
+      line-height: 1.6;
+    }
+    .blog-card .tag {
+      display: block;
+      text-align: center;
+      background: #e7f9f4;
+      color: #0c4b3b;
+      border-radius: 999px;
+      padding: 0.25rem 0.75rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .blog-card .step-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: #50545b;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .blog-card .step-list li + li {
+      margin-top: 0.35rem;
+    }
+  </style>
 </head>
 <body data-page="blog">
   
@@ -61,28 +120,38 @@
       <p>Aprenda consejos prácticos para flujos de trabajo de conversión más rápidos y seguros.</p>
     </section>
     <section class="blog-grid">
-      
-    <article class="blog-card">
-      <span class="tag">Privacidad</span>
-      <h3>Mantenga la privacidad de los activos de marca con herramientas locales</h3>
-      <p>Vea cómo la conversión en el dispositivo protege los datos de los clientes y los archivos de diseño.</p>
-      <a href="#" class="ghost-btn">Leer más</a>
-    </article>
-  
-    <article class="blog-card">
-      <span class="tag">PDF</span>
-      <h3>Preparación de archivos PDF para exportaciones JPG nítidas</h3>
-      <p>Lista de verificación para aplanar fuentes y colores antes de exportar cada página.</p>
-      <a href="#" class="ghost-btn">Leer más</a>
-    </article>
-  
-    <article class="blog-card">
-      <span class="tag">Imágenes</span>
-      <h3>Comprimir PNG sin bandas de color</h3>
-      <p>Utilice los ajustes preestablecidos de calidad para reducir los gráficos de marketing PNG de forma segura.</p>
-      <a href="#" class="ghost-btn">Leer más</a>
-    </article>
-  
+      <article class="blog-card">
+        <span class="tag">Privacidad</span>
+        <h3>Mantén el contenido de marca privado con herramientas locales</h3>
+        <p>Las conversiones se ejecutan enteramente en el navegador sin subir archivos, así puedes borrar el historial y proteger los datos del cliente.</p>
+        <ul class="step-list">
+          <li>1. Elige la herramienta desde el menú de categorías.</li>
+          <li>2. Arrastra o selecciona archivos y revísalos antes de exportar.</li>
+          <li>3. Descarga el resultado y borra el historial si lo deseas.</li>
+        </ul>
+      </article>
+
+      <article class="blog-card">
+        <span class="tag">PDF</span>
+        <h3>Prepara PDFs para exportar JPG/PNG nítidos</h3>
+        <p>Sigue la lista de verificación: ajusta el DPI, define el formato de salida, prevé fuentes y colores, luego convierte sin compresión adicional.</p>
+        <ul class="step-list">
+          <li>1. Selecciona la conversión adecuada (PDF → JPG/PNG o PDF → Word).</li>
+          <li>2. Ajusta calidad, DPI o vista previa según lo necesites.</li>
+          <li>3. Exporta el archivo y comprueba colores/fuentes antes de compartirlo.</li>
+        </ul>
+      </article>
+
+      <article class="blog-card">
+        <span class="tag">Imágenes</span>
+        <h3>Convierte formatos manteniendo calidad sin comprimir PNG</h3>
+        <p>Elige la herramienta, ajusta la calidad y exporta JPG/WEBP/PNG; esta tarjeta describe cada paso y no hay compresión adicional para PNG.</p>
+        <ul class="step-list">
+          <li>1. Arrastra imágenes al área o selecciónalas de una en una.</li>
+          <li>2. Escoge el formato de salida y el nivel de calidad.</li>
+          <li>3. Exporta y guarda la nueva versión sin pasos extra de compresión.</li>
+        </ul>
+      </article>
     </section>
   
   </main>

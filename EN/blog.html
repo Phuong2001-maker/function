@@ -31,6 +31,65 @@
 <link rel="alternate" hreflang="vi" href="https://fluxconvert.tools/vi/blog.html">
 <link rel="alternate" hreflang="zh-CN" href="https://fluxconvert.tools/zh-cn/blog.html">
   <link rel="alternate" hreflang="x-default" href="https://fluxconvert.tools/en/blog.html">
+  <style>
+    .page-hero {
+      text-align: center;
+      margin: 2rem auto;
+      max-width: 760px;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(236, 151, 170, 0.25);
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 1rem auto 3rem;
+      max-width: 1100px;
+      padding: 0 1rem;
+    }
+    .blog-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 20px 60px rgba(239, 150, 189, 0.25);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: left;
+    }
+    .blog-card h3 {
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .blog-card p {
+      margin-bottom: 1.25rem;
+      color: #4b4e57;
+      line-height: 1.6;
+    }
+    .blog-card .tag {
+      display: block;
+      text-align: center;
+      background: #e7f9f4;
+      color: #0c4b3b;
+      border-radius: 999px;
+      padding: 0.25rem 0.75rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .blog-card .step-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: #50545b;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .blog-card .step-list li + li {
+      margin-top: 0.35rem;
+    }
+  </style>
 </head>
 <body data-page="blog">
   
@@ -61,28 +120,38 @@
       <p>Learn practical tips for faster, safer conversion workflows.</p>
     </section>
     <section class="blog-grid">
-      
-    <article class="blog-card">
-      <span class="tag">Privacy</span>
-      <h3>Keep brand assets private with local tools</h3>
-      <p>See how on-device conversion protects customer data and design files.</p>
-      <a href="#" class="ghost-btn">Read more</a>
-    </article>
-  
-    <article class="blog-card">
-      <span class="tag">PDF</span>
-      <h3>Preparing PDFs for crisp JPG exports</h3>
-      <p>Checklist for flattening fonts and colors before exporting every page.</p>
-      <a href="#" class="ghost-btn">Read more</a>
-    </article>
-  
-    <article class="blog-card">
-      <span class="tag">Images</span>
-      <h3>Compressing PNG without color banding</h3>
-      <p>Use the quality presets to shrink PNG marketing graphics safely.</p>
-      <a href="#" class="ghost-btn">Read more</a>
-    </article>
-  
+      <article class="blog-card">
+        <span class="tag">Privacy</span>
+        <h3>Keep brand content private with local tools</h3>
+        <p>Conversions run entirely in the browser with no uploads, so you can clear history afterward and keep customer data safe.</p>
+        <ul class="step-list">
+          <li>1. Choose the tool from the list of categories.</li>
+          <li>2. Drag files in or select them, then review before exporting.</li>
+          <li>3. Download the result and clear history if needed.</li>
+        </ul>
+      </article>
+
+      <article class="blog-card">
+        <span class="tag">PDF</span>
+        <h3>Prepare PDFs for sharp JPG/PNG exports</h3>
+        <p>Follow the checklist: adjust DPI, set the desired output format, preview fonts and colors, then convert without extra compression.</p>
+        <ul class="step-list">
+          <li>1. Pick the right conversion (PDF → JPG/PNG or PDF → Word).</li>
+          <li>2. Adjust quality, DPI, or the preview pane if desired.</li>
+          <li>3. Export the file and reopen it to verify colors/fonts before sharing.</li>
+        </ul>
+      </article>
+
+      <article class="blog-card">
+        <span class="tag">Images</span>
+        <h3>Convert image formats while keeping quality without PNG compression</h3>
+        <p>Choose the tool, tweak quality, and export JPG/WEBP/PNG—this card explains every step and there is no separate PNG compression toggle.</p>
+        <ul class="step-list">
+          <li>1. Drag images into the drop zone or select each file individually.</li>
+          <li>2. Pick the output format and quality level you need.</li>
+          <li>3. Export and save the new version—no compression toggle involved.</li>
+        </ul>
+      </article>
     </section>
   
   </main>

@@ -31,6 +31,65 @@
 <link rel="alternate" hreflang="vi" href="https://fluxconvert.tools/vi/blog.html">
 <link rel="alternate" hreflang="zh-CN" href="https://fluxconvert.tools/zh-cn/blog.html">
   <link rel="alternate" hreflang="x-default" href="https://fluxconvert.tools/en/blog.html">
+  <style>
+    .page-hero {
+      text-align: center;
+      margin: 2rem auto;
+      max-width: 760px;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(236, 151, 170, 0.25);
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 1rem auto 3rem;
+      max-width: 1100px;
+      padding: 0 1rem;
+    }
+    .blog-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 20px 60px rgba(239, 150, 189, 0.25);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: left;
+    }
+    .blog-card h3 {
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .blog-card p {
+      margin-bottom: 1.25rem;
+      color: #4b4e57;
+      line-height: 1.6;
+    }
+    .blog-card .tag {
+      display: block;
+      text-align: center;
+      background: #e7f9f4;
+      color: #0c4b3b;
+      border-radius: 999px;
+      padding: 0.25rem 0.75rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .blog-card .step-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: #50545b;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .blog-card .step-list li + li {
+      margin-top: 0.35rem;
+    }
+  </style>
 </head>
 <body data-page="blog">
   
@@ -61,28 +120,38 @@
       <p>तेज, सुरक्षित रूपांतरण के लिए व्यावहारिक सुझाव जानें वर्कफ़्लो.</p>
     </section>
     <section class="blog-grid">
-      
-    <article class="blog-card">
-      <span class="tag">गोपनीयता</span>
-      <h3>स्थानीय टूल के साथ ब्रांड संपत्तियों को निजी रखें</h3>
-      <p>देखें कि ऑन-डिवाइस रूपांतरण ग्राहक डेटा और डिज़ाइन फ़ाइलों को कैसे सुरक्षित रखता है।</p>
-      <a href="#" class="ghost-btn">और पढ़ें</a>
-    </article>
-  
-    <article class="blog-card">
-      <span class="tag">PDF</span>
-      <h3>स्पष्ट JPG निर्यात के लिए पीडीएफ तैयार करना</h3>
-      <p>प्रत्येक पृष्ठ को निर्यात करने से पहले फ़ॉन्ट और रंगों को समतल करने के लिए चेकलिस्ट।</p>
-      <a href="#" class="ghost-btn">और पढ़ें</a>
-    </article>
-  
-    <article class="blog-card">
-      <span class="tag">छवियां</span>
-      <h3>रंग बैंडिंग के बिना PNG को संपीड़ित करना</h3>
-      <p>PNG मार्केटिंग ग्राफिक्स को सुरक्षित रूप से सिकोड़ने के लिए गुणवत्ता प्रीसेट का उपयोग करें।</p>
-      <a href="#" class="ghost-btn">और पढ़ें</a>
-    </article>
-  
+      <article class="blog-card">
+        <span class="tag">गोपनीयता</span>
+        <h3>लोकल टूल्स से ब्रांड सामग्री को निजी रखें</h3>
+        <p>कन्वर्ज़न पूरी तरह ब्राउज़र में चलती है, कोई अपलोड नहीं, जिससे आप बाद में इतिहास साफ कर सकते हैं और ग्राहक डेटा सुरक्षित रख सकते हैं.</p>
+        <ul class="step-list">
+          <li>1. श्रेणी सूची से टूल चुनें.</li>
+          <li>2. फाइल को ड्रैग करें या चुनें और एक्सपोर्ट से पहले जाँच करें.</li>
+          <li>3. परिणाम डाउनलोड करें और जरूरत पड़ने पर इतिहास मिटा दें.</li>
+        </ul>
+      </article>
+
+      <article class="blog-card">
+        <span class="tag">PDF</span>
+        <h3>तेज़ JPG/PNG एक्सपोर्ट के लिए PDF तैयार करें</h3>
+        <p>चेकलिस्ट का पालन करें: DPI सेट करें, आउटपुट फॉर्मैट तय करें, फ़ॉन्ट और रंग जांचें, फिर अतिरिक्त संपीड़न के बिना कन्वर्ट करें.</p>
+        <ul class="step-list">
+          <li>1. सही कन्वर्ज़न चुनें (PDF → JPG/PNG या PDF → Word).</li>
+          <li>2. गुणवत्ता, DPI या पूर्वावलोकन आवश्यकता अनुसार समायोजित करें.</li>
+          <li>3. फ़ाइल निर्यात करें और साझा करने से पहले रंग/फ़ॉन्ट जांचें.</li>
+        </ul>
+      </article>
+
+      <article class="blog-card">
+        <span class="tag">छवियाँ</span>
+        <h3>PNG को बिना संपीड़न के फ़ॉर्मैट बदलें और गुणवत्ता बनाए रखें</h3>
+        <p>टूल चुनें, गुणवत्ता सेट करें और JPG/WEBP/PNG में निर्यात करें; यह कार्ड हर चरण बताता है, PNG के लिए अलग संपीड़न नहीं है.</p>
+        <ul class="step-list">
+          <li>1. ड्रॉप ज़ोन में चित्र खींचें या प्रत्येक फ़ाइल चुनें.</li>
+          <li>2. आउटपुट फॉर्मैट और गुणवत्ता स्तर चुनें.</li>
+          <li>3. निर्यात करें और नई कॉपी सेव करें – कोई अतिरिक्त संपीड़न चरण नहीं.</li>
+        </ul>
+      </article>
     </section>
   
   </main>

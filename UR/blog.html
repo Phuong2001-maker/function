@@ -31,6 +31,65 @@
 <link rel="alternate" hreflang="vi" href="https://fluxconvert.tools/vi/blog.html">
 <link rel="alternate" hreflang="zh-CN" href="https://fluxconvert.tools/zh-cn/blog.html">
   <link rel="alternate" hreflang="x-default" href="https://fluxconvert.tools/en/blog.html">
+  <style>
+    .page-hero {
+      text-align: center;
+      margin: 2rem auto;
+      max-width: 760px;
+      padding: 2rem;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(236, 151, 170, 0.25);
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 1rem auto 3rem;
+      max-width: 1100px;
+      padding: 0 1rem;
+    }
+    .blog-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 20px 60px rgba(239, 150, 189, 0.25);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: left;
+    }
+    .blog-card h3 {
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+    .blog-card p {
+      margin-bottom: 1.25rem;
+      color: #4b4e57;
+      line-height: 1.6;
+    }
+    .blog-card .tag {
+      display: block;
+      text-align: center;
+      background: #e7f9f4;
+      color: #0c4b3b;
+      border-radius: 999px;
+      padding: 0.25rem 0.75rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .blog-card .step-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: #50545b;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .blog-card .step-list li + li {
+      margin-top: 0.35rem;
+    }
+  </style>
 </head>
 <body data-page="blog">
   
@@ -61,28 +120,38 @@
       <p>Learn practical tips for faster, safer conversion workflows.</p>
     </section>
     <section class="blog-grid">
-      
-    <article class="blog-card">
-      <span class="tag">Privacy</span>
-      <h3>Keep brand assets private with local tools</h3>
-      <p>See how on-device conversion protects customer data and design files.</p>
-      <a href="#" class="ghost-btn">Read more</a>
-    </article>
-  
-    <article class="blog-card">
-      <span class="tag">PDF</span>
-      <h3>Preparing PDFs for crisp JPG exports</h3>
-      <p>Checklist for flattening fonts and colors before exporting every page.</p>
-      <a href="#" class="ghost-btn">Read more</a>
-    </article>
-  
-    <article class="blog-card">
-      <span class="tag">Images</span>
-      <h3>Compressing PNG without color banding</h3>
-      <p>Use the quality presets to shrink PNG marketing graphics safely.</p>
-      <a href="#" class="ghost-btn">Read more</a>
-    </article>
-  
+      <article class="blog-card">
+        <span class="tag">رازداری</span>
+        <h3>برانڈ مواد کو مقامی ٹولز سے نجی رکھیں</h3>
+        <p>تبدیلیاں مکمل طور پر براؤزر میں ہوتی ہیں، کوئی اپلوڈ نہیں، تو آپ بعد میں ہسٹری صاف کر کے صارف کا ڈیٹا محفوظ رکھ سکتے ہیں.</p>
+        <ul class="step-list">
+          <li>1. کیٹیگریز کی فہرست سے ٹول منتخب کریں.</li>
+          <li>2. فائلیں ڈریگ کریں یا منتخب کر کے برآمد سے پہلے چیک کریں.</li>
+          <li>3. نتیجہ ڈاؤن لوڈ کریں اور ضرورت پڑنے پر ہسٹری مٹا دیں.</li>
+        </ul>
+      </article>
+
+      <article class="blog-card">
+        <span class="tag">PDF</span>
+        <h3>تیز JPG/PNG ایکسپورٹ کے لیے PDF تیار کریں</h3>
+        <p>چیک لسٹ پر عمل کریں: DPI سیٹ کریں، آؤٹ پٹ فارمیٹ منتخب کریں، فونٹ اور رنگ چیک کریں، پھر اضافی کمپریشن کے بغیر کنورٹ کریں.</p>
+        <ul class="step-list">
+          <li>1. مناسب کنورژن منتخب کریں (PDF → JPG/PNG یا PDF → Word).</li>
+          <li>2. معیار، DPI یا پری ویو ضرورت کے مطابق ایڈجسٹ کریں.</li>
+          <li>3. فائل ایکسپورٹ کریں اور شیئر کرنے سے پہلے رنگ/فونٹ چیک کریں.</li>
+        </ul>
+      </article>
+
+      <article class="blog-card">
+        <span class="tag">تصاویر</span>
+        <h3>PNG کمپریشن کے بغیر تصویر کے فارمیٹ تبدیل کریں اور معیار برقرار رکھیں</h3>
+        <p>ٹول منتخب کریں، معیار ترتیب دیں، اور JPG/WEBP/PNG ایکسپورٹ کریں؛ ہر مرحلہ کارڈ پر درج ہے اور PNG کے لیے الگ کمپریشن نہیں ہے.</p>
+        <ul class="step-list">
+          <li>1. ڈراپ زون میں تصاویر ڈریگ کریں یا ایک ایک کر کے منتخب کریں.</li>
+          <li>2. مطلوبہ آؤٹ پٹ فارمیٹ اور معیار کا درجہ منتخب کریں.</li>
+          <li>3. ایکسپورٹ کریں اور بغیر اضافی کمپریشن کے نئی کاپی محفوظ کریں.</li>
+        </ul>
+      </article>
     </section>
   
   </main>
