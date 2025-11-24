@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>Convert PNG to PDF | Convert PNG to PDF online</title>
+        <meta name="description" content="Convert PNG to PDF online, drag and drop or select files to start quickly.">
+  <link rel="icon" href="/assets/img/logo.png" type="image/png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/logo.png">
+
+  <link rel="canonical" href="https://pdf-converter.tools/en/png-to-pdf">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="../css/converter.css">
+      <meta name="keywords" content="Convert PNG to PDF, PNG to PDF online, file conversion.">
+</head>
+<body data-page="png-to-pdf">
+  
+    <header class="site-header" data-page="png-to-pdf">
+      <div class="logo">Filexo</div>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="all-tools.html">All tools</a>
+        <a href="about.html">About</a>
+        <a href="blog.html">Blog & guides</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="lang-switch">
+        <label for="languageSelect" class="sr-only">Language</label>
+        <select id="languageSelect" data-current="EN">
+          <option value="AR">العربية</option><option value="BN">বাংলা</option><option value="DE">Deutsch</option><option value="EN" selected>English</option><option value="ES">Español</option><option value="FR">Français</option><option value="HI">हिन्दी</option><option value="ID">Bahasa Indonesia</option><option value="IT">Italiano</option><option value="JA">日本語</option><option value="KO">한국어</option><option value="MS">Bahasa Melayu</option><option value="PT-BR">Português (Brasil)</option><option value="RU">Русский</option><option value="TH">ไทย</option><option value="TR">Türkçe</option><option value="UR">اردو</option><option value="VI">Tiếng Việt</option><option value="ZH-CN">简体中文</option>
+        </select>
+      </div>
+    </header>
+  
+    <main class="converter-shell">
+      <div class="app">
+    <section class="board" id="board" aria-label="Source file list">
+      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Choose or drag PNG files">
+        <div class="conversion-flow" aria-hidden="true">
+          <span class="icon" title="PNG">🖼️</span>
+          <span class="arrow" aria-hidden="true">→</span>
+          <span class="icon" title="PDF">📄</span>
+        </div>
+        <strong>Drag PNG here</strong>
+        <span>or</span>
+        <button type="button" id="chooseBtn">Choose files</button>
+        <div class="muted">Supports PNG files. Export to PDF quickly.</div>
+        <input type="file" id="fileInput" accept=".png,image/png" multiple hidden>
+      </div>
+
+      <div class="selection-bar" id="selectionBar" style="display:none;">
+        <div><strong id="selectionCount">0 files</strong> <span id="pageCount">0 images</span></div>
+        <button class="clear-btn" id="clearAll" type="button">Clear all</button>
+      </div>
+
+      <div class="grid" id="fileGrid"></div>
+      <div class="empty" id="emptyState">No files yet. Drag PNG into the box above to start.</div>
+    </section>
+
+    <aside class="rightpanel" id="panel">
+                  <h1>Convert PNG to PDF</h1>
+      <p>Convert PNG to PDF online in seconds, no install required.</p>
+
+      <div>
+        <p style="font-weight:600;margin-bottom:10px;color:#1f2937;">Image quality</p>
+        <div class="quality" role="radiogroup">
+          <div class="qitem active" tabindex="0" role="radio" data-quality="normal" aria-checked="true">
+            <span class="badge">Recommended</span>
+            <strong>Normal</strong>
+            <small>150 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="high" aria-checked="false">
+            <span class="badge">Detailed</span>
+            <strong>High</strong>
+            <small>220 DPI</small>
+          </div>
+          <div class="qitem" tabindex="0" role="radio" data-quality="ultra" aria-checked="false">
+            <span class="badge">MAX DPI</span>
+            <strong>Ultra</strong>
+            <small>600 DPI</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="output-format" role="group" aria-label="Output format">
+        <div class="options" id="formatOptions">
+          <button type="button" class="format-btn active" data-format="pdf" aria-pressed="true">Export as PDF</button>
+        </div>
+      </div>
+
+      <div class="pdf-options" id="pdfOptions" role="group" aria-label="PDF export mode">
+        <strong>PDF export mode</strong>
+        <div class="options">
+          <button type="button" class="pdf-mode-btn" data-mode="separate" aria-pressed="false">One PDF per file</button>
+          <button type="button" class="pdf-mode-btn active" data-mode="merged" aria-pressed="true">Merge into a single PDF</button>
+        </div>
+      </div>
+
+      <div class="status" id="statusMessage" role="status" aria-live="polite"></div>
+
+      <div class="progress" id="progressWrap" aria-hidden="true">
+        <span id="progressBar"></span>
+      </div>
+
+      <button class="convert" id="convertBtn" type="button" disabled><span>Convert to PDF</span></button>
+    </aside>
+
+    <button class="options-toggle" id="optsToggle" type="button">⚙️ Conversion options</button>
+  </div>
+  </main>
+  
+    <footer class="site-footer">
+      <div class="page-shell">
+        <div class="footer-brand">Filexo</div>
+        <p>Filexo converts images, PDFs, and office files directly inside your browser so the only limit is your device. No uploads, no storage, and no registration - just fast tools that respect privacy.</p>
+        <div class="footer-links">
+          <a href="about.html">About</a>
+          <a href="all-tools.html">All tools</a>
+          <a href="blog.html">Blog & guides</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Use</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <p class="copyright">&copy; 2025 Filexo</p>
+      </div>
+    </footer>
+  
+  <script src="assets/js/main.js" defer></script>
+  <script>
+    window.CONVERTER_CONFIG = {
+      slug: 'png-to-pdf',
+      input: {
+        label: 'file',
+        labelPlural: 'files',
+        mimeTypes: ['image/png'],
+        extensions: ['png'],
+        accept: '.png,image/png',
+        description: 'Supports PNG files.'
+      },
+      outputs: {
+        pdf: {
+          formatlabel: 'file',
+          buttonLabel: 'Export PDF',
+          zipNameBaseMerged: 'png-gop-pdf',
+          zipNameBaseSeparate: 'png-to-pdf'
+        }
+      },
+      availableOutputs: ['pdf'],
+      defaultOutput: 'pdf',
+      allowPdfInput: false
+    };
+  </script>
+  <script src="../libs/jszip/jszip.min.js"></script>
+  <script src="../libs/filesaver/FileSaver.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="../js/converter.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
