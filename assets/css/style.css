@@ -522,6 +522,7 @@ body.nav-open .nav-toggle span:nth-child(3) {
 
 .contact-form {
   position: relative;
+  min-height: 480px;
 }
 
 .submission-message {
