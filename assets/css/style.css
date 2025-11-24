@@ -227,10 +227,7 @@ body.nav-open .nav-toggle span:nth-child(3) {
 }
 
 .hero-actions {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin: 1.5rem 0;
+  display: none;
 }
 
 .primary-btn,
@@ -801,6 +798,7 @@ body.nav-open .nav-overlay {
 
 @media (max-width: 640px) {
   .hero-actions {
+    display: none;
     flex-direction: column;
     align-items: stretch;
   }
