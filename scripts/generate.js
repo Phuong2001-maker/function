@@ -1,7 +1,7 @@
-const fs = require('fs');
+﻿const fs = require('fs');
 const path = require('path');
 
-const BASE_DOMAIN = 'https://fluxconvert.tools';
+const BASE_DOMAIN = 'https://Filexo.tools';
 const OUTPUT_ROOT = process.cwd();
 
 const locales = [
@@ -37,7 +37,7 @@ const SKIP_TRANSLATION_KEYS = new Set([
 ]);
 
 const baseContent = {
-  brand: 'FluxConvert',
+  brand: 'Filexo',
   email: 'contact@example.com',
   nav: {
     home: 'Home',
@@ -463,7 +463,7 @@ function renderHeader(localeConfig, content, currentPage) {
   }).join('');
   return `
     <header class="site-header" data-page="${currentPage}">
-      <!-- Placeholder brand/email. Replace FluxConvert + contact@example.com with real info. -->
+      <!-- Placeholder brand/email. Replace Filexo + contact@example.com with real info. -->
       <div class="logo">${content.brand}</div>
       <button class="nav-toggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -947,4 +947,5 @@ generate().catch(err => {
   console.error(err);
   process.exit(1);
 });
+
 
