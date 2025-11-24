@@ -88,7 +88,7 @@
 
     langSelect.value = langSelect.dataset.current || langSelect.value;
     langSelect.addEventListener('change', e => {
-      const target = e.target.value;
+      const target = e.target.value.toLowerCase();
       const raw = window.location.pathname.replace(/\\/g, '/');
       const parts = raw.split('/').filter(Boolean);
       let fileName = parts.pop() || 'index.html';

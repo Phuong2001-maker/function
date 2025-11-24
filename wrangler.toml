@@ -1,0 +1,6 @@
+name = "patient-limit-809ffilexo-multilang"
+compatibility_date = "2024-11-24"
+
+[assets]
+# Nếu index.html nằm ngay trong folder hiện tại:
+directory = "./"
