@@ -632,6 +632,28 @@
     }
   };
 
+  const OPTIONS_TOGGLE_LABELS = {
+    en: 'Open conversion options',
+    ar: 'فتح خيارات التحويل',
+    bn: 'কনভার্সন অপশন খুলুন',
+    de: 'Konvertierungsoptionen öffnen',
+    es: 'Abrir opciones de conversión',
+    fr: 'Ouvrir les options de conversion',
+    hi: 'कनवर्ज़न विकल्प खोलें',
+    id: 'Buka opsi konversi',
+    it: 'Apri opzioni di conversione',
+    ja: '変換オプションを開く',
+    ko: '변환 옵션 열기',
+    ms: 'Buka pilihan penukaran',
+    'pt-br': 'Abrir opções de conversão',
+    ru: 'Открыть настройки конвертации',
+    th: 'เปิดตัวเลือกการแปลง',
+    tr: 'Dönüştürme seçeneklerini aç',
+    ur: 'کنورژن آپشنز کھولیں',
+    vi: 'Mở tùy chọn chuyển đổi',
+    'zh-cn': '打开转换选项'
+  };
+
   const defaultConfig = {
     slug: 'chuyen-doi',
     fileLabel: 'tệp',
@@ -665,6 +687,8 @@
   const localeCandidates = [requestedLocale, requestedLocale.split('-')[0]];
   const localeKey = localeCandidates.find(code => code && LOCALE_TEXT.hasOwnProperty(code)) || 'en';
   const localeDefaults = LOCALE_TEXT[localeKey] || LOCALE_TEXT.en;
+  const optionsToggleLabel = config.i18n?.optionsToggleLabel || OPTIONS_TOGGLE_LABELS[localeKey] || OPTIONS_TOGGLE_LABELS.en;
+  const optionsToggleAriaLabel = config.i18n?.optionsToggleAriaLabel || optionsToggleLabel || OPTIONS_TOGGLE_LABELS.en;
 
   function formatTemplate(template = '', data = {}) {
     if (!template) return '';
@@ -724,18 +748,43 @@
   const progressWrap = document.querySelector('#progressWrap');
   const progressBar = document.querySelector('#progressBar');
   const statusMessage = document.querySelector('#statusMessage');
-  const optsToggle = document.querySelector('#optsToggle');
   const panel = document.querySelector('#panel');
   const chooseBtn = document.querySelector('#chooseBtn');
   const formatOptions = document.querySelector('#formatOptions');
   const pdfOptions = document.querySelector('#pdfOptions');
   let formatButtons = Array.from(document.querySelectorAll('.format-btn'));
   const pdfModeButtons = Array.from(document.querySelectorAll('.pdf-mode-btn'));
+  const appShell = document.querySelector('.app') || document.querySelector('.converter-shell') || document.body;
+  let optsToggle = null;
+
+  function prepareOptionsToggle(labelText, ariaLabelText) {
+    const buttons = Array.from(document.querySelectorAll('#optsToggle, .options-toggle'));
+    let toggle = buttons.shift() || null;
+    if (buttons.length) buttons.forEach(btn => btn.remove());
+    if (!toggle && appShell) {
+      toggle = document.createElement('button');
+      toggle.className = 'options-toggle';
+      toggle.id = 'optsToggle';
+      toggle.type = 'button';
+      appShell.appendChild(toggle);
+    }
+    if (toggle) {
+      toggle.id = 'optsToggle';
+      toggle.classList.add('options-toggle');
+      if (!toggle.getAttribute('type')) toggle.setAttribute('type', 'button');
+      const label = labelText || toggle.textContent || OPTIONS_TOGGLE_LABELS.en;
+      toggle.textContent = label;
+      toggle.setAttribute('aria-label', ariaLabelText || label);
+    }
+    return toggle;
+  }
 
   if (!dropzone || !fileInput || !grid || !convertBtn) {
     console.error('Thiếu phần tử giao diện cần thiết.');
     return;
   }
+
+  optsToggle = prepareOptionsToggle(optionsToggleLabel, optionsToggleAriaLabel);
 
   const supportedOutputs = ['jpg', 'jpeg', 'png', 'webp', 'gif', 'pdf'];
   let availableOutputs = Array.isArray(config.availableOutputs)
