@@ -115,6 +115,7 @@
       to { opacity:0; transform:translateX(-50%) translateY(-20px); }
     }
     .status.show{display:flex;pointer-events:auto;opacity:1;transform:translateY(0);border-color:rgba(255,255,255,.3);box-shadow:0 25px 55px rgba(15,23,42,.25);margin:1.5rem 0;}
+    .status.error.show{display:none;opacity:0;pointer-events:none;margin:0;}
     .status.info{background:#eef2ff;color:#312e81;border-color:#c7d2fe;}
     .status.success{background:#ecfdf5;color:#047857;border-color:#bbf7d0;}
     .status.warn{background:#fff7ed;color:#b45309;border-color:#fde68a;}
