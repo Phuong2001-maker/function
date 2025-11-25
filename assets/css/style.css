@@ -791,8 +791,23 @@ body.nav-open .nav-overlay {
     border-bottom: none;
   }
 
+  .site-header {
+    justify-content: flex-start;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    padding: 0.9rem 1.25rem;
+  }
+  .nav-toggle {
+    order: 0;
+    margin-left: 0;
+  }
+  .logo {
+    order: 1;
+    white-space: nowrap;
+  }
   .lang-switch {
-    margin-left: 0.5rem;
+    order: 2;
+    margin-left: auto;
   }
 }
 
@@ -805,5 +820,14 @@ body.nav-open .nav-overlay {
 
   main {
     padding: 1.5rem 1rem 4rem;
+  }
+  .site-header {
+    padding: 0.8rem 1rem;
+  }
+  .nav-links {
+    padding: 5rem 1.75rem 2.5rem;
+  }
+  .contact-form form {
+    padding: 1.5rem;
   }
 }
