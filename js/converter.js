@@ -812,6 +812,8 @@
     if (config.allowPdfInput) accepts.push('.pdf,application/pdf');
     if (accepts.length) fileInput.setAttribute('accept', accepts.join(','));
     if (fileInput.hasAttribute('hidden')) fileInput.removeAttribute('hidden');
+    fileInput.multiple = true;
+    if (!fileInput.hasAttribute('multiple')) fileInput.setAttribute('multiple', '');
     fileInput.classList.add('dropzone-file-input');
     fileInput.setAttribute('aria-hidden', 'true');
   }
@@ -1343,6 +1345,21 @@
     }
   }
 
+  function downloadWithAnchor(blob, filename) {
+    if (!blob) return;
+    const name = filename || 'download';
+    const anchor = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    anchor.href = url;
+    anchor.download = name;
+    anchor.rel = 'noopener noreferrer';
+    anchor.style.display = 'none';
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 5000);
+  }
+
   async function convert() {
     if (!state.files.length || state.converting) return;
     const exportingPdf = state.outputFormat === 'pdf';
@@ -1356,7 +1373,7 @@
 
     const jsPDFLib = exportingPdf ? (window.jspdf && window.jspdf.jsPDF) : null;
     if (exportingPdf && !jsPDFLib) { updateStatus(statusText('missingPdfGenerator'), 'error'); return; }
-    if (typeof JSZip !== 'function' || typeof saveAs !== 'function') { updateStatus(statusText('missingZipLibrary'), 'error'); return; }
+    if (typeof JSZip !== 'function') { updateStatus(statusText('missingZipLibrary'), 'error'); return; }
 
     state.converting = true; convertBtn.disabled = true;
 
@@ -1462,7 +1479,18 @@
           updateStatus(statusText('saveCanceled'), 'info');
           return;
         }
-        if (saveOutcome !== 'saved') saveAs(mergedBlob, mergedName);
+        if (saveOutcome !== 'saved') {
+          if (typeof saveAs === 'function') {
+            try {
+              saveAs(mergedBlob, mergedName);
+            } catch (err) {
+              console.warn('saveAs failed for merged PDF fallback.', err);
+              downloadWithAnchor(mergedBlob, mergedName);
+            }
+          } else {
+            downloadWithAnchor(mergedBlob, mergedName);
+          }
+        }
         const mergedDetail = describeDownloadedTargets([mergedName]);
         const mergedMessage = mergedDetail ? `${mergedDetail} downloaded` : 'File downloaded';
         updateStatus(buildDownloadAnnouncement(mergedMessage, DOWNLOAD_HINT_BROWSER), 'success');
@@ -1476,7 +1504,18 @@
           updateStatus(statusText('saveCanceled'), 'info');
             return;
           }
-          if (saveOutcome !== 'saved') saveAs(item.blob, item.outputFilename);
+          if (saveOutcome !== 'saved') {
+            if (typeof saveAs === 'function') {
+              try {
+                saveAs(item.blob, item.outputFilename);
+              } catch (err) {
+                console.warn('saveAs failed for single export fallback.', err);
+                downloadWithAnchor(item.blob, item.outputFilename);
+              }
+            } else {
+              downloadWithAnchor(item.blob, item.outputFilename);
+            }
+          }
           const singleDetail = describeDownloadedTargets(gatherResultFileNames());
           const singleMessage = singleDetail ? `${singleDetail} downloaded` : 'File downloaded';
           updateStatus(buildDownloadAnnouncement(singleMessage, DOWNLOAD_HINT_BROWSER), 'success');
@@ -1506,7 +1545,16 @@
             if (!zipNameBase) zipNameBase = `${config.slug || 'ket-qua'}-${state.outputFormat || 'xuat'}`;
             const zipBlob = await zip.generateAsync({type: 'blob'});
             const zipFilename = `${zipNameBase}-${Date.now()}.zip`;
-            saveAs(zipBlob, zipFilename);
+            if (typeof saveAs === 'function') {
+              try {
+                saveAs(zipBlob, zipFilename);
+              } catch (err) {
+                console.warn('saveAs failed for ZIP fallback.', err);
+                downloadWithAnchor(zipBlob, zipFilename);
+              }
+            } else {
+              downloadWithAnchor(zipBlob, zipFilename);
+            }
             const zipDetail = `ZIP "${zipFilename}" downloaded`;
             updateStatus(buildDownloadAnnouncement(zipDetail, DOWNLOAD_HINT_BROWSER), 'success');
           }
