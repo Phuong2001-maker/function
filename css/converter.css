@@ -119,7 +119,7 @@
     .status.info{background:#eef2ff;color:#312e81;border-color:#c7d2fe;}
     .status.success{background:#ecfdf5;color:#047857;border-color:#bbf7d0;}
     .status.warn{background:#fff7ed;color:#b45309;border-color:#fde68a;}
-    .status.error{background:#fef2f2;color:#b91c1c;border-color:#fecaca;}
+    .status.error{background:#fef2f2;color:#b91c1c;border-color:#fecaca;display:none;}
 
     .progress{height:6px;background:#f3f4f6;border-radius:999px;overflow:hidden;display:none;}
     .progress span{display:block;height:100%;width:0;background:var(--primary);transition:width .2s ease;}
