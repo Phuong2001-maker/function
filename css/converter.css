@@ -97,8 +97,8 @@
       .pdf-options .options{flex-direction:column;}
     }
 
-    .status{position:relative;top:auto;left:auto;transform:none;z-index:10;width:100%;max-width:none;min-height:68px;border-radius:22px;padding:14px 20px;font-size:15px;line-height:1.7;text-align:center;box-shadow:0 16px 30px rgba(15,23,42,.15);border:1px solid transparent;justify-content:center;align-items:center;display:none;pointer-events:none;opacity:0;transition:opacity .25s ease,border-color .25s ease,box-shadow .25s ease;}
-    .status::before{content:'';position:absolute;inset:4px;border-radius:20px;border:1px solid rgba(255,255,255,.35);pointer-events:none;}
+    .status{position:relative;top:auto;left:auto;transform:none;z-index:2;width:100%;min-height:70px;border-radius:24px;padding:16px 22px;font-size:15px;line-height:1.7;text-align:center;box-shadow:0 15px 45px rgba(15,23,42,.18);border:1px solid rgba(249,182,107,.5);background:linear-gradient(180deg,#fffdf5,#fff6e8);justify-content:center;align-items:center;display:none;pointer-events:none;opacity:0;transition:opacity .2s ease,transform .2s ease;}
+    .status::before{content:'';position:absolute;inset:6px;border-radius:20px;border:1px solid rgba(255,255,255,.4);pointer-events:none;}
     .floating-alert{position:fixed;top:12px;left:50%;transform:translateX(-50%) translateY(-6px);padding:12px 22px;border-radius:14px;font-size:14px;font-weight:600;background:#fef3c7;color:#92400e;border:1px solid #fcd34d;box-shadow:0 12px 30px rgba(15,23,42,0.25);opacity:0;pointer-events:none;z-index:40;}
     .floating-alert[data-tone="warn"]{background:#fef3c7;color:#92400e;border-color:#fcd34d;}
     .floating-alert[data-tone="error"]{background:#fee2e2;color:#991b1b;border-color:#fecaca;}
@@ -113,7 +113,7 @@
       from { opacity:1; transform:translateX(-50%) translateY(0); }
       to { opacity:0; transform:translateX(-50%) translateY(-20px); }
     }
-    .status.show{display:flex;pointer-events:auto;opacity:1;border-color:rgba(255,255,255,.3);box-shadow:0 25px 55px rgba(15,23,42,.25);}
+    .status.show{display:flex;pointer-events:auto;opacity:1;transform:translateY(0);border-color:rgba(255,255,255,.3);box-shadow:0 25px 55px rgba(15,23,42,.25);margin:1.5rem 0;}
     .status.info{background:#eef2ff;color:#312e81;border-color:#c7d2fe;}
     .status.success{background:#ecfdf5;color:#047857;border-color:#bbf7d0;}
     .status.warn{background:#fff7ed;color:#b45309;border-color:#fde68a;}
