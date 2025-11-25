@@ -91,14 +91,14 @@
       const target = e.target.value.toLowerCase();
       const raw = window.location.pathname.replace(/\\/g, '/');
       const parts = raw.split('/').filter(Boolean);
-      let fileName = parts.pop() || 'index.html';
-      if (!fileName.endsWith('.html')) {
-        fileName = 'index.html';
-      }
-      const currentSlug = fileName.replace(/\.html$/i, '');
+      let fileName = parts.pop() || 'index';
+      const hasHtmlExtension = fileName.toLowerCase().endsWith('.html');
+      const currentSlug = hasHtmlExtension
+        ? fileName.replace(/\.html$/i, '')
+        : fileName || 'index';
       const canonical = canonicalizeSlug(currentSlug);
       const targetSlug = localizeSlug(canonical, target);
-      const targetFile = `${targetSlug}.html`;
+      const targetFile = hasHtmlExtension ? `${targetSlug}.html` : targetSlug;
 
       let localeIndex = -1;
       for (let i = parts.length - 1; i >= 0; i--) {
