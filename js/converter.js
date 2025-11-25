@@ -811,12 +811,29 @@
   const extensionPattern = imageExtensions.length ? new RegExp(`\\.(${imageExtensions.join('|')})$`, 'i') : null;
   const allowImageInput = Boolean(imageMimeSet.size || imageExtensions.length);
   const pdfjs = config.allowPdfInput ? (window.pdfjsLib || null) : null;
+  const supportsDownloadAttr = (() => {
+    try {
+      const anchor = document.createElement('a');
+      return typeof anchor.download === 'string';
+    } catch {
+      return false;
+    }
+  })();
 
   if (fileInput) {
-    const accepts = [];
-    if (imageConfig.accept) accepts.push(imageConfig.accept);
-    if (config.allowPdfInput) accepts.push('.pdf,application/pdf');
-    if (accepts.length) fileInput.setAttribute('accept', accepts.join(','));
+    const acceptTokens = [];
+    let hasImageWildcard = false;
+    const pushAcceptValue = (value) => {
+      if (value === undefined || value === null) return;
+      value.toString().split(',').map(token => token.trim()).filter(Boolean).forEach(token => {
+        if (token.toLowerCase() === 'image/*') hasImageWildcard = true;
+        if (!acceptTokens.includes(token)) acceptTokens.push(token);
+      });
+    };
+    if (imageConfig.accept) pushAcceptValue(imageConfig.accept);
+    if (config.allowPdfInput) pushAcceptValue('.pdf,application/pdf');
+    if (!hasImageWildcard && (imageMimeSet.size || imageExtensions.length)) pushAcceptValue('image/*');
+    if (acceptTokens.length) fileInput.setAttribute('accept', acceptTokens.join(','));
     if (fileInput.hasAttribute('hidden')) fileInput.removeAttribute('hidden');
     fileInput.multiple = true;
     if (!fileInput.hasAttribute('multiple')) fileInput.setAttribute('multiple', '');
@@ -1371,7 +1388,12 @@
     const url = URL.createObjectURL(blob);
     anchor.href = url;
     anchor.download = name;
-    anchor.rel = 'noopener noreferrer';
+    if (supportsDownloadAttr) {
+      anchor.rel = 'noopener noreferrer';
+    } else {
+      anchor.target = '_blank';
+      anchor.rel = 'noopener';
+    }
     anchor.style.display = 'none';
     document.body.appendChild(anchor);
     anchor.click();
