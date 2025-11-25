@@ -20,6 +20,16 @@
       .toLowerCase();
   }
 
+  function escapeHtml(value) {
+    if (value === undefined || value === null) return '';
+    return value.toString()
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
   async function fileToArrayBuffer(file) {
     if (file.arrayBuffer) return file.arrayBuffer();
     return new Promise((resolve, reject) => {
@@ -731,10 +741,6 @@
     config.input = config.input || {};
     config.input.labelWhenUnknown = localeDefaults.imageLabel;
   }
-  const slugParts = (config.slug || '').split('-sang-');
-  const inputFormatKey = (slugParts[0] || '').toLowerCase();
-  const outputFormatKey = (slugParts[1] || config.defaultOutput || '').toLowerCase();
-
   const dropzone = document.querySelector('#dropzone');
   const conversionFlow = document.querySelector('.conversion-flow');
   const fileInput = document.querySelector('#fileInput');
@@ -970,19 +976,31 @@
       updateSelection();
       return;
     }
-    const cards = state.files.map(entry => {
+    const cards = state.files.map((entry, index) => {
+      const rawName = entry.name || (entry.type === 'pdf' ? 'PDF file' : 'Image');
+      const safeName = escapeHtml(rawName);
       const info = entry.type === 'pdf'
-        ? (entry.pages ? `${entry.pages} page` : 'Counting pages…')
+        ? (entry.pages ? `${entry.pages} page${entry.pages > 1 ? 's' : ''}` : 'Counting pages…')
         : (entry.imageInfo ? `${entry.imageInfo.width}×${entry.imageInfo.height}` : '1 image');
-      const alt = entry.type === 'pdf' ? `First page of ${entry.name}` : `Preview image of ${entry.name}`;
-      const thumb = entry.thumb ? `<img src="${entry.thumb}" alt="${alt}">` : '<span class="muted">Generating preview…</span>';
+      const safeInfo = escapeHtml(info);
+      const altText = entry.type === 'pdf' ? `First page of ${rawName}` : `Preview image of ${rawName}`;
+      const safeAlt = escapeHtml(altText);
+      const width = entry.imageInfo?.width ? Math.max(0, Math.floor(entry.imageInfo.width)) : 0;
+      const height = entry.imageInfo?.height ? Math.max(0, Math.floor(entry.imageInfo.height)) : 0;
+      const dimensionAttrs = (width && height) ? ` width="${width}" height="${height}"` : '';
+      const isAboveFold = index === 0;
+      const loadingAttr = isAboveFold ? 'eager' : 'lazy';
+      const priorityAttr = isAboveFold ? 'high' : 'low';
+      const thumb = entry.thumb
+        ? `<img src="${entry.thumb}" alt="${safeAlt}" loading="${loadingAttr}" decoding="async" fetchpriority="${priorityAttr}"${dimensionAttrs}>`
+        : '<span class="muted">Generating preview…</span>';
       return `
         <div class="card">
           <button class="remove" type="button" data-remove="${entry.id}" title="Remove file">×</button>
-          <div class="thumb" data-pages="${info}">
+          <div class="thumb" data-pages="${safeInfo}">
             ${thumb}
           </div>
-          <div class="filename" title="${entry.name}">${entry.name}</div>
+          <div class="filename" title="${safeName}">${safeName}</div>
         </div>`;
     }).join('');
     grid.innerHTML = cards;
@@ -1082,6 +1100,7 @@
     const pdf = await loadPdf(entry);
     const page = await pdf.getPage(1);
     const canvas = await renderPdfPageToCanvas(page, 1.1);
+    entry.imageInfo = { width: canvas.width, height: canvas.height };
     entry.thumb = canvas.toDataURL('image/jpeg', 0.75);
   }
   async function loadImagePreview(entry) {
