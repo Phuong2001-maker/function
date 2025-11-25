@@ -91,14 +91,27 @@
       const target = e.target.value.toLowerCase();
       const raw = window.location.pathname.replace(/\\/g, '/');
       const parts = raw.split('/').filter(Boolean);
-      let fileName = parts.pop() || 'index';
-      const hasHtmlExtension = fileName.toLowerCase().endsWith('.html');
-      const currentSlug = hasHtmlExtension
-        ? fileName.replace(/\.html$/i, '')
-        : fileName || 'index';
+      let fileName = 'index';
+      let useHtmlExtension = true;
+
+      if (parts.length) {
+        const lastSegment = parts[parts.length - 1];
+        const lowerLast = lastSegment.toLowerCase();
+
+        if (lowerLast.endsWith('.html')) {
+          fileName = lastSegment.replace(/\.html$/i, '');
+          parts.pop();
+        } else if (!localeValues.includes(lowerLast)) {
+          fileName = lastSegment;
+          parts.pop();
+          useHtmlExtension = false;
+        }
+      }
+
+      const currentSlug = fileName || 'index';
       const canonical = canonicalizeSlug(currentSlug);
       const targetSlug = localizeSlug(canonical, target);
-      const targetFile = hasHtmlExtension ? `${targetSlug}.html` : targetSlug;
+      const targetFile = useHtmlExtension ? `${targetSlug}.html` : targetSlug;
 
       let localeIndex = -1;
       for (let i = parts.length - 1; i >= 0; i--) {
