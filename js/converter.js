@@ -756,6 +756,9 @@
   const pdfModeButtons = Array.from(document.querySelectorAll('.pdf-mode-btn'));
   const appShell = document.querySelector('.app') || document.querySelector('.converter-shell') || document.body;
   let optsToggle = null;
+  const mobileMediaQuery = window.matchMedia('(max-width:1100px)');
+  let responsiveHandler = null;
+  let panelAutoOpened = false;
 
   function prepareOptionsToggle(labelText, ariaLabelText) {
     const buttons = Array.from(document.querySelectorAll('#optsToggle, .options-toggle'));
@@ -808,6 +811,9 @@
     if (imageConfig.accept) accepts.push(imageConfig.accept);
     if (config.allowPdfInput) accepts.push('.pdf,application/pdf');
     if (accepts.length) fileInput.setAttribute('accept', accepts.join(','));
+    if (fileInput.hasAttribute('hidden')) fileInput.removeAttribute('hidden');
+    fileInput.classList.add('dropzone-file-input');
+    fileInput.setAttribute('aria-hidden', 'true');
   }
 
   const initialOutput = availableOutputs.includes(config.defaultOutput) ? config.defaultOutput : availableOutputs[0];
@@ -820,6 +826,22 @@
     outputFormat: initialOutput,
     converting: false
   };
+
+  function ensurePanelVisibleOnMobile() {
+    if (!panel || !optsToggle) return;
+    if (!mobileMediaQuery.matches) {
+      panelAutoOpened = false;
+      return;
+    }
+    if (!state.files.length) {
+      panelAutoOpened = false;
+      return;
+    }
+    if (panel.classList.contains('open')) return;
+    panel.classList.add('open');
+    panelAutoOpened = true;
+    responsiveHandler?.();
+  }
 
   const i18n = config.i18n || {};
   const qualityMessages = {
@@ -941,6 +963,7 @@
   function renderGrid() {
     if (!grid) return;
     if (!state.files.length) {
+      panelAutoOpened = false;
       grid.innerHTML = '';
       updateSelection();
       return;
@@ -962,6 +985,7 @@
     }).join('');
     grid.innerHTML = cards;
     updateSelection();
+    ensurePanelVisibleOnMobile();
   }
 
   const QUALITY_PRESETS = {
@@ -1177,24 +1201,32 @@
     window.addEventListener('dragover', e => e.preventDefault());
     window.addEventListener('drop', e => e.preventDefault());
 
-    const mql = window.matchMedia('(max-width:1100px)');
     function handleResponsive() {
       if (!optsToggle || !panel) return;
-      const isCompact = mql.matches;
+      const isCompact = mobileMediaQuery.matches;
       const shouldShowToggle = isCompact && !panel.classList.contains('open');
       optsToggle.style.display = shouldShowToggle ? 'inline-flex' : 'none';
-      if (!isCompact) panel.classList.remove('open');
+      if (!isCompact) {
+        panel.classList.remove('open');
+        panelAutoOpened = false;
+      }
     }
-    handleResponsive(); mql.addEventListener('change', handleResponsive);
+    responsiveHandler = handleResponsive;
+    handleResponsive();
+    mobileMediaQuery.addEventListener('change', handleResponsive);
     optsToggle?.addEventListener('click', () => {
-      panel?.classList.toggle('open');
+      if (!panel) return;
+      const willOpen = !panel.classList.contains('open');
+      panel.classList.toggle('open');
+      panelAutoOpened = willOpen;
       handleResponsive();
     });
     document.addEventListener('click', (event) => {
-      if (!panel || !optsToggle || !panel.classList.contains('open') || !mql.matches) return;
+      if (!panel || !optsToggle || !panel.classList.contains('open') || !mobileMediaQuery.matches) return;
       if (panel.contains(event.target)) return;
       if (optsToggle.contains(event.target)) return;
       panel.classList.remove('open');
+      panelAutoOpened = false;
       handleResponsive();
     });
 

@@ -25,13 +25,14 @@
     .board{background:linear-gradient(180deg,#f7f8fc 0%,#f3f4f8 100%);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px;display:flex;flex-direction:column;gap:24px;position:relative;overflow:hidden;}
     @media (max-width:600px){.board{padding:20px;}}
 
-    .dropzone{border:2px dashed #e5e7eb;border-radius:22px;background:rgba(255,255,255,.9);backdrop-filter:blur(3px);padding:60px 30px;text-align:center;color:#4b5563;display:flex;flex-direction:column;align-items:center;gap:14px;transition:border-color .2s,box-shadow .2s,transform .2s;background-image:linear-gradient(135deg,rgba(229,57,53,.08),rgba(255,255,255,0));}
+    .dropzone{border:2px dashed #e5e7eb;border-radius:22px;background:rgba(255,255,255,.9);backdrop-filter:blur(3px);padding:60px 30px;text-align:center;color:#4b5563;display:flex;flex-direction:column;align-items:center;gap:14px;transition:border-color .2s,box-shadow .2s,transform .2s;background-image:linear-gradient(135deg,rgba(229,57,53,.08),rgba(255,255,255,0));position:relative;}
     .dropzone.dragover{border-color:var(--primary);box-shadow:0 0 0 6px var(--ring);transform:translateY(-2px);}
     .dropzone.disabled{opacity:.55;pointer-events:none;}
     .dropzone.disabled button{cursor:not-allowed;background:#d1d5db;color:#6b7280;box-shadow:none;}
     .dropzone strong{font-size:20px;font-weight:700;color:#1f2937;}
     .dropzone button{background:var(--primary);color:#fff;border:none;border-radius:14px;padding:14px 20px;font-weight:600;cursor:pointer;box-shadow:0 12px 24px rgba(229,57,53,.25);transition:background .2s,transform .2s;}    
     .dropzone button:hover{background:var(--primary-dark);transform:translateY(-1px);}    
+    .dropzone input[type="file"]{position:absolute;width:1px;height:1px;margin:0;padding:0;border:0;opacity:0;pointer-events:none;clip:rect(0 0 0 0);display:block !important;z-index:-1;}
 .conversion-flow{display:flex;align-items:center;gap:20px;font-weight:600;color:#1f2937;font-size:16px;letter-spacing:.01em;margin-bottom:10px;}
 .conversion-flow .icon{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;font-size:0;line-height:1;color:transparent;overflow:hidden;}
 .conversion-flow .icon::before{font-size:48px;line-height:1;display:block;color:initial;}
