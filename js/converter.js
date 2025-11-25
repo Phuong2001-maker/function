@@ -1178,10 +1178,25 @@
     window.addEventListener('drop', e => e.preventDefault());
 
     const mql = window.matchMedia('(max-width:1100px)');
-    function handleResponsive() { if (!optsToggle || !panel) return; const isCompact = mql.matches; optsToggle.style.display = isCompact ? 'inline-flex' : 'none'; if (!isCompact) panel.classList.remove('open'); }
+    function handleResponsive() {
+      if (!optsToggle || !panel) return;
+      const isCompact = mql.matches;
+      const shouldShowToggle = isCompact && !panel.classList.contains('open');
+      optsToggle.style.display = shouldShowToggle ? 'inline-flex' : 'none';
+      if (!isCompact) panel.classList.remove('open');
+    }
     handleResponsive(); mql.addEventListener('change', handleResponsive);
-    optsToggle?.addEventListener('click', () => panel?.classList.toggle('open'));
-    document.addEventListener('click', (event) => { if (!panel || !optsToggle || !panel.classList.contains('open') || !mql.matches) return; if (panel.contains(event.target)) return; if (optsToggle.contains(event.target)) return; panel.classList.remove('open'); });
+    optsToggle?.addEventListener('click', () => {
+      panel?.classList.toggle('open');
+      handleResponsive();
+    });
+    document.addEventListener('click', (event) => {
+      if (!panel || !optsToggle || !panel.classList.contains('open') || !mql.matches) return;
+      if (panel.contains(event.target)) return;
+      if (optsToggle.contains(event.target)) return;
+      panel.classList.remove('open');
+      handleResponsive();
+    });
 
     window.addEventListener('keydown', (e) => { if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'o') { e.preventDefault(); fileInput.click(); } });
   }
