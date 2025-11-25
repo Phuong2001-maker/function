@@ -832,7 +832,14 @@
     };
     if (imageConfig.accept) pushAcceptValue(imageConfig.accept);
     if (config.allowPdfInput) pushAcceptValue('.pdf,application/pdf');
-    if (!hasImageWildcard && (imageMimeSet.size || imageExtensions.length)) pushAcceptValue('image/*');
+    if (
+      !hasImageWildcard &&
+      !acceptTokens.length &&
+      !imageMimeSet.size &&
+      !imageExtensions.length
+    ) {
+      pushAcceptValue('image/*');
+    }
     if (acceptTokens.length) fileInput.setAttribute('accept', acceptTokens.join(','));
     if (fileInput.hasAttribute('hidden')) fileInput.removeAttribute('hidden');
     fileInput.multiple = true;
@@ -1319,7 +1326,7 @@
         : `${unsupported.length} files (${formattedNames}${extraText})`;
       const reason = imageConfig.description || statusText('chooseSupported');
       const message = `Could not add ${detailSegment} because the format is unsupported. ${reason}`;
-      updateStatus(message, 'warn');
+      updateStatus('', 'info');
       showFloatingAlert(message, 'warn', 5000);
     } else {
       updateStatus(statusText('noValidFiles'), 'info');
