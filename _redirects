@@ -1,13 +1,2 @@
-# Shorten chains and use 301 for permanent redirects
-/index.html          /                     301
-/index               /                     301
-/en/index.html       /en/                  301
-/en/index            /en/                  301
-
-# Ensure .html resolves directly to extensionless targets
-/en/:splat.html      /en/:splat            301
-/:splat.html         /:splat               301
-
-# Image converter goes directly to canonical English page
-/image-converter.html /en/image-converter  301
-/image-converter      /en/image-converter  301
+/:splat.html /:splat 301
+/image-converter /en/image-converter 301
