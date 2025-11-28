@@ -294,55 +294,55 @@ const baseContent = {
   },
   seo: {
     home: {
-      title: 'Privacy-first file converter | __BRAND__',
+      title: 'Privacy-first file converter',
       description: 'Convert images, PDFs, and creative files locally with zero uploads and no file size limits.'
     },
     'all-tools': {
-      title: 'All conversion tools | __BRAND__',
+      title: 'All conversion tools',
       description: 'Browse every converter for images, PDFs, and assets that stay on your device.'
     },
     about: {
-      title: 'About __BRAND__',
+      title: 'About',
       description: 'Learn how we deliver secure, unlimited, browser-based file conversion.'
     },
     blog: {
-      title: 'Guides & tips | __BRAND__',
+      title: 'Guides & tips',
       description: 'Read tutorials for faster, safer document conversion.'
     },
     contact: {
-      title: 'Contact __BRAND__ support',
+      title: 'Contact support',
       description: 'Send a note or email the team for help with the converters.'
     },
     privacy: {
-      title: 'Privacy policy | __BRAND__',
+      title: 'Privacy policy',
       description: 'Understand how files stay on your device and what data we collect.'
     },
     terms: {
-      title: 'Terms of use | __BRAND__',
+      title: 'Terms of use',
       description: 'Review the rules for using the converter suite safely.'
     },
     faq: {
-      title: 'FAQ | __BRAND__',
+      title: 'FAQ',
       description: 'Answers about limits, privacy, and performance.'
     },
     '404': {
-      title: 'Not found | __BRAND__',
+      title: 'Not found',
       description: 'The page you looked for was not found on __BRAND__.'
     },
     'image-converter': {
-      title: 'Image converter | __BRAND__',
+      title: 'Image converter',
       description: 'Convert JPG, PNG, and WebP locally with no upload limits.'
     },
     'pdf-to-jpg': {
-      title: 'PDF to JPG | __BRAND__',
+      title: 'PDF to JPG',
       description: 'Turn PDFs into crisp JPG pages entirely offline.'
     },
     'jpg-to-pdf': {
-      title: 'JPG to PDF | __BRAND__',
+      title: 'JPG to PDF',
       description: 'Merge JPG files into a PDF safely in your browser.'
     },
     'compress-png': {
-      title: 'Compress PNG | __BRAND__',
+      title: 'Compress PNG',
       description: 'Reduce PNG size while working completely on-device.'
     }
   }
